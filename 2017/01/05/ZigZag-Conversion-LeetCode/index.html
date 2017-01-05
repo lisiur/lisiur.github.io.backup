@@ -85,18 +85,21 @@
 
 
 <meta name="description" content="The string “PAYPALISHIRING” is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
-P   A   H   NA P L S I I GY">
+undefined
+And then read lin">
 <meta property="og:type" content="article">
 <meta property="og:title" content=" ZigZag Conversion@LeetCode">
 <meta property="og:url" content="http://Lisiur.com/2017/01/05/ZigZag-Conversion-LeetCode/index.html">
 <meta property="og:site_name" content="Lisiur">
 <meta property="og:description" content="The string “PAYPALISHIRING” is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
-P   A   H   NA P L S I I GY">
-<meta property="og:updated_time" content="2017-01-05T11:57:15.000Z">
+undefined
+And then read lin">
+<meta property="og:updated_time" content="2017-01-05T12:01:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" ZigZag Conversion@LeetCode">
 <meta name="twitter:description" content="The string “PAYPALISHIRING” is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
-P   A   H   NA P L S I I GY">
+undefined
+And then read lin">
 
 
 
@@ -314,9 +317,11 @@ P   A   H   NA P L S I I GY">
 
       
         <blockquote><p>The string “PAYPALISHIRING” is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)</p>
-<p>P   A   H   N<br>A P L S I I G<br>Y   I   R<br>And then read line by line: “PAHNAPLSIIGYIR”<br>Write the code that will take a string and make this conversion given a number of rows:</p>
+undefined
+<p>And then read line by line: “PAHNAPLSIIGYIR”<br>Write the code that will take a string and make this conversion given a number of rows:</p>
 <p>string convert(string text, int nRows);<br>convert(“PAYPALISHIRING”, 3) should return “PAHNAPLSIIGYIR”.</p>
 <footer><strong>Leetcode</strong><cite><a href="https://leetcode.com/problems/zigzag-conversion/" target="_blank" rel="external">ZigZag Conversion</a></cite></footer></blockquote>
+<a id="more"></a>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * @param &#123;string&#125; s</div><div class="line"> * @param &#123;number&#125; numRows</div><div class="line"> * @return &#123;string&#125;</div><div class="line"> */</div><div class="line"><span class="keyword">var</span> convert = <span class="function"><span class="keyword">function</span>(<span class="params">s, numRows</span>) </span>&#123;</div><div class="line">    <span class="keyword">let</span> [rows, convertString] = [[], <span class="string">''</span>];</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; numRows; i++) rows[i] = <span class="string">''</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; s.length;) &#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; numRows &amp;&amp; i &lt; s.length; j++, i++) rows[j] += s[i];</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> j = numRows - <span class="number">2</span>; j &gt;= <span class="number">1</span> &amp;&amp; i &lt; s.length; j--, i++) rows[j] += s[i];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">in</span> rows) convertString += rows[i];</div><div class="line">    <span class="keyword">return</span> convertString;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 
       
