@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Lisiur" />
+  <meta name="keywords" content="vue," />
 
 
 
@@ -84,12 +84,34 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Lisiur">
-<meta property="og:url" content="http://Lisiur.com/index.html">
+<meta name="description" content="在使用vue做个人中心的绑定手机功能时，遇到这样的需求：
+
+有密码输入框，手机号输入框，验证码输入框，验证码发送按钮和绑定按钮
+当密码输入框失去焦点，要发送一个异步请求校验密码是否正确
+当手机号输入框失去焦点，要本地校验手机号格式是否正确
+只有当密码校验正确 &amp;amp;&amp;amp; 手机号校验正确 验证码发送按钮才能生效
+只有当密码校验正确 &amp;amp;&amp;amp; 手机号校验正确 &amp;amp;&amp;amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于事件依赖的思考和实践">
+<meta property="og:url" content="http://Lisiur.com/2017/01/24/关于事件依赖的思考和实践/index.html">
 <meta property="og:site_name" content="Lisiur">
+<meta property="og:description" content="在使用vue做个人中心的绑定手机功能时，遇到这样的需求：
+
+有密码输入框，手机号输入框，验证码输入框，验证码发送按钮和绑定按钮
+当密码输入框失去焦点，要发送一个异步请求校验密码是否正确
+当手机号输入框失去焦点，要本地校验手机号格式是否正确
+只有当密码校验正确 &amp;amp;&amp;amp; 手机号校验正确 验证码发送按钮才能生效
+只有当密码校验正确 &amp;amp;&amp;amp; 手机号校验正确 &amp;amp;&amp;amp;">
+<meta property="og:updated_time" content="2017-01-24T08:20:17.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Lisiur">
+<meta name="twitter:title" content="关于事件依赖的思考和实践">
+<meta name="twitter:description" content="在使用vue做个人中心的绑定手机功能时，遇到这样的需求：
+
+有密码输入框，手机号输入框，验证码输入框，验证码发送按钮和绑定按钮
+当密码输入框失去焦点，要发送一个异步请求校验密码是否正确
+当手机号输入框失去焦点，要本地校验手机号格式是否正确
+只有当密码校验正确 &amp;amp;&amp;amp; 手机号校验正确 验证码发送按钮才能生效
+只有当密码校验正确 &amp;amp;&amp;amp; 手机号校验正确 &amp;amp;&amp;amp;">
 
 
 
@@ -107,7 +129,7 @@
   };
 </script>
 
-  <title> Lisiur </title>
+  <title> 关于事件依赖的思考和实践 | Lisiur </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -128,9 +150,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -227,9 +247,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -249,10 +269,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2017/01/24/关于事件依赖的思考和实践/" itemprop="url">
-                  关于事件依赖的思考和实践
-                </a>
+                关于事件依赖的思考和实践
               
             
           </h1>
@@ -292,9 +309,7 @@
       
 
       
-        
-          
-            <p>在使用vue做个人中心的绑定手机功能时，遇到这样的需求：</p>
+        <p>在使用vue做个人中心的绑定手机功能时，遇到这样的需求：</p>
 <ul>
 <li>有密码输入框，手机号输入框，验证码输入框，验证码发送按钮和绑定按钮</li>
 <li>当密码输入框失去焦点，要发送一个异步请求校验密码是否正确</li>
@@ -362,617 +377,58 @@
 <li>没考虑多层次事件依赖</li>
 </ol>
 
-          
+      
+    </div>
+
+    <div>
+      
         
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/08/制作jsfiddle-base模版-jsfiddle/" itemprop="url">
-                  制作jsfiddle base模版@jsfiddle
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-08T19:45:38+08:00" content="2017-01-08">
-              2017-01-08
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/lodash/" itemprop="url" rel="index">
-                    <span itemprop="name">lodash</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
+            <a href="/tags/vue/" rel="tag">#vue</a>
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <script async src="//jsfiddle.net/lisiur/2sqL6ce7/embed/js,html,result/"></script>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/01/08/制作jsfiddle-base模版-jsfiddle/" rel="next" title="制作jsfiddle base模版@jsfiddle">
+                <i class="fa fa-chevron-left"></i> 制作jsfiddle base模版@jsfiddle
+              </a>
             
-              
-                
-                <a class="post-title-link" href="/2017/01/08/隐藏手机部分信息-jsfiddle/" itemprop="url">
-                  隐藏手机部分信息@jsfiddle
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-08T19:32:25+08:00" content="2017-01-08">
-              2017-01-08
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/lodash/" itemprop="url" rel="index">
-                    <span itemprop="name">lodash</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <script async src="//jsfiddle.net/lisiur/n9s77foL/embed/js,result/"></script>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/05/ZigZag-Conversion-LeetCode/" itemprop="url">
-                   ZigZag Conversion@LeetCode
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-05T19:52:42+08:00" content="2017-01-05">
-              2017-01-05
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">algorithm</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote><p>The string “PAYPALISHIRING” is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)</p>
-<p>P   A   H   N<br>A P L S I I G<br>Y   I   R</p>
-<p>And then read line by line: “PAHNAPLSIIGYIR”<br>Write the code that will take a string and make this conversion given a number of rows:</p>
-<p>string convert(string text, int nRows);<br>convert(“PAYPALISHIRING”, 3) should return “PAHNAPLSIIGYIR”.</p>
-<footer><strong>Leetcode</strong><cite><a href="https://leetcode.com/problems/zigzag-conversion/">ZigZag Conversion</a></cite></footer></blockquote>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/05/ZigZag-Conversion-LeetCode/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
           </div>
-        
-      
-    </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+          <div class="post-nav-prev post-nav-item">
             
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/04/Longest-Substring-Without-Repeating-Characters-LeetCode/" itemprop="url">
-                  Longest Substring Without Repeating Characters@LeetCode
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-04T11:41:20+08:00" content="2017-01-04">
-              2017-01-04
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">algorithm</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote><p>Given a string, find the length of the longest substring without repeating characters.</p>
-<p>Examples:</p>
-<p>Given “abcabcbb”, the answer is “abc”, which the length is 3.</p>
-<p>Given “bbbbb”, the answer is “b”, with the length of 1.</p>
-<p>Given “pwwkew”, the answer is “wke”, with the length of 3. Note that the answer must be a substring, “pwke” is a subsequence and not a substring.</p>
-<footer><strong>Leetcode</strong><cite><a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/">Longest Substring Without Repeating Characters</a></cite></footer></blockquote>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/04/Longest-Substring-Without-Repeating-Characters-LeetCode/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
           </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/03/Add-Two-Numbers-LeetCode/" itemprop="url">
-                  Add Two Numbers @ LeetCode
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-03T08:54:42+08:00" content="2017-01-03">
-              2017-01-03
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">algorithm</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <blockquote><p>You are given two linked lists representing two non-negative numbers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</p>
-<p>Input: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br>Output: 7 -&gt; 0 -&gt; 8</p>
-<footer><strong>LeetCode</strong><cite><a href="https://leetcode.com/problems/add-two-numbers/">Add Two Numbers</a></cite></footer></blockquote>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/03/Add-Two-Numbers-LeetCode/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -980,6 +436,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -999,8 +459,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -1050,6 +519,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -1146,6 +626,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
