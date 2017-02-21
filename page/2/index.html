@@ -735,13 +735,13 @@
 <h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><p>为什么要这个作用域链作为中间人而不是让执行环境的[scope]属性直接指向其变量对象呢？因为作用域链还有一个重要的作用，即表示当前执行环境的作用域。作用域就是当前执行环境能够访问到的所有变量对象。而如何确定当前执行环境能够访问到哪些变量对象（作用域）呢？根据当前环境的[scope]属性可以找到对应的作用域链的那个链结，从当前链结向下的所有链结所指向的变量对象就构成了其作用域。</p>
 <h3 id="实例展示"><a href="#实例展示" class="headerlink" title="实例展示"></a>实例展示</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> name = <span class="string">"global"</span>;</div><div class="line"></div><div class="line"><span class="keyword">var</span> fun = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> time = <span class="built_in">Date</span>.now();</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> inner = <span class="string">"time"</span>;</div><div class="line">        <span class="keyword">return</span>  inner + <span class="string">":"</span> + time;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> showTime = fun();</div><div class="line">showTime();</div></pre></td></tr></table></figure>
 <p>当代码开始执行时，解释器会先创建global执行环境和global变量对象，并初始化作用域链（0）。在global执行环境中声明的变量会全部加到global对象中。其关系如红色部分所示。此时global的作用域包含global变量对象。</p>
-
+<img src="/2016/08/20/JavaScript函数表达式/2016082001.png" alt="img" title="img">
 <p>在fun被创建时，解释器便创建fun的执行环境和fun变量对象，并复制当前作用域链且将（1）添加到作用域链中（0）的上方。其关系如橙色部分所示。此时fun的作用域包含（1）所指的fun变量对象和（0）所指的global变量对象。</p>
-
+<img src="/2016/08/20/JavaScript函数表达式/2016082002.png" alt="img" title="img">
 <p>在fun内部的匿名函数被创建时，解释器便创建该匿名函数的执行环境和对应的变量对象，并复制当前作用域链且将（2）添加到作用域链中（1）的上方。其关系如黄色部分所示。此时匿名函数作用域包含（2）所指的变量对象和（1）所指的fun变量对象和（0）所指的global变量对象。</p>
-
+<img src="/2016/08/20/JavaScript函数表达式/2016082003.png" alt="img" title="img">
 <p>下图便为该段程序执行时，环境变量的变化过程：</p>
-
+<img src="/2016/08/20/JavaScript函数表达式/2016082004.png" alt="img" title="img">
 <p>函数执行完就会销毁其作用域链，然后安全退出执行环境。此时便没有对变量对象的引用，就可以被垃圾回收例程回收。</p>
 <p>执行环境栈中的执行环境会依次退出，对于本例即先退出内部函数执行环境，然后是fun函数执行环境，最后是global执行环境。</p>
 <p>那么问题来了，如果执行环境退出后，其作用域链没有销毁会怎样？其实这是两个问题：</p>
@@ -750,7 +750,7 @@
 <li>出现这种情况会有什么后果</li>
 </ol>
 <p>回答第一个问题需要知道什么情况下会销毁作用域链和退出执行环境。在代码上的直观表现是，开始执行一个函数时便会创建一个新的执行环境，而函数执行完便会退出执行环境。至于什么时候会销毁作用域链，当外部执行环境中没有对该执行环境的对象变量的引用，作用域链就被销毁了。<br>对于本例来说：在执行fun()时，便创建了上图的执行环境，在fun()执行完毕后，其执行环境栈如下图所示：</p>
-
+<img src="/2016/08/20/JavaScript函数表达式/2016082005.png" alt="img" title="img">
 <p>此时对于fun来说其使命已完成，其作用域链也被销毁，但对于其内部匿名函数来说，因为其被作为fun的返回值被global变量对象的showTime所引用。所以虽然已经进入global的执行环境，但匿名函数的作用域链却被保存了下来，fun的变量对象因为被该作用域链所引用，所以便常驻内存中，并没有因为fun的作用域链的销毁而被GC回收。</p>
 <p>showTime便是闭包！</p>
 <p>showTime(闭包)的特殊之处就是其保存了匿名函数（包含其的函数）的执行环境！因此showTime才能访问到fun中变量。</p>
