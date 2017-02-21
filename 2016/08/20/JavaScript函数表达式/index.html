@@ -1,0 +1,668 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript,闭包," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="定义函数的方式有两种：一种是函数声明，另一种就是函数表达式。
+函数声明 的形式如下：
+1234fun1(); // fun1function fun1()&amp;#123;    console.log(arguments.callee.name);&amp;#125;
+如上所示，涵书声明有一个特征：函数声明提升(function declaration hoisting)。其表现形式为：解释器在执行代码前会先">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript函数表达式">
+<meta property="og:url" content="http://Lisiur.com/2016/08/20/JavaScript函数表达式/index.html">
+<meta property="og:site_name" content="Lisiur">
+<meta property="og:description" content="定义函数的方式有两种：一种是函数声明，另一种就是函数表达式。
+函数声明 的形式如下：
+1234fun1(); // fun1function fun1()&amp;#123;    console.log(arguments.callee.name);&amp;#125;
+如上所示，涵书声明有一个特征：函数声明提升(function declaration hoisting)。其表现形式为：解释器在执行代码前会先">
+<meta property="og:updated_time" content="2016-09-10T06:55:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript函数表达式">
+<meta name="twitter:description" content="定义函数的方式有两种：一种是函数声明，另一种就是函数表达式。
+函数声明 的形式如下：
+1234fun1(); // fun1function fun1()&amp;#123;    console.log(arguments.callee.name);&amp;#125;
+如上所示，涵书声明有一个特征：函数声明提升(function declaration hoisting)。其表现形式为：解释器在执行代码前会先">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> JavaScript函数表达式 | Lisiur </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Lisiur</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JavaScript函数表达式
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-20T10:28:55+08:00" content="2016-08-20">
+              2016-08-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/javascript笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript笔记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>定义函数的方式有两种：一种是函数声明，另一种就是函数表达式。</p>
+<p><strong>函数声明</strong> 的形式如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">fun1(); <span class="comment">// fun1</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun1</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>.callee.name);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如上所示，涵书声明有一个特征：<strong>函数声明提升</strong>(function declaration hoisting)。其表现形式为：<strong>解释器在执行代码前会先将函数声明部分提前执行</strong>。因此示例中<code>fun1();</code>语句可以在其声明前执行。</p>
+<p>第二种即为 <strong>函数表达式</strong>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fun2 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>.callee.name);</div><div class="line">&#125;;</div><div class="line">fun2(); <span class="comment">// fun2</span></div></pre></td></tr></table></figure>
+<p>函数表达式和其他表达式相同，<strong>使用前必须先赋值</strong>。</p>
+<p>理解函数提升的关键，就是理解函数声明与函数表达式之间的区别。例如，执行以下代码的结果可能会让人意想不到。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(condition) &#123;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"YES"</span>);</div><div class="line">    &#125;</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"NO"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这在ECMAScript中属于无效语法，javascript引擎会尝试修正该错误。但不同浏览器修正的方式不同。对于大多数浏览器会返回第二个声明。而Firefox则会根据condition的值返回对应的声明。因此不建议大家使用该方式。但如果使用函数表达式则可以避免该情况。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fun;</div><div class="line"><span class="keyword">if</span>(condition) &#123;</div><div class="line">    fun = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"YES"</span>);</div><div class="line">    &#125;</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    fun = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"NO"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>先来看个经典的阶乘递归的例子</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">factorial</span>(<span class="params">num</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> num === <span class="number">1</span> ? <span class="number">1</span> : num * factorial(num<span class="number">-1</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以上代码看着没有什么错误，但下列代码会让其出错。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fun = factorial;</div><div class="line">factorial = <span class="literal">null</span>;</div><div class="line">fun(<span class="number">3</span>); <span class="comment">// 报错 factorial is not a function</span></div></pre></td></tr></table></figure>
+<p>这是因为fun所指向的函数内部对factorial有引用，而此时factorial已经置为null，解释器无法找到factorial所指向的函数。</p>
+<p>因此只有对其递归声明解耦才能在上述情况下正常运行。<br>解耦的方式有两种：</p>
+<ol>
+<li>递归调用的函数不显示使用函数名表示，而是使用arguments.callee来替代。（在严格模式下，无法使用）</li>
+<li>使用函数表达式</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 方案1</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">factorial</span>(<span class="params">num</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> num === <span class="number">1</span> ? <span class="number">1</span> : num * <span class="built_in">arguments</span>.callee(num<span class="number">-1</span>);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 方案2</span></div><div class="line"><span class="keyword">var</span> factorial = (<span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> num === <span class="number">1</span> ? <span class="number">1</span> : num * f(num<span class="number">-1</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p>闭包很复杂，但理解了就很简单。给大家讲个故事：</p>
+<p>A知道自己的秘密；B知道自己的秘密，但B还知道A知道的所有秘密（即B知道A和B的秘密）；C知道自己的秘密，但C还知道B知道的所有的秘密（即C知道A和B和C的秘密）。大家相安无事，直到有一天来了一个恶魔，恶魔制定一个杀人计划：每天杀死一个知道秘密最多的人。按照他的计划，就是先杀死C再杀死B最后杀死A。然而恶魔在准备杀死C时，发现她浓眉大眼，唇红齿白，胸大臀翘（此处省略1000字），便生了怜香惜玉之情，准其侍寝一晚。B则因长相不可名状首先被杀死了。但是，第二天因不可说之原因，恶魔*尽人亡了！尽人亡了！人亡了！亡了！了！C和A活了下来。</p>
+<p>故事讲完了，大家明白闭包了吧？<br>不明白？（A和C相拥而泣）<br>真不明白？（C已哭晕在厕所）自行带入吧：<br>A =&gt; global（全局执行环境）<br>B =&gt; 外部函数（外部执行环境）<br>C =&gt; 内部函数（内部执行环境）<br>恶魔 =&gt; 解释器<br>恶魔杀人计划 =&gt; 作用域链<br>秘密 =&gt; 变量(变量对象)</p>
+<p>还不明白？（C已经哭死了。。。）</p>
+<p>手动分割线–我是分割线–我是分割线–我是分割线–我是分割线–我是分割线–我是分割线–我是分割线–我是分割线–</p>
+<p>理解闭包就要先理解如下几个概念：</p>
+<ol>
+<li>执行环境</li>
+<li>作用域链</li>
+<li>作用域</li>
+<li>变量对象</li>
+</ol>
+<p>解释器解释运行代码时有两个状态，要么在执行环境中，要么在执行环境的切换过程中。</p>
+<h3 id="执行环境"><a href="#执行环境" class="headerlink" title="执行环境"></a>执行环境</h3><p>一个函数在被调用的时候会创建一个属于它自身的执行环境，并压入执行环境栈（专门保存当前所有执行环境的栈），当该函数执行完毕，则退出当前执行环境（出栈），进入其被调用前的执行环境。<br>每个执行环境能够访问的变量是不同的。<br>最底层的执行环境即为全局执行环境，其能够访问的变量为全局变量。在全局执行环境中调用函数A，则会创建一个A执行环境，A执行环境除了能够访问其内部定义的变量、参数（arguments）变量之外，还能访问全局执行环境中的所有变量。以此类推，位于执行环境栈较高层的执行环境，总能访问较低层执行环境所包含的变量。</p>
+<h3 id="变量对象"><a href="#变量对象" class="headerlink" title="变量对象"></a>变量对象</h3><p>每个执行环境都有一个变量对象，该变量对象保存着该执行环境自身的所有变量（this，arguments，命名变量）。</p>
+<h3 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h3><p>作用域链是一个链（废话！）这个链保存的是指向变量对象的指针。即作用域链的每个链结都指向一个变量对象。而每个执行环境都有一个[scope]属性指向其对应的作用域链的某个链结。（有点晕？）换句话说，作用域链是执行环境和其对应的变量对象的中间人。</p>
+<h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><p>为什么要这个作用域链作为中间人而不是让执行环境的[scope]属性直接指向其变量对象呢？因为作用域链还有一个重要的作用，即表示当前执行环境的作用域。作用域就是当前执行环境能够访问到的所有变量对象。而如何确定当前执行环境能够访问到哪些变量对象（作用域）呢？根据当前环境的[scope]属性可以找到对应的作用域链的那个链结，从当前链结向下的所有链结所指向的变量对象就构成了其作用域。</p>
+<h3 id="实例展示"><a href="#实例展示" class="headerlink" title="实例展示"></a>实例展示</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> name = <span class="string">"global"</span>;</div><div class="line"></div><div class="line"><span class="keyword">var</span> fun = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> time = <span class="built_in">Date</span>.now();</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> inner = <span class="string">"time"</span>;</div><div class="line">        <span class="keyword">return</span>  inner + <span class="string">":"</span> + time;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> showTime = fun();</div><div class="line">showTime();</div></pre></td></tr></table></figure>
+<p>当代码开始执行时，解释器会先创建global执行环境和global变量对象，并初始化作用域链（0）。在global执行环境中声明的变量会全部加到global对象中。其关系如红色部分所示。此时global的作用域包含global变量对象。</p>
+
+<p>在fun被创建时，解释器便创建fun的执行环境和fun变量对象，并复制当前作用域链且将（1）添加到作用域链中（0）的上方。其关系如橙色部分所示。此时fun的作用域包含（1）所指的fun变量对象和（0）所指的global变量对象。</p>
+
+<p>在fun内部的匿名函数被创建时，解释器便创建该匿名函数的执行环境和对应的变量对象，并复制当前作用域链且将（2）添加到作用域链中（1）的上方。其关系如黄色部分所示。此时匿名函数作用域包含（2）所指的变量对象和（1）所指的fun变量对象和（0）所指的global变量对象。</p>
+
+<p>下图便为该段程序执行时，环境变量的变化过程：</p>
+
+<p>函数执行完就会销毁其作用域链，然后安全退出执行环境。此时便没有对变量对象的引用，就可以被垃圾回收例程回收。</p>
+<p>执行环境栈中的执行环境会依次退出，对于本例即先退出内部函数执行环境，然后是fun函数执行环境，最后是global执行环境。</p>
+<p>那么问题来了，如果执行环境退出后，其作用域链没有销毁会怎样？其实这是两个问题：</p>
+<ol>
+<li>什么时候会出现这种情况</li>
+<li>出现这种情况会有什么后果</li>
+</ol>
+<p>回答第一个问题需要知道什么情况下会销毁作用域链和退出执行环境。在代码上的直观表现是，开始执行一个函数时便会创建一个新的执行环境，而函数执行完便会退出执行环境。至于什么时候会销毁作用域链，当外部执行环境中没有对该执行环境的对象变量的引用，作用域链就被销毁了。<br>对于本例来说：在执行fun()时，便创建了上图的执行环境，在fun()执行完毕后，其执行环境栈如下图所示：</p>
+
+<p>此时对于fun来说其使命已完成，其作用域链也被销毁，但对于其内部匿名函数来说，因为其被作为fun的返回值被global变量对象的showTime所引用。所以虽然已经进入global的执行环境，但匿名函数的作用域链却被保存了下来，fun的变量对象因为被该作用域链所引用，所以便常驻内存中，并没有因为fun的作用域链的销毁而被GC回收。</p>
+<p>showTime便是闭包！</p>
+<p>showTime(闭包)的特殊之处就是其保存了匿名函数（包含其的函数）的执行环境！因此showTime才能访问到fun中变量。</p>
+<p>当执行showTime()时，便可以直接到其包含的执行环境中运行。<br>因此，虽然闭包很强大，但比一般的函数消耗更多的内存。需要善用之。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
+          
+            <a href="/tags/闭包/" rel="tag">#闭包</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/15/JavaScript面向对象的程序设计/" rel="next" title="JavaScript面向对象的程序设计">
+                <i class="fa fa-chevron-left"></i> JavaScript面向对象的程序设计
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/27/BOM/" rel="prev" title="BOM">
+                BOM <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Lisiur Day" />
+          <p class="site-author-name" itemprop="name">Lisiur Day</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#递归"><span class="nav-number">1.</span> <span class="nav-text">递归</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包"><span class="nav-number">2.</span> <span class="nav-text">闭包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#执行环境"><span class="nav-number">2.1.</span> <span class="nav-text">执行环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量对象"><span class="nav-number">2.2.</span> <span class="nav-text">变量对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用域链"><span class="nav-number">2.3.</span> <span class="nav-text">作用域链</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用域"><span class="nav-number">2.4.</span> <span class="nav-text">作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例展示"><span class="nav-number">2.5.</span> <span class="nav-text">实例展示</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lisiur Day</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
