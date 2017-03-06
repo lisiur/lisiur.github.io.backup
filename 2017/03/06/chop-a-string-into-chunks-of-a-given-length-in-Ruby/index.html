@@ -84,19 +84,19 @@
 
 
 
-<meta name="description" content="12345def chunk(string, size)  string.scan(/.&amp;#123;1, #&amp;#123;size&amp;#125;&amp;#125;/) # cannnot handle newlines: \n    # string.scan(/.&amp;#123;1, #&amp;#123;size&amp;#125;&amp;#125;/m) # can handle newlines end
-123def chu">
+<meta name="description" content="12345def chunk(string, size)  string.scan(/.&amp;#123;1,#&amp;#123;size&amp;#125;&amp;#125;/) # cannnot handle newlines: \n    # string.scan(/.&amp;#123;1,#&amp;#123;size&amp;#125;&amp;#125;/m) # can handle newlines end
+123def chunk">
 <meta property="og:type" content="article">
 <meta property="og:title" content="chop a string into chunks of a given length in Ruby">
 <meta property="og:url" content="http://Lisiur.com/2017/03/06/chop-a-string-into-chunks-of-a-given-length-in-Ruby/index.html">
 <meta property="og:site_name" content="Lisiur">
-<meta property="og:description" content="12345def chunk(string, size)  string.scan(/.&amp;#123;1, #&amp;#123;size&amp;#125;&amp;#125;/) # cannnot handle newlines: \n    # string.scan(/.&amp;#123;1, #&amp;#123;size&amp;#125;&amp;#125;/m) # can handle newlines end
-123def chu">
-<meta property="og:updated_time" content="2017-03-06T02:54:53.000Z">
+<meta property="og:description" content="12345def chunk(string, size)  string.scan(/.&amp;#123;1,#&amp;#123;size&amp;#125;&amp;#125;/) # cannnot handle newlines: \n    # string.scan(/.&amp;#123;1,#&amp;#123;size&amp;#125;&amp;#125;/m) # can handle newlines end
+123def chunk">
+<meta property="og:updated_time" content="2017-03-06T03:36:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="chop a string into chunks of a given length in Ruby">
-<meta name="twitter:description" content="12345def chunk(string, size)  string.scan(/.&amp;#123;1, #&amp;#123;size&amp;#125;&amp;#125;/) # cannnot handle newlines: \n    # string.scan(/.&amp;#123;1, #&amp;#123;size&amp;#125;&amp;#125;/m) # can handle newlines end
-123def chu">
+<meta name="twitter:description" content="12345def chunk(string, size)  string.scan(/.&amp;#123;1,#&amp;#123;size&amp;#125;&amp;#125;/) # cannnot handle newlines: \n    # string.scan(/.&amp;#123;1,#&amp;#123;size&amp;#125;&amp;#125;/m) # can handle newlines end
+123def chunk">
 
 
 
@@ -313,7 +313,7 @@
       
 
       
-        <figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">chunk</span><span class="params">(string, size)</span></span></div><div class="line">  string.scan(<span class="regexp">/.&#123;1, <span class="subst">#&#123;size&#125;</span>&#125;/</span>) <span class="comment"># cannnot handle newlines: \n</span></div><div class="line">  </div><div class="line">  <span class="comment"># string.scan(/.&#123;1, #&#123;size&#125;&#125;/m) # can handle newlines </span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+        <figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">chunk</span><span class="params">(string, size)</span></span></div><div class="line">  string.scan(<span class="regexp">/.&#123;1,<span class="subst">#&#123;size&#125;</span>&#125;/</span>) <span class="comment"># cannnot handle newlines: \n</span></div><div class="line">  </div><div class="line">  <span class="comment"># string.scan(/.&#123;1,#&#123;size&#125;&#125;/m) # can handle newlines </span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">chunk</span><span class="params">(string, size)</span></span></div><div class="line">  string.chars.each_slice(size).map(&amp;<span class="symbol">:join</span>)</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
 
       
