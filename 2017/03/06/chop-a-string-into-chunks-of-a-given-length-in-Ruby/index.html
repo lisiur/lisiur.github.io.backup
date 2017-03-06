@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Lisiur" />
+  <meta name="keywords" content="string,trick," />
 
 
 
@@ -84,12 +84,19 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Lisiur">
-<meta property="og:url" content="http://Lisiur.com/tags/leecode/index.html">
+<meta name="description" content="12345def chunk(string, size)  string.scan(/.&amp;#123;1, #&amp;#123;size&amp;#125;&amp;#125;/) # cannnot handle newlines: \n    # string.scan(/.&amp;#123;1, #&amp;#123;size&amp;#125;&amp;#125;/m) # can handle newlines end
+123def chu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="chop a string into chunks of a given length in Ruby">
+<meta property="og:url" content="http://Lisiur.com/2017/03/06/chop-a-string-into-chunks-of-a-given-length-in-Ruby/index.html">
 <meta property="og:site_name" content="Lisiur">
+<meta property="og:description" content="12345def chunk(string, size)  string.scan(/.&amp;#123;1, #&amp;#123;size&amp;#125;&amp;#125;/) # cannnot handle newlines: \n    # string.scan(/.&amp;#123;1, #&amp;#123;size&amp;#125;&amp;#125;/m) # can handle newlines end
+123def chu">
+<meta property="og:updated_time" content="2017-03-06T02:54:53.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Lisiur">
+<meta name="twitter:title" content="chop a string into chunks of a given length in Ruby">
+<meta name="twitter:description" content="12345def chunk(string, size)  string.scan(/.&amp;#123;1, #&amp;#123;size&amp;#125;&amp;#125;/) # cannnot handle newlines: \n    # string.scan(/.&amp;#123;1, #&amp;#123;size&amp;#125;&amp;#125;/m) # can handle newlines end
+123def chu">
 
 
 
@@ -107,7 +114,7 @@
   };
 </script>
 
-  <title> 标签: leecode | Lisiur </title>
+  <title> chop a string into chunks of a given length in Ruby | Lisiur </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -128,7 +135,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -226,46 +233,143 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        leecode
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                chop a string into chunks of a given length in Ruby
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-06T09:36:33+08:00" content="2017-03-06">
+              2017-03-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/ruby/" itemprop="url" rel="index">
+                    <span itemprop="name">ruby</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">chunk</span><span class="params">(string, size)</span></span></div><div class="line">  string.scan(<span class="regexp">/.&#123;1, <span class="subst">#&#123;size&#125;</span>&#125;/</span>) <span class="comment"># cannnot handle newlines: \n</span></div><div class="line">  </div><div class="line">  <span class="comment"># string.scan(/.&#123;1, #&#123;size&#125;&#125;/m) # can handle newlines </span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">chunk</span><span class="params">(string, size)</span></span></div><div class="line">  string.chars.each_slice(size).map(&amp;<span class="symbol">:join</span>)</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2016/10/16/396. Rotate Function/" itemprop="url">
-              
-                <span itemprop="name">396. Rotate Function</span>
-              
-            </a>
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-10-16T22:30:09+08:00"
-              content="2016-10-16" >
-          10-16
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/string/" rel="tag">#string</a>
+          
+            <a href="/tags/trick/" rel="tag">#trick</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/17/Palindrome-Number-LeetCode/" rel="next" title="Palindrome Number@LeetCode">
+                <i class="fa fa-chevron-left"></i> Palindrome Number@LeetCode
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -273,6 +377,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -292,8 +400,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -343,6 +460,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -439,6 +567,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
