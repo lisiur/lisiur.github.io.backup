@@ -250,6 +250,172 @@
             
               
                 
+                <a class="post-title-link" href="/2017/03/26/使用FP进行空值检查和错误处理的实践/" itemprop="url">
+                  使用FP进行空值检查和错误处理的实践
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-26T08:49:36+08:00" content="2017-03-26">
+              2017-03-26
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/fp/" itemprop="url" rel="index">
+                    <span itemprop="name">fp</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>如果说Java百分之八十的错误是空指针异常的话，那么我说Javascript百分之六十的错误是“Cannot read property ‘**’ of undefined”大家应该不会有意见吧（至少目前对于我这个小实习生来说是这样的= =）</p>
+<p>很多时候，我们都会默认拿到的数据是按照约定的结构返回的，如果数据真的都是这样的话，大概是可以按照我们预期的想法执行。但很多时候我们拿到的数据会跟你耍些小把戏，比如藏起自己的一只手，如果你本来是要给这个数据带上手套，但当你发现他连手都没有的话就会很尴尬了。你可以说这是他的锅，一个人怎么能没有手呢。然而意外总会发生，不是么？</p>
+<p>举个简单的例子，我们有个对象obj, 和颜色表colorTB定义如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> obj = &#123;</div><div class="line">    <span class="attr">id</span>: <span class="string">'^_^'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'Object'</span>,</div><div class="line">    <span class="attr">config</span>: &#123;</div><div class="line">        <span class="attr">label</span>: <span class="string">'object'</span>,</div><div class="line">        <span class="attr">color</span>: <span class="string">'red'</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> colorTB = &#123;</div><div class="line">    <span class="attr">red</span>: <span class="string">'#FF0000'</span>,</div><div class="line">    <span class="attr">green</span>: <span class="string">'#00FF00'</span>,</div><div class="line">    <span class="attr">blue</span>: <span class="string">'#0000FF'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们的任务是根据obj的config中的color获取其在colorTB中对应的color值。（该例子中， 因为obj.config.color =&gt; ‘red’, 所以其对应的color值是colorTB.red =&gt; ‘#FF0000’）</p>
+<p>我们目前唯一能保证的是，会有obj这个对象和colorTB对象，其他都是未知的。即，有可能obj的config中没有color属性；或obj根本没有config属性；也或obj的color在colorTB中没有对应值。</p>
+<p>使用目前比较正常的编程思维来处理这种情况的话，大概的思路应该如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getObjColorValue</span>(<span class="params">obj, colorTB</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>(obj.config &amp;&amp; obj.config.color) &#123; <span class="comment">// obj有color</span></div><div class="line">        <span class="keyword">let</span> objColor = obj.config.color </div><div class="line">        <span class="keyword">let</span> objColorValue = colorTB[objColor]</div><div class="line">        <span class="keyword">if</span>(objColorValue) &#123; <span class="comment">// obj的color在colorTB中有对应值</span></div><div class="line">               <span class="comment">// handle </span></div><div class="line">            &#125; <span class="keyword">else</span> &#123; <span class="comment">// obj的color在colorTB中没有对应值</span></div><div class="line">               <span class="comment">// handle</span></div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">else</span> &#123; <span class="comment">// obj没有color</span></div><div class="line">            <span class="comment">// handle</span></div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这种方式固然可以处理这种情况，但这种处理方式在我看来有如下几个问题：</p>
+<ol>
+<li>处理过程过于繁琐，需要编码者掌控所有细节问题</li>
+<li>错误处理过于隐蔽，错误细节没有暴露出来（即如果不进入函数内，不知道是因为obj没有color而出错，还是因为colorTB没有对应值而出错。不要告诉我你想通过抛出不同错误来区分，我想你大概也是不想每次执行这个操作都要用try-catch吧）</li>
+<li>不易扩展（和第一点有关，因为细节问题过多）</li>
+<li>不易读（和第一点有关）</li>
+</ol>
+<p>其实这个问题，归根结底就是我们一开始提出的“Cannot read property ‘**’ of undefined”问题，无论是obj拿不到color还是colorTB拿不到给定的key对应的value。对于vue用户来说，一种更常见的场景是，组件中传的prop中如果有一个具有至少两层深度（Object中含有Object）的Object，我们在做组件时默认是认为该Object每个key（包括后代key）都是有value的，但事实上很有可能是我们传的Object并不总是满足这个要求。对于这种情况有两种解决方案，一种是在组件开发者在组件上做空检测，一种是组件使用者在传值前做空检测。我个人觉得在组件上做空检测是比较好的方式，但现实是，作为组件使用者，大多数组件并不是我们所能控制的，且很多组件并没有做空检测（或许是考虑到组件的纯洁性）。因此我们不得不屈服在其淫威下自己来做空检测了。</p>
+<p>做空检测是必要的，虽然在大多数情况下获取对象的深度属性是没有问题的，只有在获取那些自己不可控的对象的深度属性值时才需要做空检测，但如果我们每次获取一个这样的对象的某个深度属性值时，都要用到if-else的话，我觉得我会放弃程序员这个职业的。人生苦短，何必这么为难自己 :)</p>
+<p>还好在我坚定放弃之前，在前人的基础上摸索到了一套方案，没错，就是FP</p>
+<p>方案是这样的，首先我们需要建立一个基类Container</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Container</span> </span>&#123;</div><div class="line">    <span class="keyword">constructor</span>(x) &#123;</div><div class="line">        <span class="keyword">this</span>.__value = x</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    map(f) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">this</span>.constructor(f(<span class="keyword">this</span>.__value))</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    isNil() &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.__value === <span class="literal">null</span> || <span class="keyword">this</span>.__value === <span class="literal">undefined</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">static</span> <span class="keyword">of</span>(x) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Container(x)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Container是个容器，他的实例只有一个属性值<code>__value</code>, 如果需要操作该属性值，只能使用实例的map方法进行代理。这里提供的of类方法是为了防止出现创建新实例时漏写new的错误。</p>
+<p>下面我们就要基于这个基类来创建一个能处理空值的容器Maybe</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Maybe</span> <span class="keyword">extends</span> <span class="title">Container</span></span>&#123;</div><div class="line">    <span class="keyword">constructor</span>(x) &#123;</div><div class="line">        <span class="keyword">super</span>(x)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    map(f) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.isNil() ? <span class="keyword">this</span> : Maybe.of(f(<span class="keyword">this</span>.__value))</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">static</span> <span class="keyword">of</span>(x) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Maybe(x)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Maybe和其父类Container所不同的是，所有对Maybe实例的值进行处理前都会判断该值是否为nil(null || undefined)，只有在不是nil时才会操作该值。</p>
+<p>如果要处理获取对象深度属性值的话，我们还需要一个工具函数来处理，定义如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> Utils = &#123;</div><div class="line">    <span class="comment">// Container a -&gt; Container b -&gt; Maybe c</span></div><div class="line">    getProp: R.curry(<span class="function">(<span class="params">prop_Container, obj_Container</span>) =&gt;</span> &#123;</div><div class="line">        <span class="keyword">if</span>(prop_Container.isNil() || obj_Container.isNil()) &#123;</div><div class="line">            <span class="keyword">return</span> Maybe.of(<span class="literal">null</span>)</div><div class="line">        &#125; </div><div class="line">        <span class="keyword">let</span> target_Maybe = Maybe.of(obj_Container.__value)</div><div class="line">        <span class="keyword">let</span> propFormat = prop_Container.__value</div><div class="line">        propFormat.split(<span class="string">'.'</span>).forEach(<span class="function"><span class="params">prop</span> =&gt;</span> &#123;</div><div class="line">            target_Maybe = R.map(R.prop(prop), target_Maybe)</div><div class="line">        &#125;)</div><div class="line">        <span class="keyword">return</span> target_Maybe</div><div class="line">    &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>为了使ramda的map和Container的map具有通用性，我扩充了下该方法，主要是为了能使用R.map来调用Container的map方法，使其在使用时在外观上保持一致性</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> __map = R.map</div><div class="line">R.map = R.curry(<span class="function">(<span class="params">f, functor</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">let</span> topConstructor = <span class="built_in">Object</span>.constructor</div><div class="line">    <span class="keyword">let</span> cls = functor.constructor</div><div class="line">    <span class="keyword">while</span>(cls !== topConstructor) &#123;</div><div class="line">        <span class="keyword">if</span>(cls === Container) &#123;</div><div class="line">            <span class="keyword">return</span> functor.map(f)</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            cls = cls.constructor</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> __map(f, functor)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>好了，让我们来看下FP的威力吧</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> obj = &#123;</div><div class="line">    <span class="attr">id</span>: <span class="string">'^_^'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'Object'</span>,</div><div class="line">    <span class="attr">config</span>: &#123;</div><div class="line">        <span class="attr">label</span>: <span class="string">'object'</span>,</div><div class="line">        <span class="attr">color</span>: <span class="string">'red'</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Utils.getProp(Maybe.of(<span class="string">'config.color'</span>), Maybe.of(obj)) <span class="comment">// =&gt; Maybe &#123; __value: 'red' &#125;</span></div><div class="line"></div><div class="line"><span class="keyword">delete</span> obj.config.color</div><div class="line">Utils.getProp(Maybe.of(<span class="string">'config.color'</span>), Maybe.of(obj)) <span class="comment">// =&gt; Maybe &#123; __value: undefined &#125;</span></div><div class="line"></div><div class="line"><span class="keyword">delete</span> obj.config</div><div class="line">Utils.getProp(Maybe.of(<span class="string">'config.color'</span>), Maybe.of(obj)) <span class="comment">// =&gt; Maybe &#123; __value: undefined &#125;</span></div></pre></td></tr></table></figure>
+<p>怎么样，很爽吧，你如果觉得这个表达式有点啰嗦，可以再次封装下</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> getProp = R.curry(<span class="function">(<span class="params">propFormat, obj</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">return</span> Utils.getProp(Maybe.of(propFormat), Maybe.of(obj)).__value</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="keyword">let</span> obj1 = &#123;</div><div class="line">    <span class="attr">config</span>: &#123;</div><div class="line">        <span class="attr">label</span>: <span class="string">'obj1'</span>,</div><div class="line">        <span class="attr">color</span>: <span class="string">'red'</span></div><div class="line">    &#125;</div><div class="line">    config2: &#123;</div><div class="line">        <span class="attr">label</span>: <span class="string">'obj1'</span>,</div><div class="line">        <span class="attr">color</span>: <span class="string">'blue'</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> obj2 = &#123;</div><div class="line">    <span class="attr">config</span>: &#123;</div><div class="line">        <span class="attr">label</span>: <span class="string">'obj2'</span></div><div class="line">        color: <span class="string">'blue'</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> obj3 = &#123;</div><div class="line">    <span class="attr">config</span>: &#123;</div><div class="line">        <span class="attr">label</span>: <span class="string">'obj3'</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> getObjProp = getProp(R.__, obj1) <span class="comment">// 获取obj1的某个属性</span></div><div class="line">getObjProp(<span class="string">'config.color'</span>) <span class="comment">// =&gt; 'red'</span></div><div class="line">getObjProp(<span class="string">'config2.color'</span>) <span class="comment">// =&gt; 'blue'</span></div><div class="line">getObjProp(<span class="string">'config3.color'</span>) <span class="comment">// =&gt; undefined</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> getObjColor = getProp(<span class="string">'config.color'</span>) <span class="comment">// 获取对象的'config.color'属性</span></div><div class="line">getObjColor(obj1) <span class="comment">// =&gt; 'red'</span></div><div class="line">getObjColor(obj2) <span class="comment">// =&gt; 'blue'</span></div><div class="line">getObjColor(obj3) <span class="comment">// =&gt; undefined</span></div></pre></td></tr></table></figure>
+<p>到这也许你会说，嗯真不错，但是这并没有体现如何优雅的处理错误呀？</p>
+<p>嗯，就喜欢讲实话的人，没错，目前Maybe只提供了空检测的能力，并没有提供错误处理的能力，下面我们就来在Container的基类上创建一个Either来实现错误处理，here we go！</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Either</span> <span class="keyword">extends</span> <span class="title">Container</span></span>&#123;</div><div class="line">    <span class="keyword">constructor</span>(x) &#123;</div><div class="line">        <span class="keyword">super</span>(x)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">static</span> <span class="keyword">of</span>(x) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Either(x)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">static</span> either(f, g, e) &#123;</div><div class="line">        <span class="keyword">switch</span>(e.constructor) &#123;</div><div class="line">            <span class="keyword">case</span> Left: <span class="keyword">return</span> f(e)</div><div class="line">            <span class="keyword">case</span> Right: <span class="keyword">return</span> g(e)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Left</span> <span class="keyword">extends</span> <span class="title">Either</span> </span>&#123;</div><div class="line">    <span class="keyword">constructor</span>(x) &#123;</div><div class="line">        <span class="keyword">super</span>(x)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    map(f) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">static</span> <span class="keyword">of</span>(x) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Left(x)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Right</span> <span class="keyword">extends</span> <span class="title">Either</span> </span>&#123; <span class="comment">// Right的值总为Maybe</span></div><div class="line">    <span class="keyword">constructor</span>(x) &#123;</div><div class="line">        <span class="keyword">super</span>(x)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    map(f) &#123;</div><div class="line">        <span class="keyword">return</span> Right.of(f(<span class="keyword">this</span>.__value))</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">static</span> <span class="keyword">of</span>(x) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Right(x)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这儿，我们一共创建了三个类，Either，Left和Right，其中Left和Right是Either的子类，实际上我们并不会创建Either的实例，他在这只是为了概念和继承链上的完整性。Right类和Container基本没有什么区别，我们需要关注下Left类，他最有意思的是map方法返回的永远是其自身，也就是说任何加在他身上的操作都会被无视掉。这一点很重要！还有一个需要关注的是，Either类提供了一个处理Either类型的方法either。</p>
+<p>好了，此时你也许是万脸懵逼状态，这都是个啥？有啥bird用？！对此，我能告诉你的是，Left保存的永远是错误信息，而Right才会保存返回的正确的结果。是不是恍然大悟了。没有？没关系，我们来看下他的使用方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> getPropWithHandleError = R.curry(<span class="function">(<span class="params">prop_Container, obj_Container</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">let</span> targetValue_Maybe = Utils.getProp(prop_Container, obj_Container)</div><div class="line">    <span class="keyword">if</span>(targetValue_Maybe.isNil()) &#123;</div><div class="line">        <span class="keyword">return</span> Left.of(&#123;</div><div class="line">            <span class="attr">code</span>: <span class="string">'PROP_CANNOT_BE_FOUND'</span>, </div><div class="line">            <span class="attr">track</span>: &#123;</div><div class="line">                <span class="attr">obj</span>: _.cloneDeep(obj_Container.__value), </div><div class="line">                <span class="attr">prop</span>: prop_Container.__value</div><div class="line">            &#125;</div><div class="line">        &#125;)</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">return</span> Right.of(targetValue_Maybe.__value)</div><div class="line">    &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>getPropWithHandleError函数会首先尝试获取obj的prop，然后将值保存在一个Maybe的实例中。如果成功拿到了则把该值传递给一个Right的实例，如果失败了，则记录相关错误信息，并把这些信息传递给一个Left的实例。</p>
+<p>让我们来实验这个函数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> obj = &#123;</div><div class="line">    <span class="attr">config</span>: &#123;</div><div class="line">        <span class="attr">label</span>: <span class="string">'obj'</span>,</div><div class="line">        <span class="attr">color</span>: <span class="string">'red'</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> obj2 = &#123;</div><div class="line">    <span class="attr">config</span>: &#123;</div><div class="line">        <span class="attr">label</span>: <span class="string">'obj2'</span>,</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">const</span> getObjCfgColor = getPropWithHandleError(Container.of(<span class="string">'config.color'</span>))</div><div class="line">getObjCfgColor(Container.of(obj)) <span class="comment">// =&gt; Right &#123; __value: 'red' &#125;</span></div><div class="line">getObjCfgColor(Container.of(obj2)) <span class="comment">// =&gt; Left &#123; __value: &#123; code: 'PROP_CANNOT_BE_FOUND', track: &#123; obj: [Object], prop: 'config.color' &#125; &#125; &#125;</span></div></pre></td></tr></table></figure>
+<p>这样我们就能根据返回的Either类型进行判断，如果我们还需要进一步对拿到的color值做处理的话，我们可以直接对返回的结果map上处理函数，而无需顾忌会产生错误，因为如果返回的是Left的实例的话，后续所有的操作都不会对其产生任何影响，最后你还会拿到这个原汁原味的错误信息，而不会中断程序。</p>
+<p>我就问你一句话：帅不帅！</p>
+<p>下面我们就用这些类来看看如何处理最开始提的那个问题，不过在此之前我们还需要添加一个ID类，并扩充下我们的Utils</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ID</span> <span class="keyword">extends</span> <span class="title">Container</span></span>&#123;</div><div class="line">    <span class="keyword">constructor</span>(x) &#123;</div><div class="line">        <span class="keyword">super</span>(x)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">static</span> <span class="keyword">of</span>(x) &#123;</div><div class="line">        <span class="keyword">return</span> x</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> Utils = &#123;</div><div class="line">    <span class="attr">getProp</span>: R.curry(<span class="function">(<span class="params">prop_Container, obj_Container</span>) =&gt;</span> &#123;</div><div class="line">        <span class="keyword">if</span>(obj_Container.constructor === Left) &#123;</div><div class="line">            <span class="keyword">return</span> Maybe.of(obj_Container)</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(prop_Container.constructor === Left) &#123;</div><div class="line">            <span class="keyword">return</span> Maybe.of(prop_Container)</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(prop_Container.isNil() || obj_Container.isNil()) &#123;</div><div class="line">            <span class="keyword">return</span> Maybe.of(<span class="literal">null</span>)</div><div class="line">        &#125; </div><div class="line">        <span class="keyword">let</span> target_Maybe = Maybe.of(obj_Container.__value)</div><div class="line">        <span class="keyword">let</span> propFormat = prop_Container.__value</div><div class="line">        propFormat.split(<span class="string">'.'</span>).forEach(<span class="function"><span class="params">prop</span> =&gt;</span> &#123;</div><div class="line">            target_Maybe = R.map(R.prop(prop), target_Maybe)</div><div class="line">        &#125;)</div><div class="line">        <span class="keyword">return</span> target_Maybe</div><div class="line">        </div><div class="line">    &#125;),</div><div class="line">    <span class="attr">getValue</span>: <span class="function">(<span class="params">container</span>) =&gt;</span> &#123;</div><div class="line">        <span class="keyword">return</span> container.__value</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">either</span>: <span class="function">(<span class="params">either</span>) =&gt;</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">            <span class="keyword">switch</span>(either.constructor) &#123;</div><div class="line">                <span class="keyword">case</span> Left: reject(either)</div><div class="line">                <span class="keyword">case</span> Right: resolve(either)</div><div class="line">            &#125;</div><div class="line">        &#125;)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个ID类更简单，他的作用就是吃什么吐什么，不做任何包装和处理，纯净无污染。</p>
+<p>The most excited part is coming!</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Container -&gt; Container -&gt; Either(Left, Right)</span></div><div class="line"><span class="keyword">const</span> getProp = R.curry(<span class="function">(<span class="params">prop_Container, obj_Container</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">let</span> targetValue_Maybe = Utils.getProp(prop_Container, obj_Container)</div><div class="line">    <span class="keyword">if</span>(targetValue_Maybe.isNil()) &#123;</div><div class="line">        <span class="keyword">return</span> Left.of(&#123;</div><div class="line">            <span class="attr">code</span>: <span class="string">'PROP_CANNOT_BE_FOUND'</span>, </div><div class="line">            <span class="attr">track</span>: &#123;</div><div class="line">                <span class="attr">obj</span>: _.cloneDeep(obj_Container.__value), </div><div class="line">                <span class="attr">prop</span>: prop_Container.__value</div><div class="line">            &#125;</div><div class="line">        &#125;)</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">return</span> Right.of(targetValue_Maybe.__value)</div><div class="line">    &#125;</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="keyword">let</span> obj = &#123;</div><div class="line">    <span class="attr">id</span>: <span class="number">1</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'Object'</span>,</div><div class="line">    <span class="attr">config</span>: &#123;</div><div class="line">        <span class="attr">label</span>: <span class="string">'object'</span>,</div><div class="line">        <span class="attr">color</span>: <span class="string">'red'</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> obj2 = &#123;</div><div class="line">    <span class="attr">config</span>: &#123;</div><div class="line">        <span class="attr">label</span>: <span class="string">'obj2'</span>,</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> colorTB = &#123;</div><div class="line">    <span class="attr">red</span>: <span class="string">'#FF0000'</span>,</div><div class="line">    <span class="attr">green</span>: <span class="string">'#00FF00'</span>,</div><div class="line">    <span class="attr">blue</span>: <span class="string">'#0000FF'</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">const</span> getObjCfgColor = getProp(Container.of(<span class="string">'config.color'</span>))</div><div class="line"><span class="keyword">const</span> getColorValue = getProp(R.__, Container.of(colorTB))</div><div class="line"><span class="keyword">const</span> getObjColorValue = R.compose(getColorValue, getObjCfgColor, Container.of)</div><div class="line">getObjColorValue(obj) <span class="comment">// =&gt; Right &#123; __value: '#FF0000' &#125;</span></div><div class="line">getObjColorValue(obj2) <span class="comment">// =&gt; Left &#123; __value: &#123; code: 'PROP_CANNOT_BE_FOUND', track: &#123; obj: [Object], prop: [Object] &#125; &#125; &#125;</span></div></pre></td></tr></table></figure>
+<p>看！就是这么简洁！<br>如果要想加上完整的需求，获取obj的colorValue如果出错（obj没有color或colorTB没有对应值）则赋上初值，也很简单：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> handleRight = Utils.getValue</div><div class="line"><span class="keyword">const</span> handleLeft = R.curry(<span class="function">(<span class="params">color, either</span>) =&gt;</span> color)</div><div class="line"></div><div class="line">Either.either(handleLeft(<span class="string">'#000000'</span>), handleRight, getObjColorValue(obj)) <span class="comment">// =&gt; #FF0000</span></div><div class="line">Either.either(handleLeft(<span class="string">'#000000'</span>), handleRight, getObjColorValue(obj2)) <span class="comment">// =&gt; #000000</span></div></pre></td></tr></table></figure>
+<p>甚至你也可以使用Utils提供的either方法使用Promise的方式进行更佳细致的操作，虽然大多数情况下没必要，但是这为你展示了其优越的扩展性</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Utils.either(getObjCfgColor(Container.of(obj2)))</div><div class="line">.then(<span class="function"><span class="params">right</span> =&gt;</span> &#123;</div><div class="line">    <span class="keyword">return</span> Utils.either(getColorValue(right))</div><div class="line">&#125;)</div><div class="line">.then(<span class="function"><span class="params">right</span> =&gt;</span> &#123;</div><div class="line">    Utils.getValue(right)</div><div class="line">&#125;)</div><div class="line">.catch(<span class="function"><span class="params">left</span> =&gt;</span> &#123;</div><div class="line">    Utils.getValue(left)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>下面附上完整代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> R <span class="keyword">from</span> <span class="string">'ramda'</span></div><div class="line"><span class="keyword">import</span> _ <span class="keyword">from</span> <span class="string">'lodash'</span></div><div class="line"><span class="keyword">const</span> log = <span class="built_in">console</span>.log</div><div class="line"><span class="built_in">Object</span>.prototype.log = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span> &amp;&amp; <span class="built_in">console</span>.log(<span class="keyword">this</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> __map = R.map</div><div class="line">R.map = R.curry(<span class="function">(<span class="params">f, functor</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">let</span> topConstructor = <span class="built_in">Object</span>.constructor</div><div class="line">    <span class="keyword">let</span> cls = functor.constructor</div><div class="line">    <span class="keyword">while</span>(cls !== topConstructor) &#123;</div><div class="line">        <span class="keyword">if</span>(cls === Container) &#123;</div><div class="line">            <span class="keyword">return</span> functor.map(f)</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            cls = cls.constructor</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> __map(f, functor)</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="keyword">const</span> Utils = &#123;</div><div class="line">    <span class="attr">getProp</span>: R.curry(<span class="function">(<span class="params">prop_Container, obj_Container</span>) =&gt;</span> &#123;</div><div class="line">        <span class="keyword">if</span>(obj_Container.constructor === Left) &#123;</div><div class="line">            <span class="keyword">return</span> Maybe.of(obj_Container)</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(prop_Container.constructor === Left) &#123;</div><div class="line">            <span class="keyword">return</span> Maybe.of(prop_Container)</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(prop_Container.isNil() || obj_Container.isNil()) &#123;</div><div class="line">            <span class="keyword">return</span> Maybe.of(<span class="literal">null</span>)</div><div class="line">        &#125; </div><div class="line">        <span class="keyword">let</span> target_Maybe = Maybe.of(obj_Container.__value)</div><div class="line">        <span class="keyword">let</span> propFormat = prop_Container.__value</div><div class="line">        propFormat.split(<span class="string">'.'</span>).forEach(<span class="function"><span class="params">prop</span> =&gt;</span> &#123;</div><div class="line">            target_Maybe = R.map(R.prop(prop), target_Maybe)</div><div class="line">        &#125;)</div><div class="line">        <span class="keyword">return</span> target_Maybe</div><div class="line">        </div><div class="line">    &#125;),</div><div class="line">    <span class="attr">getValue</span>: <span class="function">(<span class="params">container</span>) =&gt;</span> &#123;</div><div class="line">        <span class="keyword">return</span> container.__value</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">either</span>: <span class="function">(<span class="params">either</span>) =&gt;</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">            <span class="keyword">switch</span>(either.constructor) &#123;</div><div class="line">                <span class="keyword">case</span> Left: reject(either)</div><div class="line">                <span class="keyword">case</span> Right: resolve(either)</div><div class="line">            &#125;</div><div class="line">        &#125;)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Container</div><div class="line"> * @param &#123;*&#125;</div><div class="line"> */</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Container</span> </span>&#123;</div><div class="line">    <span class="keyword">constructor</span>(x) &#123;</div><div class="line">        <span class="keyword">this</span>.__value = x</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    map(f) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">this</span>.constructor(f(<span class="keyword">this</span>.__value))</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    isNil() &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.__value === <span class="literal">null</span> || <span class="keyword">this</span>.__value === <span class="literal">undefined</span> || <span class="keyword">this</span>.__value.constructor === Left</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">static</span> <span class="keyword">of</span>(x) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Container(x)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ID</span> <span class="keyword">extends</span> <span class="title">Container</span></span>&#123;</div><div class="line">    <span class="keyword">constructor</span>(x) &#123;</div><div class="line">        <span class="keyword">super</span>(x)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">static</span> <span class="keyword">of</span>(x) &#123;</div><div class="line">        <span class="keyword">return</span> x</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Maybe</div><div class="line"> * @param &#123;*&#125;</div><div class="line"> */</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Maybe</span> <span class="keyword">extends</span> <span class="title">Container</span></span>&#123;</div><div class="line">    <span class="keyword">constructor</span>(x) &#123;</div><div class="line">        <span class="keyword">super</span>(x)</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    map(f) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.isNil() ? <span class="keyword">this</span> : Maybe.of(f(<span class="keyword">this</span>.__value))</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">static</span> <span class="keyword">of</span>(x) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Maybe(x)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// Either</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Either</span> <span class="keyword">extends</span> <span class="title">Container</span></span>&#123;</div><div class="line">    <span class="keyword">constructor</span>(x) &#123;</div><div class="line">        <span class="keyword">super</span>(x)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">static</span> <span class="keyword">of</span>(x) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Either(x)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">static</span> either(f, g, e) &#123;</div><div class="line">        <span class="keyword">switch</span>(e.constructor) &#123;</div><div class="line">            <span class="keyword">case</span> Left: <span class="keyword">return</span> f(e)</div><div class="line">            <span class="keyword">case</span> Right: <span class="keyword">return</span> g(e)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Left</span> <span class="keyword">extends</span> <span class="title">Either</span> </span>&#123;</div><div class="line">    <span class="keyword">constructor</span>(x) &#123;</div><div class="line">        <span class="keyword">super</span>(x)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    map(f) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">static</span> <span class="keyword">of</span>(x) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Left(x)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Right</span> <span class="keyword">extends</span> <span class="title">Either</span> </span>&#123; <span class="comment">// Right的值总为Maybe</span></div><div class="line">    <span class="keyword">constructor</span>(x) &#123;</div><div class="line">        <span class="keyword">super</span>(x)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    map(f) &#123;</div><div class="line">        <span class="keyword">return</span> Right.of(f(<span class="keyword">this</span>.__value))</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">static</span> <span class="keyword">of</span>(x) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Right(x)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// Container -&gt; Container -&gt; Either(Left, Right)</span></div><div class="line"><span class="keyword">const</span> getProp = R.curry(<span class="function">(<span class="params">prop_Container, obj_Container</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">let</span> targetValue_Maybe = Utils.getProp(prop_Container, obj_Container)</div><div class="line">    <span class="keyword">if</span>(targetValue_Maybe.isNil()) &#123;</div><div class="line">        <span class="keyword">return</span> Left.of(&#123;</div><div class="line">            <span class="attr">code</span>: <span class="string">'PROP_CANNOT_BE_FOUND'</span>, </div><div class="line">            <span class="attr">track</span>: &#123;</div><div class="line">                <span class="attr">obj</span>: _.cloneDeep(obj_Container.__value), </div><div class="line">                <span class="attr">prop</span>: prop_Container.__value</div><div class="line">            &#125;</div><div class="line">        &#125;)</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">return</span> Right.of(targetValue_Maybe.__value)</div><div class="line">    &#125;</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="keyword">let</span> obj = &#123;</div><div class="line">    <span class="attr">id</span>: <span class="number">1</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'Object'</span>,</div><div class="line">    <span class="attr">config</span>: &#123;</div><div class="line">        <span class="attr">label</span>: <span class="string">'object'</span>,</div><div class="line">        <span class="attr">color</span>: <span class="string">'red'</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> obj2 = &#123;</div><div class="line">    <span class="attr">config</span>: &#123;</div><div class="line">        <span class="attr">label</span>: <span class="string">'obj2'</span>,</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> colorTB = &#123;</div><div class="line">    <span class="attr">red</span>: <span class="string">'#FF0000'</span>,</div><div class="line">    <span class="attr">green</span>: <span class="string">'#00FF00'</span>,</div><div class="line">    <span class="attr">blue</span>: <span class="string">'#0000FF'</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">const</span> getObjCfgColor = getProp(Container.of(<span class="string">'config.color'</span>))</div><div class="line"><span class="keyword">const</span> getColorValue = getProp(R.__, Container.of(colorTB))</div><div class="line"><span class="keyword">const</span> getObjColorValue = R.compose(getColorValue, getObjCfgColor, Container.of)</div><div class="line"></div><div class="line"><span class="keyword">const</span> handleRight = Utils.getValue</div><div class="line"><span class="keyword">const</span> handleLeft = R.curry(<span class="function">(<span class="params">color, either</span>) =&gt;</span> color)</div><div class="line"></div><div class="line">Either.either(handleLeft(<span class="string">'#000000'</span>), handleRight, getObjColorValue(obj)).log()</div><div class="line"></div><div class="line"><span class="comment">// Promise 式</span></div><div class="line">Utils.either(getObjCfgColor(Container.of(obj2)))</div><div class="line">.then(<span class="function"><span class="params">either</span> =&gt;</span> &#123;</div><div class="line">    <span class="keyword">return</span> Utils.either(getColorValue(either))</div><div class="line">&#125;)</div><div class="line">.then(<span class="function"><span class="params">either</span> =&gt;</span> &#123;</div><div class="line">    log(<span class="string">'success'</span>, Utils.getValue(either))</div><div class="line">&#125;)</div><div class="line">.catch(<span class="function"><span class="params">either</span> =&gt;</span> &#123;</div><div class="line">    log(<span class="string">'fail'</span>, Utils.getValue(either))</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/03/18/关于vue中数据流的思考和实践/" itemprop="url">
                   不知道起啥名字，想到哪写到哪系列
                 </a>
@@ -1336,125 +1502,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/30/DOM/" itemprop="url">
-                  DOM —— 《Javascript DOM编程艺术》读书笔记
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-30T09:52:09+08:00" content="2016-10-30">
-              2016-10-30
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="文档——DOM中的D"><a href="#文档——DOM中的D" class="headerlink" title="文档——DOM中的D"></a>文档——DOM中的D</h2><p>如果没有document(文档)，DOM也就无从谈起。当浏览器加载一个WEB页面，DOM就被创建了，它把网页文档转换成了一个文档对象。</p>
-<h2 id="对象——DOM中的O"><a href="#对象——DOM中的O" class="headerlink" title="对象——DOM中的O"></a>对象——DOM中的O</h2><p>JavaScript语言中的对象可以分为三种类型：</p>
-<ul>
-<li>用户定义对象(user-defined object)：由程序员自行创建对象。</li>
-<li>内建对象(native object)：Javascript语言内建对象，如Array，Date。</li>
-<li>宿主对象(host object)：由浏览器提供的对象。</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1500,7 +1547,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1508,7 +1555,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1517,7 +1564,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
