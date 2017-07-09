@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="ramda,fp," />
+  <meta name="keywords" content="FE,gulp,webpack," />
 
 
 
@@ -84,19 +84,19 @@
 
 
 
-<meta name="description" content="前言Ramda是一个专门为Javascript程序员设计的函数式编程工具库。
-和lodash之类的不同之处是，Ramda的目标很明确——函数式。因为Ramda中所有的函数都是柯理化的，所以你可以很方便的使用它提供的函数组合出更加强大和复杂的函数的同时保持代码的简单和优雅。lodash中也提供了柯理化函数和组合函数，但其大多数其他函数的参数位置放的却不对（对于函数式来说，被操作的数据要放在最后）。因">
+<meta name="description" content="虽然在工作中已经大量使用了 gulp 和 webpack ，但基本上都是在前人的搭建好配置的基础上直接使用，最多只是添加或是修改几个 proxy 的配置。一开始，在我看来 gulp 和 webpack 似乎是差不多的东西，都属于前端构建工具。趁着周末休息，查阅大量博客和官方文档，并自己搭建实现一个 toy 项目才稍微对他们有了更进一步的认识。
+gulp 和 webpack 虽然同属于前端构建工具，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ramda is coming">
-<meta property="og:url" content="http://Lisiur.com/2017/04/01/Ramda-is-coming/index.html">
+<meta property="og:title" content="gulp & webpack">
+<meta property="og:url" content="http://Lisiur.com/2017/07/09/gulp-webpack/index.html">
 <meta property="og:site_name" content="Lisiur">
-<meta property="og:description" content="前言Ramda是一个专门为Javascript程序员设计的函数式编程工具库。
-和lodash之类的不同之处是，Ramda的目标很明确——函数式。因为Ramda中所有的函数都是柯理化的，所以你可以很方便的使用它提供的函数组合出更加强大和复杂的函数的同时保持代码的简单和优雅。lodash中也提供了柯理化函数和组合函数，但其大多数其他函数的参数位置放的却不对（对于函数式来说，被操作的数据要放在最后）。因">
-<meta property="og:updated_time" content="2017-04-01T14:02:48.000Z">
+<meta property="og:description" content="虽然在工作中已经大量使用了 gulp 和 webpack ，但基本上都是在前人的搭建好配置的基础上直接使用，最多只是添加或是修改几个 proxy 的配置。一开始，在我看来 gulp 和 webpack 似乎是差不多的东西，都属于前端构建工具。趁着周末休息，查阅大量博客和官方文档，并自己搭建实现一个 toy 项目才稍微对他们有了更进一步的认识。
+gulp 和 webpack 虽然同属于前端构建工具，">
+<meta property="og:updated_time" content="2017-07-09T13:53:22.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ramda is coming">
-<meta name="twitter:description" content="前言Ramda是一个专门为Javascript程序员设计的函数式编程工具库。
-和lodash之类的不同之处是，Ramda的目标很明确——函数式。因为Ramda中所有的函数都是柯理化的，所以你可以很方便的使用它提供的函数组合出更加强大和复杂的函数的同时保持代码的简单和优雅。lodash中也提供了柯理化函数和组合函数，但其大多数其他函数的参数位置放的却不对（对于函数式来说，被操作的数据要放在最后）。因">
+<meta name="twitter:title" content="gulp & webpack">
+<meta name="twitter:description" content="虽然在工作中已经大量使用了 gulp 和 webpack ，但基本上都是在前人的搭建好配置的基础上直接使用，最多只是添加或是修改几个 proxy 的配置。一开始，在我看来 gulp 和 webpack 似乎是差不多的东西，都属于前端构建工具。趁着周末休息，查阅大量博客和官方文档，并自己搭建实现一个 toy 项目才稍微对他们有了更进一步的认识。
+gulp 和 webpack 虽然同属于前端构建工具，">
 
 
 
@@ -114,7 +114,7 @@
   };
 </script>
 
-  <title> Ramda is coming | Lisiur </title>
+  <title> gulp & webpack | Lisiur </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -244,7 +244,7 @@
             
             
               
-                Ramda is coming
+                gulp & webpack
               
             
           </h1>
@@ -256,8 +256,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-04-01T21:41:36+08:00" content="2017-04-01">
-              2017-04-01
+            <time itemprop="dateCreated" datetime="2017-07-09T10:27:17+08:00" content="2017-07-09">
+              2017-07-09
             </time>
           </span>
 
@@ -270,8 +270,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/fp/" itemprop="url" rel="index">
-                    <span itemprop="name">fp</span>
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
                   </a>
                 </span>
 
@@ -286,8 +286,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2017/04/01/Ramda-is-coming/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/04/01/Ramda-is-coming/" itemprop="commentsCount"></span>
+                <a href="/2017/07/09/gulp-webpack/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/07/09/gulp-webpack/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -310,15 +310,15 @@
       
 
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Ramda是一个专门为Javascript程序员设计的函数式编程工具库。</p>
-<p>和lodash之类的不同之处是，Ramda的目标很明确——函数式。因为Ramda中所有的函数都是柯理化的，所以你可以很方便的使用它提供的函数组合出更加强大和复杂的函数的同时保持代码的简单和优雅。lodash中也提供了柯理化函数和组合函数，但其大多数其他函数的参数位置放的却不对（对于函数式来说，被操作的数据要放在最后）。因此lodash并不能完全取代Ramda。</p>
-<p>下面就对Ramda提供的函数做些简单的介绍：</p>
-<h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><h3 id="match"><a href="#match" class="headerlink" title="match"></a>match</h3><blockquote>
-<p>RegExp -&gt; String -&gt; [String | Undefined]</p>
+        <p>虽然在工作中已经大量使用了 gulp 和 webpack ，但基本上都是在前人的搭建好配置的基础上直接使用，最多只是添加或是修改几个 proxy 的配置。一开始，在我看来 gulp 和 webpack 似乎是差不多的东西，都属于前端构建工具。趁着周末休息，查阅大量博客和官方文档，并自己搭建实现一个 toy 项目才稍微对他们有了更进一步的认识。</p>
+<p>gulp 和 webpack 虽然同属于前端构建工具，但却有本质的区别。我们先来看看官方都是怎么说的。</p>
+<blockquote>
+<p>gulp is a toolkit for automating painful or time-consuming tasks in your development workflow, so you can stop messing around and build something.</p>
+<p>webpack, the ( production | unbiased flexible | extensible | open source ) module bundler.</p>
 </blockquote>
-<h3 id="test"><a href="#test" class="headerlink" title="test"></a>test</h3><blockquote>
-<p>RegExp -&gt; String -&gt; Boolean</p>
-</blockquote>
+<p>从官方的说明上，我们不难看出 gulp 是一个自动化工作流程管理工具，而 webpack 是一个模块构建工具。 gulp 解决的是工作流程，如检测到某个 js 文件有变动后，要先使用 babel 将其转换成 ES5， 再将其压缩并修改文件名写入指定的某个目录下， 最后通知浏览器自动刷新页面重新加载最新的 js 资源。而 webpack 的本质是解决 js 的依赖关系，统一 commonJS， AMD， nodejs 和 ES6 的 module。此外 webpack 的 loader 使其具有将任意资源（css， images等）都当成是 module 进行处理的能力。</p>
+<p>由此不难看出，webpack 与 gulp 并不是竞争关系。如果把 gulp 比作操作系统的话， webpack 就好比是可以运行在该操作系统上的一个应用软件。 之所以会把 webpack 和 gulp 拿在一起作比较，大概是因为觉得 webpack 可以做很多 gulp 可以做的事。 比如压缩文件，比如热加载等， 其实这些功能都不是 webpack 的本质， 他们都是由各种 plugin 实现的附加功能。</p>
+<p>那么关键问题来了，在项目中该如何使用他们呢？在我看来， 虽然 webpack 和 gulp 不能算是同一类工具， 但 webpack 通过 loader 和 plugin 可以基本上满足很多流程管理常用的需求。单从流程管理角度来说， webpack 偏放养式（因为 webpack 本质就不是做流程管理的）， gulp 相比较来说就更精细一点。因此，我的建议是对于一般的小型项目来说， 使用 webpack 足以， 如果更熟悉 gulp 的话，当然也可以使用 gulp。 但对于较大型且比较复杂的项目来说，webpack 来做流程管理就会显得捉襟见肘了， 较好的方法是使用 gulp 做流程管理， 将 webpack 作为 gulp 的某个 task 集成进去， 大家返璞归真各司其职。</p>
 
       
     </div>
@@ -340,9 +340,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/ramda/" rel="tag">#ramda</a>
+            <a href="/tags/FE/" rel="tag">#FE</a>
           
-            <a href="/tags/fp/" rel="tag">#fp</a>
+            <a href="/tags/gulp/" rel="tag">#gulp</a>
+          
+            <a href="/tags/webpack/" rel="tag">#webpack</a>
           
         </div>
       
@@ -351,17 +353,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/26/使用FP进行空值检查和错误处理的实践/" rel="next" title="使用FP进行空值检查和错误处理的实践">
-                <i class="fa fa-chevron-left"></i> 使用FP进行空值检查和错误处理的实践
+              <a href="/2017/07/02/《魔印人》/" rel="next" title="《魔印人》">
+                <i class="fa fa-chevron-left"></i> 《魔印人》
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/02/什么是最好的语言/" rel="prev" title="谁是最好的语言">
-                谁是最好的语言 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -485,7 +483,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#String"><span class="nav-number">1.1.</span> <span class="nav-text">String</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#match"><span class="nav-number">1.1.1.</span> <span class="nav-text">match</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#test"><span class="nav-number">1.1.2.</span> <span class="nav-text">test</span></a></li></ol></li></ol></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
         </section>
@@ -605,9 +603,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'lisiur';
-      var disqus_identifier = '2017/04/01/Ramda-is-coming/';
-      var disqus_title = 'Ramda is coming';
-      var disqus_url = 'http://Lisiur.com/2017/04/01/Ramda-is-coming/';
+      var disqus_identifier = '2017/07/09/gulp-webpack/';
+      var disqus_title = 'gulp & webpack';
+      var disqus_url = 'http://Lisiur.com/2017/07/09/gulp-webpack/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');
