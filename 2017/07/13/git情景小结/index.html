@@ -94,7 +94,7 @@
 <meta property="og:description" content="结识 git 大概是在大二， 至今已近三年。虽说这三年一直在使用 git，却只会三板斧——add，commit，push。 一旦出现复杂的情景时，就只能求助于网络，最终虽都能解决问题，却对解决方案一知半解，导致同样的情景每次都要gooooooogle一番，实在惭愧。这一周 每天抽出 1-2 个小时的时间对 git 进行了深入的了解。现将成果以情景的方式记录下来。
 
 情景1：初始化 git 仓库初">
-<meta property="og:updated_time" content="2017-07-13T14:40:04.000Z">
+<meta property="og:updated_time" content="2017-07-13T14:44:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git情景小结">
 <meta name="twitter:description" content="结识 git 大概是在大二， 至今已近三年。虽说这三年一直在使用 git，却只会三板斧——add，commit，push。 一旦出现复杂的情景时，就只能求助于网络，最终虽都能解决问题，却对解决方案一知半解，导致同样的情景每次都要gooooooogle一番，实在惭愧。这一周 每天抽出 1-2 个小时的时间对 git 进行了深入的了解。现将成果以情景的方式记录下来。
@@ -301,20 +301,10 @@
 <h3 id="克隆远程仓库"><a href="#克隆远程仓库" class="headerlink" title="克隆远程仓库"></a>克隆远程仓库</h3><p><code>git clone [remote_url]</code></p>
 <blockquote>
 <p><code>git clone https://github.com/lisiur/vvue</code> <br><br><code>git clone git@github.com:lisiur/vvue.git</code></p>
-</blockquote>
-<h3 id="克隆本地仓库"><a href="#克隆本地仓库" class="headerlink" title="克隆本地仓库"></a>克隆本地仓库</h3><p><code>git clone [local_url]</code></p>
-<blockquote>
-<p><code>git clone ./vvue euvv</code></p>
-</blockquote>
+<h3 id="克隆本地仓库"><a href="#克隆本地仓库" class="headerlink" title="克隆本地仓库"></a>克隆本地仓库</h3><p><code>git clone [local_url]</code><br><code>git clone ./vvue euvv</code></p>
 <h2 id="情景2：操作远程仓库源"><a href="#情景2：操作远程仓库源" class="headerlink" title="情景2：操作远程仓库源"></a>情景2：操作远程仓库源</h2><h3 id="显示当前远程仓库源"><a href="#显示当前远程仓库源" class="headerlink" title="显示当前远程仓库源"></a>显示当前远程仓库源</h3><p><code>git remote -v</code></p>
-<h3 id="添加远程仓库源"><a href="#添加远程仓库源" class="headerlink" title="添加远程仓库源"></a>添加远程仓库源</h3><p><code>git remote add [remote_name] [remote_url]</code></p>
-<blockquote>
-<p><code>git remote add coding git@git.coding.net:lisiur/lisiur.coding.me.git</code></p>
-</blockquote>
-<h3 id="删除远程仓库源"><a href="#删除远程仓库源" class="headerlink" title="删除远程仓库源"></a>删除远程仓库源</h3><p><code>git remote remove [remote_name]</code></p>
-<blockquote>
-<p><code>git remote remove coding</code></p>
-</blockquote>
+<h3 id="添加远程仓库源"><a href="#添加远程仓库源" class="headerlink" title="添加远程仓库源"></a>添加远程仓库源</h3><p><code>git remote add [remote_name] [remote_url]</code><br><code>git remote add coding git@git.coding.net:lisiur/lisiur.coding.me.git</code></p>
+<h3 id="删除远程仓库源"><a href="#删除远程仓库源" class="headerlink" title="删除远程仓库源"></a>删除远程仓库源</h3><p><code>git remote remove [remote_name]</code><br><code>git remote remove coding</code></p>
 <h2 id="情景3：stage-所有已被追踪的文件"><a href="#情景3：stage-所有已被追踪的文件" class="headerlink" title="情景3：stage 所有已被追踪的文件"></a>情景3：stage 所有已被追踪的文件</h2><p><code>git add -u</code></p>
 <h2 id="情景4：撤销某个被-stage-的文件"><a href="#情景4：撤销某个被-stage-的文件" class="headerlink" title="情景4：撤销某个被 stage 的文件"></a>情景4：撤销某个被 stage 的文件</h2><p><code>git reset HEAD [file_name]</code></p>
 <h2 id="情景5：撤销对某个文件的所有修改"><a href="#情景5：撤销对某个文件的所有修改" class="headerlink" title="情景5：撤销对某个文件的所有修改"></a>情景5：撤销对某个文件的所有修改</h2><p><code>git checkout [file_name](不可逆的操作！)</code></p>
@@ -323,7 +313,8 @@
 <h2 id="情景8：撤销最新的-commit-恢复到-unstaged-状态"><a href="#情景8：撤销最新的-commit-恢复到-unstaged-状态" class="headerlink" title="情景8：撤销最新的 commit 恢复到 unstaged 状态"></a>情景8：撤销最新的 commit 恢复到 unstaged 状态</h2><p><code>git reset HEAD^</code></p>
 <h2 id="情景9：撤销最新的-commit-完全恢复到最近的-commit-状态"><a href="#情景9：撤销最新的-commit-完全恢复到最近的-commit-状态" class="headerlink" title="情景9：撤销最新的 commit 完全恢复到最近的 commit 状态"></a>情景9：撤销最新的 commit 完全恢复到最近的 commit 状态</h2><p><code>git reset --hard HEAD^</code></p>
 <h2 id="情景10：stage-所有已被追踪文件，除了某个文件"><a href="#情景10：stage-所有已被追踪文件，除了某个文件" class="headerlink" title="情景10：stage 所有已被追踪文件，除了某个文件"></a>情景10：stage 所有已被追踪文件，除了某个文件</h2><p><code>git add -u; git reset -- [file_name]</code></p>
-<h2 id="情景10-：on-the-way"><a href="#情景10-：on-the-way" class="headerlink" title="情景10+：on the way"></a>情景10+：on the way</h2><h2 id="backup"><a href="#backup" class="headerlink" title="backup"></a>backup</h2><h3 id="关于-working-space-amp-stage-amp-history"><a href="#关于-working-space-amp-stage-amp-history" class="headerlink" title="关于 working space &amp; stage &amp; history"></a>关于 working space &amp; stage &amp; history</h3><h3 id="关于-git-reset"><a href="#关于-git-reset" class="headerlink" title="关于 git reset"></a>关于 git reset</h3><h3 id="关于-merge-amp-rebase"><a href="#关于-merge-amp-rebase" class="headerlink" title="关于 merge &amp; rebase"></a>关于 merge &amp; rebase</h3><h2 id="related"><a href="#related" class="headerlink" title="related"></a>related</h2><h3 id="recommended-alias"><a href="#recommended-alias" class="headerlink" title="recommended alias"></a>recommended alias</h3><h3 id="working-with-vim"><a href="#working-with-vim" class="headerlink" title="working with vim"></a>working with vim</h3>
+<h2 id="情景10-：on-the-way"><a href="#情景10-：on-the-way" class="headerlink" title="情景10+：on the way"></a>情景10+：on the way</h2><h2 id="backup"><a href="#backup" class="headerlink" title="backup"></a>backup</h2><h3 id="关于-working-space-amp-stage-amp-history"><a href="#关于-working-space-amp-stage-amp-history" class="headerlink" title="关于 working space &amp; stage &amp; history"></a>关于 working space &amp; stage &amp; history</h3><h3 id="关于-git-reset"><a href="#关于-git-reset" class="headerlink" title="关于 git reset"></a>关于 git reset</h3><h3 id="关于-merge-amp-rebase"><a href="#关于-merge-amp-rebase" class="headerlink" title="关于 merge &amp; rebase"></a>关于 merge &amp; rebase</h3><h2 id="related"><a href="#related" class="headerlink" title="related"></a>related</h2><h3 id="recommended-alias"><a href="#recommended-alias" class="headerlink" title="recommended alias"></a>recommended alias</h3><h3 id="working-with-vim"><a href="#working-with-vim" class="headerlink" title="working with vim"></a>working with vim</h3></blockquote>
+
       
     </div>
 
