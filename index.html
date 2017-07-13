@@ -240,6 +240,135 @@
             
               
                 
+                <a class="post-title-link" href="/2017/07/13/git情景小结/" itemprop="url">
+                  git情景小结
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-07-13T21:07:01+08:00" content="2017-07-13">
+              2017-07-13
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/07/13/git情景小结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/07/13/git情景小结/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>结识 git 大概是在大二， 至今已近三年。虽说这三年一直在使用 git，却只会三板斧——add，commit，push。 一旦出现复杂的情景时，就只能求助于网络，最终虽都能解决问题，却对解决方案一知半解，导致同样的情景每次都要gooooooogle一番，实在惭愧。这一周 每天抽出 1-2 个小时的时间对 git 进行了深入的了解。现将成果以情景的方式记录下来。</p>
+</blockquote>
+<h1 id="情景1：初始化-git-仓库"><a href="#情景1：初始化-git-仓库" class="headerlink" title="情景1：初始化 git 仓库"></a>情景1：初始化 git 仓库</h1><h2 id="初始化本地文件"><a href="#初始化本地文件" class="headerlink" title="初始化本地文件"></a>初始化本地文件</h2><p><code>git init</code></p>
+<h2 id="克隆远程仓库"><a href="#克隆远程仓库" class="headerlink" title="克隆远程仓库"></a>克隆远程仓库</h2><p><code>git clone [remote_url]</code></p>
+<blockquote>
+<p><code>git clone https://github.com/lisiur/vvue</code> <br><br><code>git clone git@github.com:lisiur/vvue.git</code></p>
+</blockquote>
+<h2 id="克隆本地仓库"><a href="#克隆本地仓库" class="headerlink" title="克隆本地仓库"></a>克隆本地仓库</h2><p><code>git clone [local_url]</code></p>
+<blockquote>
+<p><code>git clone ./vvue euvv</code></p>
+</blockquote>
+<h1 id="情景2：操作远程仓库源"><a href="#情景2：操作远程仓库源" class="headerlink" title="情景2：操作远程仓库源"></a>情景2：操作远程仓库源</h1><h2 id="显示当前远程仓库源"><a href="#显示当前远程仓库源" class="headerlink" title="显示当前远程仓库源"></a>显示当前远程仓库源</h2><p><code>git remote -v</code></p>
+<h2 id="添加远程仓库源"><a href="#添加远程仓库源" class="headerlink" title="添加远程仓库源"></a>添加远程仓库源</h2><p><code>git remote add [remote_name] [remote_url]</code></p>
+<blockquote>
+<p><code>git remote add coding git@git.coding.net:lisiur/lisiur.coding.me.git</code></p>
+</blockquote>
+<h2 id="删除远程仓库源"><a href="#删除远程仓库源" class="headerlink" title="删除远程仓库源"></a>删除远程仓库源</h2><p><code>git remote remove [remote_name]</code></p>
+<blockquote>
+<p><code>git remote remove coding</code></p>
+</blockquote>
+<h1 id="情景3：stage-所有已被追踪的文件"><a href="#情景3：stage-所有已被追踪的文件" class="headerlink" title="情景3：stage 所有已被追踪的文件"></a>情景3：stage 所有已被追踪的文件</h1><p><code>git add -u</code></p>
+<h1 id="情景4：撤销某个被-stage-的文件"><a href="#情景4：撤销某个被-stage-的文件" class="headerlink" title="情景4：撤销某个被 stage 的文件"></a>情景4：撤销某个被 stage 的文件</h1><p><code>git reset HEAD [file_name]</code></p>
+<h1 id="情景5：撤销对某个文件的所有修改"><a href="#情景5：撤销对某个文件的所有修改" class="headerlink" title="情景5：撤销对某个文件的所有修改"></a>情景5：撤销对某个文件的所有修改</h1><p><code>git checkout [file_name](不可逆的操作！)</code></p>
+<h1 id="情景6：重写某次-commit"><a href="#情景6：重写某次-commit" class="headerlink" title="情景6：重写某次 commit"></a>情景6：重写某次 commit</h1><p><code>git commit --amend -m [message]</code></p>
+<h1 id="情景7：撤销最新的-commit-恢复到-staged-状态"><a href="#情景7：撤销最新的-commit-恢复到-staged-状态" class="headerlink" title="情景7：撤销最新的 commit 恢复到 staged 状态"></a>情景7：撤销最新的 commit 恢复到 staged 状态</h1><p><code>git reset --soft HEAD^</code></p>
+<h1 id="情景8：撤销最新的-commit-恢复到-unstaged-状态"><a href="#情景8：撤销最新的-commit-恢复到-unstaged-状态" class="headerlink" title="情景8：撤销最新的 commit 恢复到 unstaged 状态"></a>情景8：撤销最新的 commit 恢复到 unstaged 状态</h1><p><code>git reset HEAD^</code></p>
+<h1 id="情景9：撤销最新的-commit-完全恢复到最近的-commit-状态"><a href="#情景9：撤销最新的-commit-完全恢复到最近的-commit-状态" class="headerlink" title="情景9：撤销最新的 commit 完全恢复到最近的 commit 状态"></a>情景9：撤销最新的 commit 完全恢复到最近的 commit 状态</h1><p><code>git reset --hard HEAD^</code></p>
+<h1 id="情景10：stage-所有已被追踪文件，除了某个文件"><a href="#情景10：stage-所有已被追踪文件，除了某个文件" class="headerlink" title="情景10：stage 所有已被追踪文件，除了某个文件"></a>情景10：stage 所有已被追踪文件，除了某个文件</h1><p><code>git add -u; git reset -- [file_name]</code></p>
+<h1 id="情景10-：on-the-way"><a href="#情景10-：on-the-way" class="headerlink" title="情景10+：on the way"></a>情景10+：on the way</h1><h1 id="backup"><a href="#backup" class="headerlink" title="backup"></a>backup</h1><h2 id="关于-working-space-amp-stage-amp-history"><a href="#关于-working-space-amp-stage-amp-history" class="headerlink" title="关于 working space &amp; stage &amp; history"></a>关于 working space &amp; stage &amp; history</h2><h2 id="关于-git-reset"><a href="#关于-git-reset" class="headerlink" title="关于 git reset"></a>关于 git reset</h2><h2 id="关于-merge-amp-rebase"><a href="#关于-merge-amp-rebase" class="headerlink" title="关于 merge &amp; rebase"></a>关于 merge &amp; rebase</h2><h1 id="related"><a href="#related" class="headerlink" title="related"></a>related</h1><h2 id="recommended-alias"><a href="#recommended-alias" class="headerlink" title="recommended alias"></a>recommended alias</h2><h2 id="working-with-vim"><a href="#working-with-vim" class="headerlink" title="working with vim"></a>working with vim</h2>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/07/09/gulp-webpack/" itemprop="url">
                   gulp & webpack
                 </a>
@@ -1237,115 +1366,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/05/06/《东霓》——抽烟喝酒纹身的“坏”女孩/" itemprop="url">
-                  《东霓》——带刺的玫瑰
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-05-06T16:02:18+08:00" content="2017-05-06">
-              2017-05-06
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/05/06/《东霓》——抽烟喝酒纹身的“坏”女孩/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/05/06/《东霓》——抽烟喝酒纹身的“坏”女孩/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>海棠湾，天快亮，东霓对冷杉： 你别看我是个活得乱七八糟的人。其实我的感情很漂亮的，不是每个女人都给得出、都给得起像我这么漂亮的感情。⋯⋯我怕我会弄脏了你，我更怕你会毁了我。⋯⋯算了，毁掉就毁掉吧，我让你毁。不怕的，你就是把我打碎了，我自己也还是可以把自己拼起来，拼起来了我也还是郑东霓。</p>
-</blockquote>
-<p>东霓身上有很多闪光点，比如真实，勇敢，炽热，决绝等。但这些品质在主人公身上却隐藏着锋利的尖刺。</p>
-<p>或许是因为小时候的种种遭遇，东霓有着十分强烈的自我保护意识。自我保护意识本事好事，但过犹不及的话，却只会发展为自私自利，以自我为中心的意识形态——自认为全天下都负我，所以自我保护的再过分也没有错，错的都是你们。这是这种心态使得她成为了黑夜里飞蛾眼中炽热的火苗，美丽而又危险。</p>
-<p>我本人是持有人的本性自私的观点的，但这种自私是需要一个平衡点的，适当的自私是人类社会进步的催化剂，过度的自私只会形成自我为中心的危险意识误区。</p>
-<p>为什么大家都会喜欢单纯，热情，勇敢，对生活充满希冀的人呢？从个人自私性的角度来说，是因为这种人对自己不但“无害”，还有所帮助。为什么大家会一致赞同打击恐怖分子，哪怕生活在一片和谐的社会主义中？从个人自私性的角度来说，是因为这些恐怖分子有可能威胁到“自己”。但一个成熟的人类应该还懂得一个道理，那就是生活在社会这个群体中，自私是必须要用来交换的。一个人可以在某方面自私，却不能在任何方面自私；可以在某方面自私，却不能在这个方面过于自私。有些人对生命自私，有些人对理想自私，有些人重视感情，有些人看重金钱。大的方面来说，一个和谐的社会需要每个人拿出属于自己的自私去交换；小的方面来说，一段可持续发展的人际关系也需要双方拿出共同的自私进行交换。在这一点上，大多数人都能做到，但更多的人做不到的是如何掌握这个度。有些人付出了时间，对方相应的付出了精力。但双方都觉得自己付出的更多，这便是矛盾的导火索，既然是导火索便本是可以浇灭在萌芽中的；但哪怕有一方对自己所付出的过于自私，就会形成自我为中心的危险意识，变成为矛盾的爆发点。</p>
-<p>当然，我不否认现实生活中有很多无私的人，或许是真的无私，那是因为他们的道德境界早已出世，高出我们这些大部分还处于入世的境界的人一大截，比如佛门弟子:)</p>
-<p>对于我们我们这些道德境界处于大众水准的人来说，或许活的豁达一点就能有效规避自私到自我为中心的风险。我相信如果主人公东霓在经历了这么多的曲折之后能多一点豁达的话，接下来的生活必定会十分精彩。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1391,7 +1411,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-count">37</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1408,7 +1428,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
