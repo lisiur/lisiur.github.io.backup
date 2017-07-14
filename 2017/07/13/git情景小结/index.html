@@ -94,7 +94,7 @@
 <meta property="og:description" content="结识 git 大概是在大二， 至今已近三年。虽说这三年一直在使用 git，却只会三板斧——add，commit，push。 一旦出现复杂的情景时，就只能求助于网络，最终虽都能解决问题，却对解决方案一知半解，导致同样的情景每次都要gooooooogle一番，实在惭愧。这一周 每天抽出 1-2 个小时的时间对 git 进行了深入的了解。现将成果以情景的方式记录下来。
 
 情景1：初始化 git 仓库初">
-<meta property="og:updated_time" content="2017-07-14T16:29:10.000Z">
+<meta property="og:updated_time" content="2017-07-14T16:45:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git情景小结">
 <meta name="twitter:description" content="结识 git 大概是在大二， 至今已近三年。虽说这三年一直在使用 git，却只会三板斧——add，commit，push。 一旦出现复杂的情景时，就只能求助于网络，最终虽都能解决问题，却对解决方案一知半解，导致同样的情景每次都要gooooooogle一番，实在惭愧。这一周 每天抽出 1-2 个小时的时间对 git 进行了深入的了解。现将成果以情景的方式记录下来。
@@ -348,7 +348,11 @@
 <li>git reset –hard 修改 from 历史区 to 暂存区 to 工作区(已有修改会被覆盖)</li>
 </ol>
 </blockquote>
-<h3 id="关于-merge-amp-rebase"><a href="#关于-merge-amp-rebase" class="headerlink" title="关于 merge &amp; rebase"></a>关于 merge &amp; rebase</h3><h2 id="related"><a href="#related" class="headerlink" title="related"></a>related</h2><h3 id="recommended-alias"><a href="#recommended-alias" class="headerlink" title="recommended alias"></a>recommended alias</h3><h3 id="working-with-vim"><a href="#working-with-vim" class="headerlink" title="working with vim"></a>working with vim</h3>
+<h3 id="关于-merge-amp-rebase"><a href="#关于-merge-amp-rebase" class="headerlink" title="关于 merge &amp; rebase"></a>关于 merge &amp; rebase</h3><h2 id="related"><a href="#related" class="headerlink" title="related"></a>related</h2><h3 id="recommended-alias"><a href="#recommended-alias" class="headerlink" title="recommended alias"></a>recommended alias</h3><p>alias.co=checkout<br>alias.br=branch<br>alias.ci=commit<br>alias.st=status<br>alias.dt=difftool<br>alias.l=log<br>alias.last=log -1 HEAD<br>alias.stats=shortlog -sn –all –no-merges<br>alias.praise=blame<br>alias.recap=log –all –oneline –no-merges –author=lisiurday@gmail.com<br>alias.graph=log –graph –all –decorate –stat –date=iso<br>alias.lg=log –color –graph –pretty=format:’%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset’ –abbrev-commit<br>alias.unstage=reset HEAD<br>alias.unci=reset HEAD^</p>
+<h3 id="working-with-vim"><a href="#working-with-vim" class="headerlink" title="working with vim"></a>working with vim</h3><p>~/.gitconfig<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">alias.editor=vim</div><div class="line">commit.template=~/.git-commit-template</div></pre></td></tr></table></figure></p>
+<p>~/.git-commit-template<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[refs #00000] Subject</div><div class="line"></div><div class="line">detail</div></pre></td></tr></table></figure></p>
+<p>~/.vimrc<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&quot; Force the cursor onto a new line after 80 characters</div><div class="line">set textwidth=80</div><div class="line">&quot; In Git commit messages, make it 72 characters</div><div class="line">autocmd FileType gitcommit set textwidth=72</div><div class="line">&quot; Colour the 81st (or 73rd) column so that we don’t type over our limit</div><div class="line">set colorcolumn=+1</div><div class="line">&quot; In Git commit messages, also colour the 51st column (for titles)</div><div class="line">autocmd FileType gitcommit set colorcolumn+=51</div></pre></td></tr></table></figure></p>
+
       
     </div>
 
