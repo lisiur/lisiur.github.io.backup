@@ -240,6 +240,198 @@
             
               
                 
+                <a class="post-title-link" href="/2017/03/18/关于vue中数据流的思考和实践/" itemprop="url">
+                  不知道起啥名字，想到哪写到哪系列
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-18T23:28:08+08:00" content="2017-03-18">
+              2017-03-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/vue/" itemprop="url" rel="index">
+                    <span itemprop="name">vue</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/18/关于vue中数据流的思考和实践/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/03/18/关于vue中数据流的思考和实践/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="数据驱动开发模式相关思考"><a href="#数据驱动开发模式相关思考" class="headerlink" title="数据驱动开发模式相关思考"></a>数据驱动开发模式相关思考</h2><p>简单概括下目前为止我对前端所做工作的理解，总结起来就两件事</p>
+<ol>
+<li>数据处理</li>
+<li>页面展示</li>
+</ol>
+<p>如果再分的细一点的话就是： </p>
+<ol>
+<li>数据处理<ul>
+<li>获取数据</li>
+<li>格式化数据</li>
+<li>传输数据</li>
+</ul>
+</li>
+<li>页面展示<ul>
+<li>dom静态结构</li>
+<li>style样式</li>
+<li>交互逻辑</li>
+</ul>
+</li>
+</ol>
+<p>在很久以前（大概几年前吧）前端是要充当全职保姆的角色的————不但要关心数据的获取和格式化（数据状态的维护），还要操心页面元素的展示与交互（dom操作）。而最麻烦的莫过于还要考虑如何把这俩无缝衔接起来。</p>
+<p>而支撑这种开发模式的全靠命令式编程，直觉告诉我们数据和页面应该是分开的，而现实是他俩的耦合性非常之高。这导致的直接后果就是各种冗余，繁杂，混乱甚至丑陋的javascript代码满天飞。前端程序员宝贵生命的百分之二十花在coding上，百分之三十花在理解他人或自己的代码上，剩下的全花在debug上了。</p>
+<p>举个最简单的例子：如果我们要做一个最简单的注册页面，包含邮箱，密码和确认密码三个输入框和一个确认注册的按钮。前端要做的事就是在用户点击注册按钮时：</p>
+<ul>
+<li>检测用户的邮箱格式是否正确</li>
+<li>密码是否符合要求（大小写，个数限制等）</li>
+<li>确认密码是否和密码相同。</li>
+</ul>
+<p>到目前为止这些都是非常简单的，但如果再加上以下几点规则：</p>
+<ul>
+<li>如果用户未输入邮箱则提示“邮箱不能为空”</li>
+<li>如果用户输入邮箱格式不正确则提示“邮箱格式不正确”</li>
+<li>如果用户未输入密码则提示“密码不能为空”</li>
+<li>如果用户输入密码不符合要求则提示用户相应的要求规范</li>
+<li>如果用户未输入确认密码则提示“确认密码不能为空”</li>
+<li>如果用户输入确认密码和密码不同则提示“两次输入密码不同”</li>
+<li>如果用户密码未通过验证则不验证确认密码</li>
+</ul>
+<p>你以为这就完了吗，继续：</p>
+<ul>
+<li>在邮箱和密码输入框失去焦点时就对其进行校验</li>
+<li>在密码通过验证且输入的确认密码个数大于等于密码时就要实时校验确认密码是否和密码相同</li>
+<li>在用户重新输入密码时，要自动清除确认密码框的输入</li>
+<li>……</li>
+</ul>
+<p>对于这种再简单不过且常用的场景来说，如果我们使用命令式开发方式（也是很长一段时间业界使用的方式）无法避免的事就是把对数据验证的操作和页面展示的操作糅合在一起，各种 if-else 充斥在源码的各个阴暗的小角落，且不同的页面展示效果要根据数据的状态来分情况手动控制，心力交瘁却事倍功半。</p>
+<p>幸好，幸好，幸好数据驱动的开发模式降临了。数据驱动的模式和命令式驱动的不同之处就是，我们在处理数据时无需关心页面如何展示，在处理页面展示时无需关心当前传入的数据是什么。换句话说，数据和页面在一定程度上得到解耦。当然这种方式是要付出代价的，那就是执行效率将会比命令式开发方式低一些。</p>
+<p>在我看来，任何事物的任何改变，如果在某一方面得到改进，那么在其他某一方面比起改变之前一定会有明显的或不易察觉的不足。但评价任何事物都不能只看事物本身，我们应该还要看到它所处的环境，其所处环境也是该事物的重要部分。如果该事物的改变相对于其所处的环境来说利大于弊，那么我们就可以说目前为止该事物得到了改进（当然如果环境改变了，很有可能之前的改进反而是后退）。</p>
+<p>在计算机刚刚问世的时候，内存只有几十KB的时候，任何多余的代码都是浪费，那是硬件比软件贵的时代，通常一段代码要通过各种奇技淫巧和精致的算法使其变得小巧玲珑却不易理解。但这在当时的环境下是值得的，不然你的代码很有可能都跑不起来。但到了现在这个时代，硬件早已不是问题，我们关心的问题是如何能让一个群体无缝协作且快速构建代码。在这个环境下，如何能让自己写的代码容易被团队理解，如何能使团队中每个人都能快速构建代码才是当务之急。在满足以上目标的前提下，代码如果变得比以前冗余了是可以接受的（这就是他付出的代价）。</p>
+<p>因此，目前为止，数据驱动的模式在我看来是一种改进。原因如下：</p>
+<ol>
+<li>数据驱动可以降低数据和页面的耦合性</li>
+<li>数据驱动可以降低代码复杂度</li>
+<li>数据驱动可以提高开发效率</li>
+<li>数据驱动可以提高代码的可维护性</li>
+</ol>
+<p>这些改进相比较其付出的代价（执行效率变低）而言在当前环境下毋庸置疑是极大的进步。尤其是第三点开发效率的提高就可以直接KO其付出的代价了。</p>
+<h2 id="FP在前端领域应用的思考"><a href="#FP在前端领域应用的思考" class="headerlink" title="FP在前端领域应用的思考"></a>FP在前端领域应用的思考</h2><p>最近一直在看FP的相关的教程和其在javascript上的应用，虽只是学了点皮毛但却被其精妙的思考方式所震撼。<br>如果大家了解过一点FP的概念的话都会知道它的核心概念就是一个字——“纯”，而这带来的好处就是所有数据状态都是可控的，易追踪的且代码呈现是优雅而又易理解的（当然对于“易理解”这点是对于那些理解FP的程序员来说的，对于其他人来说反而是晦涩难懂的）。而他的缺点却从各个层面限制了其优点的发散，那就是FP的思想对于第一门语言从C/C++/C#/JAVA/…这种命令式语言学起的人来说是难以转变的，这一点就足以让其受到大部分程序员的排挤了，而其另一个缺点却给了这些程序员一个更加“优雅而又不失体面”的理由来拒绝学习他，那就是FP的执行效率是完全不能和命令式编程相比较的。如果在现在的硬件环境下，你还觉得执行效率是使得你的项目成功的瓶颈的话，那FP的思想确实是不适合你的。（【欲言又止状】虽然我不想说但我还是要说，显而易见的是，目前对于大部分项目来说，性能都不是瓶颈。那什么才是？高效，准确的构建实现预定功能的易维护易扩展的代码）。</p>
+<p>那有些人就会说了，你说的我都懂，可这和前端开发有啥关系呢？有这种疑问的人应该考虑的是前端所做工作的特殊性，那就是我们大部分工作都是不“纯”的——异步请求是不“纯”的，动态改变dom结构是不“纯”的。这么看来FP的确是不太适合前端开发的呢。这个问题也曾一直在我的心头挥之不去，但我却从未放弃对其在前端实践的想法。你可以把这看成是我的执念吧（摊手状）。幸运的是，我找到了突破口！</p>
+<p>说起来还是要感谢数据驱动模式的诞生：我前面曾提到前端工作的两件事一是数据处理，二是页面展示。</p>
+<p>在命令式开发模式下，这两者是混合在一起的，给我的感觉就是数据是活的，页面是死的，页面上的每一个交互细节的实现都是编码者根据不同的数据，手动调整页面的结构。而数据驱动使得这部分工作交给页面本身来处理了，也就是说页面变成活的了。它可以监控数据变化，自动改变自身的展示，非常之省心。这带来的直接好处就是，我们可以在安心处理数据时无视页面的存在，在处理页面展示逻辑时忽略数据的变动。但其所带来的潜在的好处却更有价值，那就是我们可以将某些通用的页面展示（提示框，表格，表单等）抽象成组件，由专人事先开发好，而我们在做项目时就可以将大部分经历花在处理数据上，剩下的小部分工作只是将我们需要的不同的组件拼装起来而不是重新开发！</p>
+<p>在现阶段根据我的实习经历来看，数据处理和页面拼装各占了百分之五十的工作量，这是因为我们在使用一个新的组件库，在组装页面时还有比较多的业务相关的组件需要二次拼装，但随着我们业务组件库的扩展，我觉得这两者的比重将达到7:3左右。另一点需要提及的是，我军哥正在开发的页面设计器有望能把这个比重更新到8:2甚至是9:1。说到这我不得不感叹世界的奇妙性：四年前，前端开发神器非DW莫属，原因只在于它可以做到“所见即所得”，你只需要在他的设计界面拖一拖你需要的元素（标题，输入框，按钮等）摆放到目标位置，他就可以全自动的生成前端代码，换句话说如果狗能拿鼠标的话，狗也能做前端。那时的前端还叫切图仔。但不久之后就发现其的弊端，那就是生成的冗余代码就像老太婆的裹脚布——又臭又长。维护起来就跟天书一样。以至于凡是有点想法的前端都会鄙视那些使用DW的切图仔，DW也变成了LOW-B的代名词。仔细分析下其从大火到失败的原因那就是：想法超前，技术不足（生产环境落后）。但我敢说，足以支撑起这个想法的环境正在无限接近中。或许就是今年，或许就是明年。这要让我想起JAVA了，JAVA的最引人注目的想法就是借助虚拟机（JVM）机制，使得“Code Once，Run Everywhere”成为可能。然而在它刚出道的时候，有多少人诟病他的运行效率（毕竟中间多了一层虚拟机作为中介）。但他现在不成为了行业的事实标准了么？可是你知道吗？在它很久之前就有了一个不知名的语言也提出了相同的想法，但却夭折了。为啥？硬件条件不足呗。扯远了……</p>
+<p>可以预见的是，以后前端的大部分工作（对于大部分（初级？）前端来说）就是数据处理了。所谓的页面展示可能就是一个配置文件而已，这个配置文件甚至都不需要自己写（可以自动生成）。咦？如果只是处理数据的话，那FP岂不是就有了用武之地！</p>
+<p>我们再来看看数据处理所包含的具体工作有哪些：</p>
+<ol>
+<li>获取数据</li>
+<li>格式化数据</li>
+<li>传输数据</li>
+</ol>
+<p>对于1，3点我们可能需要发送异步请求，但第2点对数据的格式化处理却是很“单纯的”呀！这不正是FP的用武之地吗？</p>
+<p>数据化数据的工作包括哪些呢？举个例子来说：如果我要渲染一个菜单组件，首先我需要从后台获取菜单组件的数据，在以前后端的数据格式需要按照前端组件的菜单数据格式要求发送过来的，此时前端只需要把拿到的数据传给菜单组件就行了，极大的减轻了前端的工作，但带来的问题就是，后端的数据接口和前端的组件接口过于耦合，如果需求变动，两端都要协调改动。不过这个要分情况来看，如果这个组件只是用于该类项目，且不会有太多改动的话，这种方式是可取且高效的。但如果考虑到将这个组件抽象化，使其能够应用于更多的场景。此时后端是不需要知道组件的数据接口的，他只需要返回他认为足够的信息回来就好。如何把这些从后端获取的数据格式化成组件需要的格式就是格式化数据这一部分所做的工作了。</p>
+<p>而对于如何把一个数据流通过各种流程转变成目标数据格式正是FP所擅长的。同时这对于那些前后端接口一致的情况可以写一个通用的格式化数据方法，这样前后端都可以“肆无忌惮”的修改自己的数据接口，唯一需要做协调的只是这个通用的格式化数据方法而已。这也达到了解耦的目的。</p>
+<p>大脑已经没墨了，就先扯到这吧，我随便扯扯，您随便听听就好 :)</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/03/06/chop-a-string-into-chunks-of-a-given-length-in-Ruby/" itemprop="url">
                   chop a string into chunks of a given length in Ruby
                 </a>
@@ -1323,135 +1515,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/19/414. Third Maximum Number/" itemprop="url">
-                  414. Third Maximum Number
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-19T12:28:55+08:00" content="2016-10-19">
-              2016-10-19
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">algorithm</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/10/19/414. Third Maximum Number/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/10/19/414. Third Maximum Number/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="QUESTION"><a href="#QUESTION" class="headerlink" title="QUESTION:"></a>QUESTION:</h2><blockquote>
-<p>Given a non-empty array of integers, return the third maximum number in this array. If it does not exist, return the maximum number. The time complexity must be in O(n).</p>
-<p>Example 1:<br>Input: [3, 2, 1]</p>
-<p>Output: 1</p>
-<p>Explanation: The third maximum is 1.<br>Example 2:<br>Input: [1, 2]</p>
-<p>Output: 2</p>
-<p>Explanation: The third maximum does not exist, so the maximum (2) is returned instead.<br>Example 3:<br>Input: [2, 2, 3, 1]</p>
-<p>Output: 1</p>
-<p>Explanation: Note that the third maximum here means the third maximum distinct number.<br>Both numbers with value 2 are both considered as second maximum.</p>
-</blockquote>
-<h2 id="SOLUTION"><a href="#SOLUTION" class="headerlink" title="SOLUTION"></a>SOLUTION</h2><h2 id="CODE"><a href="#CODE" class="headerlink" title="CODE"></a>CODE</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * @param &#123;number[]&#125; nums</div><div class="line"> * @return &#123;number&#125;</div><div class="line"> */</div><div class="line"><span class="keyword">var</span> thirdMax = <span class="function"><span class="keyword">function</span>(<span class="params">nums</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> thirdMaxNums = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">3</span>);</div><div class="line">    <span class="keyword">var</span> i, j;</div><div class="line">    <span class="keyword">for</span>(i <span class="keyword">in</span> nums) &#123;</div><div class="line">        <span class="keyword">if</span>(isLargeThan(nums[i], thirdMaxNums[<span class="number">0</span>])) &#123;</div><div class="line">            thirdMaxNums = thirdMaxNums.unshift(nums[i]) &amp;&amp; thirdMaxNums.slice(<span class="number">0</span>,<span class="number">3</span>);</div><div class="line">            <span class="keyword">continue</span>;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">for</span>(j = <span class="number">0</span>; j &lt; <span class="number">2</span>; j++) &#123;</div><div class="line">                <span class="keyword">if</span>(isLargeThan(thirdMaxNums[j], nums[i]) &amp;&amp; isLargeThan(nums[i], thirdMaxNums[j+<span class="number">1</span>])) &#123;</div><div class="line">                    thirdMaxNums = thirdMaxNums.splice(j+<span class="number">1</span>, <span class="number">0</span>, nums[i]) &amp;&amp; thirdMaxNums.slice(<span class="number">0</span>,<span class="number">3</span>);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">if</span>(thirdMaxNums[<span class="number">2</span>] !== <span class="literal">undefined</span>) <span class="keyword">return</span> thirdMaxNums[<span class="number">2</span>];</div><div class="line">    <span class="keyword">else</span> <span class="keyword">return</span> thirdMaxNums[<span class="number">0</span>];</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">isLargeThan</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span>(b === <span class="literal">undefined</span>) <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">return</span> a &gt; b;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1497,7 +1560,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">37</span>
+              <span class="site-state-item-count">38</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1514,7 +1577,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
