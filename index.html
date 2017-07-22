@@ -337,7 +337,10 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">0</span>)</div><div class="line"><span class="comment">// Thu Jan 01 1970 08:00:00 GMT+0800 (CST)</span></div><div class="line"></div><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">1500743506413</span>)</div><div class="line"><span class="comment">// Sun Jul 23 2017 01:11:46 GMT+0800 (CST)</span></div></pre></td></tr></table></figure>
 <p>显然，如果我们要表示一个时间时，不可能先计算下其毫秒数，因此， javascript<br>还提供了以下两种创建指定时间的方法：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(year, month[, day, hour, minutes, seconds, milliseconds]]]]])</div><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(dateString)</div></pre></td></tr></table></figure>
-<p>第一种方式如同其参数所示，至少传 year 和 month<br>两个参数，其他可以选择性的传递或不传递，如果不传递的话默认算作0(除day之外)或1(day), 值得一提的是这里传的任意参数可以大于或小于合理时间，相邻的数值会自动得到调整，比如 <code>new Date(2017, 6, 31)</code>等于<code>new Date(2017, 7, 1)</code></p>
+<p>第一种方式如同其参数所示，至少传 year 和 month<br>两个参数，其他可以选择性的传递或不传递，如果不传递的话默认算作0(除day之外)或1(day), 值得一提的是这里传的任意参数可以大于或小于合理时间，相邻的数值会自动得到调整，比如 <code>new Date(2017, 5, 31)</code>等于<code>new Date(2017, 6, 1)</code></p>
+<blockquote>
+<p>代表月份的整数值从0(1月)到11(12月)</p>
+</blockquote>
 
           
         
