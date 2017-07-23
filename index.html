@@ -310,67 +310,16 @@
       
         
           
-            <p>在介绍 javascript 中的 Date 前，我们需要了解下以下几个概念~~</p>
-<h2 id="GMT"><a href="#GMT" class="headerlink" title="GMT"></a>GMT</h2><blockquote>
-<p>GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区的皇家格林尼治天文台当地的标准时间，因为本初子午线被定义为通过那里的经线。<br>自1924年2月5日开始，格林尼治天文台负责每隔一小时向全世界发放调时信息。<br>理论上来说，格林尼治标准时间的正午是指当太阳横穿格林尼治子午线时（也就是在格林尼治上空最高点时）的时间。但由于地球在它的椭圆轨道里的运动速度不均匀，这个时刻可能与实际的太阳时有误差，最大误差达16分钟。原因在于地球每天的自转是有些不规则的，而且正在缓慢减速，因此格林尼治时间基于天文观测本身的缺陷，已经不再被作为标准时间使用。现在的标准时间，是由原子钟报时的协调世界时（UTC）来决定。</p>
-</blockquote>
-<h2 id="UTC"><a href="#UTC" class="headerlink" title="UTC"></a>UTC</h2><blockquote>
-<p>UTC(Coordinated Universal Time)协调世界时,是最主要的世界时间标准，其以原子时秒长为基础，在时刻上尽量接近于格林尼治标准时间。<br>协调世界时是世界上调节时钟和时间的主要时间标准，它与0度经线的平太阳时相差不超过1秒[1]，并不遵守夏令时。</p>
-</blockquote>
-<h2 id="ISO"><a href="#ISO" class="headerlink" title="ISO"></a>ISO</h2><blockquote>
-<p>是国际标准化组织的日期和时间的表示方法，全称为《数据存储和交换形式·信息交换·日期和时间的表示方法》。</p>
-</blockquote>
-<h3 id="日期表示法"><a href="#日期表示法" class="headerlink" title="日期表示法"></a>日期表示法</h3><blockquote>
-<p>YYYY 代表年份<br>MM 代表月份<br>DD 代表该月的第几天<br>DDD 代表一年的第几天<br>HH 代表小时<br>mm 代表分钟<br>ss 代表分钟<br>sss 代表毫秒数</p>
-<p>以北京时间 2017年7月23日0点0分0时 为例。</p>
-</blockquote>
-<h4 id="日期日历表示法"><a href="#日期日历表示法" class="headerlink" title="日期日历表示法"></a>日期日历表示法</h4><p>YYYY-MM-DD / YYYYMMDD =&gt; 2017-07-23 / 20170703</p>
-<h4 id="日期时间表示法"><a href="#日期时间表示法" class="headerlink" title="日期时间表示法"></a>日期时间表示法</h4><p>HH:mm:ss[Z] / HHmmss[Z] =&gt; 00:00:00 / 16:00:00Z / 000000 / 160000Z</p>
-<blockquote>
-<p>这里Z表示是协调世界时,<br>因为北京时间按东八区算，比协调时早八个小时，所以协调世界时是16点，而北京时间最正式的表示方式应该是： 00:00:00+08:00 / 000000+0800 简写为 000000+08</p>
-</blockquote>
-<h4 id="日期时间组合表示"><a href="#日期时间组合表示" class="headerlink" title="日期时间组合表示"></a>日期时间组合表示</h4><p>YYYY-MM-DDTHH:mm:ss / YYYYMMDDTHHmmss =&gt; 2017-07-23T00:00:00+08:00 /<br>20170723T000000+08 / 2017-07-22T16:00:00Z / 20170722T160000Z</p>
-<h2 id="Date"><a href="#Date" class="headerlink" title="Date"></a>Date</h2><p>好了，有了上面的基础我们就可以来聊聊 javascript 中的 Date 类型了。</p>
-<h3 id="new-Date"><a href="#new-Date" class="headerlink" title="new Date()"></a>new Date()</h3><p>在 javascript 中创建一个日期对象，只需要 <code>new Date()</code><br>即可，默认返回的是当前时间的日期对象。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>()</div><div class="line"><span class="comment">// Sun Jul 23 2017 01:02:24 GMT+0800 (CST)</span></div></pre></td></tr></table></figure>
-<p>在 Chrome<br>的控制台中，我们看到他返回的是基于本地时间表示的格林尼治时间。其实这是调用<br> <code>Date.prototype.toString</code> 所表示的结果，而一个 Date<br>对象所表示的时间的真实面目是自1970年1月1日(UTC)起的毫秒数。<br>因此我们可以在创建 Date 对象时给他传一个 Number 类型的毫秒数来生成指定日期。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">0</span>)</div><div class="line"><span class="comment">// Thu Jan 01 1970 08:00:00 GMT+0800 (CST)</span></div><div class="line"></div><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">1500743506413</span>)</div><div class="line"><span class="comment">// Sun Jul 23 2017 01:11:46 GMT+0800 (CST)</span></div></pre></td></tr></table></figure>
-<p>显然，如果我们要表示一个时间时，不可能先计算下其毫秒数，因此， javascript<br>还提供了以下两种创建指定时间的方法：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(year, month[, day, hour, minutes, seconds, milliseconds]]]]])</div><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(dateString)</div></pre></td></tr></table></figure>
-<p>第一种方式如同其参数所示，至少传 year 和 month<br>两个参数，其他可以选择性的传递或不传递，如果不传递的话默认算作0(除day之外)或1(day), 值得一提的是这里传的任意参数可以大于或小于合理时间，相邻的数值会自动得到调整，比如 <code>new Date(2017, 5, 31)</code>等于<code>new Date(2017, 6, 1)</code>。这里面有个隐藏的技巧，可以快速计算出某年某月的天数，下面会介绍~</p>
-<blockquote>
-<p>注意：代表月份的整数值从0(1月)到11(12月)</p>
-</blockquote>
-<p>第二种方式需要传递一个表示日期的字符串值。该字符串应该能被 Date.parse() 方法识别（符合 IETF-compliant RFC 2822 timestamps 或 version of ISO8601）。这里 RFC 的方式我们就不介绍了，国人应该用的不多吧？还有一种 ISO8601 的格式字符串。这个大家应该很熟悉，刚刚介绍过，不过 Date 并不识别所有的 ISO8601 格式的字符串。能够识别的是以下几种：</p>
-<ol>
-<li>YYYY-MM-DD</li>
-<li>YYYY-MM-DDTHH:mm:ss.sss</li>
-<li>YYYY-MM-DDTHH:mm:ss.sssZ</li>
-</ol>
-<p>正如之前介绍的那样，最后加个 Z 代表是协调世界时。而不加 Z<br>的话则是系统所在时区的时间，因此在使用北京时间的系统下，new<br>Date(‘2017-07-23T08:00:00’) 等于 new Date(‘2017-07-23T00:00:00Z’)</p>
-<blockquote>
-<p>这里的 T 可以使用空格代替</p>
-</blockquote>
-<h3 id="prop"><a href="#prop" class="headerlink" title="prop"></a>prop</h3><ol>
-<li><p>Date.now()<br>返回自 1970-1-1 00:00:00  UTC (世界标准时间)至今所经过的毫秒数。</p>
-</li>
-<li><p>Date.parse()<br>解析一个表示日期的字符串，并返回从 1970-1-1 00:00:00 所经过的毫秒数。</p>
-</li>
-<li><p>Date.UTC()<br>接受和构造函数最长形式的参数相同的参数（从2到7），并返回从 1970-01-01 00:00:00 UTC 开始所经过的毫秒数。</p>
-</li>
-</ol>
-<blockquote>
-<p>这三个静态方法返回的都是毫秒数，但值得注意的是，在给 Date.parse() 传递 iSO<br>格式的字符串时，如果只传日期的话，是当做 UTC<br>时间处理，但如果传了日期和时间则当做本地时间处理。即 <code>Date.parse(&#39;2017-07-23&#39;)</code> 等于 <code>Date.parse(&#39;2017-07-23T00:00:00Z&#39;)</code> 等于 <code>Date.parse(&#39;2017-07-23T08:00:00&#39;)</code></p>
-</blockquote>
-<h3 id="Getter"><a href="#Getter" class="headerlink" title="Getter"></a>Getter</h3><p>Date.prototype.getDate()<br>Date.prototype.getDay()<br>Date.prototype.getFullYear()<br>Date.prototype.getHours()<br>Date.prototype.getMilliseconds()<br>Date.prototype.getMinutes()<br>Date.prototype.getMonth()<br>Date.prototype.getSeconds()<br>Date.prototype.getTime()<br>Date.prototype.getTimezoneOffset()<br>Date.prototype.getUTCDate()<br>Date.prototype.getUTCDay()<br>Date.prototype.getUTCFullYear()<br>Date.prototype.getUTCHours()<br>Date.prototype.getUTCMilliseconds()<br>Date.prototype.getUTCMinutes()<br>Date.prototype.getUTCMonth()<br>Date.prototype.getUTCSeconds()</p>
-<h3 id="Setter"><a href="#Setter" class="headerlink" title="Setter"></a>Setter</h3><p>Date.prototype.setDate()<br>Date.prototype.setFullYear()<br>Date.prototype.setHours()<br>Date.prototype.setMilliseconds()<br>Date.prototype.setMinutes()<br>Date.prototype.setMonth()<br>Date.prototype.setSeconds()<br>Date.prototype.setTime()<br>Date.prototype.setUTCDate()<br>Date.prototype.setUTCFullYear()<br>Date.prototype.setUTCHours()<br>Date.prototype.setUTCMilliseconds()<br>Date.prototype.setUTCMinutes()<br>Date.prototype.setUTCMonth()<br>Date.prototype.setUTCSeconds()<br>Date.prototype.setYear() </p>
-<h3 id="Conversion-getter"><a href="#Conversion-getter" class="headerlink" title="Conversion getter"></a>Conversion getter</h3><p>Date.prototype.toDateString()<br>Date.prototype.toISOString()<br>Date.prototype.toJSON()<br>Date.prototype.toGMTString()<br>Date.prototype.toLocaleDateString()<br>Date.prototype.toLocaleFormat()<br>Date.prototype.toLocaleString()<br>Date.prototype.toLocaleTimeString()<br>Date.prototype.toSource()<br>Date.prototype.toString()<br>Date.prototype.toTimeString()<br>Date.prototype.toUTCString()<br>Date.prototype.valueOf()</p>
-<h2 id="Trick"><a href="#Trick" class="headerlink" title="Trick"></a>Trick</h2><h3 id="获取某月天数"><a href="#获取某月天数" class="headerlink" title="获取某月天数"></a>获取某月天数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(year, month, <span class="number">0</span>).getDate()</div></pre></td></tr></table></figure>
-<blockquote>
-<p>无需判断二月是否为闰月，也不用判断是大小月。<br>思路是这样的，既然我要获取某月的天数，那么如果我能表示该月最后一天，然后调用 getDate() 拿到的天数就是该月的天数了。问题是，如何表示该月最后一天呢，这就要借助于 Date 构造函数的这个特性：当Date作为构造函数调用并传入多个参数时，如果数值不在合理范围时（如月份为13或者分钟数为70），相邻的数值会被调整。因此我可以通过给 day 传0来得到上一个月最后一天。</p>
-</blockquote>
+          在介绍 javascript 中的 Date 前，我们需要了解下以下几个概念~~
+GMT
+GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区的皇家格林尼治天文台当地的标准时间，因为本初子午线被定义为通过那里的经线。自1924年2月5日开始，格林尼治天文台负责每隔一
+          ...
 
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/07/22/javascript中的Date/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -469,69 +418,15 @@
       
         
           
-            <blockquote>
-<p>结识 git 大概是在大二， 至今已近三年。虽说这三年一直在使用 git，却只会三板斧——add，commit，push。 一旦出现复杂的情景时，就只能求助于网络，最终虽都能解决问题，却对解决方案一知半解，导致同样的情景每次都要gooooooogle一番，实在惭愧。这一周 每天抽出 1-2 个小时的时间对 git 进行了深入的了解。现将成果以情景的方式记录下来。</p>
-</blockquote>
-<h2 id="情景1：初始化-git-仓库"><a href="#情景1：初始化-git-仓库" class="headerlink" title="情景1：初始化 git 仓库"></a>情景1：初始化 git 仓库</h2><h3 id="初始化本地文件"><a href="#初始化本地文件" class="headerlink" title="初始化本地文件"></a>初始化本地文件</h3><p><code>git init</code></p>
-<h3 id="克隆远程仓库"><a href="#克隆远程仓库" class="headerlink" title="克隆远程仓库"></a>克隆远程仓库</h3><p><code>git clone [remote_url]</code></p>
-<blockquote>
-<p><code>git clone https://github.com/lisiur/vvue</code> <br><br><code>git clone git@github.com:lisiur/vvue.git</code></p>
-</blockquote>
-<h3 id="克隆本地仓库"><a href="#克隆本地仓库" class="headerlink" title="克隆本地仓库"></a>克隆本地仓库</h3><p><code>git clone [local_url]</code></p>
-<blockquote>
-<p><code>git clone ./vvue euvv</code></p>
-</blockquote>
-<h2 id="情景2：操作远程仓库源"><a href="#情景2：操作远程仓库源" class="headerlink" title="情景2：操作远程仓库源"></a>情景2：操作远程仓库源</h2><h3 id="显示当前远程仓库源"><a href="#显示当前远程仓库源" class="headerlink" title="显示当前远程仓库源"></a>显示当前远程仓库源</h3><p><code>git remote -v</code></p>
-<h3 id="添加远程仓库源"><a href="#添加远程仓库源" class="headerlink" title="添加远程仓库源"></a>添加远程仓库源</h3><p><code>git remote add [remote_name] [remote_url]</code></p>
-<blockquote>
-<p><code>git remote add coding git@git.coding.net:lisiur/lisiur.coding.me.git</code></p>
-</blockquote>
-<h3 id="删除远程仓库源"><a href="#删除远程仓库源" class="headerlink" title="删除远程仓库源"></a>删除远程仓库源</h3><p><code>git remote remove [remote_name]</code></p>
-<blockquote>
-<p><code>git remote remove coding</code></p>
-</blockquote>
-<h2 id="情景3：stage-所有已被追踪的文件"><a href="#情景3：stage-所有已被追踪的文件" class="headerlink" title="情景3：stage 所有已被追踪的文件"></a>情景3：stage 所有已被追踪的文件</h2><p><code>git add -u</code></p>
-<h2 id="情景4：撤销某个被-stage-的文件"><a href="#情景4：撤销某个被-stage-的文件" class="headerlink" title="情景4：撤销某个被 stage 的文件"></a>情景4：撤销某个被 stage 的文件</h2><p><code>git reset HEAD [file_name]</code></p>
-<h2 id="情景5：撤销对某个文件的所有修改"><a href="#情景5：撤销对某个文件的所有修改" class="headerlink" title="情景5：撤销对某个文件的所有修改"></a>情景5：撤销对某个文件的所有修改</h2><p><code>git checkout [file_name](不可逆的操作！)</code></p>
-<h2 id="情景6：重写某次-commit"><a href="#情景6：重写某次-commit" class="headerlink" title="情景6：重写某次 commit"></a>情景6：重写某次 commit</h2><p><code>git commit --amend -m [message]</code></p>
-<h2 id="情景7：撤销最新的-commit-恢复到-staged-状态"><a href="#情景7：撤销最新的-commit-恢复到-staged-状态" class="headerlink" title="情景7：撤销最新的 commit 恢复到 staged 状态"></a>情景7：撤销最新的 commit 恢复到 staged 状态</h2><p><code>git reset --soft HEAD^</code></p>
-<h2 id="情景8：撤销最新的-commit-恢复到-unstaged-状态"><a href="#情景8：撤销最新的-commit-恢复到-unstaged-状态" class="headerlink" title="情景8：撤销最新的 commit 恢复到 unstaged 状态"></a>情景8：撤销最新的 commit 恢复到 unstaged 状态</h2><p><code>git reset HEAD^</code></p>
-<h2 id="情景9：撤销最新的-commit-完全恢复到最近的-commit-状态"><a href="#情景9：撤销最新的-commit-完全恢复到最近的-commit-状态" class="headerlink" title="情景9：撤销最新的 commit 完全恢复到最近的 commit 状态"></a>情景9：撤销最新的 commit 完全恢复到最近的 commit 状态</h2><p><code>git reset --hard HEAD^</code></p>
-<h2 id="情景10：stage-所有已被追踪文件，除了某个文件"><a href="#情景10：stage-所有已被追踪文件，除了某个文件" class="headerlink" title="情景10：stage 所有已被追踪文件，除了某个文件"></a>情景10：stage 所有已被追踪文件，除了某个文件</h2><p><code>git add -u; git reset -- [file_name]</code></p>
-<h2 id="情景11：直接将-working-space-的所有已追踪的修改提交到-history"><a href="#情景11：直接将-working-space-的所有已追踪的修改提交到-history" class="headerlink" title="情景11：直接将 working space 的所有已追踪的修改提交到 history"></a>情景11：直接将 working space 的所有已追踪的修改提交到 history</h2><p><code>git commit -am [message]</code></p>
-<h2 id="情景12：撤销某次-commit-的修改"><a href="#情景12：撤销某次-commit-的修改" class="headerlink" title="情景12：撤销某次 commit 的修改"></a>情景12：撤销某次 commit 的修改</h2><p><code>git revert [commit_hash]</code></p>
-<h2 id="情景13：stage-所有已被追踪文件和新添加的文件"><a href="#情景13：stage-所有已被追踪文件和新添加的文件" class="headerlink" title="情景13：stage 所有已被追踪文件和新添加的文件"></a>情景13：stage 所有已被追踪文件和新添加的文件</h2><p><code>git add -A</code></p>
-<h2 id="情景13-：on-the-way"><a href="#情景13-：on-the-way" class="headerlink" title="情景13+：on the way"></a>情景13+：on the way</h2><h2 id="backup"><a href="#backup" class="headerlink" title="backup"></a>backup</h2><h3 id="关于-working-space-amp-stage-amp-history"><a href="#关于-working-space-amp-stage-amp-history" class="headerlink" title="关于 working space &amp; stage &amp; history"></a>关于 working space &amp; stage &amp; history</h3><p>git 有三个关键的概念分别为工作区，暂存区和历史区。工作区就是你所能看见的文件，你对文件的修改都是在工作区进行的。暂存区是暂时存储相关联的一组修改的区域，一般使用 git add 操作就是把相关的一组修改存储到暂存区，之所以叫暂存区是因为这些修改一般在这个区域存在不长时间，因为紧接着你就会使用 git commit 操作将这些修改统一提交到历史区。你可能会奇怪暂存区的意义是什么，前文已经提过暂存区一般存储的是相关联的一组修改。比如你一次性修改了两个 bug，那么这两个 bug 需要做两次提交。暂存区就提供了将两个 bug 区分提交的功能。你也可能说我先修改一个 bug 改完就直接提交，那么此时是不需要暂存区（先添加到暂存区反而多此一举），情景11就展示如何直接将工作区的修改直接提交到历史区的技巧。那么历史区是什么呢？历史区保存的是每次有意义的改动，可以将它看成一次次历史事件，比如修改一个 bug，比如添加一个 feature， 比如打上一个 tag 等，都是一个历史节点。历史区保存着每个历史节点，而历史节点由每次 commit 生成。 历史是能回顾的，同样 git 也提供让我们在历史区穿梭旅行的能力即 git reset。</p>
-<h3 id="关于-git-reset"><a href="#关于-git-reset" class="headerlink" title="关于 git reset"></a>关于 git reset</h3><p>顾名思义，git reset 就是重置的意思。那问题来了，重置什么呢？大家想想，我们的修改一共有几种状态？没错，根据之前介绍的 git 三剑客我们不难知道，修改无非就三种状态，要么在工作区，要么在暂存区，要么在历史区，而修改正常情况下的走向也就三种：</p>
-<ol>
-<li>git add       =&gt; 工作区 -&gt; 暂存区</li>
-<li>git commit    =&gt; 暂存区 -&gt; 历史区</li>
-<li>git commit -a =&gt; 工作区 -&gt; 历史区</li>
-</ol>
-<p>那么反过来，reset 一定可以重置这三种情况：</p>
-<ol>
-<li>git reset HEAD         =&gt; 暂存区 -&gt; 工作区 </li>
-<li>git reset –soft HEAD^ =&gt; 历史区 -&gt; 暂存区</li>
-<li>git reset HEAD^        =&gt; 历史区 -&gt; 工作区 </li>
-<li>git reset –hard       =&gt; 历史区 -&gt; 历史区 </li>
-</ol>
-<p>前三个命令分别对应着前面三个操作的逆操作。<br>这里需要着重讲下第一个和第三个的区别。这两个都是无附加选项的 reset 操作，虽然一个重置到 HEAD，一个重置到 HEAD^，其实他们的工作是相同的，之所以这么讲是因为，对于第一种情况，我们当前只是将工作区的修改添加到暂存区，此时我们还没有提交到历史区，所以当前  HEAD 指向的是最新的历史节点。此时 reset HEAD 会把最新历史节点的修改回退到暂存区，暂存区再把这些修改回退到工作区，因为工作区已有的修改不受影响，所以我们最直观的感受就是，刚刚 git add 的操作相当于没做，即暂存区的修改被撤销了。再来看看第三个操作，此时我们已经 commit 过了，commit 之前 HEAD 所指向的历史节点，此时已经变成了 HEAD^ 。所以此时使用 git reset HEAD^ 会将 HEAD^ 的修改回退到暂存区，然后暂存区将这些修改回退到工作区，工作区已有的修改不受影响，此时给我们最直观的感受就是，刚刚 commit 的内容直接回滚到工作区了。<br>至于第四个命令，则可以让我们在历史区之间不断地穿梭，他和 git reset 的命令工作原理相同，不同的是工作区已有的修改会被覆盖。</p>
-<blockquote>
-<p>tl;dr</p>
-<ol>
-<li>git reset –soft 修改 from 历史区 to 暂存区</li>
-<li>git reset        修改 from 历史区 to 暂存区 to 工作区(已有修改不受影响)</li>
-<li>git reset –hard 修改 from 历史区 to 暂存区 to 工作区(已有修改会被覆盖)</li>
-</ol>
-</blockquote>
-<h3 id="关于-merge-amp-rebase"><a href="#关于-merge-amp-rebase" class="headerlink" title="关于 merge &amp; rebase"></a>关于 merge &amp; rebase</h3><p>merge 和 rebase 的作用相同，都是将一个分支合并到另一个分支，不同的是，rebase 会变基。相信很多人都听过类似的说法，唯一的想法就是这和没说有什么区别？确实，我第一次听说这句话时亦有同感，不过当你理解他们时，相信你也会这么说。因为……确实如此。<br>举个例子吧，A和B都同时从 orgin 的最新节点 O 各自复制一个分支分别为 brA 和 brB。A 在合并分支前做了两次 commit 分别为 A1 和 A2，B 在合并分支前也做了两次 commit 分别为 B1 和 B2。假设 A 先合并分支，由于 A1 的父节点就是 O 所以可以直接合并为 O &lt;- A1 &lt;- A2。之后 B 也想合并分支了，但此时最新分支的当前节点是 A2，而 B 要合并的分支的父节点是 O,所以不能直接合并。<br>此时如果 B 选择使用 merge 则需要做一次三国首脑会晤即 O，A2和B2。大家求同不存异之后商量一个最佳解决方案 S 来作为这个会晤的成果。那么此时 commit 历史就变成了从 O 开始一分两路，然后在 S 汇合的结果。<br>但如果 B 选择使用 rebase 就和 O 没啥关系了，此时会将 A commit 的所有节点按照先后顺序在 B2 后面依次重新 commit 过去。此时 commit 历史就是 O &lt;- A1 &lt;- A2 &lt;- B1 &lt;- B2 这样一个线性结果。没有分支，没有额外的 S 节点。</p>
-<p>rebase 看似可以使历史节点更加清晰，但却隐含着一个弊端，那就是会影响到他人的历史节点。如果不遵守 rebase 的黄金法则会造成不可避免的损失，具体就不在这详细展开了。</p>
-<h2 id="related"><a href="#related" class="headerlink" title="related"></a>related</h2><h3 id="recommended-alias"><a href="#recommended-alias" class="headerlink" title="recommended alias"></a>recommended alias</h3><p>~/.gitconfig<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">alias.co=checkout</div><div class="line">alias.br=branch</div><div class="line">alias.ci=commit</div><div class="line">alias.st=status</div><div class="line">alias.dt=difftool</div><div class="line">alias.l=log</div><div class="line">alias.last=log -1 HEAD</div><div class="line">alias.stats=shortlog -sn --all --no-merges</div><div class="line">alias.praise=blame</div><div class="line">alias.recap=log --all --oneline --no-merges --author=lisiurday@gmail.com</div><div class="line">alias.graph=log --graph --all --decorate --stat --date=iso</div><div class="line">alias.lg=log --color --graph --pretty=format:&apos;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&apos; --abbrev-commit</div><div class="line">alias.unstage=reset HEAD</div><div class="line">alias.unci=reset HEAD^</div></pre></td></tr></table></figure></p>
-<h3 id="working-with-vim"><a href="#working-with-vim" class="headerlink" title="working with vim"></a>working with vim</h3><p>~/.gitconfig<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">alias.editor=vim</div><div class="line">commit.template=~/.git-commit-template</div></pre></td></tr></table></figure></p>
-<p>~/.git-commit-template<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[refs #00000] Subject</div><div class="line"></div><div class="line">detail</div></pre></td></tr></table></figure></p>
-<p>~/.vimrc<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&quot; Force the cursor onto a new line after 80 characters</div><div class="line">set textwidth=80</div><div class="line">&quot; In Git commit messages, make it 72 characters</div><div class="line">autocmd FileType gitcommit set textwidth=72</div><div class="line">&quot; Colour the 81st (or 73rd) column so that we don’t type over our limit</div><div class="line">set colorcolumn=+1</div><div class="line">&quot; In Git commit messages, also colour the 51st column (for titles)</div><div class="line">autocmd FileType gitcommit set colorcolumn+=51</div></pre></td></tr></table></figure></p>
-
           
+结识 git 大概是在大二， 至今已近三年。虽说这三年一直在使用 git，却只会三板斧——add，commit，push。 一旦出现复杂的情景时，就只能求助于网络，最终虽都能解决问题，却对解决方案一知半解，导致同样的情景每次都要gooooooogle一番，实在惭愧。这一周 每天抽出 1-2 个小时
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/07/13/git情景小结/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -649,17 +544,14 @@
       
         
           
-            <p>虽然在工作中已经大量使用了 gulp 和 webpack ，但基本上都是在前人的搭建好配置的基础上直接使用，最多只是添加或是修改几个 proxy 的配置。一开始，在我看来 gulp 和 webpack 似乎是差不多的东西，都属于前端构建工具。趁着周末休息，查阅大量博客和官方文档，并自己搭建实现一个 toy 项目才稍微对他们有了更进一步的认识。</p>
-<p>gulp 和 webpack 虽然同属于前端构建工具，但却有本质的区别。我们先来看看官方都是怎么说的。</p>
-<blockquote>
-<p>gulp is a toolkit for automating painful or time-consuming tasks in your development workflow, so you can stop messing around and build something.</p>
-<p>webpack, the ( production | unbiased flexible | extensible | open source ) module bundler.</p>
-</blockquote>
-<p>从官方的说明上，我们不难看出 gulp 是一个自动化工作流程管理工具，而 webpack 是一个模块构建工具。 gulp 解决的是工作流程，如检测到某个 js 文件有变动后，要先使用 babel 将其转换成 ES5， 再将其压缩并修改文件名写入指定的某个目录下， 最后通知浏览器自动刷新页面重新加载最新的 js 资源。而 webpack 的本质是解决 js 的依赖关系，统一 commonJS， AMD， nodejs 和 ES6 的 module。此外 webpack 的 loader 使其具有将任意资源（css， images等）都当成是 module 进行处理的能力。</p>
-<p>由此不难看出，webpack 与 gulp 并不是竞争关系。如果把 gulp 比作操作系统的话， webpack 就好比是可以运行在该操作系统上的一个应用软件。 之所以会把 webpack 和 gulp 拿在一起作比较，大概是因为觉得 webpack 可以做很多 gulp 可以做的事。 比如压缩文件，比如热加载等， 其实这些功能都不是 webpack 的本质， 他们都是由各种 plugin 实现的附加功能。</p>
-<p>那么关键问题来了，在项目中该如何使用他们呢？在我看来， 虽然 webpack 和 gulp 不能算是同一类工具， 但 webpack 通过 loader 和 plugin 可以基本上满足很多流程管理常用的需求。单从流程管理角度来说， webpack 偏放养式（因为 webpack 本质就不是做流程管理的）， gulp 相比较来说就更精细一点。因此，我的建议是对于一般的小型项目来说， 使用 webpack 足以， 如果更熟悉 gulp 的话，当然也可以使用 gulp。 但对于较大型且比较复杂的项目来说，webpack 来做流程管理就会显得捉襟见肘了， 较好的方法是使用 gulp 做流程管理， 将 webpack 作为 gulp 的某个 task 集成进去， 大家返璞归真各司其职。</p>
+          虽然在工作中已经大量使用了 gulp 和 webpack ，但基本上都是在前人的搭建好配置的基础上直接使用，最多只是添加或是修改几个 proxy 的配置。一开始，在我看来 gulp 和 webpack 似乎是差不多的东西，都属于前端构建工具。趁着周末休息，查阅大量博客和官方文档，并自己搭建实现一个 
+          ...
 
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/07/09/gulp-webpack/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -758,10 +650,14 @@
       
         
           
-            <p>《魔印人》，英国奇幻小说，讲述每当夜幕降临，沙恶魔、木恶魔、风恶魔、火恶魔，以及体型巨大的石恶魔爬回人间，大肆屠杀龟缩于魔印后的人类。从前，人类在解放者的领导下，借助于古代魔印武器，将恶魔赶回了地心魔域。当英雄成为传说，古代攻击魔印失传十数个世纪之后，恶魔开始反扑，人类面临着灭绝的危险……三名身负恶魔伤痕的少年决定挑战命运，踏上寻找失传魔印的道路——亚伦为了自由愿意付出任何代价，拥抱任何苦难。罗杰带着恶魔攻击留下的伤痛不断在音乐中攫取力量——音乐中深藏着对抗恶魔的神力。黎莎是著名草药师、古代科学技术的守卫人布鲁娜的关门弟子，不断开发出新的魔印武器。他们将齐心合力，上演一曲 “解放者”拯救人类与重塑信仰的史诗传奇。</p>
-<p>书中人物个性鲜明，战斗场面极其火爆。可算上是一幅关于解放者与信仰战争的史诗画卷！</p>
+          《魔印人》，英国奇幻小说，讲述每当夜幕降临，沙恶魔、木恶魔、风恶魔、火恶魔，以及体型巨大的石恶魔爬回人间，大肆屠杀龟缩于魔印后的人类。从前，人类在解放者的领导下，借助于古代魔印武器，将恶魔赶回了地心魔域。当英雄成为传说，古代攻击魔印失传十数个世纪之后，恶魔开始反扑，人类面临着灭绝的危险……三名身负恶
+          ...
 
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/07/02/《魔印人》/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -860,9 +756,15 @@
       
         
           
-            <p>鲁迅的字字珠玑一针见血。几千年来中国人的劣根性被先生一语道破。直到现在，鲁迅先生的话还是这个社会的真实写照。通读之后，面红耳赤，如坐针毡啊。</p>
+          鲁迅的字字珠玑一针见血。几千年来中国人的劣根性被先生一语道破。直到现在，鲁迅先生的话还是这个社会的真实写照。通读之后，面红耳赤，如坐针毡啊。
 
           
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/06/25/《鲁迅说丑陋的中国人》/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -961,12 +863,15 @@
       
         
           
-            <p>这本书是个地地道道的所谓的心灵鸡汤。全书共十章，分别以勤奋，自信，热忱，效率，学习，创新，时间，自律，梦想，机遇为主题，以事例和名言警句从各个方向阐述和解读每个主题。</p>
-<p>说实话，在当代社会，心灵鸡汤似乎已经不是什么褒义词了，不少人对于那些我们从小就被灌输的所谓积极向上的理论充满了质疑和反抗，而提出的众多所谓毒鸡汤却备受追捧。如，努力了不一定成功，但不努力一定很舒服；又如，我十分感谢当年那些把我绊倒在地的人，躺着真TM舒服等等。当然我相信大多数的人只是把这当成消遣付之一笑，但我想应该确有相信如此言论的人。</p>
-<p>没人可以在理论上决定这是对或是错，但从有利于社会发展的角度来看，毒鸡汤确确实实是有毒的，我们最好摒弃之。也许有人会质疑，难道我质疑你的所谓的有益的鸡汤有错吗？从唯物主义角度讲，任何事物都有其优缺点，难道不应该辩证的看待他们吗？确实如此，这点我完全赞同。首先，并不是所有的心灵鸡汤都是有益的，或是对你有益的。其次某个心灵鸡汤并不是每时每刻都是有益的，也许此时他能帮助你，但也许未来的某天他就会害了你。那如何区分某个心灵鸡汤是可取的，就需要根据自身的实际情况自行判断了。我的看法是，只要你还怀揣梦想和追求，如果谋篇文章或警句能够让你认为它在此时是帮助你向完成这个梦想的道路前进的话，那么该鸡汤就可取，否则就可摒弃之。当然这个方法是有风险的，毕竟我们都不是圣人，不能完全依靠自己来判断，但毕竟大家都成年了，无论胜败，最终自己都会要对自己负责，所以步步都要慎重。</p>
-<p>对我来说，这本书的大多数鸡汤都是可取的，因此，每每读之，都能短暂的激发我向梦想靠近的动力，他人之言权当参考，最终还得靠自己定夺。聊胜于无吧，多读几遍，未尝不可。</p>
+          这本书是个地地道道的所谓的心灵鸡汤。全书共十章，分别以勤奋，自信，热忱，效率，学习，创新，时间，自律，梦想，机遇为主题，以事例和名言警句从各个方向阐述和解读每个主题。
+说实话，在当代社会，心灵鸡汤似乎已经不是什么褒义词了，不少人对于那些我们从小就被灌输的所谓积极向上的理论充满了质疑和反抗，而提出的众
+          ...
 
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/06/18/《哈佛凌晨四点半》——前进道路的加油站/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1065,10 +970,15 @@
       
         
           
-            <p>先占个坑 目前只读了前两部，下周将剩下五部读完再写读后感</p>
-<p>2017.6.11 更新<br>阿西莫夫真是无穷的想象。这是一段银河第一帝国后五百年的历史，从心理史学的发生发展实施到进步进化，以及各种可能。作者塑造了那么多世界，展现了那么多种可能，让你选，你会怎么选呢。与其说这是一部银河史，不如说是一部现代社会选择体。世间千变万化，充满无穷的可能，最后，人类总是不断跟被规划对抗，所以，我相信这不会是结局，盖亚也好，第一基地，第二基地，人类之所以复杂性，就是因为不确定性，没有突变，没有特别，哪有人类发展进步，换句话，没有突如其来的危机，人类怎么产生解决危机的能力。</p>
+          先占个坑 目前只读了前两部，下周将剩下五部读完再写读后感
+2017.6.11 更新阿西莫夫真是无穷的想象。这是一段银河第一帝国后五百年的历史，从心理史学的发生发展实施到进步进化，以及各种可能。作者塑造了那么多世界，展现了那么多种可能，让你选，你会怎么选呢。与其说这是一部银河史，不如说是一部现代社会选
+          ...
 
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/06/04/《银河帝国》：基地/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1167,15 +1077,16 @@
       
         
           
-            <p>应学妹推荐读了这本书，总体来说是本有意思的书。</p>
-<p>作者林希在该书以杂文的形式介绍了传说中“万恶的旧社会”中天津的各式人和物。<br>虽说讲的是天津，不过倒也算是中国在那个年代的一个缩影吧。而我也算是跟着过了把旧社会生活的瘾。</p>
-<p>旧社会是黑暗的，这是毋庸置疑的。那个时候最不值钱的是人命，最不敢作为的是政府，最吃亏的是底层劳动者。但旧社会也有它温暖的一面，绑匪有绑匪的法则，小绺有小绺的行规——土匪绑票第一不绑女性，第二不得撕票；小绺上路三不偷，一不偷状元府第，二不偷孤儿寡母，三不偷慈善人家。坏了行规，道上的人都不会放过你。</p>
-<p>旧社会有骗人的行当，如看香、相士、烧痦子等；也有真正的手艺，如正骨术、架子工、拿瘊子等。</p>
-<p>旧社会时，黑社会抢地盘，不打群架而是跳油锅，每方轮换着跳，直到一方没人跳为止决出胜负。船家打架，速战速决，没有时间讲理，谁对谁错不是打架的内容，打架就是见血，谁敢先拿一块砖头将自己的脑袋瓜砸破，谁就有理，不敢砸的自动认输。</p>
-<p>旧社会是乱的，但规矩却是不能少的。黑道如何偷、杀、绑、乞，有黑道的规矩；白道如何欺、诈、谄、贿，有白道的规矩；就连普通人如何吃饭、如何拿箸、如何守老礼也都有普通人的规矩。</p>
-<p>除此之外还有各式各样其他不为人知的有趣的事物就不一一列举了，有兴趣可以找来读一读。</p>
+          应学妹推荐读了这本书，总体来说是本有意思的书。
+作者林希在该书以杂文的形式介绍了传说中“万恶的旧社会”中天津的各式人和物。虽说讲的是天津，不过倒也算是中国在那个年代的一个缩影吧。而我也算是跟着过了把旧社会生活的瘾。
+旧社会是黑暗的，这是毋庸置疑的。那个时候最不值钱的是人命，最不敢作为的是政府，最吃亏
+          ...
 
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/05/28/《你不知道的旧社会》——黑与白并存/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1274,45 +1185,15 @@
       
         
           
-            <p>这本书颇负盛名，最近读完受益匪浅。</p>
-<p>书名为人性的弱点，实际上书中的理论都是教导人们如何在现世与他人更好的相处。说白了这是作者总结的在当今社会人际交往的黄金守则。这些守则会使你逐渐磨去原本的棱角，变得圆滑，变得更易融入社会，更易生存下去。这些守则被总结出来，初衷是很好的，确实也让非常的多的人受益。但其实我个人是不赞同完全强制自己按照这些守则来执行的，我不能说圆滑是褒义词还是贬义词，但我觉得不能做自己总是件不痛快的事。也不是说我在否定这本书的初衷，相反我一开始也提到，从这本书中学到不少知识，因为更多的，我会把这些知识当做理解现实中各类事件的一个依据，我明白这个道理不代表一定会实践它。其实摊开了说，所有的这些道理，从人类的隐藏的美好的本性——真诚，善良等都是可以推导出来的。所以如果一个人的本性不坏，却不知道如何在人际交往中去表达，到是可以参考这本书，学习丰富交往技巧。但如果本性不善却强行东施效颦却只会适得其反，一旦最后被揭穿只会摔得更惨。</p>
-<p>最后附上网友总结的全文摘要吧。</p>
-<p>第一篇　与人相处的基本技巧</p>
-<pre><code>1. 不要批评、责怪或抱怨他人。
-2. 诚实而真诚地赞赏他人。
-3. 天底下只有一个方法可以影响人，就是提出他们的需要，并且让他们知道怎样去获得。——引发他人心中的渴望。
-</code></pre><p>第二篇　如何使人喜欢你</p>
-<pre><code>1. 关心他人与其他人际关系的原则一样，必须出于真诚。不仅付出关心的人应该这样，接受关心的人也理当如此。这是一条双向道——两者皆受其益。——真正地对他人充满兴趣。
-2. 保持微笑。
-3. 记住他人的姓名， 它是任何语言中最甜美而重要的声音。
-4. 做一个善于静听的人，鼓励别人谈论他们自己。
-5. 懂得与人沟通的诀窍就是：谈论他人最以为贵的事情。——谈论别人感兴趣的话题。
-6. 人类行为有个极为重要的法则，这一法则就是——时时让别人感到重要。如果我们遵从这一法则，大概不会惹来什么麻烦，而且可以得到许多友谊和永恒的快乐。让他人感到自己重要——而且要真诚而为。
-</code></pre><p>第三篇　如何使人信服你</p>
-<pre><code>1. 你不能从辩论中获胜：你不能，因为如果你辩论失败，那你当然失败了；如果你得胜了，你还是失败的。——从争辩中获益最多的唯一办法是：避免与人辩论。充满智慧的老富兰克林常说：“如果你辩论、争强、反对，你或许有时获得胜利；但这种胜利是空洞的，因为你永远得不到对方的好感了。”
-2. 如何避免与人树敌： 你永远不会因为认错而导致麻烦。只有如此才能平息争论，诱使对方也能同你一样公正宽大，甚至也承认他或许错了。——对别人的意见表示尊重，千万别说：“你错了。”
-3. 如果你错了，就承认它：不要忘了那句古语：“用争夺的方法，你永远得不到满足，但用让步的方法，你可得到比你所期望的更多。”——如果你错了，就迅速而真诚地承认。（小狗与警察的例子）
-4. 我们都应该认识到一点：人的思想不易改变。你不能强迫他们同意于你，但你完全有可能引导他们，只要你温和友善。——人也是如此，如果你想赢得人心，首先要让他人相信你是最真诚的朋友。那样就像有一滴蜂蜜吸引住他的心，也就有一条坦然大道，通往他的理性。
-5. 下次你告诉别人犯错的时候，请记住苏格拉底的这一有效的法则，问些温和的问题——一些能引发别人做出“是”反应的问题。中国有句格言最能反映东方人的智慧：以柔克刚。当你与别人交谈的时候，不要先讨论你不同意的事，要先强调——而且不停地强调——你所同意的事。首先让别人说“是，是的”。
-6. 当他人还有许多意见要发表的时候，他是不会注意你的。所以要忍耐一点，用一颗开放之心听取他人讲话，并诚恳鼓励他完全发表自己的意见。——让别人多说话。
-7. 如何赢得合作：没有人喜欢接受推销，或被人强迫去做一件事。我们都喜欢按照自己的意愿购买东西，或照自己的意志行动，我们喜欢别人征询我们的愿望、需求和意见。——江海所以能为百谷王者，以其善下之，故能为百谷王。是以圣人欲上民，必以言下之；欲先民，必以身后之。是以圣人处上而民不重，处前而民不害。——让别人觉得那是他的主意。
-8. 让你创造奇迹的公式：对方为什么会有那样的思想和行为，其中自有一定原因。探寻出其中隐藏的原因来，你便得到了了解他人行动或人格的钥匙。“如果你读这本书的结果只是得到一件事——永远按照对方的观点去想，由他人的立场去看事，一如由你自己的一样。如果你从此书中仅仅获得这一点，这或许不难成为影响你终身事业的一个关键因素。”——真诚地尽力从他人的角度看事情。
-9. 每个人到底想要什么：“我一点不怪你有这种感觉。如果我是你，也会与你的感觉一样。”你明天要遇见的人，有四分之三是为了同情而饥渴。给他们同情，他们就会即刻喜爱你。——同情他人的想法与愿望。
-10. 人人欢迎的诉求方式：我们很难找到一个放之四海皆有效的法则，任何事情都会有一些例外。例如你已有一套适用办法，何必再更改？——激发他人产生高尚的动机。
-11. 运用电影、电视手段表达自己的意图：这是一个充满戏剧性的时代，仅靠一点点语言的叙述是不够的。真理需要我们使之更生动，更有趣，更加戏剧化，你必须恰当运用表演的艺术。
-12. 要做成事情，“有效的办法是激起竞争。不是勾心斗角的竞争，而是相互取胜的欲望。”——提出挑战。
-</code></pre><p>第四篇　如何成为一个领导者</p>
-<pre><code>1. 指正他人错误的方法：当我们听到他人对自己的优点加以称赞以后，再去听一些不愉快的话，自然会觉得好受一些。（先夸后骂）——从称赞与真诚的欣赏开始。
-2. 如何批评而不招致怨愤：间接提出别人的错失，要比直接说出口来得温和，且不会引起别人的强烈反感。—— 先夸后提要求，不说but，说and。“你这次成绩真不错，但是数学不好。”VS“你这次成绩真不错，而且如果数学能加强一下就更好了。”
-3. 首先陈述你自己的错误 ：承认一个人本身的错误——就算你还没有改正过来——也可以帮助改善行为。在指责别人之前，先想想自己错在哪里。
-4. 没有谁喜欢受人指使：提问的方式不仅让你的命令显得温和，而且还能激发你所提问之人的创造力。如果一个人参与做出某一促使决议形成的命令，他一定会更乐意加以接受并执行。——以提问的方式替代直接的要求。
-5. 保全他人的面子：纵使别人犯错，而我们是对的，如果没有为别人保留面子，就会毁了一个人。
-6. 激励他人获得成功：“称赞，是温暖他人心灵的阳光，没有阳光、我们就没有花儿和收成。然而，我的很多人只会向他人吹来阵阵批评的寒风，我们总是不愿将赞许的温暖阳光撒向我们的伙伴。”（跟训练小狗类似，需要多称赞）——称赞他人的每个进步，即使十分微小， 要“诚于嘉许、宽于称道”。
-7. 学会给人戴高帽：有一句古语说：“给狗一个恶名，不如把它吊死”。但给它一个好名——看有何结果！给他一个愿意全力追求的美誉。
-8. 让错误看起来容易纠正：如果你告诉自己的孩子、丈夫，或他人，他在某件事上真是愚笨，他对某事没有天赋，或者他做的都错了……那么你就差不多消除了他要做出改进的各种动力。——多多鼓励他人，让他觉得自己的过错很容易改正。
-9. 让他人乐意去做你想要做的事：这种给人授衔和权威的办法对拿破仑有效，对你也同样有效。——使他人觉得，照你的意思去做会很开心。
-</code></pre>
-          
+          这本书颇负盛名，最近读完受益匪浅。
+书名为人性的弱点，实际上书中的理论都是教导人们如何在现世与他人更好的相处。说白了这是作者总结的在当今社会人际交往的黄金守则。这些守则会使你逐渐磨去原本的棱角，变得圆滑，变得更易融入社会，更易生存下去。这些守则被总结出来，初衷是很好的，确实也让非常的多的人受益。但其
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/05/21/《人性的弱点》/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1411,12 +1292,16 @@
       
         
           
-            <p>说这本书是心理学的百科全书，或许有些夸大其词，不过给我解惑不少却是事实。</p>
-<p>作者毕淑敏不但是是著名作家还是医生和心理咨询师，或许正是这多重角色才能使其写出这本直指内心深处的散文。用她的自序来说，书中的每粒文字都是温润而微咸。</p>
-<p>该书涉猎内容颇为丰富，有关自我，有关恋爱，有关家庭，有关人生，有关生命，有关死亡……且这本书多以自身经历为原型，由事及理，顺其自然，读起来甚是亲切而具有说服力。</p>
-<p>该书目前已成为我床头常备书籍之一，每天晚上睡觉前随机选一章再读一遍都会给心灵来次解密。</p>
+          说这本书是心理学的百科全书，或许有些夸大其词，不过给我解惑不少却是事实。
+作者毕淑敏不但是是著名作家还是医生和心理咨询师，或许正是这多重角色才能使其写出这本直指内心深处的散文。用她的自序来说，书中的每粒文字都是温润而微咸。
+该书涉猎内容颇为丰富，有关自我，有关恋爱，有关家庭，有关人生，有关生命，有关
+          ...
 
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/05/14/《心灵密码》——心理学百科全书/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
