@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="vue,hack," />
+  <meta name="keywords" content="随笔," />
 
 
 
@@ -84,19 +84,16 @@
 
 
 
-<meta name="description" content="把一个组件重置到初始状态是一个常见的需求，推荐的做法有两种，一种是父组件重置子组件的 prop，另一种是子组件暴露一个重置的方法供父组件调用。但有些时候，子组件既没有提供重置的方法，也没提供 prop 来重置自己的状态。更重要的是，这个子组件我们还动不了。于是我们就需要一种 hack 的方式来强制子组件重置到初始状态。方法如下：
-1&amp;lt;component v-if=&quot;hackReset&quot;&amp;gt">
+<meta name="description" content="正式工作已经一个多月了，当然是作为一个前端程序员。简单的概述下我的这一个多月的工作就是，生产，发现，并解决自己的或是他人的前端相关的问题。而在这个过程中我也确确实实对前端的技术有了更进一步的认识和长进，自以为挺好的。问题出现在这周六，周五测试提了一个前端 bug，但我当时已经回去了， 而这个项目又挺着急发版的，所以我就只好在周六回公司加班来解决这个 bug了。如何解决这个 bug 暂且不表，问题是">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vue hack 之强制刷新组件">
-<meta property="og:url" content="http://Lisiur.com/2017/08/03/vue-hack-之强制刷新组件/index.html">
+<meta property="og:title" content="论一个前端程序员的定位">
+<meta property="og:url" content="http://Lisiur.com/2017/08/13/论一个前端程序员的定位/index.html">
 <meta property="og:site_name" content="Lisiur">
-<meta property="og:description" content="把一个组件重置到初始状态是一个常见的需求，推荐的做法有两种，一种是父组件重置子组件的 prop，另一种是子组件暴露一个重置的方法供父组件调用。但有些时候，子组件既没有提供重置的方法，也没提供 prop 来重置自己的状态。更重要的是，这个子组件我们还动不了。于是我们就需要一种 hack 的方式来强制子组件重置到初始状态。方法如下：
-1&amp;lt;component v-if=&quot;hackReset&quot;&amp;gt">
-<meta property="og:updated_time" content="2017-08-03T10:59:42.000Z">
+<meta property="og:description" content="正式工作已经一个多月了，当然是作为一个前端程序员。简单的概述下我的这一个多月的工作就是，生产，发现，并解决自己的或是他人的前端相关的问题。而在这个过程中我也确确实实对前端的技术有了更进一步的认识和长进，自以为挺好的。问题出现在这周六，周五测试提了一个前端 bug，但我当时已经回去了， 而这个项目又挺着急发版的，所以我就只好在周六回公司加班来解决这个 bug了。如何解决这个 bug 暂且不表，问题是">
+<meta property="og:updated_time" content="2017-08-13T15:54:14.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vue hack 之强制刷新组件">
-<meta name="twitter:description" content="把一个组件重置到初始状态是一个常见的需求，推荐的做法有两种，一种是父组件重置子组件的 prop，另一种是子组件暴露一个重置的方法供父组件调用。但有些时候，子组件既没有提供重置的方法，也没提供 prop 来重置自己的状态。更重要的是，这个子组件我们还动不了。于是我们就需要一种 hack 的方式来强制子组件重置到初始状态。方法如下：
-1&amp;lt;component v-if=&quot;hackReset&quot;&amp;gt">
+<meta name="twitter:title" content="论一个前端程序员的定位">
+<meta name="twitter:description" content="正式工作已经一个多月了，当然是作为一个前端程序员。简单的概述下我的这一个多月的工作就是，生产，发现，并解决自己的或是他人的前端相关的问题。而在这个过程中我也确确实实对前端的技术有了更进一步的认识和长进，自以为挺好的。问题出现在这周六，周五测试提了一个前端 bug，但我当时已经回去了， 而这个项目又挺着急发版的，所以我就只好在周六回公司加班来解决这个 bug了。如何解决这个 bug 暂且不表，问题是">
 
 
 
@@ -114,7 +111,7 @@
   };
 </script>
 
-  <title> vue hack 之强制刷新组件 | Lisiur </title>
+  <title> 论一个前端程序员的定位 | Lisiur </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -244,7 +241,7 @@
             
             
               
-                vue hack 之强制刷新组件
+                论一个前端程序员的定位
               
             
           </h1>
@@ -256,8 +253,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-08-03T18:46:36+08:00" content="2017-08-03">
-              2017-08-03
+            <time itemprop="dateCreated" datetime="2017-08-13T22:17:57+08:00" content="2017-08-13">
+              2017-08-13
             </time>
           </span>
 
@@ -284,12 +281,11 @@
       
 
       
-        <p>把一个组件重置到初始状态是一个常见的需求，推荐的做法有两种，一种是父组件重置子组件的 prop，另一种是子组件暴露一个重置的方法供父组件调用。但有些时候，子组件既没有提供重置的方法，也没提供 prop 来重置自己的状态。更重要的是，这个子组件我们还动不了。于是我们就需要一种 hack 的方式来强制子组件重置到初始状态。方法如下：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">component</span> <span class="attr">v-if</span>=<span class="string">"hackReset"</span>&gt;</span><span class="tag">&lt;/<span class="name">component</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>.hackReset = <span class="literal">false</span></div><div class="line"><span class="keyword">this</span>.$nextTick(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  <span class="keyword">this</span>.hackReset = <span class="literal">true</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<blockquote>
-<p>v-if 在切换时，元素及它的绑定数据和组件都会被销毁并重建</p>
-</blockquote>
+        <p>正式工作已经一个多月了，当然是作为一个前端程序员。简单的概述下我的这一个多月的工作就是，生产，发现，并解决自己的或是他人的前端相关的问题。而在这个过程中我也确确实实对前端的技术有了更进一步的认识和长进，自以为挺好的。问题出现在这周六，周五测试提了一个前端 bug，但我当时已经回去了， 而这个项目又挺着急发版的，所以我就只好在周六回公司加班来解决这个 bug了。如何解决这个 bug 暂且不表，问题是周六后端和测试都不在，而我只能在本地环境验证却不能在测试环境验证，要知道很多时候本地正常却并不代表测试环境一定正常。但平时都是后端在部署代码，发布到测试环境，这本就是后端的工作。但现在题不是这个工作是否该后端来做，而是，今天我无法在测试环境验证这个 bug 是否修复了。</p>
+<p>以前我一直把自己当做前端工程师来看，我的工作就是解决前端问题，而我只要时刻更新前端知识，及时提高自己前端技能就能解决前端问题了。可是，我才发现，并不是这样。就拿这周六的事来说，我只有在测试环境验证这个 bug 无法被重现，才算做是解决了这个前端问题。所以在没有后端的帮助下，我并不能算作解决了这个前端问题。</p>
+<p>由此引申出来的问题是: 作为一个前端工程师，需要学习后端的那些知识吗？这句话或许没有说到痛点，说的更现实点是，在我前端的技术都还没有学的自认为透彻的情况下，还需要花时间来学习后端的知识吗？</p>
+<p>如果仅仅把自己当做是一个“前端”工程师的话，我想你完全有理由说不需要，而你也完全可以把无法验证测试环境的这件事推脱为不是自己负责的。但作为一个项目团队的一名开发人员来说，你就不能简简单单的算作一个解决前端问题的前端工程师，而是一个解决问题的前端工程师。两者的区别就是前者只会解决前端问题，而后者除了在前端领域提供更专业的解决方案外，也会解决一些其他和前端弱相关或非相关的问题。在后者看来，自己更像一个解决问题工程师，同时恰巧在前端领域比较专业一些而已。</p>
+<p>这里也不是要求大家都去做全栈工程师，非要把前后端的知识都学个遍，而是不建议把自己定位仅仅局限在前端。与此同时也不要纠结于哪些该学，哪些不该学，我相信当对自己的定位有了不同的看法后，实践中自会指导你该做些什么。比如,我该学学怎么部署代码到测试环境了~</p>
 
       
     </div>
@@ -311,9 +307,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/vue/" rel="tag">#vue</a>
-          
-            <a href="/tags/hack/" rel="tag">#hack</a>
+            <a href="/tags/随笔/" rel="tag">#随笔</a>
           
         </div>
       
@@ -322,17 +316,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/30/关于CSS预处理器nesting的实践与思考/" rel="next" title="关于CSS预处理器nesting的实践与思考">
-                <i class="fa fa-chevron-left"></i> 关于CSS预处理器nesting的实践与思考
+              <a href="/2017/08/03/vue-hack-之强制刷新组件/" rel="next" title="vue hack 之强制刷新组件">
+                <i class="fa fa-chevron-left"></i> vue hack 之强制刷新组件
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/08/13/论一个前端程序员的定位/" rel="prev" title="论一个前端程序员的定位">
-                论一个前端程序员的定位 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
