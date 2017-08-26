@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="ramda,fp," />
+  <meta name="keywords" content="koa,node," />
 
 
 
@@ -84,19 +84,19 @@
 
 
 
-<meta name="description" content="前言Ramda是一个专门为Javascript程序员设计的函数式编程工具库。
-和lodash之类的不同之处是，Ramda的目标很明确——函数式。因为Ramda中所有的函数都是柯理化的，所以你可以很方便的使用它提供的函数组合出更加强大和复杂的函数的同时保持代码的简单和优雅。lodash中也提供了柯理化函数和组合函数，但其大多数其他函数的参数位置放的却不对（对于函数式来说，被操作的数据要放在最后）。因">
+<meta name="description" content="koa 是如此的轻量，以至于路由模块都没有配备。因此，我们需要手动控制路由，就像下面这样：
+1234567app.use(async (ctx, next) =&amp;gt; &amp;#123;  if (ctx.request.method === &apos;GET&apos;) &amp;#123;    if (ctx.request.url === &apos;/&apos;) &amp;#123;      ctx.body = &apos;GET index&apos;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ramda is coming">
-<meta property="og:url" content="http://Lisiur.com/2017/04/01/Ramda-is-coming/index.html">
+<meta property="og:title" content="koa 学习笔记(二)：路由">
+<meta property="og:url" content="http://Lisiur.com/2017/08/26/koa-学习笔记-二-：路由/index.html">
 <meta property="og:site_name" content="Lisiur">
-<meta property="og:description" content="前言Ramda是一个专门为Javascript程序员设计的函数式编程工具库。
-和lodash之类的不同之处是，Ramda的目标很明确——函数式。因为Ramda中所有的函数都是柯理化的，所以你可以很方便的使用它提供的函数组合出更加强大和复杂的函数的同时保持代码的简单和优雅。lodash中也提供了柯理化函数和组合函数，但其大多数其他函数的参数位置放的却不对（对于函数式来说，被操作的数据要放在最后）。因">
-<meta property="og:updated_time" content="2017-04-01T14:02:48.000Z">
+<meta property="og:description" content="koa 是如此的轻量，以至于路由模块都没有配备。因此，我们需要手动控制路由，就像下面这样：
+1234567app.use(async (ctx, next) =&amp;gt; &amp;#123;  if (ctx.request.method === &apos;GET&apos;) &amp;#123;    if (ctx.request.url === &apos;/&apos;) &amp;#123;      ctx.body = &apos;GET index&apos;">
+<meta property="og:updated_time" content="2017-08-26T15:00:02.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ramda is coming">
-<meta name="twitter:description" content="前言Ramda是一个专门为Javascript程序员设计的函数式编程工具库。
-和lodash之类的不同之处是，Ramda的目标很明确——函数式。因为Ramda中所有的函数都是柯理化的，所以你可以很方便的使用它提供的函数组合出更加强大和复杂的函数的同时保持代码的简单和优雅。lodash中也提供了柯理化函数和组合函数，但其大多数其他函数的参数位置放的却不对（对于函数式来说，被操作的数据要放在最后）。因">
+<meta name="twitter:title" content="koa 学习笔记(二)：路由">
+<meta name="twitter:description" content="koa 是如此的轻量，以至于路由模块都没有配备。因此，我们需要手动控制路由，就像下面这样：
+1234567app.use(async (ctx, next) =&amp;gt; &amp;#123;  if (ctx.request.method === &apos;GET&apos;) &amp;#123;    if (ctx.request.url === &apos;/&apos;) &amp;#123;      ctx.body = &apos;GET index&apos;">
 
 
 
@@ -114,7 +114,7 @@
   };
 </script>
 
-  <title> Ramda is coming | Lisiur </title>
+  <title> koa 学习笔记(二)：路由 | Lisiur </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -244,7 +244,7 @@
             
             
               
-                Ramda is coming
+                koa 学习笔记(二)：路由
               
             
           </h1>
@@ -256,30 +256,11 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-04-01T21:41:36+08:00" content="2017-04-01">
-              2017-04-01
+            <time itemprop="dateCreated" datetime="2017-08-26T22:26:54+08:00" content="2017-08-26">
+              2017-08-26
             </time>
           </span>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/fp/" itemprop="url" rel="index">
-                    <span itemprop="name">fp</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
           
 
           
@@ -303,15 +284,14 @@
       
 
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Ramda是一个专门为Javascript程序员设计的函数式编程工具库。</p>
-<p>和lodash之类的不同之处是，Ramda的目标很明确——函数式。因为Ramda中所有的函数都是柯理化的，所以你可以很方便的使用它提供的函数组合出更加强大和复杂的函数的同时保持代码的简单和优雅。lodash中也提供了柯理化函数和组合函数，但其大多数其他函数的参数位置放的却不对（对于函数式来说，被操作的数据要放在最后）。因此lodash并不能完全取代Ramda。</p>
-<p>下面就对Ramda提供的函数做些简单的介绍：</p>
-<h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><h3 id="match"><a href="#match" class="headerlink" title="match"></a>match</h3><blockquote>
-<p>RegExp -&gt; String -&gt; [String | Undefined]</p>
-</blockquote>
-<h3 id="test"><a href="#test" class="headerlink" title="test"></a>test</h3><blockquote>
-<p>RegExp -&gt; String -&gt; Boolean</p>
-</blockquote>
+        <p>koa 是如此的轻量，以至于路由模块都没有配备。因此，我们需要手动控制路由，就像下面这样：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">app.use(<span class="keyword">async</span> (ctx, next) =&gt; &#123;</div><div class="line">  <span class="keyword">if</span> (ctx.request.method === <span class="string">'GET'</span>) &#123;</div><div class="line">    <span class="keyword">if</span> (ctx.request.url === <span class="string">'/'</span>) &#123;</div><div class="line">      ctx.body = <span class="string">'GET index'</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>那么稍微复杂点的路由呢，比如匹配<code>/user/:username</code>这样的路由，我们可以自己做下正则匹配,就像这样：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">app.use(<span class="keyword">async</span> (ctx, next) =&gt; &#123;</div><div class="line">  <span class="keyword">if</span> (ctx.request.method === <span class="string">'GET'</span>) &#123;</div><div class="line">    <span class="keyword">let</span> username = ctx.request.url.match(<span class="regexp">/^\/user\/([^/]+)$/</span>)</div><div class="line">    username = username &amp;&amp; username[<span class="number">1</span>]</div><div class="line">    <span class="keyword">if</span> (username) &#123;</div><div class="line">      ctx.body = <span class="string">`GET user:<span class="subst">$&#123;username&#125;</span>`</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>那么更复杂的路由呢，比如匹配<code>/user/:username/post/:postname/comments/:commentername</code>这样的路由，(⊙v⊙)嗯，少年请留步，或许我们可以不用自己来做这么无聊而又易出错的处理，因为<code>koa-router</code>已经帮我们做好了 :)</p>
+<p>好，下面我们使用<code>koa-router</code>改写以上代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">'koa'</span>)</div><div class="line"><span class="keyword">const</span> Router = <span class="built_in">require</span>(<span class="string">'koa-router'</span>)</div><div class="line"></div><div class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa()</div><div class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> Router()</div><div class="line"></div><div class="line">router.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">ctx, next</span>) </span>&#123;</div><div class="line">  ctx.body = <span class="string">'GET index'</span></div><div class="line">&#125;)</div><div class="line"></div><div class="line">router.get(<span class="string">'/user:username'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">ctx, next</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> username = ctx.params.username</div><div class="line">  ctx.body = <span class="string">`GET user:<span class="subst">$&#123;username&#125;</span>`</span></div><div class="line">&#125;)</div><div class="line"></div><div class="line">app.use(router.routes())</div><div class="line"></div><div class="line">app.listen(<span class="number">3001</span>)</div></pre></td></tr></table></figure>
+<p>当然 <code>koa-router</code> 提供的功能远不止这些，等待大家自己去挖掘了~</p>
 
       
     </div>
@@ -333,9 +313,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/ramda/" rel="tag">#ramda</a>
+            <a href="/tags/koa/" rel="tag">#koa</a>
           
-            <a href="/tags/fp/" rel="tag">#fp</a>
+            <a href="/tags/node/" rel="tag">#node</a>
           
         </div>
       
@@ -344,17 +324,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/26/使用FP进行空值检查和错误处理的实践/" rel="next" title="使用FP进行空值检查和错误处理的实践">
-                <i class="fa fa-chevron-left"></i> 使用FP进行空值检查和错误处理的实践
+              <a href="/2017/08/20/koa-next-generation-web-framework-for-node-js/" rel="next" title="koa 学习笔记(一)：初识 koa">
+                <i class="fa fa-chevron-left"></i> koa 学习笔记(一)：初识 koa
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/02/什么是最好的语言/" rel="prev" title="谁是最好的语言">
-                谁是最好的语言 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -468,7 +444,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#String"><span class="nav-number">1.1.</span> <span class="nav-text">String</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#match"><span class="nav-number">1.1.1.</span> <span class="nav-text">match</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#test"><span class="nav-number">1.1.2.</span> <span class="nav-text">test</span></a></li></ol></li></ol></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
         </section>
