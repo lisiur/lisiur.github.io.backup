@@ -1,0 +1,604 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="树莓派,geek," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="设备
+树莓派开发板 * 1
+四位一体数码管 * 1 (我用的是 F346AH)
+母对母杜邦线 * 12
+
+连线说明必要的说明首先上一张树莓派的引脚图
+然后是数码管引脚图一般四位一体数码管的引脚应该如下所示(未考证, F346AH 和 F346BH 是这样的)
+可以看到，一共有12个引脚。但是一共有 (7+1)*4 = 32 个小 led 灯。所以从理论上来说 12 个引脚是不能够控制所有 led">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用树莓派控制数码管">
+<meta property="og:url" content="http://Lisiur.com/2017/09/02/使用树莓派控制数码管/index.html">
+<meta property="og:site_name" content="Lisiur">
+<meta property="og:description" content="设备
+树莓派开发板 * 1
+四位一体数码管 * 1 (我用的是 F346AH)
+母对母杜邦线 * 12
+
+连线说明必要的说明首先上一张树莓派的引脚图
+然后是数码管引脚图一般四位一体数码管的引脚应该如下所示(未考证, F346AH 和 F346BH 是这样的)
+可以看到，一共有12个引脚。但是一共有 (7+1)*4 = 32 个小 led 灯。所以从理论上来说 12 个引脚是不能够控制所有 led">
+<meta property="og:image" content="http://Lisiur.com/./3.jpg">
+<meta property="og:image" content="http://Lisiur.com/./2.png">
+<meta property="og:updated_time" content="2017-09-02T14:45:35.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用树莓派控制数码管">
+<meta name="twitter:description" content="设备
+树莓派开发板 * 1
+四位一体数码管 * 1 (我用的是 F346AH)
+母对母杜邦线 * 12
+
+连线说明必要的说明首先上一张树莓派的引脚图
+然后是数码管引脚图一般四位一体数码管的引脚应该如下所示(未考证, F346AH 和 F346BH 是这样的)
+可以看到，一共有12个引脚。但是一共有 (7+1)*4 = 32 个小 led 灯。所以从理论上来说 12 个引脚是不能够控制所有 led">
+<meta name="twitter:image" content="http://Lisiur.com/./3.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 使用树莓派控制数码管 | Lisiur </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Lisiur</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                使用树莓派控制数码管
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-09-02T11:39:14+08:00" content="2017-09-02">
+              2017-09-02
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="设备"><a href="#设备" class="headerlink" title="设备"></a>设备</h2><ol>
+<li>树莓派开发板 * 1</li>
+<li>四位一体数码管 * 1 (我用的是 F346AH)</li>
+<li>母对母杜邦线 * 12</li>
+</ol>
+<h2 id="连线说明"><a href="#连线说明" class="headerlink" title="连线说明"></a>连线说明</h2><h3 id="必要的说明"><a href="#必要的说明" class="headerlink" title="必要的说明"></a>必要的说明</h3><p>首先上一张树莓派的引脚图<br><img src="./3.jpg" alt="树莓派引脚图"></p>
+<p>然后是数码管引脚图<br>一般四位一体数码管的引脚应该如下所示(未考证, F346AH 和 F346BH 是这样的)<br><img src="./2.png" alt="F346AH 引脚图"></p>
+<p>可以看到，一共有12个引脚。但是一共有 (7+1)*4 = 32 个小 led 灯。所以从理论上来说 12 个引脚是不能够控制所有 led 的。但伟大的劳动人们智慧是无穷的，他们想出了使用 12 个引脚控制 32 个 led 灯的方法：如上图所示，四个显示区的 a,b,c,d,e,f,g,dp 共用数码管的 a,b,c,d,e,f,g,dp 八个引脚，剩下的 1,2,3,4 四个引脚来控制显示哪一个区域。大家可能会有疑问，这样不还是不能同时控制所有的 led 灯吗。没错，这种方式只能控制四个区域中的一个，但如果我们循环显示每个区域呢，假如每个区域显示 1 秒之后就全部灭掉，然后显示下一个，这样你就会看到，四个区域都能够获得显示自己的机会，只是在我们看来是亮 1 秒 暗 3 秒。但是当我们把间隔时间调小，比如调到 0.005 秒，此时人眼是无法看出来某个区域在闪，这个时候每个区域看似就都能“同时”显示了。</p>
+<h3 id="连线"><a href="#连线" class="headerlink" title="连线"></a>连线</h3><p>引脚a =&gt; 26<br>引脚b =&gt; 19<br>引脚C =&gt; 13<br>引脚D =&gt; 6<br>引脚E =&gt; 5<br>引脚F =&gt; 11<br>引脚G =&gt; 9<br>引脚dp =&gt; 10</p>
+<p>DIGIT1 =&gt; 12<br>DIGIT2 =&gt; 16<br>DIGIT3 =&gt; 20<br>DIGIT4 =&gt; 21</p>
+<blockquote>
+<p>注意,这里我使用的是 BCM 模式, 所以 26 对应的是树莓派物理接口的 37, 19 对应的是树莓派物理接口的 35，以此类推</p>
+</blockquote>
+<h2 id="控制代码"><a href="#控制代码" class="headerlink" title="控制代码"></a>控制代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/python</span></div><div class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> RPi.GPIO <span class="keyword">as</span> GPIO</div><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line">GPIO.setmode(GPIO.BCM)</div><div class="line">GPIO.setwarnings(<span class="keyword">False</span>)</div><div class="line"></div><div class="line">LED_A = <span class="number">26</span></div><div class="line">LED_B = <span class="number">19</span></div><div class="line">LED_C = <span class="number">13</span></div><div class="line">LED_D = <span class="number">6</span></div><div class="line">LED_E = <span class="number">5</span></div><div class="line">LED_F = <span class="number">11</span></div><div class="line">LED_G = <span class="number">9</span></div><div class="line">LED_DP = <span class="number">10</span></div><div class="line"></div><div class="line">DIGIT1 = <span class="number">12</span></div><div class="line">DIGIT2 = <span class="number">16</span></div><div class="line">DIGIT3 = <span class="number">20</span></div><div class="line">DIGIT4 = <span class="number">21</span></div><div class="line"></div><div class="line">LEDS = [LED_A, LED_B, LED_C, LED_D, LED_E, LED_F, LED_G, LED_DP]</div><div class="line">DIGITS = [DIGIT4, DIGIT3, DIGIT2, DIGIT1]</div><div class="line"><span class="comment"># TABLE 是只显示数字时，0-9 对应的控制信息</span></div><div class="line"><span class="comment"># e.g.</span></div><div class="line"><span class="comment">#  dp g f e d c b a</span></div><div class="line"><span class="comment"># 0 1 1 0 0 0 0 0 0 =&gt; 0xC0</span></div><div class="line"><span class="comment"># 1 1 1 1 1 1 0 0 0 =&gt; 0xF9</span></div><div class="line"><span class="comment"># 以此类推</span></div><div class="line">TABLE = [<span class="number">0xC0</span>, <span class="number">0xF9</span>, <span class="number">0xA4</span>, <span class="number">0xB0</span>, <span class="number">0x99</span>, <span class="number">0x92</span>, <span class="number">0x82</span>, <span class="number">0xF8</span>, <span class="number">0x80</span>, <span class="number">0x90</span>]</div><div class="line"><span class="comment"># Table_WITH_DOT 是同时显示数字和点时，0-9 对应的控制信息</span></div><div class="line"><span class="comment"># e.g.</span></div><div class="line"><span class="comment">#  dp g f e d c b a</span></div><div class="line"><span class="comment"># 0 0 1 0 0 0 0 0 0 =&gt; 0x40</span></div><div class="line"><span class="comment"># 1 0 1 1 1 1 0 0 0 =&gt; 0x79</span></div><div class="line"><span class="comment"># 以此类推</span></div><div class="line">TABLE_WITH_DOT = [<span class="number">0x40</span>, <span class="number">0x79</span>, <span class="number">0x24</span>, <span class="number">0x30</span>, <span class="number">0x19</span>, <span class="number">0x12</span>, <span class="number">0x2</span>, <span class="number">0x78</span>, <span class="number">0x0</span>, <span class="number">0x10</span>]</div><div class="line"></div><div class="line"><span class="comment"># 将所有的区域都灭掉</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">turnOffAll</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">for</span> digit <span class="keyword">in</span> DIGITS:</div><div class="line">        GPIO.output(digit, <span class="keyword">True</span>)</div><div class="line"></div><div class="line"><span class="comment"># 当显示数字 o 时， 该区域第 n 个 led 是亮还是灭(即判断数字 o 对应控制信息转换成二进制后第 n 位是否为 1)</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">isOne</span><span class="params">(o, n)</span>:</span></div><div class="line">    <span class="keyword">return</span> ((o &gt;&gt; n) % <span class="number">2</span> == <span class="number">1</span>)</div><div class="line"></div><div class="line"><span class="comment"># 设置显示某个数字时，a,b,c,d,e,f,g,dp 对应引脚给上高或低电压</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">setDigit</span><span class="params">(num, showDP)</span>:</span></div><div class="line">    currentTable = TABLE_WITH_DOT <span class="keyword">if</span> showDP <span class="keyword">else</span> TABLE</div><div class="line">    <span class="keyword">for</span> index <span class="keyword">in</span> range(len(LEDS)):</div><div class="line">        GPIO.output(LEDS[index], <span class="keyword">not</span> isOne(currentTable[num], index))</div><div class="line"></div><div class="line"><span class="comment"># 显示第 no 区域，数字 num, showDP 代表显示数字时是否显示点</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">showDigit</span><span class="params">(no, num, showDP)</span>:</span></div><div class="line">    turnOffAll()</div><div class="line">    setDigit(num, showDP)</div><div class="line">    GPIO.output(DIGITS[no], <span class="keyword">False</span>)</div><div class="line"></div><div class="line"><span class="comment"># 初始化，将所有引脚插入的接口设为输出口</span></div><div class="line"><span class="keyword">for</span> IO_NUM <span class="keyword">in</span> (LEDS + DIGITS):</div><div class="line">    GPIO.setup(IO_NUM, GPIO.OUT)</div><div class="line"></div><div class="line"><span class="keyword">try</span>:</div><div class="line">    t = <span class="number">0.001</span> <span class="comment"># 每个区域显示的时间间隔</span></div><div class="line">    <span class="comment"># 因为这里我们要让前两个显示当前小时数，后两个显示当前分钟数，同时还要从左数第二个区域的点大约每隔0.5秒闪一下。所以这里我们使用 times 变量来记录小点亮灭后所经历的时间间隔次数</span></div><div class="line">    times = <span class="number">-1</span></div><div class="line">    showDP = <span class="keyword">False</span></div><div class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">        curTime = time.localtime(time.time())</div><div class="line">        curHour = int(time.strftime(<span class="string">"%H"</span>, curTime))</div><div class="line">        curMinute = int(time.strftime(<span class="string">"%M"</span>, curTime))</div><div class="line"></div><div class="line">        showDigit(<span class="number">3</span>, curHour // <span class="number">10</span>, <span class="keyword">False</span>)</div><div class="line">        time.sleep(t)</div><div class="line"></div><div class="line">        times += <span class="number">4</span></div><div class="line">        <span class="keyword">if</span> times &gt; <span class="number">500</span> :</div><div class="line">            showDP = <span class="keyword">not</span> showDP</div><div class="line">            times = <span class="number">0</span></div><div class="line">        showDigit(<span class="number">2</span>, curHour % <span class="number">10</span>, showDP)</div><div class="line">        time.sleep(t)</div><div class="line"></div><div class="line">        showDigit(<span class="number">1</span>, curMinute // <span class="number">10</span>, <span class="keyword">False</span>)</div><div class="line">        time.sleep(t)</div><div class="line"></div><div class="line">        showDigit(<span class="number">0</span>, curMinute % <span class="number">10</span>, <span class="keyword">False</span>)</div><div class="line">        time.sleep(t)</div><div class="line"></div><div class="line"><span class="keyword">except</span> KeyboardInterrupt:</div><div class="line">    <span class="keyword">pass</span></div><div class="line"></div><div class="line"><span class="comment"># 最后清理GPIO口（不做也可以，建议每次程序结束时清理一下，好习惯）</span></div><div class="line">GPIO.cleanup()</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/树莓派/" rel="tag">#树莓派</a>
+          
+            <a href="/tags/geek/" rel="tag">#geek</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/31/图片上传预览/" rel="next" title="图片上传预览">
+                <i class="fa fa-chevron-left"></i> 图片上传预览
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Lisiur Day" />
+          <p class="site-author-name" itemprop="name">Lisiur Day</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">45</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#设备"><span class="nav-number">1.</span> <span class="nav-text">设备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连线说明"><span class="nav-number">2.</span> <span class="nav-text">连线说明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#必要的说明"><span class="nav-number">2.1.</span> <span class="nav-text">必要的说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连线"><span class="nav-number">2.2.</span> <span class="nav-text">连线</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#控制代码"><span class="nav-number">3.</span> <span class="nav-text">控制代码</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lisiur Day</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+<p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
