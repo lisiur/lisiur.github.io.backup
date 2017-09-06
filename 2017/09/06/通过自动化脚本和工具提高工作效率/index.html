@@ -1,0 +1,650 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="bash,alfred," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="linux 上有个神器叫做 shell, 通过 shell 你可以给计算机下达任何指令。Mac 上有个神器叫做 Alfred, 通过 Alfred 你可以使用一个快捷键完成任何一个工作流。当 shell 遇见 Alfred，所有的工作流都只是抬手一挥间。
+
+今天我将通过工作中一个实际的例子来展示我是如何通过自动化脚本(bash)和工具(Alfred)来提高我的工作效率。
+事件起因事情是这样的，我">
+<meta property="og:type" content="article">
+<meta property="og:title" content="通过自动化脚本和工具提高工作效率">
+<meta property="og:url" content="http://Lisiur.com/2017/09/06/通过自动化脚本和工具提高工作效率/index.html">
+<meta property="og:site_name" content="Lisiur">
+<meta property="og:description" content="linux 上有个神器叫做 shell, 通过 shell 你可以给计算机下达任何指令。Mac 上有个神器叫做 Alfred, 通过 Alfred 你可以使用一个快捷键完成任何一个工作流。当 shell 遇见 Alfred，所有的工作流都只是抬手一挥间。
+
+今天我将通过工作中一个实际的例子来展示我是如何通过自动化脚本(bash)和工具(Alfred)来提高我的工作效率。
+事件起因事情是这样的，我">
+<meta property="og:image" content="http://Lisiur.com/./ifconfig.png">
+<meta property="og:image" content="http://Lisiur.com/./ip.png">
+<meta property="og:image" content="http://Lisiur.com/./alfred-workflow.png">
+<meta property="og:image" content="http://Lisiur.com/./result.png">
+<meta property="og:updated_time" content="2017-09-06T08:08:39.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="通过自动化脚本和工具提高工作效率">
+<meta name="twitter:description" content="linux 上有个神器叫做 shell, 通过 shell 你可以给计算机下达任何指令。Mac 上有个神器叫做 Alfred, 通过 Alfred 你可以使用一个快捷键完成任何一个工作流。当 shell 遇见 Alfred，所有的工作流都只是抬手一挥间。
+
+今天我将通过工作中一个实际的例子来展示我是如何通过自动化脚本(bash)和工具(Alfred)来提高我的工作效率。
+事件起因事情是这样的，我">
+<meta name="twitter:image" content="http://Lisiur.com/./ifconfig.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 通过自动化脚本和工具提高工作效率 | Lisiur </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Lisiur</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                通过自动化脚本和工具提高工作效率
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-09-06T13:40:18+08:00" content="2017-09-06">
+              2017-09-06
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>linux 上有个神器叫做 shell, 通过 shell 你可以给计算机下达任何指令。<br>Mac 上有个神器叫做 Alfred, 通过 Alfred 你可以使用一个快捷键完成任何一个工作流。<br>当 shell 遇见 Alfred，所有的工作流都只是抬手一挥间。</p>
+</blockquote>
+<p>今天我将通过工作中一个实际的例子来展示我是如何通过自动化脚本(bash)和工具(Alfred)来提高我的工作效率。</p>
+<h2 id="事件起因"><a href="#事件起因" class="headerlink" title="事件起因"></a>事件起因</h2><p>事情是这样的，我目前在负责公司门户前端的开发和维护，由于我们采用前后端分离的模式进行开发，所以我可以启动本地服务来伺服前端页面，而所有的异步请求则通过 proxy 代理到后端服务器上。原本是后端会单独在他的机器上启个服务，然后我把前端的请求通过内网代理到他的机器上进行调试。但考虑到前端改动较频繁，后端基本没有改动，加之后端抱怨单独开个服务影响其他工作的进行（公司的电脑，你懂得）。所以我们决定把前端的请求直接代理到已经运行在外网的服务器上，当然这需要部署应用的同事帮我单独设置个特殊代理，而他设置代理的过程就是添加一个特殊的代理配置，将我的 ip 代理到单独的一个上下文中。</p>
+<p>本来是个很简单的事情，但问题是，我使用自己的笔记本开发，一旦下班后把笔记本带回去，第二天我的 ip 就变了。于是接下来的事情可想而知，我每天早上都要把我的最新 ip 告诉那位帮我加代理的同事，而他每天都要帮我重新设置一下。</p>
+<p>大约两三个星期后吧，他跑过来教会了我如何自己配置代理……</p>
+<p>需要做的事情不多，总结起来就三件事：</p>
+<ol>
+<li>使用 ssh 远程登录服务器</li>
+<li>修改某个配置文件，将其 ip 更新为最新的</li>
+<li>重新加载配置文件</li>
+</ol>
+<p>但，作为一个懒猿，我才不会每天都一步步来完成以上这么无聊而又没有技术含量的操作呢</p>
+<p>于是就有了这篇文章 :)</p>
+<h2 id="开始自动化吧！"><a href="#开始自动化吧！" class="headerlink" title="开始自动化吧！"></a>开始自动化吧！</h2><p>首先我们来梳理下，完成这个工作流所需要做的清单：</p>
+<ol>
+<li>获取本机 ip</li>
+<li>登录远程服务器</li>
+<li>修改并重新加载配置文件</li>
+</ol>
+<p>好，接下来我们一步步来</p>
+<h3 id="获取本机-ip"><a href="#获取本机-ip" class="headerlink" title="获取本机 ip"></a>获取本机 ip</h3><p>大家都知道可以通过 <code>ifconfig</code>(linux) 或 <code>ipconfig</code>(windows) 命令来获 ip 信息。那些说通过百度 ip 的程序员就先靠边站吧 :) </p>
+<p>但是我们获取的一般是这样的结果：</p>
+<p><img src="./ifconfig.png" alt=""></p>
+<p>额，你能一眼看到你的 ip 地址吗？反正我每次找起来都挺费力的。我们能不能只获取 ip 呢？可以的，做到这个我们所需要的只是一行脚本而已:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ifconfig | grep <span class="string">'inet'</span> | grep -v <span class="string">'inet6'</span> | grep -v <span class="string">'127.0.0.1'</span> | cut <span class="_">-d</span> <span class="string">' '</span> <span class="_">-f</span>2 | awk <span class="string">'&#123; print $1 &#125;'</span></div></pre></td></tr></table></figure>
+<p><img src="./ip.png" alt=""></p>
+<p>Good Job!</p>
+<h3 id="登录远程主机"><a href="#登录远程主机" class="headerlink" title="登录远程主机"></a>登录远程主机</h3><p>一般我们都会选择 ssh 来登录远程主机(linux)，方便快捷安全，当然要选择他了。</p>
+<p>ssh 登录的一般格式是：<code>ssh username@host</code></p>
+<p>比如我们要使用 lisiur这个用户的身份登录一个 ip 为 192.168.31.110 的主机。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh lisiur@192.168.31.110</div></pre></td></tr></table></figure>
+<p>回车后，它会要求你输入用户密码，然后你就再输入密码回车，就可以进入远程主机的 shell 了(当然，前提是密码正确)。</p>
+<p>每次都要输密码，好烦哦，能不输密码吗？可以的，我们只需输入两行命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa</div><div class="line">ssh-copy-id username@host</div></pre></td></tr></table></figure>
+<p>第一个命令回车后会让你设置密码，这里我们保留密码为空，一路回车就好，这时会在本地用户主目录下生成<code>.ssh/id_rsa</code> 和 <code>.ssh/id_rsa.pub</code> 这两个文件。<code>id_rsa</code> 就是你的私钥，<code>id_rsa.pub</code> 就是你的公钥了。</p>
+<p>第二个命令会将你的公钥上传到目标服务器的 <code>.ssh/authorized_keys</code> 文件中。</p>
+<p>这样，下次再次使用 ssh 登录远程主机时会带上你的私钥，远程主机拿着你的私钥匹配之前上传的公钥，匹配成功就可以确认你的身份而省去输入密码的步骤。</p>
+<p>每次都要输入远程主机的 ip 地址，我记不住啊！能不输入 ip 就登录远程主机吗？可以的，我们要做的就是编辑一个文件：</p>
+<p>我们可以通过编辑主目录下的 <code>.ssh/config</code> 文件（没有就新建一个），来配置登录主机的别名：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 加上下面的配置</div><div class="line">Host lisiur</div><div class="line">    HostName 192.168.31.110</div><div class="line">    User lisiur</div></pre></td></tr></table></figure>
+<p>如此，下次我们再登录这台主机时就只需要敲下这么一个命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh lisiur</div></pre></td></tr></table></figure>
+<p>Awesome!</p>
+<h3 id="修改并重新加载配置文件"><a href="#修改并重新加载配置文件" class="headerlink" title="修改并重新加载配置文件"></a>修改并重新加载配置文件</h3><p>重新加载配置文件比较简单，我们在终端执行指定的命令即可。有意思的是如何修改配置文件。</p>
+<p>大家也许会说，修改文件还不简单，使用 vim 直接打开修改再保存不就好了？是的，确实是这样，但这不够极客，也不利于我们最终将这一套流程整理成脚本来处理。</p>
+<p>需要注意的是，我们修改的这个文件只是将原先的 ip 改为最新的 ip 即可。这其实是一个替换操作，如何在不打开文件的前提下修改文件内容呢？sed 和 awk 都是可以的，这里我选择了使用 sed。</p>
+<p>我们需要修改的文件大概长这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/lisiur</div><div class="line">    proxy http://172.20.5.165:8080;</div></pre></td></tr></table></figure>
+<p> 我们要做的就是把 172.20.5.165:8080 替换成目标 ip，使用 sed 操作的命令大概长这样：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">pattern1=<span class="string">"http://.*;"</span></div><div class="line">pattern2=<span class="string">"http://<span class="variable">$1</span>;"</span></div><div class="line">sed -i <span class="_">-e</span> <span class="string">"s#<span class="variable">$pattern1</span>#<span class="variable">$pattern2</span>#g"</span> filename</div></pre></td></tr></table></figure>
+<p> 最后我们可以把这步的操作写成一个脚本：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/sh</span></div><div class="line">pattern1=<span class="string">"http://.*;"</span></div><div class="line">pattern2=<span class="string">"http://<span class="variable">$1</span>;"</span></div><div class="line">sed -i <span class="_">-e</span> <span class="string">"s#<span class="variable">$pattern1</span>#<span class="variable">$pattern2</span>#g"</span> config_file_path</div><div class="line"></div><div class="line">result=`nginx -t | grep success`</div><div class="line"><span class="keyword">if</span> [[ result != <span class="string">''</span> ]]</div><div class="line"><span class="keyword">then</span></div><div class="line">  `nginx <span class="_">-s</span> reload` &amp;&amp; <span class="built_in">echo</span> success</div><div class="line"><span class="keyword">else</span></div><div class="line">  <span class="built_in">echo</span> <span class="string">"fail"</span></div><div class="line"><span class="keyword">fi</span></div></pre></td></tr></table></figure>
+<p> 我们将上面的脚本保存为 ‘update_proxy.sh’，于是我们可以使用如下命令将配置文件的 ip 更新为 192.168.31.120 并重新加载该配置</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./update_proxy.sh 192.168.31.120:8080</div></pre></td></tr></table></figure>
+<p> Perfect!</p>
+<h3 id="All-Together"><a href="#All-Together" class="headerlink" title="All Together"></a>All Together</h3><p> 如此一来，我的工作就简单了，只要一个命令获取本机 ip，然后 ssh 登录远程主机，并执行 update_proxy.sh 脚本即可完成操作。</p>
+<p> 可是这样还是很繁琐，能不能只输入一个命令就完成所有操作呢？当然可以。为了不在远程主机上留下痕迹，我选择把 update_proxy.sh 拿到本地，然后通过 ssh 使远程主机执行本地脚本(这步是可选的)。</p>
+<p>把他们结合起来就是：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ip=`ifconfig | grep <span class="string">'inet'</span> | grep -v <span class="string">'inet6'</span> | grep -v <span class="string">'127.0.0.1'</span> | cut <span class="_">-d</span> <span class="string">' '</span> <span class="_">-f</span>2 | awk <span class="string">'&#123; print $1 &#125;'</span>`</div><div class="line">ssh lisiur <span class="string">"bash -s"</span> &lt; ./update_proxy.sh <span class="string">"<span class="variable">$ip</span>:8080"</span></div></pre></td></tr></table></figure>
+<p>如此我们只需要执行这一个脚本就可以完成所有操作了。</p>
+<p>可是我不想打开终端，敲任何指令怎么办呢？</p>
+<p>在 Mac 上开发的同学就可以使用 Alfred 这款神器了。 简单的说 Alfred 就是一个工作流管理软件，通过它你可以将各种脚本和输入输出组合起来，最终通过一个快捷键来触发。对于他，我的评价就是买了 Mac 不装 Alfred，你就浪费了一半左右的钱。</p>
+<p>由于我们这个脚本比较简单，使用的只是一个触发方式，因此我们只需要在 Alfred 里新建一个工作流，并定义一个触发关键词(比如 upp)，然后在工作流里执行我们写好的 bash 脚本就好了（哦，对了，如果你不喜欢 bash，Alfred 也支持 python 哦） </p>
+<p><img src="./alfred-workflow.png" alt=""></p>
+<h3 id="A-Brand-New-Day"><a href="#A-Brand-New-Day" class="headerlink" title="A Brand New Day"></a>A Brand New Day</h3><p>这样，每天早上来到公司，只需要打开电脑，敲下 Alt-Space 打开 Alfred 关键词触发窗口，输入 upp 并回车，看到如下的提示后，就可以愉快的调试前端代码了。</p>
+<p><img src="./result.png" alt=""></p>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><p>如果我什么也不想敲，就想让他更新配置可以吗？好吧，真够懒的，不过也是可以的。</p>
+<p>linux 系列的小伙伴可以使用 crontab 来给系统加个定时任务，比如每周一到周五的早上九点执行该脚本。详细操作流程感兴趣的可以自己 Google 一下。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/bash/" rel="tag">#bash</a>
+          
+            <a href="/tags/alfred/" rel="tag">#alfred</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/02/使用树莓派控制数码管/" rel="next" title="使用树莓派控制数码管">
+                <i class="fa fa-chevron-left"></i> 使用树莓派控制数码管
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Lisiur Day" />
+          <p class="site-author-name" itemprop="name">Lisiur Day</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">46</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#事件起因"><span class="nav-number">1.</span> <span class="nav-text">事件起因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始自动化吧！"><span class="nav-number">2.</span> <span class="nav-text">开始自动化吧！</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取本机-ip"><span class="nav-number">2.1.</span> <span class="nav-text">获取本机 ip</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#登录远程主机"><span class="nav-number">2.2.</span> <span class="nav-text">登录远程主机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改并重新加载配置文件"><span class="nav-number">2.3.</span> <span class="nav-text">修改并重新加载配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#All-Together"><span class="nav-number">2.4.</span> <span class="nav-text">All Together</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A-Brand-New-Day"><span class="nav-number">2.5.</span> <span class="nav-text">A Brand New Day</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写在后面"><span class="nav-number">3.</span> <span class="nav-text">写在后面</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lisiur Day</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+<p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
