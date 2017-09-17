@@ -1,0 +1,640 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="fp,haskell," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="一些基本概念Haskell 是一门纯函数式语言，在它的众多实现中，有两个被广泛应用，Hugs 和 GHC。Hugs 是一个解释器，主要用于教学。GHC(Glasgow Haskell Compiler)更加注重实践。
+GHC 主要有三个部分组成。
+
+ghc 是生成本地原生代码的优化编译器。
+ghci 是一个交互解释器和调试器。
+runghc 是一个以脚本形式运行 Haskell 代码的程序
+
+
+g">
+<meta property="og:type" content="article">
+<meta property="og:title" content="跟着 Haskell 学函数式编程（一）：入门">
+<meta property="og:url" content="http://Lisiur.com/2017/09/17/跟着-Haskell-学函数式编程（一）：入门/index.html">
+<meta property="og:site_name" content="Lisiur">
+<meta property="og:description" content="一些基本概念Haskell 是一门纯函数式语言，在它的众多实现中，有两个被广泛应用，Hugs 和 GHC。Hugs 是一个解释器，主要用于教学。GHC(Glasgow Haskell Compiler)更加注重实践。
+GHC 主要有三个部分组成。
+
+ghc 是生成本地原生代码的优化编译器。
+ghci 是一个交互解释器和调试器。
+runghc 是一个以脚本形式运行 Haskell 代码的程序
+
+
+g">
+<meta property="og:updated_time" content="2017-09-17T09:39:15.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="跟着 Haskell 学函数式编程（一）：入门">
+<meta name="twitter:description" content="一些基本概念Haskell 是一门纯函数式语言，在它的众多实现中，有两个被广泛应用，Hugs 和 GHC。Hugs 是一个解释器，主要用于教学。GHC(Glasgow Haskell Compiler)更加注重实践。
+GHC 主要有三个部分组成。
+
+ghc 是生成本地原生代码的优化编译器。
+ghci 是一个交互解释器和调试器。
+runghc 是一个以脚本形式运行 Haskell 代码的程序
+
+
+g">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 跟着 Haskell 学函数式编程（一）：入门 | Lisiur </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Lisiur</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                跟着 Haskell 学函数式编程（一）：入门
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-09-17T16:20:05+08:00" content="2017-09-17">
+              2017-09-17
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="一些基本概念"><a href="#一些基本概念" class="headerlink" title="一些基本概念"></a>一些基本概念</h2><p>Haskell 是一门纯函数式语言，在它的众多实现中，有两个被广泛应用，Hugs 和 GHC。Hugs 是一个解释器，主要用于教学。GHC(Glasgow Haskell Compiler)更加注重实践。</p>
+<p>GHC 主要有三个部分组成。</p>
+<ol>
+<li><strong>ghc</strong> 是生成本地原生代码的优化编译器。</li>
+<li><strong>ghci</strong> 是一个交互解释器和调试器。</li>
+<li><strong>runghc</strong> 是一个以脚本形式运行 Haskell 代码的程序</li>
+</ol>
+<blockquote>
+<p>ghci 是 Haskell 的一个交互解释器和调试器。就像 Python 的 python，Node 的 node 或是 Ruby 的 irb。在 ghci 中我们可以方便的学习和调试 Haskell 代码。</p>
+</blockquote>
+<h2 id="Haskell-的类型"><a href="#Haskell-的类型" class="headerlink" title="Haskell 的类型"></a>Haskell 的类型</h2><p>Haskell 是静态类型的，也就是说在编译时，每个表达式的类型都已明确。与 Java 和 C 不同，haskell 支持类型推导。写下一个数字，你就没必要另外告诉 haskell 说“它是个数字”，它自己就能推导出来。如此，我们在保证安全性的同时不失代码的简洁性。</p>
+<p>定义字符变量（C系列 vs Haskell）</p>
+<p>C/C++/Java<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">char</span> a = <span class="string">'a'</span>;</div></pre></td></tr></table></figure></p>
+<p>Haskell<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">a</span> = 'a'</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>在 ghci 中可以使用 :t 命令显示任何表达式的类型</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Prelude&gt; a = 1</div><div class="line">Prelude&gt; :t a</div><div class="line">a :: Char</div></pre></td></tr></table></figure>
+<blockquote>
+<p><code>x :: y</code> 表示 x 的类型为 y</p>
+</blockquote>
+<p>如下是 Haskell 的几个常见的类型：</p>
+<ol>
+<li><strong>Int</strong> 表示整数。7可以是Int，但7.2不可以。Int是有界的，也就是说它由上限和下限。对32位的机器而言，上限一般是214748364，下限是-214748364。</li>
+<li><strong>Integer</strong> 表示…也是整数，但它是无界的。这就意味着可以用它存放非常非常大的数，我是说非常大。它的效率不如Int高。</li>
+<li><strong>Float</strong> 表示单精度的浮点数。</li>
+<li><strong>Double</strong> 表示双精度的浮点数。</li>
+<li><strong>Bool</strong> 表示布尔值，它只有两种值：True和False。</li>
+<li><strong>Char</strong> 表示一个字符。一个字符由单引号括起，一组字符的List即为字符串。</li>
+</ol>
+<h2 id="Haskell-的类型变量"><a href="#Haskell-的类型变量" class="headerlink" title="Haskell 的类型变量"></a>Haskell 的类型变量</h2><p>类型变量有点类似于其他语言中的泛型，使用类型变量可以让我们轻而易举写出类型无关的函数。使用到类型变量的函数被称作“多态函数”。</p>
+<p>fst 函数可以从一个二元Tuple中取得第一个元素，我们看看它的类型：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Prelude&gt; :t fst</div><div class="line">fst :: (a, b) -&gt; a</div></pre></td></tr></table></figure>
+<p>这里的 a,b 即为类型变量，它可以代表任何类型，我们根据这个类型声明可以知道的是，函数输入的这样一个二元组：第一个元素类型是 a，第二个类型元素是 b（类型 b 可以和类型 a 可以相同），而函数输出的是和第一个元素的类型相同的值。</p>
+<h2 id="Haskell-的类型类"><a href="#Haskell-的类型类" class="headerlink" title="Haskell 的类型类"></a>Haskell 的类型类</h2><p>类型定义行为的接口，如果一个类型属于某类型类，那它必实现了该类型类所描述的行为。很多从OOP走过来的人们往往会把类型类当成面向对象语言中的类而感到疑惑，厄，它们不是一回事。易于理解起见，你可以把它看做是java中接口（interface）的类似物。</p>
+<p>我们先来看个最普通的函数的类型声明：<code>==</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">:t (==)</div><div class="line">(==) :: Eq a =&gt; a -&gt; a -&gt; Bool</div></pre></td></tr></table></figure>
+<p>有意思的是，我们看到了一个新的符号：<code>=&gt;</code>。它的左边的部分叫做类型约束。在没有胖箭头的时候，a 可以代表任何类型，但胖箭头对它进行了类型约束：a 只能是实现 Eq 接口的类型。这里的 Eq 就是类型类的一种。</p>
+<p>Haskell 常见的类型类如下：</p>
+<ol>
+<li><strong>Eq</strong> 这一类型类提供了判断相等性的接口，凡是可比较相等性的类型必属于 Eq 类。Eq 包含可判断相等性的类型。提供实现的函数是 == 和 /= 。所以，只要一个函数有 Eq 类的类型限制，那么它就必定在定义中用到了 == 和 /= 。除函数以外的所有类型都属于 Eq，所以它们都可以判断相等性。</li>
+<li><strong>Ord</strong> 包含可比较大小的类型。除了函数以外，我们目前所谈到的所有类型都属于Ord类。Ord包中包含了&lt;,&gt;,&lt;=,&gt;=之类用于比较大小的函数。compare函数取两个Ord类中的相同类型的值作参数，返回比较的结果。这个结果是如下三种类型之一：GT,LT,EQ。</li>
+<li><strong>Show</strong> 的成员为可用字符串表示的类型。目前为止，除函数以外的所有类型都是Show的成员。操作Show类型类，最常用的函数表示show。它可以取任一Show的成员类型并将其转为字符串。</li>
+<li><strong>Read</strong> 是与Show相反的类型类。read函数可以将一个字符串转为Read的某成员类型。</li>
+<li><strong>Enum</strong> 的成员都是连续的类型–也就是可枚举。Enum类存在的主要好处就在于我们可以在Range中用到它的成员类型：每个值都有后继子(successer)和前置子(predecesor)，分别可以通过succ函数和pred函数得到。该类型类包含的类型有：(),Bool,Char,Ordering,Int,Integer,Float和Double。</li>
+<li><strong>Bounded</strong> 的成员都有一个上限和下限。</li>
+<li><strong>Num</strong> 是表示数字的类型类，它的成员类型都具有数字的特征。</li>
+<li><strong>Integral</strong> 同样是表示数字的类型类。Num包含所有的数字：实数和整数。而Intgral仅包含整数，其中的成员类型有Int和Integer。</li>
+<li><strong>Floating</strong> 仅包含浮点类型：Float和Double。</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/fp/" rel="tag">#fp</a>
+          
+            <a href="/tags/haskell/" rel="tag">#haskell</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/06/通过自动化脚本和工具提高工作效率/" rel="next" title="通过自动化脚本和工具提高工作效率">
+                <i class="fa fa-chevron-left"></i> 通过自动化脚本和工具提高工作效率
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Lisiur Day" />
+          <p class="site-author-name" itemprop="name">Lisiur Day</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">47</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一些基本概念"><span class="nav-number">1.</span> <span class="nav-text">一些基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Haskell-的类型"><span class="nav-number">2.</span> <span class="nav-text">Haskell 的类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Haskell-的类型变量"><span class="nav-number">3.</span> <span class="nav-text">Haskell 的类型变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Haskell-的类型类"><span class="nav-number">4.</span> <span class="nav-text">Haskell 的类型类</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lisiur Day</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+<p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
