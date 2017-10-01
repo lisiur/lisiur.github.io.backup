@@ -1,0 +1,604 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="fp,haskell," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="作为一门纯函数式编程语言，函数在 haskell 中的重要性不言而喻
+调用函数Haskell 中调用函数的一般格式如下：1func arg1 arg2 ...
+
+参数不需要括号包裹，参数间也不需要逗号隔开（使用空格）
+
+因为函数应用的优先级比操作符高，因此下面两个表达式是相等的：12compare 2 3 == LT -- True(compare 2 3) == LT -- True
+有时候考虑">
+<meta property="og:type" content="article">
+<meta property="og:title" content="跟着-Haskell-学函数式编程（三）：函数">
+<meta property="og:url" content="http://Lisiur.com/2017/09/30/跟着-Haskell-学函数式编程（三）：函数/index.html">
+<meta property="og:site_name" content="Lisiur">
+<meta property="og:description" content="作为一门纯函数式编程语言，函数在 haskell 中的重要性不言而喻
+调用函数Haskell 中调用函数的一般格式如下：1func arg1 arg2 ...
+
+参数不需要括号包裹，参数间也不需要逗号隔开（使用空格）
+
+因为函数应用的优先级比操作符高，因此下面两个表达式是相等的：12compare 2 3 == LT -- True(compare 2 3) == LT -- True
+有时候考虑">
+<meta property="og:updated_time" content="2017-09-26T11:28:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="跟着-Haskell-学函数式编程（三）：函数">
+<meta name="twitter:description" content="作为一门纯函数式编程语言，函数在 haskell 中的重要性不言而喻
+调用函数Haskell 中调用函数的一般格式如下：1func arg1 arg2 ...
+
+参数不需要括号包裹，参数间也不需要逗号隔开（使用空格）
+
+因为函数应用的优先级比操作符高，因此下面两个表达式是相等的：12compare 2 3 == LT -- True(compare 2 3) == LT -- True
+有时候考虑">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 跟着-Haskell-学函数式编程（三）：函数 | Lisiur </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Lisiur</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                跟着-Haskell-学函数式编程（三）：函数
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-09-30T15:57:55+08:00" content="2017-09-30">
+              2017-09-30
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>作为一门纯函数式编程语言，函数在 haskell 中的重要性不言而喻</p>
+<h2 id="调用函数"><a href="#调用函数" class="headerlink" title="调用函数"></a>调用函数</h2><p>Haskell 中调用函数的一般格式如下：<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">func</span> arg1 arg2 ...</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>参数不需要括号包裹，参数间也不需要逗号隔开（使用空格）</p>
+</blockquote>
+<p>因为函数应用的优先级比操作符高，因此下面两个表达式是相等的：<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="title">compare</span> <span class="number">2</span> <span class="number">3</span> == <span class="type">LT</span> <span class="comment">-- True</span></div><div class="line">(compare <span class="number">2</span> <span class="number">3</span>) == <span class="type">LT</span> <span class="comment">-- True</span></div></pre></td></tr></table></figure></p>
+<p>有时候考虑可读性会添加一些额外的括号，而有时候，则必须使用括号来确保编译器理解一个复杂的表达式：<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">compare</span> (sqrt <span class="number">3</span>) (sqrt <span class="number">6</span>) <span class="comment">-- LT</span></div></pre></td></tr></table></figure></p>
+<h2 id="函数类型"><a href="#函数类型" class="headerlink" title="函数类型"></a>函数类型</h2><p>函数是有类型的。简单的说，函数的作用就是将某个（些）类型的数据映射为另一个（些）类型的数据，而函数的类型就是描述函数的这种行为。<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="type">Prelude</span>&gt; :t words</div><div class="line"><span class="title">words</span> :: <span class="type">String</span> -&gt; [<span class="type">String</span>]</div></pre></td></tr></table></figure></p>
+<p>根据上面的例子，我们知道 words 函数的类型为 <code>String -&gt; [String]</code>(<code>-&gt;</code>可以读作“映射到”)。<br>而，<code>words :: String -&gt; [String]</code>被称为函数 words 的类型签名。<br>知道函数的类型或类型签名有什么用呢？<br>一方面，在我们不知道这个函数的具体作用时，我们可以通过函数的类型推导出函数的作用。以 words 为例，它的作用是把一个 Sting 型数据映射为一个包含 String 型的数组，再联想到 words 这个词的含义，我们大体可以猜出这是一个字符串分割函数。<br>另一方面，编译器可以在编译的时候，通过类型签名自行推导函数在组合时的正确性，以减少错误。值得注意的是，我们在定义函数时可以手动书写函数的类型签名，也可以省略不写，编译器会自行推导函数的类型签名。</p>
+<h2 id="纯度"><a href="#纯度" class="headerlink" title="纯度"></a>纯度</h2><p>副作用本质上是函数的一种不可见的（invisible）输入或输出。Haskell 的函数在默认情况下都是无副作用的：函数的结果只取决于显式传入的参数。<br>我们将带副作用的函数称为“不纯（impure）函数”，而将不带副作用的函数称为“纯（pure）函数”。<br>从类型签名可以看出一个 Haskell 函数是否带有副作用 —— 不纯函数的类型签名都以 IO 开头：<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="type">Prelude</span>&gt; :<span class="class"><span class="keyword">type</span> readFile</span></div><div class="line"><span class="title">readFile</span> :: <span class="type">FilePath</span> -&gt; <span class="type">IO</span> <span class="type">String</span></div></pre></td></tr></table></figure></p>
+<h2 id="函数定义"><a href="#函数定义" class="headerlink" title="函数定义"></a>函数定义</h2><p>我们先来定义一个最简单的函数：<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">add</span> a b = a + b</div></pre></td></tr></table></figure></p>
+<p><code>=</code> 左边的 add 和 a b 是函数名和函数参数，而右面的 a + b 则是函数体，也称为表达式<br>这个时候我们可以看看定义的这个函数的类型签名长啥样：<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="type">Prelude</span>&gt; :t add</div><div class="line"><span class="title">add</span> :: <span class="type">Num</span> a =&gt; a -&gt; a -&gt; a</div></pre></td></tr></table></figure></p>
+<p>可以看到，编译器自动给 add 推导出了它的函数签名，从函数签名中我们可以看到，函数 add 把属于 Num 类型类的两个相同类型数据映射为该类型的一个数据。<br>如果我只想让 add 计算 Int 型的数据该怎么办呢？这时我们可以在定义函数时，手动给它加上类型签名：<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="title">add'</span> :: <span class="type">Int</span> -&gt; <span class="type">Int</span> -&gt; <span class="type">Int</span></div><div class="line"><span class="title">add'</span> a b = a + b</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>我们一般给实现相同或类似功能的函数后面加上<code>&#39;</code>以标识</p>
+</blockquote>
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>在 Haskell 里，可以使用变量来赋予表达式名字：一旦变量绑定了（也即是，关联起）某个表达式，那么这个变量的值就不会改变 —— 我们总能用这个变量来指代它所关联的表达式，并且每次都会得到同样的结果。<br>如果你曾经用过命令式语言，就会发现 Haskell 的变量和命令式语言的变量很不同：在命令式语言里，一个变量通常用于标识一个内存位置（或者其他类似的东西），并且在任何时候，都可以随意修改这个变量的值。因此在不同时间点上，访问这个变量得出的值可能是完全不同的。<br>对变量的这两种不同的处理方式产生了巨大的差别： 在 Haskell 程序里面， 当变量和表达式绑定之后， 我们总能将变量替换成相应的表达式。 但是在声明式语言里面就没有办法做这样的替换，因为变量的值可能无时不刻都处在改变当中。</p>
+<blockquote>
+<p>我们大概可以把 Haskell 里的变量理解为其他编程语言的 const 声明</p>
+</blockquote>
+<h3 id="条件求值"><a href="#条件求值" class="headerlink" title="条件求值"></a>条件求值</h3>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/fp/" rel="tag">#fp</a>
+          
+            <a href="/tags/haskell/" rel="tag">#haskell</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/24/跟着-Haskell-学函数式编程（二）：List-和-Tuple/" rel="next" title="跟着 Haskell 学函数式编程（二）：List 和 Tuple ">
+                <i class="fa fa-chevron-left"></i> 跟着 Haskell 学函数式编程（二）：List 和 Tuple 
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Lisiur Day" />
+          <p class="site-author-name" itemprop="name">Lisiur Day</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">49</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#调用函数"><span class="nav-number">1.</span> <span class="nav-text">调用函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数类型"><span class="nav-number">2.</span> <span class="nav-text">函数类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#纯度"><span class="nav-number">3.</span> <span class="nav-text">纯度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数定义"><span class="nav-number">4.</span> <span class="nav-text">函数定义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#变量"><span class="nav-number">4.1.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#条件求值"><span class="nav-number">4.2.</span> <span class="nav-text">条件求值</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lisiur Day</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+<p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
