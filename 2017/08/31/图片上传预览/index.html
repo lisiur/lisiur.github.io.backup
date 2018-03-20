@@ -84,43 +84,18 @@
 
 
 
-<meta name="description" content="要想实现图片上传前预览，只需两步：
-
-第一步： 获取上传图片的地址。
-第二步： 让 img 标签显示该图片
-
-获取上传图片地址通过 FileReader API
-兼容 IE10+ 及其他主流浏览器
-
-1&amp;lt;input type=&apos;file&apos; id=&apos;file&apos;&amp;gt;
-123456var file = document.getElementById(&apos;file&apos;).files[0]var re">
+<meta name="description" content="要想实现图片上传前预览，只需两步：  第一步： 获取上传图片的地址。 第二步： 让 img 标签显示该图片  获取上传图片地址通过 FileReader API 兼容 IE10+ 及其他主流浏览器  1&amp;lt;input type=&apos;file&apos; id=&apos;file&apos;&amp;gt; 123456var file = document.getElementById(&apos;file&apos;).files[0]var re">
+<meta name="keywords" content="IE,上传">
 <meta property="og:type" content="article">
 <meta property="og:title" content="图片上传预览">
 <meta property="og:url" content="http://Lisiur.com/2017/08/31/图片上传预览/index.html">
 <meta property="og:site_name" content="Lisiur">
-<meta property="og:description" content="要想实现图片上传前预览，只需两步：
-
-第一步： 获取上传图片的地址。
-第二步： 让 img 标签显示该图片
-
-获取上传图片地址通过 FileReader API
-兼容 IE10+ 及其他主流浏览器
-
-1&amp;lt;input type=&apos;file&apos; id=&apos;file&apos;&amp;gt;
-123456var file = document.getElementById(&apos;file&apos;).files[0]var re">
+<meta property="og:description" content="要想实现图片上传前预览，只需两步：  第一步： 获取上传图片的地址。 第二步： 让 img 标签显示该图片  获取上传图片地址通过 FileReader API 兼容 IE10+ 及其他主流浏览器  1&amp;lt;input type=&apos;file&apos; id=&apos;file&apos;&amp;gt; 123456var file = document.getElementById(&apos;file&apos;).files[0]var re">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-08-31T13:50:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图片上传预览">
-<meta name="twitter:description" content="要想实现图片上传前预览，只需两步：
-
-第一步： 获取上传图片的地址。
-第二步： 让 img 标签显示该图片
-
-获取上传图片地址通过 FileReader API
-兼容 IE10+ 及其他主流浏览器
-
-1&amp;lt;input type=&apos;file&apos; id=&apos;file&apos;&amp;gt;
-123456var file = document.getElementById(&apos;file&apos;).files[0]var re">
+<meta name="twitter:description" content="要想实现图片上传前预览，只需两步：  第一步： 获取上传图片的地址。 第二步： 让 img 标签显示该图片  获取上传图片地址通过 FileReader API 兼容 IE10+ 及其他主流浏览器  1&amp;lt;input type=&apos;file&apos; id=&apos;file&apos;&amp;gt; 123456var file = document.getElementById(&apos;file&apos;).files[0]var re">
 
 
 
@@ -316,20 +291,20 @@
 <h1 id="获取上传图片地址"><a href="#获取上传图片地址" class="headerlink" title="获取上传图片地址"></a>获取上传图片地址</h1><h2 id="通过-FileReader-API"><a href="#通过-FileReader-API" class="headerlink" title="通过 FileReader API"></a>通过 FileReader API</h2><blockquote>
 <p>兼容 IE10+ 及其他主流浏览器</p>
 </blockquote>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'file'</span> <span class="attr">id</span>=<span class="string">'file'</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> file = <span class="built_in">document</span>.getElementById(<span class="string">'file'</span>).files[<span class="number">0</span>]</div><div class="line"><span class="keyword">var</span> reader = <span class="keyword">new</span> FileReader()</div><div class="line">reader.readAsDataURL(file)</div><div class="line">reader.onload = <span class="function"><span class="keyword">function</span>(<span class="params">evt</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> url = evt.target.result</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'file'</span> <span class="attr">id</span>=<span class="string">'file'</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> file = <span class="built_in">document</span>.getElementById(<span class="string">'file'</span>).files[<span class="number">0</span>]</span><br><span class="line"><span class="keyword">var</span> reader = <span class="keyword">new</span> FileReader()</span><br><span class="line">reader.readAsDataURL(file)</span><br><span class="line">reader.onload = <span class="function"><span class="keyword">function</span>(<span class="params">evt</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> url = evt.target.result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="通过-URL-API-createObjectUrl"><a href="#通过-URL-API-createObjectUrl" class="headerlink" title="通过 URL API: createObjectUrl"></a>通过 URL API: createObjectUrl</h2><blockquote>
 <p>兼容 IE10+ 及其他主流浏览器(该方法处于实验阶段)</p>
 </blockquote>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'file'</span> <span class="attr">id</span>=<span class="string">'file'</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> file = <span class="built_in">document</span>.getElementById(<span class="string">'file'</span>).files[<span class="number">0</span>]</div><div class="line"><span class="keyword">var</span> URL = <span class="built_in">window</span>.URL || <span class="built_in">window</span>.webkitURL</div><div class="line"><span class="keyword">var</span> url = URL.createObjectURL(file)</div><div class="line"></div><div class="line">url.revokeObjectURL(url) <span class="comment">// 使用完 url 后要手动释放内存</span></div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'file'</span> <span class="attr">id</span>=<span class="string">'file'</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> file = <span class="built_in">document</span>.getElementById(<span class="string">'file'</span>).files[<span class="number">0</span>]</span><br><span class="line"><span class="keyword">var</span> URL = <span class="built_in">window</span>.URL || <span class="built_in">window</span>.webkitURL</span><br><span class="line"><span class="keyword">var</span> url = URL.createObjectURL(file)</span><br><span class="line"></span><br><span class="line">url.revokeObjectURL(url) <span class="comment">// 使用完 url 后要手动释放内存</span></span><br></pre></td></tr></table></figure>
 <h2 id="通过-document-selection"><a href="#通过-document-selection" class="headerlink" title="通过 document.selection"></a>通过 document.selection</h2><blockquote>
 <p>兼容 IE9 及以下，取到的是绝对路径</p>
 </blockquote>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'file'</span> <span class="attr">id</span>=<span class="string">'file'</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> file = <span class="built_in">document</span>.getElementById(<span class="string">'file'</span>)</div><div class="line">file.select();</div><div class="line"><span class="keyword">var</span> url = <span class="built_in">document</span>.selection.createRange().text</div></pre></td></tr></table></figure>
-<h1 id="使-img-显示图片"><a href="#使-img-显示图片" class="headerlink" title="使 img 显示图片"></a>使 img 显示图片</h1><h2 id="IE6、IE10-和-其他主流浏览器直接赋值"><a href="#IE6、IE10-和-其他主流浏览器直接赋值" class="headerlink" title="IE6、IE10+ 和 其他主流浏览器直接赋值"></a>IE6、IE10+ 和 其他主流浏览器直接赋值</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">img.src = url</div></pre></td></tr></table></figure>
-<h2 id="IE7-8-9-需要使用-filter"><a href="#IE7-8-9-需要使用-filter" class="headerlink" title="IE7,8,9 需要使用 filter"></a>IE7,8,9 需要使用 filter</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">img.style.filter = <span class="string">"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src=\""</span> + url + <span class="string">"\")"</span></div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'file'</span> <span class="attr">id</span>=<span class="string">'file'</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> file = <span class="built_in">document</span>.getElementById(<span class="string">'file'</span>)</span><br><span class="line">file.select();</span><br><span class="line"><span class="keyword">var</span> url = <span class="built_in">document</span>.selection.createRange().text</span><br></pre></td></tr></table></figure>
+<h1 id="使-img-显示图片"><a href="#使-img-显示图片" class="headerlink" title="使 img 显示图片"></a>使 img 显示图片</h1><h2 id="IE6、IE10-和-其他主流浏览器直接赋值"><a href="#IE6、IE10-和-其他主流浏览器直接赋值" class="headerlink" title="IE6、IE10+ 和 其他主流浏览器直接赋值"></a>IE6、IE10+ 和 其他主流浏览器直接赋值</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">img.src = url</span><br></pre></td></tr></table></figure>
+<h2 id="IE7-8-9-需要使用-filter"><a href="#IE7-8-9-需要使用-filter" class="headerlink" title="IE7,8,9 需要使用 filter"></a>IE7,8,9 需要使用 filter</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">img.style.filter = <span class="string">"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src=\""</span> + url + <span class="string">"\")"</span></span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -456,7 +431,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -503,8 +478,8 @@
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

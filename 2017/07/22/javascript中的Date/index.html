@@ -84,22 +84,18 @@
 
 
 
-<meta name="description" content="在介绍 javascript 中的 Date 前，我们需要了解下以下几个概念~~
-GMT
-GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区的皇家格林尼治天文台当地的标准时间，因为本初子午线被定义为通过那里的经线。自1924年2月5日开始，格林尼治天文台负责每隔一小时向全世界发放调时信息。理论上来说，格林尼治标准时间的正午是指当太阳横穿格林尼治子午线时（也就是在">
+<meta name="description" content="在介绍 javascript 中的 Date 前，我们需要了解下以下几个概念~~ GMT GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区的皇家格林尼治天文台当地的标准时间，因为本初子午线被定义为通过那里的经线。自1924年2月5日开始，格林尼治天文台负责每隔一小时向全世界发放调时信息。理论上来说，格林尼治标准时间的正午是指当太阳横穿格林尼治子午线时（也就是在">
+<meta name="keywords" content="javascript,date">
 <meta property="og:type" content="article">
 <meta property="og:title" content="javascript中的Date">
 <meta property="og:url" content="http://Lisiur.com/2017/07/22/javascript中的Date/index.html">
 <meta property="og:site_name" content="Lisiur">
-<meta property="og:description" content="在介绍 javascript 中的 Date 前，我们需要了解下以下几个概念~~
-GMT
-GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区的皇家格林尼治天文台当地的标准时间，因为本初子午线被定义为通过那里的经线。自1924年2月5日开始，格林尼治天文台负责每隔一小时向全世界发放调时信息。理论上来说，格林尼治标准时间的正午是指当太阳横穿格林尼治子午线时（也就是在">
+<meta property="og:description" content="在介绍 javascript 中的 Date 前，我们需要了解下以下几个概念~~ GMT GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区的皇家格林尼治天文台当地的标准时间，因为本初子午线被定义为通过那里的经线。自1924年2月5日开始，格林尼治天文台负责每隔一小时向全世界发放调时信息。理论上来说，格林尼治标准时间的正午是指当太阳横穿格林尼治子午线时（也就是在">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-07-23T08:37:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript中的Date">
-<meta name="twitter:description" content="在介绍 javascript 中的 Date 前，我们需要了解下以下几个概念~~
-GMT
-GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区的皇家格林尼治天文台当地的标准时间，因为本初子午线被定义为通过那里的经线。自1924年2月5日开始，格林尼治天文台负责每隔一小时向全世界发放调时信息。理论上来说，格林尼治标准时间的正午是指当太阳横穿格林尼治子午线时（也就是在">
+<meta name="twitter:description" content="在介绍 javascript 中的 Date 前，我们需要了解下以下几个概念~~ GMT GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区的皇家格林尼治天文台当地的标准时间，因为本初子午线被定义为通过那里的经线。自1924年2月5日开始，格林尼治天文台负责每隔一小时向全世界发放调时信息。理论上来说，格林尼治标准时间的正午是指当太阳横穿格林尼治子午线时（也就是在">
 
 
 
@@ -328,11 +324,11 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
 <h4 id="日期时间组合表示"><a href="#日期时间组合表示" class="headerlink" title="日期时间组合表示"></a>日期时间组合表示</h4><p>YYYY-MM-DDTHH:mm:ss / YYYYMMDDTHHmmss =&gt; 2017-07-23T00:00:00+08:00 /<br>20170723T000000+08 / 2017-07-22T16:00:00Z / 20170722T160000Z</p>
 <h2 id="Date"><a href="#Date" class="headerlink" title="Date"></a>Date</h2><p>好了，有了上面的基础我们就可以来聊聊 javascript 中的 Date 类型了。</p>
 <h3 id="new-Date"><a href="#new-Date" class="headerlink" title="new Date()"></a>new Date()</h3><p>在 javascript 中创建一个日期对象，只需要 <code>new Date()</code><br>即可，默认返回的是当前时间的日期对象。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>()</div><div class="line"><span class="comment">// Sun Jul 23 2017 01:02:24 GMT+0800 (CST)</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line"><span class="comment">// Sun Jul 23 2017 01:02:24 GMT+0800 (CST)</span></span><br></pre></td></tr></table></figure>
 <p>在 Chrome<br>的控制台中，我们看到他返回的是基于本地时间表示的格林尼治时间。其实这是调用<br> <code>Date.prototype.toString</code> 所表示的结果，而一个 Date<br>对象所表示的时间的真实面目是自1970年1月1日(UTC)起的毫秒数。<br>因此我们可以在创建 Date 对象时给他传一个 Number 类型的毫秒数来生成指定日期。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">0</span>)</div><div class="line"><span class="comment">// Thu Jan 01 1970 08:00:00 GMT+0800 (CST)</span></div><div class="line"></div><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">1500743506413</span>)</div><div class="line"><span class="comment">// Sun Jul 23 2017 01:11:46 GMT+0800 (CST)</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">0</span>)</span><br><span class="line"><span class="comment">// Thu Jan 01 1970 08:00:00 GMT+0800 (CST)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">1500743506413</span>)</span><br><span class="line"><span class="comment">// Sun Jul 23 2017 01:11:46 GMT+0800 (CST)</span></span><br></pre></td></tr></table></figure>
 <p>显然，如果我们要表示一个时间时，不可能先计算下其毫秒数，因此， javascript<br>还提供了以下两种创建指定时间的方法：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(year, month[, day, hour, minutes, seconds, milliseconds]]]]])</div><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(dateString)</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(year, month[, day, hour, minutes, seconds, milliseconds]]]]])</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(dateString)</span><br></pre></td></tr></table></figure>
 <p>第一种方式如同其参数所示，至少传 year 和 month<br>两个参数，其他可以选择性的传递或不传递，如果不传递的话默认算作0(除day之外)或1(day), 值得一提的是这里传的任意参数可以大于或小于合理时间，相邻的数值会自动得到调整，比如 <code>new Date(2017, 5, 31)</code>等于<code>new Date(2017, 6, 1)</code>。这里面有个隐藏的技巧，可以快速计算出某年某月的天数，下面会介绍~</p>
 <blockquote>
 <p>注意：代表月份的整数值从0(1月)到11(12月)</p>
@@ -361,7 +357,7 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
 <h3 id="Getter"><a href="#Getter" class="headerlink" title="Getter"></a>Getter</h3><p>Date.prototype.getDate()<br>Date.prototype.getDay()<br>Date.prototype.getFullYear()<br>Date.prototype.getHours()<br>Date.prototype.getMilliseconds()<br>Date.prototype.getMinutes()<br>Date.prototype.getMonth()<br>Date.prototype.getSeconds()<br>Date.prototype.getTime()<br>Date.prototype.getTimezoneOffset()<br>Date.prototype.getUTCDate()<br>Date.prototype.getUTCDay()<br>Date.prototype.getUTCFullYear()<br>Date.prototype.getUTCHours()<br>Date.prototype.getUTCMilliseconds()<br>Date.prototype.getUTCMinutes()<br>Date.prototype.getUTCMonth()<br>Date.prototype.getUTCSeconds()</p>
 <h3 id="Setter"><a href="#Setter" class="headerlink" title="Setter"></a>Setter</h3><p>Date.prototype.setDate()<br>Date.prototype.setFullYear()<br>Date.prototype.setHours()<br>Date.prototype.setMilliseconds()<br>Date.prototype.setMinutes()<br>Date.prototype.setMonth()<br>Date.prototype.setSeconds()<br>Date.prototype.setTime()<br>Date.prototype.setUTCDate()<br>Date.prototype.setUTCFullYear()<br>Date.prototype.setUTCHours()<br>Date.prototype.setUTCMilliseconds()<br>Date.prototype.setUTCMinutes()<br>Date.prototype.setUTCMonth()<br>Date.prototype.setUTCSeconds()<br>Date.prototype.setYear() </p>
 <h3 id="Conversion-getter"><a href="#Conversion-getter" class="headerlink" title="Conversion getter"></a>Conversion getter</h3><p>Date.prototype.toDateString()<br>Date.prototype.toISOString()<br>Date.prototype.toJSON()<br>Date.prototype.toGMTString()<br>Date.prototype.toLocaleDateString()<br>Date.prototype.toLocaleFormat()<br>Date.prototype.toLocaleString()<br>Date.prototype.toLocaleTimeString()<br>Date.prototype.toSource()<br>Date.prototype.toString()<br>Date.prototype.toTimeString()<br>Date.prototype.toUTCString()<br>Date.prototype.valueOf()</p>
-<h2 id="Trick"><a href="#Trick" class="headerlink" title="Trick"></a>Trick</h2><h3 id="获取某月天数"><a href="#获取某月天数" class="headerlink" title="获取某月天数"></a>获取某月天数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(year, month, <span class="number">0</span>).getDate()</div></pre></td></tr></table></figure>
+<h2 id="Trick"><a href="#Trick" class="headerlink" title="Trick"></a>Trick</h2><h3 id="获取某月天数"><a href="#获取某月天数" class="headerlink" title="获取某月天数"></a>获取某月天数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(year, month, <span class="number">0</span>).getDate()</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>无需判断二月是否为闰月，也不用判断是大小月。<br>思路是这样的，既然我要获取某月的天数，那么如果我能表示该月最后一天，然后调用 getDate() 拿到的天数就是该月的天数了。问题是，如何表示该月最后一天呢，这就要借助于 Date 构造函数的这个特性：当Date作为构造函数调用并传入多个参数时，如果数值不在合理范围时（如月份为13或者分钟数为70），相邻的数值会被调整。因此我可以通过给 day 传0来得到上一个月最后一天。</p>
 </blockquote>
@@ -492,7 +488,7 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -539,8 +535,8 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

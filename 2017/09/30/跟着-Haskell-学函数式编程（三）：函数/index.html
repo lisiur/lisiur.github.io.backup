@@ -84,34 +84,18 @@
 
 
 
-<meta name="description" content="作为一门纯函数式编程语言，函数在 haskell 中的重要性不言而喻
-调用函数Haskell 中调用函数的一般格式如下：1func arg1 arg2 ...
-
-参数不需要括号包裹，参数间也不需要逗号隔开（使用空格）
-
-因为函数应用的优先级比操作符高，因此下面两个表达式是相等的：12compare 2 3 == LT -- True(compare 2 3) == LT -- True
-有时候考虑">
+<meta name="description" content="作为一门纯函数式编程语言，函数在 haskell 中的重要性不言而喻 调用函数Haskell 中调用函数的一般格式如下：1func arg1 arg2 ...  参数不需要括号包裹，参数间也不需要逗号隔开（使用空格）  因为函数应用的优先级比操作符高，因此下面两个表达式是相等的：12compare 2 3 == LT -- True(compare 2 3) == LT -- True 有时候考虑">
+<meta name="keywords" content="fp,haskell">
 <meta property="og:type" content="article">
 <meta property="og:title" content="跟着-Haskell-学函数式编程（三）：函数">
 <meta property="og:url" content="http://Lisiur.com/2017/09/30/跟着-Haskell-学函数式编程（三）：函数/index.html">
 <meta property="og:site_name" content="Lisiur">
-<meta property="og:description" content="作为一门纯函数式编程语言，函数在 haskell 中的重要性不言而喻
-调用函数Haskell 中调用函数的一般格式如下：1func arg1 arg2 ...
-
-参数不需要括号包裹，参数间也不需要逗号隔开（使用空格）
-
-因为函数应用的优先级比操作符高，因此下面两个表达式是相等的：12compare 2 3 == LT -- True(compare 2 3) == LT -- True
-有时候考虑">
+<meta property="og:description" content="作为一门纯函数式编程语言，函数在 haskell 中的重要性不言而喻 调用函数Haskell 中调用函数的一般格式如下：1func arg1 arg2 ...  参数不需要括号包裹，参数间也不需要逗号隔开（使用空格）  因为函数应用的优先级比操作符高，因此下面两个表达式是相等的：12compare 2 3 == LT -- True(compare 2 3) == LT -- True 有时候考虑">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-09-26T11:28:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="跟着-Haskell-学函数式编程（三）：函数">
-<meta name="twitter:description" content="作为一门纯函数式编程语言，函数在 haskell 中的重要性不言而喻
-调用函数Haskell 中调用函数的一般格式如下：1func arg1 arg2 ...
-
-参数不需要括号包裹，参数间也不需要逗号隔开（使用空格）
-
-因为函数应用的优先级比操作符高，因此下面两个表达式是相等的：12compare 2 3 == LT -- True(compare 2 3) == LT -- True
-有时候考虑">
+<meta name="twitter:description" content="作为一门纯函数式编程语言，函数在 haskell 中的重要性不言而喻 调用函数Haskell 中调用函数的一般格式如下：1func arg1 arg2 ...  参数不需要括号包裹，参数间也不需要逗号隔开（使用空格）  因为函数应用的优先级比操作符高，因此下面两个表达式是相等的：12compare 2 3 == LT -- True(compare 2 3) == LT -- True 有时候考虑">
 
 
 
@@ -300,18 +284,18 @@
 
       
         <p>作为一门纯函数式编程语言，函数在 haskell 中的重要性不言而喻</p>
-<h2 id="调用函数"><a href="#调用函数" class="headerlink" title="调用函数"></a>调用函数</h2><p>Haskell 中调用函数的一般格式如下：<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">func</span> arg1 arg2 ...</div></pre></td></tr></table></figure></p>
+<h2 id="调用函数"><a href="#调用函数" class="headerlink" title="调用函数"></a>调用函数</h2><p>Haskell 中调用函数的一般格式如下：<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">func</span> arg1 arg2 ...</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>参数不需要括号包裹，参数间也不需要逗号隔开（使用空格）</p>
 </blockquote>
-<p>因为函数应用的优先级比操作符高，因此下面两个表达式是相等的：<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="title">compare</span> <span class="number">2</span> <span class="number">3</span> == <span class="type">LT</span> <span class="comment">-- True</span></div><div class="line">(compare <span class="number">2</span> <span class="number">3</span>) == <span class="type">LT</span> <span class="comment">-- True</span></div></pre></td></tr></table></figure></p>
-<p>有时候考虑可读性会添加一些额外的括号，而有时候，则必须使用括号来确保编译器理解一个复杂的表达式：<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">compare</span> (sqrt <span class="number">3</span>) (sqrt <span class="number">6</span>) <span class="comment">-- LT</span></div></pre></td></tr></table></figure></p>
-<h2 id="函数类型"><a href="#函数类型" class="headerlink" title="函数类型"></a>函数类型</h2><p>函数是有类型的。简单的说，函数的作用就是将某个（些）类型的数据映射为另一个（些）类型的数据，而函数的类型就是描述函数的这种行为。<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="type">Prelude</span>&gt; :t words</div><div class="line"><span class="title">words</span> :: <span class="type">String</span> -&gt; [<span class="type">String</span>]</div></pre></td></tr></table></figure></p>
+<p>因为函数应用的优先级比操作符高，因此下面两个表达式是相等的：<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">compare</span> <span class="number">2</span> <span class="number">3</span> == <span class="type">LT</span> <span class="comment">-- True</span></span><br><span class="line">(compare <span class="number">2</span> <span class="number">3</span>) == <span class="type">LT</span> <span class="comment">-- True</span></span><br></pre></td></tr></table></figure></p>
+<p>有时候考虑可读性会添加一些额外的括号，而有时候，则必须使用括号来确保编译器理解一个复杂的表达式：<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">compare</span> (sqrt <span class="number">3</span>) (sqrt <span class="number">6</span>) <span class="comment">-- LT</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="函数类型"><a href="#函数类型" class="headerlink" title="函数类型"></a>函数类型</h2><p>函数是有类型的。简单的说，函数的作用就是将某个（些）类型的数据映射为另一个（些）类型的数据，而函数的类型就是描述函数的这种行为。<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Prelude</span>&gt; :t words</span><br><span class="line"><span class="title">words</span> :: <span class="type">String</span> -&gt; [<span class="type">String</span>]</span><br></pre></td></tr></table></figure></p>
 <p>根据上面的例子，我们知道 words 函数的类型为 <code>String -&gt; [String]</code>(<code>-&gt;</code>可以读作“映射到”)。<br>而，<code>words :: String -&gt; [String]</code>被称为函数 words 的类型签名。<br>知道函数的类型或类型签名有什么用呢？<br>一方面，在我们不知道这个函数的具体作用时，我们可以通过函数的类型推导出函数的作用。以 words 为例，它的作用是把一个 Sting 型数据映射为一个包含 String 型的数组，再联想到 words 这个词的含义，我们大体可以猜出这是一个字符串分割函数。<br>另一方面，编译器可以在编译的时候，通过类型签名自行推导函数在组合时的正确性，以减少错误。值得注意的是，我们在定义函数时可以手动书写函数的类型签名，也可以省略不写，编译器会自行推导函数的类型签名。</p>
-<h2 id="纯度"><a href="#纯度" class="headerlink" title="纯度"></a>纯度</h2><p>副作用本质上是函数的一种不可见的（invisible）输入或输出。Haskell 的函数在默认情况下都是无副作用的：函数的结果只取决于显式传入的参数。<br>我们将带副作用的函数称为“不纯（impure）函数”，而将不带副作用的函数称为“纯（pure）函数”。<br>从类型签名可以看出一个 Haskell 函数是否带有副作用 —— 不纯函数的类型签名都以 IO 开头：<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="type">Prelude</span>&gt; :<span class="class"><span class="keyword">type</span> readFile</span></div><div class="line"><span class="title">readFile</span> :: <span class="type">FilePath</span> -&gt; <span class="type">IO</span> <span class="type">String</span></div></pre></td></tr></table></figure></p>
-<h2 id="函数定义"><a href="#函数定义" class="headerlink" title="函数定义"></a>函数定义</h2><p>我们先来定义一个最简单的函数：<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">add</span> a b = a + b</div></pre></td></tr></table></figure></p>
-<p><code>=</code> 左边的 add 和 a b 是函数名和函数参数，而右面的 a + b 则是函数体，也称为表达式<br>这个时候我们可以看看定义的这个函数的类型签名长啥样：<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="type">Prelude</span>&gt; :t add</div><div class="line"><span class="title">add</span> :: <span class="type">Num</span> a =&gt; a -&gt; a -&gt; a</div></pre></td></tr></table></figure></p>
-<p>可以看到，编译器自动给 add 推导出了它的函数签名，从函数签名中我们可以看到，函数 add 把属于 Num 类型类的两个相同类型数据映射为该类型的一个数据。<br>如果我只想让 add 计算 Int 型的数据该怎么办呢？这时我们可以在定义函数时，手动给它加上类型签名：<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="title">add'</span> :: <span class="type">Int</span> -&gt; <span class="type">Int</span> -&gt; <span class="type">Int</span></div><div class="line"><span class="title">add'</span> a b = a + b</div></pre></td></tr></table></figure></p>
+<h2 id="纯度"><a href="#纯度" class="headerlink" title="纯度"></a>纯度</h2><p>副作用本质上是函数的一种不可见的（invisible）输入或输出。Haskell 的函数在默认情况下都是无副作用的：函数的结果只取决于显式传入的参数。<br>我们将带副作用的函数称为“不纯（impure）函数”，而将不带副作用的函数称为“纯（pure）函数”。<br>从类型签名可以看出一个 Haskell 函数是否带有副作用 —— 不纯函数的类型签名都以 IO 开头：<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Prelude</span>&gt; :<span class="class"><span class="keyword">type</span> readFile</span></span><br><span class="line"><span class="title">readFile</span> :: <span class="type">FilePath</span> -&gt; <span class="type">IO</span> <span class="type">String</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="函数定义"><a href="#函数定义" class="headerlink" title="函数定义"></a>函数定义</h2><p>我们先来定义一个最简单的函数：<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">add</span> a b = a + b</span><br></pre></td></tr></table></figure></p>
+<p><code>=</code> 左边的 add 和 a b 是函数名和函数参数，而右面的 a + b 则是函数体，也称为表达式<br>这个时候我们可以看看定义的这个函数的类型签名长啥样：<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Prelude</span>&gt; :t add</span><br><span class="line"><span class="title">add</span> :: <span class="type">Num</span> a =&gt; a -&gt; a -&gt; a</span><br></pre></td></tr></table></figure></p>
+<p>可以看到，编译器自动给 add 推导出了它的函数签名，从函数签名中我们可以看到，函数 add 把属于 Num 类型类的两个相同类型数据映射为该类型的一个数据。<br>如果我只想让 add 计算 Int 型的数据该怎么办呢？这时我们可以在定义函数时，手动给它加上类型签名：<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">add'</span> :: <span class="type">Int</span> -&gt; <span class="type">Int</span> -&gt; <span class="type">Int</span></span><br><span class="line"><span class="title">add'</span> a b = a + b</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>我们一般给实现相同或类似功能的函数后面加上<code>&#39;</code>以标识</p>
 </blockquote>
@@ -446,7 +430,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -493,8 +477,8 @@
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

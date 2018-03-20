@@ -84,19 +84,18 @@
 
 
 
-<meta name="description" content="koa 是如此的轻量，以至于路由模块都没有配备。因此，我们需要手动控制路由，就像下面这样：
-1234567app.use(async (ctx, next) =&amp;gt; &amp;#123;  if (ctx.request.method === &apos;GET&apos;) &amp;#123;    if (ctx.request.url === &apos;/&apos;) &amp;#123;      ctx.body = &apos;GET index&apos;">
+<meta name="description" content="koa 是如此的轻量，以至于路由模块都没有配备。因此，我们需要手动控制路由，就像下面这样： 1234567app.use(async (ctx, next) =&amp;gt; &amp;#123;  if (ctx.request.method === &apos;GET&apos;) &amp;#123;    if (ctx.request.url === &apos;/&apos;) &amp;#123;      ctx.body = &apos;GET index&apos;">
+<meta name="keywords" content="koa,node">
 <meta property="og:type" content="article">
 <meta property="og:title" content="koa 学习笔记(二)：路由">
 <meta property="og:url" content="http://Lisiur.com/2017/08/26/koa-学习笔记-二-：路由/index.html">
 <meta property="og:site_name" content="Lisiur">
-<meta property="og:description" content="koa 是如此的轻量，以至于路由模块都没有配备。因此，我们需要手动控制路由，就像下面这样：
-1234567app.use(async (ctx, next) =&amp;gt; &amp;#123;  if (ctx.request.method === &apos;GET&apos;) &amp;#123;    if (ctx.request.url === &apos;/&apos;) &amp;#123;      ctx.body = &apos;GET index&apos;">
+<meta property="og:description" content="koa 是如此的轻量，以至于路由模块都没有配备。因此，我们需要手动控制路由，就像下面这样： 1234567app.use(async (ctx, next) =&amp;gt; &amp;#123;  if (ctx.request.method === &apos;GET&apos;) &amp;#123;    if (ctx.request.url === &apos;/&apos;) &amp;#123;      ctx.body = &apos;GET index&apos;">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-08-26T15:00:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="koa 学习笔记(二)：路由">
-<meta name="twitter:description" content="koa 是如此的轻量，以至于路由模块都没有配备。因此，我们需要手动控制路由，就像下面这样：
-1234567app.use(async (ctx, next) =&amp;gt; &amp;#123;  if (ctx.request.method === &apos;GET&apos;) &amp;#123;    if (ctx.request.url === &apos;/&apos;) &amp;#123;      ctx.body = &apos;GET index&apos;">
+<meta name="twitter:description" content="koa 是如此的轻量，以至于路由模块都没有配备。因此，我们需要手动控制路由，就像下面这样： 1234567app.use(async (ctx, next) =&amp;gt; &amp;#123;  if (ctx.request.method === &apos;GET&apos;) &amp;#123;    if (ctx.request.url === &apos;/&apos;) &amp;#123;      ctx.body = &apos;GET index&apos;">
 
 
 
@@ -285,12 +284,12 @@
 
       
         <p>koa 是如此的轻量，以至于路由模块都没有配备。因此，我们需要手动控制路由，就像下面这样：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">app.use(<span class="keyword">async</span> (ctx, next) =&gt; &#123;</div><div class="line">  <span class="keyword">if</span> (ctx.request.method === <span class="string">'GET'</span>) &#123;</div><div class="line">    <span class="keyword">if</span> (ctx.request.url === <span class="string">'/'</span>) &#123;</div><div class="line">      ctx.body = <span class="string">'GET index'</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">app.use(<span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (ctx.request.method === <span class="string">'GET'</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (ctx.request.url === <span class="string">'/'</span>) &#123;</span><br><span class="line">      ctx.body = <span class="string">'GET index'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>那么稍微复杂点的路由呢，比如匹配<code>/user/:username</code>这样的路由，我们可以自己做下正则匹配,就像这样：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">app.use(<span class="keyword">async</span> (ctx, next) =&gt; &#123;</div><div class="line">  <span class="keyword">if</span> (ctx.request.method === <span class="string">'GET'</span>) &#123;</div><div class="line">    <span class="keyword">let</span> username = ctx.request.url.match(<span class="regexp">/^\/user\/([^/]+)$/</span>)</div><div class="line">    username = username &amp;&amp; username[<span class="number">1</span>]</div><div class="line">    <span class="keyword">if</span> (username) &#123;</div><div class="line">      ctx.body = <span class="string">`GET user:<span class="subst">$&#123;username&#125;</span>`</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">app.use(<span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (ctx.request.method === <span class="string">'GET'</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> username = ctx.request.url.match(<span class="regexp">/^\/user\/([^/]+)$/</span>)</span><br><span class="line">    username = username &amp;&amp; username[<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">if</span> (username) &#123;</span><br><span class="line">      ctx.body = <span class="string">`GET user:<span class="subst">$&#123;username&#125;</span>`</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p>那么更复杂的路由呢，比如匹配<code>/user/:username/post/:postname/comments/:commentername</code>这样的路由，(⊙v⊙)嗯，少年请留步，或许我们可以不用自己来做这么无聊而又易出错的处理，因为<code>koa-router</code>已经帮我们做好了 :)</p>
 <p>好，下面我们使用<code>koa-router</code>改写以上代码：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">'koa'</span>)</div><div class="line"><span class="keyword">const</span> Router = <span class="built_in">require</span>(<span class="string">'koa-router'</span>)</div><div class="line"></div><div class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa()</div><div class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> Router()</div><div class="line"></div><div class="line">router.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">ctx, next</span>) </span>&#123;</div><div class="line">  ctx.body = <span class="string">'GET index'</span></div><div class="line">&#125;)</div><div class="line"></div><div class="line">router.get(<span class="string">'/user:username'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">ctx, next</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> username = ctx.params.username</div><div class="line">  ctx.body = <span class="string">`GET user:<span class="subst">$&#123;username&#125;</span>`</span></div><div class="line">&#125;)</div><div class="line"></div><div class="line">app.use(router.routes())</div><div class="line"></div><div class="line">app.listen(<span class="number">3001</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">'koa'</span>)</span><br><span class="line"><span class="keyword">const</span> Router = <span class="built_in">require</span>(<span class="string">'koa-router'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa()</span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> Router()</span><br><span class="line"></span><br><span class="line">router.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">ctx, next</span>) </span>&#123;</span><br><span class="line">  ctx.body = <span class="string">'GET index'</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">router.get(<span class="string">'/user:username'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">ctx, next</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> username = ctx.params.username</span><br><span class="line">  ctx.body = <span class="string">`GET user:<span class="subst">$&#123;username&#125;</span>`</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.use(router.routes())</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3001</span>)</span><br></pre></td></tr></table></figure>
 <p>当然 <code>koa-router</code> 提供的功能远不止这些，等待大家自己去挖掘了~</p>
 
       
@@ -419,7 +418,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -466,8 +465,8 @@
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

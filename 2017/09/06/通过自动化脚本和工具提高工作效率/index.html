@@ -84,30 +84,23 @@
 
 
 
-<meta name="description" content="linux 上有个神器叫做 shell, 通过 shell 你可以给计算机下达任何指令。Mac 上有个神器叫做 Alfred, 通过 Alfred 你可以使用一个快捷键完成任何一个工作流。当 shell 遇见 Alfred，所有的工作流都只是抬手一挥间。
-
-今天我将通过工作中一个实际的例子来展示我是如何通过自动化脚本(bash)和工具(Alfred)来提高我的工作效率。
-事件起因事情是这样的，我">
+<meta name="description" content="linux 上有个神器叫做 shell, 通过 shell 你可以给计算机下达任何指令。Mac 上有个神器叫做 Alfred, 通过 Alfred 你可以使用一个快捷键完成任何一个工作流。当 shell 遇见 Alfred，所有的工作流都只是抬手一挥间。  今天我将通过工作中一个实际的例子来展示我是如何通过自动化脚本(bash)和工具(Alfred)来提高我的工作效率。 事件起因事情是这样的，我">
+<meta name="keywords" content="bash,alfred">
 <meta property="og:type" content="article">
 <meta property="og:title" content="通过自动化脚本和工具提高工作效率">
 <meta property="og:url" content="http://Lisiur.com/2017/09/06/通过自动化脚本和工具提高工作效率/index.html">
 <meta property="og:site_name" content="Lisiur">
-<meta property="og:description" content="linux 上有个神器叫做 shell, 通过 shell 你可以给计算机下达任何指令。Mac 上有个神器叫做 Alfred, 通过 Alfred 你可以使用一个快捷键完成任何一个工作流。当 shell 遇见 Alfred，所有的工作流都只是抬手一挥间。
-
-今天我将通过工作中一个实际的例子来展示我是如何通过自动化脚本(bash)和工具(Alfred)来提高我的工作效率。
-事件起因事情是这样的，我">
-<meta property="og:image" content="http://Lisiur.com/./ifconfig.png">
-<meta property="og:image" content="http://Lisiur.com/./ip.png">
-<meta property="og:image" content="http://Lisiur.com/./alfred-workflow.png">
-<meta property="og:image" content="http://Lisiur.com/./result.png">
+<meta property="og:description" content="linux 上有个神器叫做 shell, 通过 shell 你可以给计算机下达任何指令。Mac 上有个神器叫做 Alfred, 通过 Alfred 你可以使用一个快捷键完成任何一个工作流。当 shell 遇见 Alfred，所有的工作流都只是抬手一挥间。  今天我将通过工作中一个实际的例子来展示我是如何通过自动化脚本(bash)和工具(Alfred)来提高我的工作效率。 事件起因事情是这样的，我">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://lisiur.com/2017/09/06/通过自动化脚本和工具提高工作效率/ifconfig.png">
+<meta property="og:image" content="http://lisiur.com/2017/09/06/通过自动化脚本和工具提高工作效率/ip.png">
+<meta property="og:image" content="http://lisiur.com/2017/09/06/通过自动化脚本和工具提高工作效率/alfred-workflow.png">
+<meta property="og:image" content="http://lisiur.com/2017/09/06/通过自动化脚本和工具提高工作效率/result.png">
 <meta property="og:updated_time" content="2017-09-06T08:08:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="通过自动化脚本和工具提高工作效率">
-<meta name="twitter:description" content="linux 上有个神器叫做 shell, 通过 shell 你可以给计算机下达任何指令。Mac 上有个神器叫做 Alfred, 通过 Alfred 你可以使用一个快捷键完成任何一个工作流。当 shell 遇见 Alfred，所有的工作流都只是抬手一挥间。
-
-今天我将通过工作中一个实际的例子来展示我是如何通过自动化脚本(bash)和工具(Alfred)来提高我的工作效率。
-事件起因事情是这样的，我">
-<meta name="twitter:image" content="http://Lisiur.com/./ifconfig.png">
+<meta name="twitter:description" content="linux 上有个神器叫做 shell, 通过 shell 你可以给计算机下达任何指令。Mac 上有个神器叫做 Alfred, 通过 Alfred 你可以使用一个快捷键完成任何一个工作流。当 shell 遇见 Alfred，所有的工作流都只是抬手一挥间。  今天我将通过工作中一个实际的例子来展示我是如何通过自动化脚本(bash)和工具(Alfred)来提高我的工作效率。 事件起因事情是这样的，我">
+<meta name="twitter:image" content="http://lisiur.com/2017/09/06/通过自动化脚本和工具提高工作效率/ifconfig.png">
 
 
 
@@ -321,41 +314,41 @@
 <p>但是我们获取的一般是这样的结果：</p>
 <p><img src="./ifconfig.png" alt=""></p>
 <p>额，你能一眼看到你的 ip 地址吗？反正我每次找起来都挺费力的。我们能不能只获取 ip 呢？可以的，做到这个我们所需要的只是一行脚本而已:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ifconfig | grep <span class="string">'inet'</span> | grep -v <span class="string">'inet6'</span> | grep -v <span class="string">'127.0.0.1'</span> | cut <span class="_">-d</span> <span class="string">' '</span> <span class="_">-f</span>2 | awk <span class="string">'&#123; print $1 &#125;'</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig | grep <span class="string">'inet'</span> | grep -v <span class="string">'inet6'</span> | grep -v <span class="string">'127.0.0.1'</span> | cut -d <span class="string">' '</span> -f2 | awk <span class="string">'&#123; print $1 &#125;'</span></span><br></pre></td></tr></table></figure>
 <p><img src="./ip.png" alt=""></p>
 <p>Good Job!</p>
 <h3 id="登录远程主机"><a href="#登录远程主机" class="headerlink" title="登录远程主机"></a>登录远程主机</h3><p>一般我们都会选择 ssh 来登录远程主机(linux)，方便快捷安全，当然要选择他了。</p>
 <p>ssh 登录的一般格式是：<code>ssh username@host</code></p>
 <p>比如我们要使用 lisiur这个用户的身份登录一个 ip 为 192.168.31.110 的主机。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh lisiur@192.168.31.110</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh lisiur@192.168.31.110</span><br></pre></td></tr></table></figure>
 <p>回车后，它会要求你输入用户密码，然后你就再输入密码回车，就可以进入远程主机的 shell 了(当然，前提是密码正确)。</p>
 <p>每次都要输密码，好烦哦，能不输密码吗？可以的，我们只需输入两行命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa</div><div class="line">ssh-copy-id username@host</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br><span class="line">ssh-copy-id username@host</span><br></pre></td></tr></table></figure>
 <p>第一个命令回车后会让你设置密码，这里我们保留密码为空，一路回车就好，这时会在本地用户主目录下生成<code>.ssh/id_rsa</code> 和 <code>.ssh/id_rsa.pub</code> 这两个文件。<code>id_rsa</code> 就是你的私钥，<code>id_rsa.pub</code> 就是你的公钥了。</p>
 <p>第二个命令会将你的公钥上传到目标服务器的 <code>.ssh/authorized_keys</code> 文件中。</p>
 <p>这样，下次再次使用 ssh 登录远程主机时会带上你的私钥，远程主机拿着你的私钥匹配之前上传的公钥，匹配成功就可以确认你的身份而省去输入密码的步骤。</p>
 <p>每次都要输入远程主机的 ip 地址，我记不住啊！能不输入 ip 就登录远程主机吗？可以的，我们要做的就是编辑一个文件：</p>
 <p>我们可以通过编辑主目录下的 <code>.ssh/config</code> 文件（没有就新建一个），来配置登录主机的别名：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 加上下面的配置</div><div class="line">Host lisiur</div><div class="line">    HostName 192.168.31.110</div><div class="line">    User lisiur</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 加上下面的配置</span><br><span class="line">Host lisiur</span><br><span class="line">    HostName 192.168.31.110</span><br><span class="line">    User lisiur</span><br></pre></td></tr></table></figure>
 <p>如此，下次我们再登录这台主机时就只需要敲下这么一个命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh lisiur</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh lisiur</span><br></pre></td></tr></table></figure>
 <p>Awesome!</p>
 <h3 id="修改并重新加载配置文件"><a href="#修改并重新加载配置文件" class="headerlink" title="修改并重新加载配置文件"></a>修改并重新加载配置文件</h3><p>重新加载配置文件比较简单，我们在终端执行指定的命令即可。有意思的是如何修改配置文件。</p>
 <p>大家也许会说，修改文件还不简单，使用 vim 直接打开修改再保存不就好了？是的，确实是这样，但这不够极客，也不利于我们最终将这一套流程整理成脚本来处理。</p>
 <p>需要注意的是，我们修改的这个文件只是将原先的 ip 改为最新的 ip 即可。这其实是一个替换操作，如何在不打开文件的前提下修改文件内容呢？sed 和 awk 都是可以的，这里我选择了使用 sed。</p>
 <p>我们需要修改的文件大概长这样：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/lisiur</div><div class="line">    proxy http://172.20.5.165:8080;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/lisiur</span><br><span class="line">    proxy http://172.20.5.165:8080;</span><br></pre></td></tr></table></figure>
 <p> 我们要做的就是把 172.20.5.165:8080 替换成目标 ip，使用 sed 操作的命令大概长这样：</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">pattern1=<span class="string">"http://.*;"</span></div><div class="line">pattern2=<span class="string">"http://<span class="variable">$1</span>;"</span></div><div class="line">sed -i <span class="_">-e</span> <span class="string">"s#<span class="variable">$pattern1</span>#<span class="variable">$pattern2</span>#g"</span> filename</div></pre></td></tr></table></figure>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pattern1=<span class="string">"http://.*;"</span></span><br><span class="line">pattern2=<span class="string">"http://<span class="variable">$1</span>;"</span></span><br><span class="line">sed -i -e <span class="string">"s#<span class="variable">$pattern1</span>#<span class="variable">$pattern2</span>#g"</span> filename</span><br></pre></td></tr></table></figure>
 <p> 最后我们可以把这步的操作写成一个脚本：</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/sh</span></div><div class="line">pattern1=<span class="string">"http://.*;"</span></div><div class="line">pattern2=<span class="string">"http://<span class="variable">$1</span>;"</span></div><div class="line">sed -i <span class="_">-e</span> <span class="string">"s#<span class="variable">$pattern1</span>#<span class="variable">$pattern2</span>#g"</span> config_file_path</div><div class="line"></div><div class="line">result=`nginx -t | grep success`</div><div class="line"><span class="keyword">if</span> [[ result != <span class="string">''</span> ]]</div><div class="line"><span class="keyword">then</span></div><div class="line">  `nginx <span class="_">-s</span> reload` &amp;&amp; <span class="built_in">echo</span> success</div><div class="line"><span class="keyword">else</span></div><div class="line">  <span class="built_in">echo</span> <span class="string">"fail"</span></div><div class="line"><span class="keyword">fi</span></div></pre></td></tr></table></figure>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line">pattern1=<span class="string">"http://.*;"</span></span><br><span class="line">pattern2=<span class="string">"http://<span class="variable">$1</span>;"</span></span><br><span class="line">sed -i -e <span class="string">"s#<span class="variable">$pattern1</span>#<span class="variable">$pattern2</span>#g"</span> config_file_path</span><br><span class="line"></span><br><span class="line">result=`nginx -t | grep success`</span><br><span class="line"><span class="keyword">if</span> [[ result != <span class="string">''</span> ]]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">  `nginx -s reload` &amp;&amp; <span class="built_in">echo</span> success</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"fail"</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
 <p> 我们将上面的脚本保存为 ‘update_proxy.sh’，于是我们可以使用如下命令将配置文件的 ip 更新为 192.168.31.120 并重新加载该配置</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./update_proxy.sh 192.168.31.120:8080</div></pre></td></tr></table></figure>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./update_proxy.sh 192.168.31.120:8080</span><br></pre></td></tr></table></figure>
 <p> Perfect!</p>
 <h3 id="All-Together"><a href="#All-Together" class="headerlink" title="All Together"></a>All Together</h3><p> 如此一来，我的工作就简单了，只要一个命令获取本机 ip，然后 ssh 登录远程主机，并执行 update_proxy.sh 脚本即可完成操作。</p>
 <p> 可是这样还是很繁琐，能不能只输入一个命令就完成所有操作呢？当然可以。为了不在远程主机上留下痕迹，我选择把 update_proxy.sh 拿到本地，然后通过 ssh 使远程主机执行本地脚本(这步是可选的)。</p>
 <p>把他们结合起来就是：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ip=`ifconfig | grep <span class="string">'inet'</span> | grep -v <span class="string">'inet6'</span> | grep -v <span class="string">'127.0.0.1'</span> | cut <span class="_">-d</span> <span class="string">' '</span> <span class="_">-f</span>2 | awk <span class="string">'&#123; print $1 &#125;'</span>`</div><div class="line">ssh lisiur <span class="string">"bash -s"</span> &lt; ./update_proxy.sh <span class="string">"<span class="variable">$ip</span>:8080"</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ip=`ifconfig | grep <span class="string">'inet'</span> | grep -v <span class="string">'inet6'</span> | grep -v <span class="string">'127.0.0.1'</span> | cut -d <span class="string">' '</span> -f2 | awk <span class="string">'&#123; print $1 &#125;'</span>`</span><br><span class="line">ssh lisiur <span class="string">"bash -s"</span> &lt; ./update_proxy.sh <span class="string">"<span class="variable">$ip</span>:8080"</span></span><br></pre></td></tr></table></figure>
 <p>如此我们只需要执行这一个脚本就可以完成所有操作了。</p>
 <p>可是我不想打开终端，敲任何指令怎么办呢？</p>
 <p>在 Mac 上开发的同学就可以使用 Alfred 这款神器了。 简单的说 Alfred 就是一个工作流管理软件，通过它你可以将各种脚本和输入输出组合起来，最终通过一个快捷键来触发。对于他，我的评价就是买了 Mac 不装 Alfred，你就浪费了一半左右的钱。</p>
@@ -492,7 +485,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -539,8 +532,8 @@
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

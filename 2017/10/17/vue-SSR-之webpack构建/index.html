@@ -84,24 +84,20 @@
 
 
 
-<meta name="description" content="为了将相同的 Vue 应用程序提供给客户端，我们需要使用 webpack 来打包我们的 Vue 应用程序。事实上，我们可能需要在服务器上使用 webpack 打包 Vue 应用程序，因为：
-
-通常 Vue 应用程序是由 webpack 和 vue-loader 构建，并且许多 webpack 特定功能不能直接在 Node.js 中运行（例如通过 file-loader 导入文件，通过 css-lo">
+<meta name="description" content="为了将相同的 Vue 应用程序提供给客户端，我们需要使用 webpack 来打包我们的 Vue 应用程序。事实上，我们可能需要在服务器上使用 webpack 打包 Vue 应用程序，因为：  通常 Vue 应用程序是由 webpack 和 vue-loader 构建，并且许多 webpack 特定功能不能直接在 Node.js 中运行（例如通过 file-loader 导入文件，通过 css-lo">
+<meta name="keywords" content="vue,SSR">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue SSR 之webpack构建">
 <meta property="og:url" content="http://Lisiur.com/2017/10/17/vue-SSR-之webpack构建/index.html">
 <meta property="og:site_name" content="Lisiur">
-<meta property="og:description" content="为了将相同的 Vue 应用程序提供给客户端，我们需要使用 webpack 来打包我们的 Vue 应用程序。事实上，我们可能需要在服务器上使用 webpack 打包 Vue 应用程序，因为：
-
-通常 Vue 应用程序是由 webpack 和 vue-loader 构建，并且许多 webpack 特定功能不能直接在 Node.js 中运行（例如通过 file-loader 导入文件，通过 css-lo">
-<meta property="og:image" content="http://Lisiur.com/./webpack-bundle.png">
+<meta property="og:description" content="为了将相同的 Vue 应用程序提供给客户端，我们需要使用 webpack 来打包我们的 Vue 应用程序。事实上，我们可能需要在服务器上使用 webpack 打包 Vue 应用程序，因为：  通常 Vue 应用程序是由 webpack 和 vue-loader 构建，并且许多 webpack 特定功能不能直接在 Node.js 中运行（例如通过 file-loader 导入文件，通过 css-lo">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://lisiur.com/2017/10/17/vue-SSR-之webpack构建/webpack-bundle.png">
 <meta property="og:updated_time" content="2017-10-17T00:40:45.001Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue SSR 之webpack构建">
-<meta name="twitter:description" content="为了将相同的 Vue 应用程序提供给客户端，我们需要使用 webpack 来打包我们的 Vue 应用程序。事实上，我们可能需要在服务器上使用 webpack 打包 Vue 应用程序，因为：
-
-通常 Vue 应用程序是由 webpack 和 vue-loader 构建，并且许多 webpack 特定功能不能直接在 Node.js 中运行（例如通过 file-loader 导入文件，通过 css-lo">
-<meta name="twitter:image" content="http://Lisiur.com/./webpack-bundle.png">
+<meta name="twitter:description" content="为了将相同的 Vue 应用程序提供给客户端，我们需要使用 webpack 来打包我们的 Vue 应用程序。事实上，我们可能需要在服务器上使用 webpack 打包 Vue 应用程序，因为：  通常 Vue 应用程序是由 webpack 和 vue-loader 构建，并且许多 webpack 特定功能不能直接在 Node.js 中运行（例如通过 file-loader 导入文件，通过 css-lo">
+<meta name="twitter:image" content="http://lisiur.com/2017/10/17/vue-SSR-之webpack构建/webpack-bundle.png">
 
 
 
@@ -296,12 +292,12 @@
 </ul>
 <p>所以基本看法是，对于客户端应用程序和服务器应用程序，我们都要使用 webpack 打包 - 服务器需要「服务器 bundle」然后用于服务器端渲染(SSR)，而「客户端 bundle」会发送给浏览器，用于混合静态标记。</p>
 <p><img src="./webpack-bundle.png" alt=""></p>
-<h2 id="基本项目结构"><a href="#基本项目结构" class="headerlink" title="基本项目结构"></a>基本项目结构</h2><p>使用 webpack 来构建时，基本项目结构大概是这个样子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">src</div><div class="line">├───├── app.js # universal entry</div><div class="line">│   ├── app.vue</div><div class="line">│   ├── components</div><div class="line">│   │   ├── home.vue</div><div class="line">│   │   └── item.vue</div><div class="line">│   ├── entry-client.js # 仅运行于浏览器</div><div class="line">│   ├── entry-server.js # 仅运行于服务器</div><div class="line">│   ├── router.js</div><div class="line">└───└── store.js</div></pre></td></tr></table></figure></p>
-<h3 id="app-js"><a href="#app-js" class="headerlink" title="app.js"></a>app.js</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></div><div class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./app.vue'</span></div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">createApp</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> app = enw VUe(&#123;</div><div class="line">    <span class="attr">render</span>: <span class="function"><span class="params">h</span> =&gt;</span> h(App)</div><div class="line">  &#125;)</div><div class="line">  <span class="keyword">return</span> &#123; app &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="基本项目结构"><a href="#基本项目结构" class="headerlink" title="基本项目结构"></a>基本项目结构</h2><p>使用 webpack 来构建时，基本项目结构大概是这个样子：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">src</span><br><span class="line">├───├── app.js # universal entry</span><br><span class="line">│   ├── app.vue</span><br><span class="line">│   ├── components</span><br><span class="line">│   │   ├── home.vue</span><br><span class="line">│   │   └── item.vue</span><br><span class="line">│   ├── entry-client.js # 仅运行于浏览器</span><br><span class="line">│   ├── entry-server.js # 仅运行于服务器</span><br><span class="line">│   ├── router.js</span><br><span class="line">└───└── store.js</span><br></pre></td></tr></table></figure></p>
+<h3 id="app-js"><a href="#app-js" class="headerlink" title="app.js"></a>app.js</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./app.vue'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">createApp</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> app = enw VUe(&#123;</span><br><span class="line">    render: <span class="function"><span class="params">h</span> =&gt;</span> h(App)</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> &#123; app &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="entry-client-js"><a href="#entry-client-js" class="headerlink" title="entry-client.js"></a>entry-client.js</h3><p>客户端 entry 只需创建应用程序，并且将其挂载到 DOM 中：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; createApp &#125; <span class="keyword">from</span> <span class="string">'./app'</span></div><div class="line"><span class="comment">// 客户端引导逻辑</span></div><div class="line"><span class="keyword">const</span> &#123; app &#125; = createApp()</div><div class="line"><span class="comment">// 假定 App.vue 模板中根元素具有 `id="app"`</span></div><div class="line">app.$mount(<span class="string">'#app'</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createApp &#125; <span class="keyword">from</span> <span class="string">'./app'</span></span><br><span class="line"><span class="comment">// 客户端引导逻辑</span></span><br><span class="line"><span class="keyword">const</span> &#123; app &#125; = createApp()</span><br><span class="line"><span class="comment">// 假定 App.vue 模板中根元素具有 `id="app"`</span></span><br><span class="line">app.$mount(<span class="string">'#app'</span>)</span><br></pre></td></tr></table></figure>
 <h3 id="entry-server-js"><a href="#entry-server-js" class="headerlink" title="entry-server.js"></a>entry-server.js</h3><p>服务器 entry 使用 default export 导出函数，并在每次渲染中重复调用此函数。此时，除了创建和返回应用程序实例之外，它不会做太多事情。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; createApp &#125; <span class="keyword">from</span> <span class="string">'./app'</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> context =&gt; &#123;</div><div class="line">  <span class="keyword">const</span> &#123; app &#125; = createApp()</div><div class="line">  <span class="keyword">return</span> app</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createApp &#125; <span class="keyword">from</span> <span class="string">'./app'</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> context =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; app &#125; = createApp()</span><br><span class="line">  <span class="keyword">return</span> app</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -342,8 +338,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/10/22/先占个坑/" rel="prev" title="先占个坑">
-                先占个坑 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/01/25/使用-python-模拟登陆/" rel="prev" title="使用 python 模拟登陆">
+                使用 python 模拟登陆 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -429,7 +425,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -476,8 +472,8 @@
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

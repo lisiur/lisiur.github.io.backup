@@ -84,19 +84,18 @@
 
 
 
-<meta name="description" content="把一个组件重置到初始状态是一个常见的需求，推荐的做法有两种，一种是父组件重置子组件的 prop，另一种是子组件暴露一个重置的方法供父组件调用。但有些时候，子组件既没有提供重置的方法，也没提供 prop 来重置自己的状态。更重要的是，这个子组件我们还动不了。于是我们就需要一种 hack 的方式来强制子组件重置到初始状态。方法如下：
-1&amp;lt;component v-if=&quot;hackReset&quot;&amp;gt">
+<meta name="description" content="把一个组件重置到初始状态是一个常见的需求，推荐的做法有两种，一种是父组件重置子组件的 prop，另一种是子组件暴露一个重置的方法供父组件调用。但有些时候，子组件既没有提供重置的方法，也没提供 prop 来重置自己的状态。更重要的是，这个子组件我们还动不了。于是我们就需要一种 hack 的方式来强制子组件重置到初始状态。方法如下： 1&amp;lt;component v-if=&quot;hackReset&quot;&amp;gt">
+<meta name="keywords" content="vue,hack">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue hack 之强制刷新组件">
 <meta property="og:url" content="http://Lisiur.com/2017/08/03/vue-hack-之强制刷新组件/index.html">
 <meta property="og:site_name" content="Lisiur">
-<meta property="og:description" content="把一个组件重置到初始状态是一个常见的需求，推荐的做法有两种，一种是父组件重置子组件的 prop，另一种是子组件暴露一个重置的方法供父组件调用。但有些时候，子组件既没有提供重置的方法，也没提供 prop 来重置自己的状态。更重要的是，这个子组件我们还动不了。于是我们就需要一种 hack 的方式来强制子组件重置到初始状态。方法如下：
-1&amp;lt;component v-if=&quot;hackReset&quot;&amp;gt">
+<meta property="og:description" content="把一个组件重置到初始状态是一个常见的需求，推荐的做法有两种，一种是父组件重置子组件的 prop，另一种是子组件暴露一个重置的方法供父组件调用。但有些时候，子组件既没有提供重置的方法，也没提供 prop 来重置自己的状态。更重要的是，这个子组件我们还动不了。于是我们就需要一种 hack 的方式来强制子组件重置到初始状态。方法如下： 1&amp;lt;component v-if=&quot;hackReset&quot;&amp;gt">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-08-03T10:59:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue hack 之强制刷新组件">
-<meta name="twitter:description" content="把一个组件重置到初始状态是一个常见的需求，推荐的做法有两种，一种是父组件重置子组件的 prop，另一种是子组件暴露一个重置的方法供父组件调用。但有些时候，子组件既没有提供重置的方法，也没提供 prop 来重置自己的状态。更重要的是，这个子组件我们还动不了。于是我们就需要一种 hack 的方式来强制子组件重置到初始状态。方法如下：
-1&amp;lt;component v-if=&quot;hackReset&quot;&amp;gt">
+<meta name="twitter:description" content="把一个组件重置到初始状态是一个常见的需求，推荐的做法有两种，一种是父组件重置子组件的 prop，另一种是子组件暴露一个重置的方法供父组件调用。但有些时候，子组件既没有提供重置的方法，也没提供 prop 来重置自己的状态。更重要的是，这个子组件我们还动不了。于是我们就需要一种 hack 的方式来强制子组件重置到初始状态。方法如下： 1&amp;lt;component v-if=&quot;hackReset&quot;&amp;gt">
 
 
 
@@ -285,8 +284,8 @@
 
       
         <p>把一个组件重置到初始状态是一个常见的需求，推荐的做法有两种，一种是父组件重置子组件的 prop，另一种是子组件暴露一个重置的方法供父组件调用。但有些时候，子组件既没有提供重置的方法，也没提供 prop 来重置自己的状态。更重要的是，这个子组件我们还动不了。于是我们就需要一种 hack 的方式来强制子组件重置到初始状态。方法如下：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">component</span> <span class="attr">v-if</span>=<span class="string">"hackReset"</span>&gt;</span><span class="tag">&lt;/<span class="name">component</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>.hackReset = <span class="literal">false</span></div><div class="line"><span class="keyword">this</span>.$nextTick(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  <span class="keyword">this</span>.hackReset = <span class="literal">true</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">component</span> <span class="attr">v-if</span>=<span class="string">"hackReset"</span>&gt;</span><span class="tag">&lt;/<span class="name">component</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.hackReset = <span class="literal">false</span></span><br><span class="line"><span class="keyword">this</span>.$nextTick(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">this</span>.hackReset = <span class="literal">true</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>v-if 在切换时，元素及它的绑定数据和组件都会被销毁并重建</p>
 </blockquote>
@@ -417,7 +416,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -464,8 +463,8 @@
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -84,25 +84,18 @@
 
 
 
-<meta name="description" content="Given a string, find the length of the longest substring without repeating characters.
-Examples:
-Given “abcabcbb”, the answer is “abc”, which the length is 3.
-Given “bbbbb”, the answer is “b”, with th">
+<meta name="description" content="Given a string, find the length of the longest substring without repeating characters. Examples: Given “abcabcbb”, the answer is “abc”, which the length is 3. Given “bbbbb”, the answer is “b”, with th">
+<meta name="keywords" content="algorithm,leetcode,string">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Longest Substring Without Repeating Characters@LeetCode">
 <meta property="og:url" content="http://Lisiur.com/2017/01/04/Longest-Substring-Without-Repeating-Characters-LeetCode/index.html">
 <meta property="og:site_name" content="Lisiur">
-<meta property="og:description" content="Given a string, find the length of the longest substring without repeating characters.
-Examples:
-Given “abcabcbb”, the answer is “abc”, which the length is 3.
-Given “bbbbb”, the answer is “b”, with th">
+<meta property="og:description" content="Given a string, find the length of the longest substring without repeating characters. Examples: Given “abcabcbb”, the answer is “abc”, which the length is 3. Given “bbbbb”, the answer is “b”, with th">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-01-04T11:38:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Longest Substring Without Repeating Characters@LeetCode">
-<meta name="twitter:description" content="Given a string, find the length of the longest substring without repeating characters.
-Examples:
-Given “abcabcbb”, the answer is “abc”, which the length is 3.
-Given “bbbbb”, the answer is “b”, with th">
+<meta name="twitter:description" content="Given a string, find the length of the longest substring without repeating characters. Examples: Given “abcabcbb”, the answer is “abc”, which the length is 3. Given “bbbbb”, the answer is “b”, with th">
 
 
 
@@ -314,9 +307,9 @@ Given “bbbbb”, the answer is “b”, with th">
 <p>Given “abcabcbb”, the answer is “abc”, which the length is 3.</p>
 <p>Given “bbbbb”, the answer is “b”, with the length of 1.</p>
 <p>Given “pwwkew”, the answer is “wke”, with the length of 3. Note that the answer must be a substring, “pwke” is a subsequence and not a substring.</p>
-<footer><strong>Leetcode</strong><cite><a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/" target="_blank" rel="external">Longest Substring Without Repeating Characters</a></cite></footer></blockquote>
+<footer><strong>Leetcode</strong><cite><a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/" target="_blank" rel="noopener">Longest Substring Without Repeating Characters</a></cite></footer></blockquote>
 <a id="more"></a>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * @param &#123;string&#125; s</div><div class="line"> * @return &#123;number&#125;</div><div class="line"> */</div><div class="line"><span class="keyword">var</span> lengthOfLongestSubstring = <span class="function"><span class="keyword">function</span>(<span class="params">s</span>) </span>&#123;</div><div class="line">    <span class="keyword">let</span> [dic, maxsubstr, tmpsubstr] = [[], <span class="string">''</span>, <span class="string">''</span>];</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> c <span class="keyword">of</span> s) &#123;</div><div class="line">        <span class="keyword">let</span> index = tmpsubstr.indexOf(c);</div><div class="line">        <span class="keyword">if</span>(index &gt;= <span class="number">0</span>) tmpsubstr = tmpsubstr.substr(index+<span class="number">1</span>);</div><div class="line">        tmpsubstr = tmpsubstr + c;</div><div class="line">        <span class="keyword">if</span>(tmpsubstr.length &gt; maxsubstr.length) maxsubstr = [...tmpsubstr];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> maxsubstr.length;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;string&#125; s</span></span><br><span class="line"><span class="comment"> * @return &#123;number&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> lengthOfLongestSubstring = <span class="function"><span class="keyword">function</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> [dic, maxsubstr, tmpsubstr] = [[], <span class="string">''</span>, <span class="string">''</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> c <span class="keyword">of</span> s) &#123;</span><br><span class="line">        <span class="keyword">let</span> index = tmpsubstr.indexOf(c);</span><br><span class="line">        <span class="keyword">if</span>(index &gt;= <span class="number">0</span>) tmpsubstr = tmpsubstr.substr(index+<span class="number">1</span>);</span><br><span class="line">        tmpsubstr = tmpsubstr + c;</span><br><span class="line">        <span class="keyword">if</span>(tmpsubstr.length &gt; maxsubstr.length) maxsubstr = [...tmpsubstr];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> maxsubstr.length;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -445,7 +438,7 @@ Given “bbbbb”, the answer is “b”, with th">
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -492,8 +485,8 @@ Given “bbbbb”, the answer is “b”, with th">
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

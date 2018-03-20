@@ -84,22 +84,18 @@
 
 
 
-<meta name="description" content="列表（或数组）或许是我们使用最频繁的一个数据结构了吧，最常用的 栈 或 队列等数据结构都是以列表为基础实现的。因此几乎每种语言都会对列表这一概念进行原生实现。如 C 系列的统一叫做 Array，而 Python 或 Haskell 则称之为 List。
-ListHaskell 中的 list 是一种单类型的数据结构，可以用来存储多个类型相同的元素。
-123[] -- 空 list[1,2,3,4,">
+<meta name="description" content="列表（或数组）或许是我们使用最频繁的一个数据结构了吧，最常用的 栈 或 队列等数据结构都是以列表为基础实现的。因此几乎每种语言都会对列表这一概念进行原生实现。如 C 系列的统一叫做 Array，而 Python 或 Haskell 则称之为 List。 ListHaskell 中的 list 是一种单类型的数据结构，可以用来存储多个类型相同的元素。 123[] -- 空 list[1,2,3,4,">
+<meta name="keywords" content="fp,haskell">
 <meta property="og:type" content="article">
 <meta property="og:title" content="跟着 Haskell 学函数式编程（二）：List 和 Tuple ">
 <meta property="og:url" content="http://Lisiur.com/2017/09/24/跟着-Haskell-学函数式编程（二）：List-和-Tuple/index.html">
 <meta property="og:site_name" content="Lisiur">
-<meta property="og:description" content="列表（或数组）或许是我们使用最频繁的一个数据结构了吧，最常用的 栈 或 队列等数据结构都是以列表为基础实现的。因此几乎每种语言都会对列表这一概念进行原生实现。如 C 系列的统一叫做 Array，而 Python 或 Haskell 则称之为 List。
-ListHaskell 中的 list 是一种单类型的数据结构，可以用来存储多个类型相同的元素。
-123[] -- 空 list[1,2,3,4,">
+<meta property="og:description" content="列表（或数组）或许是我们使用最频繁的一个数据结构了吧，最常用的 栈 或 队列等数据结构都是以列表为基础实现的。因此几乎每种语言都会对列表这一概念进行原生实现。如 C 系列的统一叫做 Array，而 Python 或 Haskell 则称之为 List。 ListHaskell 中的 list 是一种单类型的数据结构，可以用来存储多个类型相同的元素。 123[] -- 空 list[1,2,3,4,">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-09-24T12:46:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="跟着 Haskell 学函数式编程（二）：List 和 Tuple ">
-<meta name="twitter:description" content="列表（或数组）或许是我们使用最频繁的一个数据结构了吧，最常用的 栈 或 队列等数据结构都是以列表为基础实现的。因此几乎每种语言都会对列表这一概念进行原生实现。如 C 系列的统一叫做 Array，而 Python 或 Haskell 则称之为 List。
-ListHaskell 中的 list 是一种单类型的数据结构，可以用来存储多个类型相同的元素。
-123[] -- 空 list[1,2,3,4,">
+<meta name="twitter:description" content="列表（或数组）或许是我们使用最频繁的一个数据结构了吧，最常用的 栈 或 队列等数据结构都是以列表为基础实现的。因此几乎每种语言都会对列表这一概念进行原生实现。如 C 系列的统一叫做 Array，而 Python 或 Haskell 则称之为 List。 ListHaskell 中的 list 是一种单类型的数据结构，可以用来存储多个类型相同的元素。 123[] -- 空 list[1,2,3,4,">
 
 
 
@@ -289,18 +285,18 @@ ListHaskell 中的 list 是一种单类型的数据结构，可以用来存储�
       
         <p>列表（或数组）或许是我们使用最频繁的一个数据结构了吧，最常用的 栈 或 队列等数据结构都是以列表为基础实现的。因此几乎每种语言都会对列表这一概念进行原生实现。如 C 系列的统一叫做 Array，而 Python 或 Haskell 则称之为 List。</p>
 <h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><p>Haskell 中的 list 是一种单类型的数据结构，可以用来存储多个类型相同的元素。</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[] <span class="comment">-- 空 list</span></div><div class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>] <span class="comment">-- [Int]</span></div><div class="line">['h', 'e', 'l'', 'l', 'o'] <span class="comment">-- [Char]</span></div></pre></td></tr></table></figure>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[] <span class="comment">-- 空 list</span></span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>] <span class="comment">-- [Int]</span></span><br><span class="line">['h', 'e', 'l'', 'l', 'o'] <span class="comment">-- [Char]</span></span><br></pre></td></tr></table></figure>
 <p>值得注意的是，所有 String 型的字符串都是由 char 构成的数组，其实 String 只是 [Char] 的语法糖而已。</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">['h', 'e', 'l'', 'l', 'o'] == <span class="string">"hello"</span> <span class="comment">-- True</span></div></pre></td></tr></table></figure>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">['h', 'e', 'l'', 'l', 'o'] == <span class="string">"hello"</span> <span class="comment">-- True</span></span><br></pre></td></tr></table></figure>
 <h3 id="List-的常见操作。"><a href="#List-的常见操作。" class="headerlink" title="List 的常见操作。"></a>List 的常见操作。</h3><ul>
 <li><p><code>++</code> 拼接两个同类型的 List</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] ++ [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>] <span class="comment">-- [1,2,3,4,5,6]</span></div></pre></td></tr></table></figure>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] ++ [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>] <span class="comment">-- [1,2,3,4,5,6]</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>:</code> 连接一个元素到一个 List 前</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span>:[<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>] <span class="comment">-- [1,2,3,4]</span></div></pre></td></tr></table></figure>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>:[<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>] <span class="comment">-- [1,2,3,4]</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>!!</code> 按照索引取 List 的某个元素</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">"Lisiur"</span> !! <span class="number">0</span> <span class="comment">-- 'L'</span></div></pre></td></tr></table></figure>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"Lisiur"</span> !! <span class="number">0</span> <span class="comment">-- 'L'</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <blockquote>
@@ -308,31 +304,31 @@ ListHaskell 中的 list 是一种单类型的数据结构，可以用来存储�
 </blockquote>
 <ul>
 <li><p>比较 List 大小（装载可比较元素时）</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>] &gt; [<span class="number">3</span>,<span class="number">2</span>,<span class="number">0</span>] <span class="comment">-- True</span></div><div class="line">[<span class="number">1</span>,<span class="number">2</span>] &lt; [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] <span class="comment">-- True</span></div><div class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] == [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] <span class="comment">-- True</span></div></pre></td></tr></table></figure>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>] &gt; [<span class="number">3</span>,<span class="number">2</span>,<span class="number">0</span>] <span class="comment">-- True</span></span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>] &lt; [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] <span class="comment">-- True</span></span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] == [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] <span class="comment">-- True</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>head</code> 返回 List 的头部</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">head</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] <span class="comment">-- 1</span></div></pre></td></tr></table></figure>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">head</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] <span class="comment">-- 1</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <blockquote>
 <p>当 List 为空时，会报错</p>
 </blockquote>
 <ul>
-<li><code>tail</code> 返回 List 的尾部<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">tail</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] <span class="comment">-- [2,3]</span></div></pre></td></tr></table></figure>
+<li><code>tail</code> 返回 List 的尾部<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">tail</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] <span class="comment">-- [2,3]</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <blockquote>
 <p>当 List 为空时，会报错</p>
 </blockquote>
 <ul>
-<li><code>last</code> 返回 List 的最后一个元素<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">last</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] <span class="comment">-- 3</span></div></pre></td></tr></table></figure>
+<li><code>last</code> 返回 List 的最后一个元素<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">last</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] <span class="comment">-- 3</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <blockquote>
 <p>当 List 为空时，会报错</p>
 </blockquote>
 <ul>
-<li><code>init</code> 返回 List 的最后一个元素之前的部分<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">init</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] <span class="comment">-- [1,2]</span></div></pre></td></tr></table></figure>
+<li><code>init</code> 返回 List 的最后一个元素之前的部分<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">init</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] <span class="comment">-- [1,2]</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <blockquote>
@@ -340,45 +336,45 @@ ListHaskell 中的 list 是一种单类型的数据结构，可以用来存储�
 </blockquote>
 <ul>
 <li><p><code>length</code> 获取 List 长度</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">length</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] <span class="comment">-- 3</span></div></pre></td></tr></table></figure>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">length</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] <span class="comment">-- 3</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>null</code> 判断 List 是否为空</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="title">null</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] <span class="comment">-- False</span></div><div class="line"><span class="title">null</span> [] <span class="comment">-- True</span></div></pre></td></tr></table></figure>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">null</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] <span class="comment">-- False</span></span><br><span class="line"><span class="title">null</span> [] <span class="comment">-- True</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>reverse</code> 将一个 List 反转</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">reverse</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] <span class="comment">-- [3,2,1]</span></div></pre></td></tr></table></figure>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">reverse</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] <span class="comment">-- [3,2,1]</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>take</code> 获取 List 的前几个元素</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="title">take</span> <span class="number">2</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] <span class="comment">-- [1,2]</span></div><div class="line"><span class="title">take</span> <span class="number">0</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] <span class="comment">-- []</span></div></pre></td></tr></table></figure>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">take</span> <span class="number">2</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] <span class="comment">-- [1,2]</span></span><br><span class="line"><span class="title">take</span> <span class="number">0</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] <span class="comment">-- []</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>maximum</code> 获取 List 中最大的那个元素</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">maximum</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] <span class="comment">-- 3</span></div></pre></td></tr></table></figure>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">maximum</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] <span class="comment">-- 3</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>minimum</code> 获取 List 中最小的那个元素</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">minimum</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] <span class="comment">-- 1</span></div></pre></td></tr></table></figure>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">minimum</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] <span class="comment">-- 1</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>sum</code> 获取 List 所有元素的和</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">sum</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] <span class="comment">-- 6</span></div></pre></td></tr></table></figure>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">sum</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] <span class="comment">-- 6</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>product</code> 获取 List 所有元素的积</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">product</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] <span class="comment">-- 6</span></div></pre></td></tr></table></figure>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">product</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] <span class="comment">-- 6</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>elem</code> 判断一个元素是否包含于一个 List</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="title">elem</span> <span class="number">1</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] <span class="comment">-- True</span></div><div class="line"><span class="number">1</span> `elem` [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] <span class="comment">-- True</span></div></pre></td></tr></table></figure>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">elem</span> <span class="number">1</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] <span class="comment">-- True</span></span><br><span class="line"><span class="number">1</span> `elem` [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] <span class="comment">-- True</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>..</code> 生成一个区间</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[<span class="number">1.</span><span class="number">.10</span>] <span class="comment">-- [1,2,3,4,5,6,7,8,9,10]</span></div><div class="line">[<span class="number">1</span>,<span class="number">3.</span><span class="number">.10</span>] <span class="comment">-- [1,3,5,7,9]</span></div></pre></td></tr></table></figure>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1.</span><span class="number">.10</span>] <span class="comment">-- [1,2,3,4,5,6,7,8,9,10]</span></span><br><span class="line">[<span class="number">1</span>,<span class="number">3.</span><span class="number">.10</span>] <span class="comment">-- [1,3,5,7,9]</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>cycle</code> 生成一个无限循环列表</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">cycle</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] <span class="comment">-- [1,2,3,1,2,3,1,2,3,...]</span></div></pre></td></tr></table></figure>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">cycle</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] <span class="comment">-- [1,2,3,1,2,3,1,2,3,...]</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>repeat</code> 生成包含无限个给定值的 List</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">repeat</span> <span class="number">1</span> <span class="comment">-- [1,1,1,1,1,...]</span></div></pre></td></tr></table></figure>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">repeat</span> <span class="number">1</span> <span class="comment">-- [1,1,1,1,1,...]</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="List-Comprehension"><a href="#List-Comprehension" class="headerlink" title="List Comprehension"></a>List Comprehension</h3><p>通过它，可以从既有的集合中按照规则产生一个新集合。<br>如果我们要生成一个包含前10个偶数的 List 可以直接这样做：<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">take</span> <span class="number">10</span> [<span class="number">2</span>,<span class="number">4.</span>.]</div></pre></td></tr></table></figure></p>
-<p>但是如果要生成一个包含3和7的公倍数的 List 该怎么办呢？这里我们就可以使用 List Comprehension<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[x | x &lt;- [<span class="number">1</span>,<span class="number">2.</span>.], x `mod` <span class="number">3</span> == <span class="number">0</span>, x `mod` <span class="number">7</span> == <span class="number">0</span>]</div></pre></td></tr></table></figure></p>
-<p>我们还可以对多个 List 做叉乘处理<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[x*y | x &lt;- [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>], y &lt;- [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>], x*y &gt; <span class="number">8</span>] <span class="comment">-- [10,12,12,15,18]</span></div></pre></td></tr></table></figure></p>
+<h3 id="List-Comprehension"><a href="#List-Comprehension" class="headerlink" title="List Comprehension"></a>List Comprehension</h3><p>通过它，可以从既有的集合中按照规则产生一个新集合。<br>如果我们要生成一个包含前10个偶数的 List 可以直接这样做：<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">take</span> <span class="number">10</span> [<span class="number">2</span>,<span class="number">4.</span>.]</span><br></pre></td></tr></table></figure></p>
+<p>但是如果要生成一个包含3和7的公倍数的 List 该怎么办呢？这里我们就可以使用 List Comprehension<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[x | x &lt;- [<span class="number">1</span>,<span class="number">2.</span>.], x `mod` <span class="number">3</span> == <span class="number">0</span>, x `mod` <span class="number">7</span> == <span class="number">0</span>]</span><br></pre></td></tr></table></figure></p>
+<p>我们还可以对多个 List 做叉乘处理<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[x*y | x &lt;- [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>], y &lt;- [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>], x*y &gt; <span class="number">8</span>] <span class="comment">-- [10,12,12,15,18]</span></span><br></pre></td></tr></table></figure></p>
 <h2 id="Tuple"><a href="#Tuple" class="headerlink" title="Tuple"></a>Tuple</h2><p>从某种意义上讲，Tuple(元组)很像List–都是将多个值存入一个个体的容器。但它们却有着本质的不同，一组数字的List就是一组数字，它们的类型相 同，且不关心其中包含元素的数量。而Tuple则要求你对需要组合的数据的数目非常的明确，它的类型取决于其中项的数目与其各自的类型。Tuple中的项 由括号括起，并由逗号隔开。</p>
 <p>另外的不同之处就是Tuple中的项不必为同一类型，在Tuple里可以存入多类型项的组合。</p>
 <p>使用Tuple前应当事先明确一条数据中应该由多少个项。每个不同长度的Tuple都是独立的类型，所以你就不可以写个函数来给它追加元素。而唯一能做的，就是通过函数来给一个List追加序对，三元组或是四元组等内容。</p>
@@ -387,13 +383,13 @@ ListHaskell 中的 list 是一种单类型的数据结构，可以用来存储�
 </blockquote>
 <h3 id="Tuple-常见操作"><a href="#Tuple-常见操作" class="headerlink" title="Tuple 常见操作"></a>Tuple 常见操作</h3><ul>
 <li><p>fst 返回一个序对的首项</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">fst</span> (<span class="number">1</span>,<span class="number">2</span>) <span class="comment">-- 1</span></div></pre></td></tr></table></figure>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">fst</span> (<span class="number">1</span>,<span class="number">2</span>) <span class="comment">-- 1</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>snd 返回一个序对的尾项</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">snd</span> (<span class="number">1</span>,<span class="number">2</span>) <span class="comment">-- 2</span></div></pre></td></tr></table></figure>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">snd</span> (<span class="number">1</span>,<span class="number">2</span>) <span class="comment">-- 2</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>zip 生成一组序对(Pair)的List。它取两个List，然后将它们交叉配对，形成一组序对的List。</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="title">zip</span> [<span class="number">1.</span><span class="number">.5</span>], [<span class="string">"one"</span>, <span class="string">"two"</span>, <span class="string">"three"</span>, <span class="string">"four"</span>, <span class="string">"five"</span>]</div><div class="line">[(<span class="number">1</span>,<span class="string">"one"</span>),(<span class="number">2</span>,<span class="string">"two"</span>),(<span class="number">3</span>,<span class="string">"three"</span>),(<span class="number">4</span>,<span class="string">"four"</span>),(<span class="number">5</span>,<span class="string">"five"</span>)]</div></pre></td></tr></table></figure>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">zip</span> [<span class="number">1.</span><span class="number">.5</span>], [<span class="string">"one"</span>, <span class="string">"two"</span>, <span class="string">"three"</span>, <span class="string">"four"</span>, <span class="string">"five"</span>]</span><br><span class="line">[(<span class="number">1</span>,<span class="string">"one"</span>),(<span class="number">2</span>,<span class="string">"two"</span>),(<span class="number">3</span>,<span class="string">"three"</span>),(<span class="number">4</span>,<span class="string">"four"</span>),(<span class="number">5</span>,<span class="string">"five"</span>)]</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 
@@ -523,7 +519,7 @@ ListHaskell 中的 list 是一种单类型的数据结构，可以用来存储�
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -570,8 +566,8 @@ ListHaskell 中的 list 是一种单类型的数据结构，可以用来存储�
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
