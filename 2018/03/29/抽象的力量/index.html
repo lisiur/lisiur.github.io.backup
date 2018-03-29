@@ -1,0 +1,611 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript,抽象,高阶函数," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="私以为抽象是人类最伟大的发明（长相除外） 抽象可以让我们站在更高的维度上创造更更高的维度，进而站在更更高的维度上创造更更更高的维度，进而… 好吧，凡是有点程序员修养的人应该很容易看出这似乎是一个递归（是否会栈溢出，就看个人休养了，手动滑稽）。既然如此我们就从一个递归的例子谈起 —— 请写出一个计算从 a 到 b 的各整数之和的递归函数。 这是一个非常简单的问题，不考虑尾递归的优化，也许此时你已经写">
+<meta name="keywords" content="javascript,抽象,高阶函数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="抽象的力量">
+<meta property="og:url" content="http://Lisiur.com/2018/03/29/抽象的力量/index.html">
+<meta property="og:site_name" content="Lisiur">
+<meta property="og:description" content="私以为抽象是人类最伟大的发明（长相除外） 抽象可以让我们站在更高的维度上创造更更高的维度，进而站在更更高的维度上创造更更更高的维度，进而… 好吧，凡是有点程序员修养的人应该很容易看出这似乎是一个递归（是否会栈溢出，就看个人休养了，手动滑稽）。既然如此我们就从一个递归的例子谈起 —— 请写出一个计算从 a 到 b 的各整数之和的递归函数。 这是一个非常简单的问题，不考虑尾递归的优化，也许此时你已经写">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-29T14:10:22.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="抽象的力量">
+<meta name="twitter:description" content="私以为抽象是人类最伟大的发明（长相除外） 抽象可以让我们站在更高的维度上创造更更高的维度，进而站在更更高的维度上创造更更更高的维度，进而… 好吧，凡是有点程序员修养的人应该很容易看出这似乎是一个递归（是否会栈溢出，就看个人休养了，手动滑稽）。既然如此我们就从一个递归的例子谈起 —— 请写出一个计算从 a 到 b 的各整数之和的递归函数。 这是一个非常简单的问题，不考虑尾递归的优化，也许此时你已经写">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 抽象的力量 | Lisiur </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Lisiur</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                抽象的力量
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-03-29T20:51:35+08:00" content="2018-03-29">
+              2018-03-29
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>私以为抽象是人类最伟大的发明（长相除外）</p>
+<p>抽象可以让我们站在更高的维度上创造更更高的维度，进而站在更更高的维度上创造更更更高的维度，进而…</p>
+<p>好吧，凡是有点程序员修养的人应该很容易看出这似乎是一个递归（是否会栈溢出，就看个人休养了，手动滑稽）。既然如此我们就从一个递归的例子谈起 —— 请写出一个计算从 a 到 b 的各整数之和的递归函数。</p>
+<p>这是一个非常简单的问题，不考虑尾递归的优化，也许此时你已经写下了这样的解决方案：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum_integer</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (a &gt; b) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a + sum_integer(a+<span class="number">1</span>, b)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>很棒，接下来我们再写一个计算从 a 到 b 的各个整数立方之和的递归函数。</p>
+<p>有了上一个模板，我们也很快给出了下面的答案：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cube</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a * a * a</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum_cube</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (a &gt; b) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cube(a) + sum_cube(a+<span class="number">1</span>, b)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>不错哦，接下来我们再写一个计算从 a 到 b 的各个整数开方之和的…打住！作为一个挑剔而又懒惰的程序员，我想你此时内心应该是有句 MMP 要说的，但作为一个有担当的程序员我们还是要笑嘻嘻的解决不是。</p>
+<p>我们从这几个需求不难看出几点相似之处：<br>第一，都是求和。<br>第二，都是对 a 到 b 施加以相同的模式之后再求和。</p>
+<p>对于第一个例子，我们要对 a 到 b 本身直接求和。而第二个例子，我们要对 a 到 b 每个数立方后求和。我们把这两个例子结合下不难写出下面的第一个更加抽象的求和函数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">term, a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (a &gt; b) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> term(a) + sum(term, a+<span class="number">1</span>, b)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>有了这个更加抽象的 sum 函数后，我们可以轻松地应对之前提出的第三个问题：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum_sqrt</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> sum(<span class="built_in">Math</span>.sqrt, a, b)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>包括前两个函数也可以使用这个 sum 函数回推过去：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">id</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum_integer</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> sum( id, a, b)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cube</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a * a * a</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum_cube</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> sum( cube, a, b)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接下来，无论你再出什么问题，我们都可以立刻给出解决方案了，可以先得意下，但不要得意太久，因为下面这个问题也许现在的抽象程度并解决不了：</p>
+<p>计算从 a 到 b 间隔一个数的所有数的和。</p>
+<p>歘歘歘你就写下了下面这个函数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum_interval</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (a &gt; b) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a + sum_interval(a+<span class="number">2</span>, b)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>就在你准备交卷时，你是否看到了我脸上贱贱的笑容呢，没错，我接下来很有可能让你写一个 a 到 b 间隔两个数的和哦。</p>
+<p>我们拿<code>sum_interval</code> 和 <code>sum_integer</code>比较一下，不难发现他们只有一处不同，那就是下一次递归需要处理的值的步长不同。</p>
+<p>这下我们很快就能给出第二套解决方案了：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum_step</span>(<span class="params">next, a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (a &gt; b) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a + sum_step(next(a), b)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum_interval</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> sum_step(<span class="function"><span class="params">i</span>=&gt;</span>i+<span class="number">2</span>, a, b)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>是的，基于之前的讨论，我们很快又构造出一个高阶函数<code>sum_step</code>, 恩？之前的讨论？我们是不是可以把这两个抽象出来的高阶函数再来一次更高的抽象呢？说做就做：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">term, next, a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ( a &gt; b) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> term(a) + sum(term, next, next(a), b)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>非常不错哦，很有成就感不是，似乎想高歌一曲？且慢，我们的讨论才刚刚开始呢。</p>
+<p>思考下如何写一个类似的求积的函数呢？稍作改变即可：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">product</span>(<span class="params">term, next, a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ( a &gt; b) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> term(a) * product(term, next, next(a), b)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>看，这就是抽象的力量，这个时候让你写一个求 a 到 b 的乘积的函数时，简直信手拈来啊：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">product_integer</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> product(<span class="function"><span class="params">i</span>=&gt;</span>i, i=&gt;i+<span class="number">1</span>, a b)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>咦，你看这个 <code>sum</code> 和 <code>product</code> 好像啊？不是吗，<code>product</code> 就是直接在 <code>sum</code> 的基础上修改而来的。</p>
+<p>这两个能否再来一次抽象呢？事实上，<code>sum</code> 和 <code>product</code> 都是一个叫做 <code>accumulate</code> 的更一般概念的特殊情况。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">accumulate</span>(<span class="params">method, base, term, next, a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (a &gt; b) &#123;</span><br><span class="line">        <span class="keyword">return</span> base</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> method(term(a), accumulate(method, base, term, next, next(a), b))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此时我们经过多次抽象终于得到这个神奇的函数 <code>accumulate</code>, 下面让我们来体验下它的威力吧：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum_integer</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> accumulate(</span><br><span class="line">        (a, b) =&gt; a + b,  <span class="comment">// method</span></span><br><span class="line">        <span class="number">0</span>,                <span class="comment">// base</span></span><br><span class="line">        a =&gt; a,           <span class="comment">// term</span></span><br><span class="line">        a =&gt; a + <span class="number">1</span>,       <span class="comment">// next</span></span><br><span class="line">        a, b)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum_cube</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> accumulate(</span><br><span class="line">        (a, b) =&gt; a + b,  <span class="comment">// method</span></span><br><span class="line">        <span class="number">0</span>,                <span class="comment">// base</span></span><br><span class="line">        a =&gt; a * a * a,   <span class="comment">// term</span></span><br><span class="line">        a =&gt; a + <span class="number">1</span>,       <span class="comment">// next</span></span><br><span class="line">        a, b)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum_interval</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> accumulate(</span><br><span class="line">        (a, b) =&gt; a + b,  <span class="comment">// method</span></span><br><span class="line">        <span class="number">0</span>,                <span class="comment">// base</span></span><br><span class="line">        a =&gt; a,           <span class="comment">// term</span></span><br><span class="line">        a =&gt; a + <span class="number">2</span>,       <span class="comment">// next</span></span><br><span class="line">        a, b)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">product_integer</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> accumulate(</span><br><span class="line">        (a, b) =&gt; a * b,  <span class="comment">// method</span></span><br><span class="line">        <span class="number">1</span>,                <span class="comment">// base</span></span><br><span class="line">        a =&gt; a,           <span class="comment">// term</span></span><br><span class="line">        a =&gt; a + <span class="number">1</span>,       <span class="comment">// next</span></span><br><span class="line">        a, b)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>(考虑到递归的效率我将在下次更新时，补上迭代计算的实现。)</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
+          
+            <a href="/tags/抽象/" rel="tag">#抽象</a>
+          
+            <a href="/tags/高阶函数/" rel="tag">#高阶函数</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/17/vue-SSR-之webpack构建/" rel="next" title="vue SSR 之webpack构建">
+                <i class="fa fa-chevron-left"></i> vue SSR 之webpack构建
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/29/test/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Lisiur Day" />
+          <p class="site-author-name" itemprop="name">Lisiur Day</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">53</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lisiur Day</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+<p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
