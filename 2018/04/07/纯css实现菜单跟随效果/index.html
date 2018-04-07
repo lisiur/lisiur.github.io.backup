@@ -84,18 +84,18 @@
 
 
 
-<meta name="description" content="先放一个最终实现的效果图。   我们要实现的就是如上所示的动画跟随效果。">
+<meta name="description" content="先放一个最终实现的效果图。   首先我们先把 dom 结构写出来： 1234567891011&amp;lt;div class=&quot;nav&quot;&amp;gt;    &amp;lt;ul&amp;gt;        &amp;lt;li&amp;gt;Code&amp;lt;/li&amp;gt;        &amp;lt;li&amp;gt;Issues&amp;lt;/li&amp;gt;        &amp;lt;li&amp;gt;Pull requests&amp;lt;/li&amp;gt;">
 <meta name="keywords" content="css">
 <meta property="og:type" content="article">
 <meta property="og:title" content="纯css实现菜单跟随效果">
 <meta property="og:url" content="http://Lisiur.com/2018/04/07/纯css实现菜单跟随效果/index.html">
 <meta property="og:site_name" content="Lisiur">
-<meta property="og:description" content="先放一个最终实现的效果图。   我们要实现的就是如上所示的动画跟随效果。">
+<meta property="og:description" content="先放一个最终实现的效果图。   首先我们先把 dom 结构写出来： 1234567891011&amp;lt;div class=&quot;nav&quot;&amp;gt;    &amp;lt;ul&amp;gt;        &amp;lt;li&amp;gt;Code&amp;lt;/li&amp;gt;        &amp;lt;li&amp;gt;Issues&amp;lt;/li&amp;gt;        &amp;lt;li&amp;gt;Pull requests&amp;lt;/li&amp;gt;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-07T08:50:43.259Z">
+<meta property="og:updated_time" content="2018-04-07T08:58:31.376Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="纯css实现菜单跟随效果">
-<meta name="twitter:description" content="先放一个最终实现的效果图。   我们要实现的就是如上所示的动画跟随效果。">
+<meta name="twitter:description" content="先放一个最终实现的效果图。   首先我们先把 dom 结构写出来： 1234567891011&amp;lt;div class=&quot;nav&quot;&amp;gt;    &amp;lt;ul&amp;gt;        &amp;lt;li&amp;gt;Code&amp;lt;/li&amp;gt;        &amp;lt;li&amp;gt;Issues&amp;lt;/li&amp;gt;        &amp;lt;li&amp;gt;Pull requests&amp;lt;/li&amp;gt;">
 
 
 
@@ -284,9 +284,13 @@
 
       
         <p>先放一个最终实现的效果图。</p>
-<script async src="//jsfiddle.net/lisiur/wLmLLry3/5/embed/result/"></script>
+<script async src="//jsfiddle.net/lisiur/wLmLLry3/9/embed/result/"></script>
 
-<p>我们要实现的就是如上所示的动画跟随效果。</p>
+<p>首先我们先把 dom 结构写出来：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"nav"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>Code<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>Issues<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>Pull requests<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>Projects<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>Wiki<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>Insights<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>Settings<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>下面我们来分析如何实现上述效果。</p>
+<p>首先我们把鼠标放到任意一个菜单上，该菜单的底部都会出现一条从右到左的线。这个比较好实现：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ul</span> <span class="selector-tag">li</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
