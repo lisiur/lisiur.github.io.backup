@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="string,trick," />
+  <meta name="keywords" content="css," />
 
 
 
@@ -84,18 +84,18 @@
 
 
 
-<meta name="description" content="12345def chunk(string, size)  string.scan(/.&amp;#123;1,#&amp;#123;size&amp;#125;&amp;#125;/) # cannnot handle newlines: \n    # string.scan(/.&amp;#123;1,#&amp;#123;size&amp;#125;&amp;#125;/m) # can handle newlines end 123def chunk">
-<meta name="keywords" content="string,trick">
+<meta name="description" content="先放一个最终实现的效果图。">
+<meta name="keywords" content="css">
 <meta property="og:type" content="article">
-<meta property="og:title" content="chop a string into chunks of a given length in Ruby">
-<meta property="og:url" content="http://Lisiur.com/2017/03/06/chop-a-string-into-chunks-of-a-given-length-in-Ruby/index.html">
+<meta property="og:title" content="纯css实现菜单跟随效果">
+<meta property="og:url" content="http://Lisiur.com/2018/04/07/纯css实现菜单跟随效果/index.html">
 <meta property="og:site_name" content="Lisiur">
-<meta property="og:description" content="12345def chunk(string, size)  string.scan(/.&amp;#123;1,#&amp;#123;size&amp;#125;&amp;#125;/) # cannnot handle newlines: \n    # string.scan(/.&amp;#123;1,#&amp;#123;size&amp;#125;&amp;#125;/m) # can handle newlines end 123def chunk">
+<meta property="og:description" content="先放一个最终实现的效果图。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-03-06T03:36:01.000Z">
+<meta property="og:updated_time" content="2018-04-07T08:48:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="chop a string into chunks of a given length in Ruby">
-<meta name="twitter:description" content="12345def chunk(string, size)  string.scan(/.&amp;#123;1,#&amp;#123;size&amp;#125;&amp;#125;/) # cannnot handle newlines: \n    # string.scan(/.&amp;#123;1,#&amp;#123;size&amp;#125;&amp;#125;/m) # can handle newlines end 123def chunk">
+<meta name="twitter:title" content="纯css实现菜单跟随效果">
+<meta name="twitter:description" content="先放一个最终实现的效果图。">
 
 
 
@@ -113,7 +113,7 @@
   };
 </script>
 
-  <title> chop a string into chunks of a given length in Ruby | Lisiur </title>
+  <title> 纯css实现菜单跟随效果 | Lisiur </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -243,7 +243,7 @@
             
             
               
-                chop a string into chunks of a given length in Ruby
+                纯css实现菜单跟随效果
               
             
           </h1>
@@ -255,30 +255,11 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-06T09:36:33+08:00" content="2017-03-06">
-              2017-03-06
+            <time itemprop="dateCreated" datetime="2018-04-07T16:34:02+08:00" content="2018-04-07">
+              2018-04-07
             </time>
           </span>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/ruby/" itemprop="url" rel="index">
-                    <span itemprop="name">ruby</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
           
 
           
@@ -302,8 +283,8 @@
       
 
       
-        <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">chunk</span><span class="params">(string, size)</span></span></span><br><span class="line">  string.scan(<span class="regexp">/.&#123;1,<span class="subst">#&#123;size&#125;</span>&#125;/</span>) <span class="comment"># cannnot handle newlines: \n</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment"># string.scan(/.&#123;1,#&#123;size&#125;&#125;/m) # can handle newlines </span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">chunk</span><span class="params">(string, size)</span></span></span><br><span class="line">  string.chars.each_slice(size).map(&amp;<span class="symbol">:join</span>)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+        <p>先放一个最终实现的效果图。</p>
+<script async src="//jsfiddle.net/lisiur/wLmLLry3/5/embed/result/"></script>
 
       
     </div>
@@ -325,9 +306,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/string/" rel="tag">#string</a>
-          
-            <a href="/tags/trick/" rel="tag">#trick</a>
+            <a href="/tags/css/" rel="tag">#css</a>
           
         </div>
       
@@ -336,17 +315,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/02/17/Palindrome-Number-LeetCode/" rel="next" title="Palindrome Number@LeetCode">
-                <i class="fa fa-chevron-left"></i> Palindrome Number@LeetCode
+              <a href="/2018/03/29/抽象的力量/" rel="next" title="抽象的力量">
+                <i class="fa fa-chevron-left"></i> 抽象的力量
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/18/关于vue中数据流的思考和实践/" rel="prev" title="不知道起啥名字，想到哪写到哪系列">
-                不知道起啥名字，想到哪写到哪系列 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
