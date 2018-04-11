@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="Lisiur">
 <meta property="og:description" content="最近遇到这么一个需求：  进入一个编辑页面，如果没做任何修改可以直接退出，如果做了任何修改，退出时需要给出提示。  这是一个很常见的问题，解决思路也很简单，无非在进入编辑页面后，将需要监视是否变化的数据当前状态保存下来，然后在退出时将当前这些数据的状态和之前保存的状态做下对比即可。 实现方案大概是这个样子： 123456789101112131415161718192021// model 为需要">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-10T14:13:21.000Z">
+<meta property="og:updated_time" content="2018-04-11T01:19:21.725Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从一个实例看闭包和对象">
 <meta name="twitter:description" content="最近遇到这么一个需求：  进入一个编辑页面，如果没做任何修改可以直接退出，如果做了任何修改，退出时需要给出提示。  这是一个很常见的问题，解决思路也很简单，无非在进入编辑页面后，将需要监视是否变化的数据当前状态保存下来，然后在退出时将当前这些数据的状态和之前保存的状态做下对比即可。 实现方案大概是这个样子： 123456789101112131415161718192021// model 为需要">
@@ -299,7 +299,7 @@
 <p>这样，<code>check_change</code> 可以这样实现：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> check_change = <span class="function">(<span class="params">(</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> check_func = has_changed(model)</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="params">_</span> =&gt;</span> check_func(model)</span><br><span class="line">&#125;)(model)</span><br></pre></td></tr></table></figure>
 <p>我们可以把 <code>make_fingerprint</code> 和 <code>has_changed</code> 写入一个公用库里，这样最终实现的<code>check_change</code> 只需要4行代码而已, 而且不会暴露出额外的变量。</p>
-<p>由此，我不得不感叹闭包的强大和遍历。<br>但是，可以使用对象来实现同样的功能吗？我给自己提出了这个问题。</p>
+<p>由此，我不得不感叹闭包的强大和便利。<br>但是，可以使用对象来实现同样的功能吗？我给自己提出了这个问题。</p>
 <p>闭包传递的是过程，对象传递的是变量。我们可以把变量封装到闭包中，当然应该也是可以通过对象来操控变量。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">CheckWrapper</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.data = data</span><br><span class="line">    <span class="keyword">this</span>.origin_fingerprint = make_fingerprint(<span class="keyword">this</span>.data)</span><br><span class="line">&#125;</span><br><span class="line">CheckWrapper.prototype.check_change = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> make_fingerprint(<span class="keyword">this</span>.data) !== <span class="keyword">this</span>.origin_fingerprint</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>我们可以这样使用：</p>
