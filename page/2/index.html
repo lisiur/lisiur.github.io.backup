@@ -9,8 +9,11 @@
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
 <meta name="theme-color" content="#222">
+
+
+
 
 
 
@@ -68,24 +71,7 @@
 
 
 
-  <meta name="keywords" content="Lisiur" />
 
-
-
-
-
-
-
-
-
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="Lisiur">
-<meta property="og:url" content="http://Lisiur.com/page/2/index.html">
-<meta property="og:site_name" content="Lisiur">
-<meta property="og:locale" content="zh-Hans">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Lisiur">
 
 
 
@@ -97,12 +83,10 @@
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
+    fastclick: ,
+    lazyload: ,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -114,12 +98,33 @@
 </script>
 
 
+  
+
+
+
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Lisiur">
+<meta property="og:url" content="http://Lisiur.com/page/2/index.html">
+<meta property="og:site_name" content="Lisiur">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Lisiur">
+
+
+
+
+
 
   <link rel="canonical" href="http://Lisiur.com/page/2/"/>
 
 
 
-
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
 
   <title>Lisiur</title>
   
@@ -130,6 +135,34 @@
 
 
 
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
 
 </head>
 
@@ -150,7 +183,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Lisiur</span>
         <span class="logo-line-after"><i></i></span>
@@ -162,7 +195,7 @@
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="Toggle navigation bar">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -170,65 +203,72 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
+        
+          
+  
+  <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      Home</a>
+</li>
+
       
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
+        
+          
+  
+  <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      About</a>
+</li>
+
       
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
+        
+          
+  
+  <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      Tags</a>
+</li>
+
       
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
+        
+          
+  
+  <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      Categories</a>
+</li>
+
       
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
+        
+          
+  
+  <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      Archives</a>
+</li>
+
       
 
       
+      
     </ul>
+  
+
+  
+    
+
   
 
   
@@ -236,12 +276,20 @@
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
@@ -252,6 +300,8 @@
 
   
   
+  
+
   
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -278,23 +328,31 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/08/31/图片上传预览/" itemprop="url">图片上传预览</a></h1>
+                <a class="post-title-link" href="/2017/08/31/图片上传预览/" itemprop="url">
+                  图片上传预览
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
             
+                
+            
+
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-31T21:15:27+08:00">
-                2017-08-31
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-31T21:15:27+08:00">2017-08-31</time>
             
 
+            
             
 
             
@@ -310,7 +368,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2017/08/31/图片上传预览/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/08/31/图片上传预览/" itemprop="commentCount"></span>
+                  <span class="post-meta-item-text">Comments:</span> <span class="post-comments-count valine-comment-count" data-xid="/2017/08/31/图片上传预览/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -324,7 +382,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views:</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -365,13 +423,16 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/08/31/图片上传预览/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -410,6 +471,8 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -434,23 +497,31 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/08/26/koa-学习笔记-二-：路由/" itemprop="url">koa 学习笔记(二)：路由</a></h1>
+                <a class="post-title-link" href="/2017/08/26/koa-学习笔记-二-：路由/" itemprop="url">
+                  koa 学习笔记(二)：路由
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
             
+                
+            
+
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-26T22:26:54+08:00">
-                2017-08-26
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-26T22:26:54+08:00">2017-08-26</time>
             
 
+            
             
 
             
@@ -466,7 +537,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2017/08/26/koa-学习笔记-二-：路由/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/08/26/koa-学习笔记-二-：路由/" itemprop="commentCount"></span>
+                  <span class="post-meta-item-text">Comments:</span> <span class="post-comments-count valine-comment-count" data-xid="/2017/08/26/koa-学习笔记-二-：路由/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -480,7 +551,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views:</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -513,13 +584,16 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/08/26/koa-学习笔记-二-：路由/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -558,6 +632,8 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -582,23 +658,31 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/08/20/koa-next-generation-web-framework-for-node-js/" itemprop="url">koa 学习笔记(一)：初识 koa</a></h1>
+                <a class="post-title-link" href="/2017/08/20/koa-next-generation-web-framework-for-node-js/" itemprop="url">
+                  koa 学习笔记(一)：初识 koa
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
             
+                
+            
+
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-20T10:03:20+08:00">
-                2017-08-20
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-20T10:03:20+08:00">2017-08-20</time>
             
 
+            
             
 
             
@@ -614,7 +698,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2017/08/20/koa-next-generation-web-framework-for-node-js/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/08/20/koa-next-generation-web-framework-for-node-js/" itemprop="commentCount"></span>
+                  <span class="post-meta-item-text">Comments:</span> <span class="post-comments-count valine-comment-count" data-xid="/2017/08/20/koa-next-generation-web-framework-for-node-js/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -628,7 +712,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views:</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -662,13 +746,16 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/08/20/koa-next-generation-web-framework-for-node-js/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -707,6 +794,8 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -731,23 +820,31 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/08/13/论一个前端程序员的定位/" itemprop="url">论一个前端程序员的定位</a></h1>
+                <a class="post-title-link" href="/2017/08/13/论一个前端程序员的定位/" itemprop="url">
+                  论一个前端程序员的定位
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
             
+                
+            
+
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-13T22:17:57+08:00">
-                2017-08-13
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-13T22:17:57+08:00">2017-08-13</time>
             
 
+            
             
 
             
@@ -763,7 +860,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2017/08/13/论一个前端程序员的定位/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/08/13/论一个前端程序员的定位/" itemprop="commentCount"></span>
+                  <span class="post-meta-item-text">Comments:</span> <span class="post-comments-count valine-comment-count" data-xid="/2017/08/13/论一个前端程序员的定位/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -777,7 +874,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views:</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -809,13 +906,16 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/08/13/论一个前端程序员的定位/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -854,6 +954,8 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -878,23 +980,31 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/08/03/vue-hack-之强制刷新组件/" itemprop="url">vue hack 之强制刷新组件</a></h1>
+                <a class="post-title-link" href="/2017/08/03/vue-hack-之强制刷新组件/" itemprop="url">
+                  vue hack 之强制刷新组件
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
             
+                
+            
+
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-03T18:46:36+08:00">
-                2017-08-03
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-03T18:46:36+08:00">2017-08-03</time>
             
 
+            
             
 
             
@@ -910,7 +1020,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2017/08/03/vue-hack-之强制刷新组件/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/08/03/vue-hack-之强制刷新组件/" itemprop="commentCount"></span>
+                  <span class="post-meta-item-text">Comments:</span> <span class="post-comments-count valine-comment-count" data-xid="/2017/08/03/vue-hack-之强制刷新组件/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -924,7 +1034,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views:</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -956,13 +1066,16 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/08/03/vue-hack-之强制刷新组件/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -1001,6 +1114,8 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -1025,23 +1140,31 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/07/30/关于CSS预处理器nesting的实践与思考/" itemprop="url">关于CSS预处理器nesting的实践与思考</a></h1>
+                <a class="post-title-link" href="/2017/07/30/关于CSS预处理器nesting的实践与思考/" itemprop="url">
+                  关于CSS预处理器nesting的实践与思考
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
             
+                
+            
+
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-30T09:33:34+08:00">
-                2017-07-30
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-30T09:33:34+08:00">2017-07-30</time>
             
 
+            
             
 
             
@@ -1056,14 +1179,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/css/" itemprop="url" rel="index">
-                    <span itemprop="name">css</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/css/" itemprop="url" rel="index"><span itemprop="name">css</span></a></span>
 
                 
                 
@@ -1079,7 +1198,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2017/07/30/关于CSS预处理器nesting的实践与思考/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/07/30/关于CSS预处理器nesting的实践与思考/" itemprop="commentCount"></span>
+                  <span class="post-meta-item-text">Comments:</span> <span class="post-comments-count valine-comment-count" data-xid="/2017/07/30/关于CSS预处理器nesting的实践与思考/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1093,7 +1212,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views:</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1127,13 +1246,16 @@ nesting 可以让我们使用结构化的选择器来描述结构化的 html 文
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/07/30/关于CSS预处理器nesting的实践与思考/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -1172,6 +1294,8 @@ nesting 可以让我们使用结构化的选择器来描述结构化的 html 文
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -1196,23 +1320,31 @@ nesting 可以让我们使用结构化的选择器来描述结构化的 html 文
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/07/22/javascript中的Date/" itemprop="url">javascript中的Date</a></h1>
+                <a class="post-title-link" href="/2017/07/22/javascript中的Date/" itemprop="url">
+                  javascript中的Date
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
             
+                
+            
+
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-22T23:30:05+08:00">
-                2017-07-22
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-22T23:30:05+08:00">2017-07-22</time>
             
 
+            
             
 
             
@@ -1227,14 +1359,10 @@ nesting 可以让我们使用结构化的选择器来描述结构化的 html 文
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a></span>
 
                 
                 
@@ -1250,7 +1378,7 @@ nesting 可以让我们使用结构化的选择器来描述结构化的 html 文
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2017/07/22/javascript中的Date/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/07/22/javascript中的Date/" itemprop="commentCount"></span>
+                  <span class="post-meta-item-text">Comments:</span> <span class="post-comments-count valine-comment-count" data-xid="/2017/07/22/javascript中的Date/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1264,7 +1392,7 @@ nesting 可以让我们使用结构化的选择器来描述结构化的 html 文
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views:</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1298,13 +1426,16 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/07/22/javascript中的Date/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -1343,6 +1474,8 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -1367,23 +1500,31 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/07/13/git情景小结/" itemprop="url">git情景小结</a></h1>
+                <a class="post-title-link" href="/2017/07/13/git情景小结/" itemprop="url">
+                  git情景小结
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
             
+                
+            
+
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-13T21:07:01+08:00">
-                2017-07-13
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-13T21:07:01+08:00">2017-07-13</time>
             
 
+            
             
 
             
@@ -1399,7 +1540,7 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2017/07/13/git情景小结/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/07/13/git情景小结/" itemprop="commentCount"></span>
+                  <span class="post-meta-item-text">Comments:</span> <span class="post-comments-count valine-comment-count" data-xid="/2017/07/13/git情景小结/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1413,7 +1554,7 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views:</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1446,13 +1587,16 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/07/13/git情景小结/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -1491,6 +1635,8 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -1515,23 +1661,31 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/07/09/gulp-webpack/" itemprop="url">gulp & webpack</a></h1>
+                <a class="post-title-link" href="/2017/07/09/gulp-webpack/" itemprop="url">
+                  gulp & webpack
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
             
+                
+            
+
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-09T10:27:17+08:00">
-                2017-07-09
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-09T10:27:17+08:00">2017-07-09</time>
             
 
+            
             
 
             
@@ -1546,14 +1700,10 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
 
                 
                 
@@ -1569,7 +1719,7 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2017/07/09/gulp-webpack/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/07/09/gulp-webpack/" itemprop="commentCount"></span>
+                  <span class="post-meta-item-text">Comments:</span> <span class="post-comments-count valine-comment-count" data-xid="/2017/07/09/gulp-webpack/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1583,7 +1733,7 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views:</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1615,13 +1765,16 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/07/09/gulp-webpack/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -1660,6 +1813,8 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -1684,23 +1839,31 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/07/02/《魔印人》/" itemprop="url">《魔印人》</a></h1>
+                <a class="post-title-link" href="/2017/07/02/《魔印人》/" itemprop="url">
+                  《魔印人》
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
             
+                
+            
+
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-02T22:28:08+08:00">
-                2017-07-02
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-02T22:28:08+08:00">2017-07-02</time>
             
 
+            
             
 
             
@@ -1716,7 +1879,7 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2017/07/02/《魔印人》/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/07/02/《魔印人》/" itemprop="commentCount"></span>
+                  <span class="post-meta-item-text">Comments:</span> <span class="post-comments-count valine-comment-count" data-xid="/2017/07/02/《魔印人》/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1730,7 +1893,7 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views:</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1762,13 +1925,16 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/07/02/《魔印人》/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -1803,15 +1969,12 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
 
           </div>
-          
-
-
           
 
         </div>
@@ -1846,60 +2009,23 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">54</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">36</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
+          
 
           
 
           
             <div class="links-of-author motion-element">
-                
-                  <span class="links-of-author-item">
-                    <a href="https://github.com/lisiur" target="_blank" title="GitHub">
-                      
-                        <i class="fa fa-fw fa-github"></i>GitHub</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="https://twitter.com/lisiurday" target="_blank" title="Twitter">
-                      
-                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
-                  </span>
-                
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/lisiur" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/lisiurday" target="_blank" title="Twitter"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  
+                </span>
+              
             </div>
           
 
@@ -1909,6 +2035,9 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
           
           
 
+          
+            
+          
           
 
         </div>
@@ -1929,13 +2058,17 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
+  <span class="with-love" id="animate">
+    <i class="fa fa-"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Lisiur Day</span>
 
   
+
+  
 </div>
+
+
 
 
 
@@ -1948,6 +2081,7 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
 
 
         
+
 
 
 
@@ -1986,7 +2120,13 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
 
 
 
+
+
+
   
+
+
+
 
 
 
@@ -2002,16 +2142,6 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
   
   
     <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
   
 
   
@@ -2054,10 +2184,6 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
   
 
 
-  
-
-
-
 
 	
 
@@ -2080,15 +2206,15 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
 
 
 
-
-
   <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
   <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
   
   <script type="text/javascript">
     var GUEST = ['nick','mail','link'];
     var guest = 'nick,mail';
-    guest = guest.split(',').filter(item=>{
+    guest = guest.split(',').filter(function (item) {
       return GUEST.indexOf(item)>-1;
     });
     new Valine({
@@ -2172,35 +2298,40 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
             var counter = results[0];
             counter.fetchWhenSave(true);
             counter.increment("time");
+            
             counter.save(null, {
               success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                
               },
               error: function(counter, error) {
                 console.log('Failed to save Visitor num, with error message: ' + error.message);
               }
             });
           } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
+            
+              var newcounter = new Counter();
+              /* Set ACL */
+              var acl = new AV.ACL();
+              acl.setPublicReadAccess(true);
+              acl.setPublicWriteAccess(true);
+              newcounter.setACL(acl);
+              /* End Set ACL */
+              newcounter.set("title", title);
+              newcounter.set("url", url);
+              newcounter.set("time", 1);
+              newcounter.save(null, {
+                success: function(newcounter) {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                },
+                error: function(newcounter, error) {
+                  console.log('Failed to create');
+                }
+              });
+            
           }
         },
         error: function(error) {
@@ -2226,6 +2357,10 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
   
 
   
+
+  
+  
+
   
 
   

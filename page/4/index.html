@@ -9,8 +9,11 @@
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
 <meta name="theme-color" content="#222">
+
+
+
 
 
 
@@ -68,24 +71,7 @@
 
 
 
-  <meta name="keywords" content="Lisiur" />
 
-
-
-
-
-
-
-
-
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="Lisiur">
-<meta property="og:url" content="http://Lisiur.com/page/4/index.html">
-<meta property="og:site_name" content="Lisiur">
-<meta property="og:locale" content="zh-Hans">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Lisiur">
 
 
 
@@ -97,12 +83,10 @@
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
+    fastclick: ,
+    lazyload: ,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -114,12 +98,33 @@
 </script>
 
 
+  
+
+
+
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Lisiur">
+<meta property="og:url" content="http://Lisiur.com/page/4/index.html">
+<meta property="og:site_name" content="Lisiur">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Lisiur">
+
+
+
+
+
 
   <link rel="canonical" href="http://Lisiur.com/page/4/"/>
 
 
 
-
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
 
   <title>Lisiur</title>
   
@@ -130,6 +135,34 @@
 
 
 
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
 
 </head>
 
@@ -150,7 +183,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Lisiur</span>
         <span class="logo-line-after"><i></i></span>
@@ -162,7 +195,7 @@
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="Toggle navigation bar">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -170,65 +203,72 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
+        
+          
+  
+  <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      Home</a>
+</li>
+
       
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
+        
+          
+  
+  <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      About</a>
+</li>
+
       
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
+        
+          
+  
+  <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      Tags</a>
+</li>
+
       
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
+        
+          
+  
+  <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      Categories</a>
+</li>
+
       
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
+        
+          
+  
+  <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      Archives</a>
+</li>
+
       
 
       
+      
     </ul>
+  
+
+  
+    
+
   
 
   
@@ -236,12 +276,20 @@
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
@@ -252,6 +300,8 @@
 
   
   
+  
+
   
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -278,23 +328,31 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/04/14/《白夜行》——人性的弱点/" itemprop="url">《白夜行》——人性的弱点</a></h1>
+                <a class="post-title-link" href="/2017/04/14/《白夜行》——人性的弱点/" itemprop="url">
+                  《白夜行》——人性的弱点
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
             
+                
+            
+
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-14T08:31:33+08:00">
-                2017-04-14
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-14T08:31:33+08:00">2017-04-14</time>
             
 
+            
             
 
             
@@ -310,7 +368,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2017/04/14/《白夜行》——人性的弱点/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/04/14/《白夜行》——人性的弱点/" itemprop="commentCount"></span>
+                  <span class="post-meta-item-text">Comments:</span> <span class="post-comments-count valine-comment-count" data-xid="/2017/04/14/《白夜行》——人性的弱点/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -324,7 +382,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views:</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -357,13 +415,16 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/04/14/《白夜行》——人性的弱点/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -402,6 +463,8 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -426,23 +489,31 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/04/09/《活着之上》——生存与良知的较量/" itemprop="url">《活着之上》——生存与良知的较量</a></h1>
+                <a class="post-title-link" href="/2017/04/09/《活着之上》——生存与良知的较量/" itemprop="url">
+                  《活着之上》——生存与良知的较量
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
             
+                
+            
+
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-09T08:32:42+08:00">
-                2017-04-09
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-09T08:32:42+08:00">2017-04-09</time>
             
 
+            
             
 
             
@@ -458,7 +529,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2017/04/09/《活着之上》——生存与良知的较量/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/04/09/《活着之上》——生存与良知的较量/" itemprop="commentCount"></span>
+                  <span class="post-meta-item-text">Comments:</span> <span class="post-comments-count valine-comment-count" data-xid="/2017/04/09/《活着之上》——生存与良知的较量/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -472,7 +543,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views:</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -505,13 +576,16 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/04/09/《活着之上》——生存与良知的较量/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -550,6 +624,8 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -574,23 +650,31 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/04/02/《嫌疑人X的献身》——孤独而又骄傲的失败者/" itemprop="url">《嫌疑人X的献身》——骄傲而又孤独的失败者</a></h1>
+                <a class="post-title-link" href="/2017/04/02/《嫌疑人X的献身》——孤独而又骄傲的失败者/" itemprop="url">
+                  《嫌疑人X的献身》——骄傲而又孤独的失败者
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
             
+                
+            
+
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-02T18:57:37+08:00">
-                2017-04-02
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-02T18:57:37+08:00">2017-04-02</time>
             
 
+            
             
 
             
@@ -606,7 +690,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2017/04/02/《嫌疑人X的献身》——孤独而又骄傲的失败者/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/04/02/《嫌疑人X的献身》——孤独而又骄傲的失败者/" itemprop="commentCount"></span>
+                  <span class="post-meta-item-text">Comments:</span> <span class="post-comments-count valine-comment-count" data-xid="/2017/04/02/《嫌疑人X的献身》——孤独而又骄傲的失败者/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -620,7 +704,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views:</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -653,13 +737,16 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/04/02/《嫌疑人X的献身》——孤独而又骄傲的失败者/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -698,6 +785,8 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -722,23 +811,31 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/04/02/什么是最好的语言/" itemprop="url">谁是最好的语言</a></h1>
+                <a class="post-title-link" href="/2017/04/02/什么是最好的语言/" itemprop="url">
+                  谁是最好的语言
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
             
+                
+            
+
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-02T06:50:13+08:00">
-                2017-04-02
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-02T06:50:13+08:00">2017-04-02</time>
             
 
+            
             
 
             
@@ -754,7 +851,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2017/04/02/什么是最好的语言/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/04/02/什么是最好的语言/" itemprop="commentCount"></span>
+                  <span class="post-meta-item-text">Comments:</span> <span class="post-comments-count valine-comment-count" data-xid="/2017/04/02/什么是最好的语言/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -768,7 +865,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views:</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -802,13 +899,16 @@ c/c++：“Hi，儿子们，我是你们的爸爸（我资历老）”jav
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/04/02/什么是最好的语言/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -847,6 +947,8 @@ c/c++：“Hi，儿子们，我是你们的爸爸（我资历老）”jav
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -871,23 +973,31 @@ c/c++：“Hi，儿子们，我是你们的爸爸（我资历老）”jav
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/04/01/Ramda-is-coming/" itemprop="url">Ramda is coming</a></h1>
+                <a class="post-title-link" href="/2017/04/01/Ramda-is-coming/" itemprop="url">
+                  Ramda is coming
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
             
+                
+            
+
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-01T21:41:36+08:00">
-                2017-04-01
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-01T21:41:36+08:00">2017-04-01</time>
             
 
+            
             
 
             
@@ -902,14 +1012,10 @@ c/c++：“Hi，儿子们，我是你们的爸爸（我资历老）”jav
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/fp/" itemprop="url" rel="index">
-                    <span itemprop="name">fp</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/fp/" itemprop="url" rel="index"><span itemprop="name">fp</span></a></span>
 
                 
                 
@@ -925,7 +1031,7 @@ c/c++：“Hi，儿子们，我是你们的爸爸（我资历老）”jav
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2017/04/01/Ramda-is-coming/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/04/01/Ramda-is-coming/" itemprop="commentCount"></span>
+                  <span class="post-meta-item-text">Comments:</span> <span class="post-comments-count valine-comment-count" data-xid="/2017/04/01/Ramda-is-coming/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -939,7 +1045,7 @@ c/c++：“Hi，儿子们，我是你们的爸爸（我资历老）”jav
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views:</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -972,13 +1078,16 @@ c/c++：“Hi，儿子们，我是你们的爸爸（我资历老）”jav
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/04/01/Ramda-is-coming/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -1017,6 +1126,8 @@ c/c++：“Hi，儿子们，我是你们的爸爸（我资历老）”jav
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -1041,23 +1152,31 @@ c/c++：“Hi，儿子们，我是你们的爸爸（我资历老）”jav
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/03/26/使用FP进行空值检查和错误处理的实践/" itemprop="url">使用FP进行空值检查和错误处理的实践</a></h1>
+                <a class="post-title-link" href="/2017/03/26/使用FP进行空值检查和错误处理的实践/" itemprop="url">
+                  使用FP进行空值检查和错误处理的实践
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
             
+                
+            
+
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-26T08:49:36+08:00">
-                2017-03-26
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-26T08:49:36+08:00">2017-03-26</time>
             
 
+            
             
 
             
@@ -1072,14 +1191,10 @@ c/c++：“Hi，儿子们，我是你们的爸爸（我资历老）”jav
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/fp/" itemprop="url" rel="index">
-                    <span itemprop="name">fp</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/fp/" itemprop="url" rel="index"><span itemprop="name">fp</span></a></span>
 
                 
                 
@@ -1095,7 +1210,7 @@ c/c++：“Hi，儿子们，我是你们的爸爸（我资历老）”jav
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2017/03/26/使用FP进行空值检查和错误处理的实践/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/03/26/使用FP进行空值检查和错误处理的实践/" itemprop="commentCount"></span>
+                  <span class="post-meta-item-text">Comments:</span> <span class="post-comments-count valine-comment-count" data-xid="/2017/03/26/使用FP进行空值检查和错误处理的实践/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1109,7 +1224,7 @@ c/c++：“Hi，儿子们，我是你们的爸爸（我资历老）”jav
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views:</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1142,13 +1257,16 @@ c/c++：“Hi，儿子们，我是你们的爸爸（我资历老）”jav
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/03/26/使用FP进行空值检查和错误处理的实践/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -1187,6 +1305,8 @@ c/c++：“Hi，儿子们，我是你们的爸爸（我资历老）”jav
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -1211,23 +1331,31 @@ c/c++：“Hi，儿子们，我是你们的爸爸（我资历老）”jav
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/03/18/关于vue中数据流的思考和实践/" itemprop="url">不知道起啥名字，想到哪写到哪系列</a></h1>
+                <a class="post-title-link" href="/2017/03/18/关于vue中数据流的思考和实践/" itemprop="url">
+                  不知道起啥名字，想到哪写到哪系列
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
             
+                
+            
+
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-18T23:28:08+08:00">
-                2017-03-18
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-18T23:28:08+08:00">2017-03-18</time>
             
 
+            
             
 
             
@@ -1242,14 +1370,10 @@ c/c++：“Hi，儿子们，我是你们的爸爸（我资历老）”jav
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/vue/" itemprop="url" rel="index">
-                    <span itemprop="name">vue</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/vue/" itemprop="url" rel="index"><span itemprop="name">vue</span></a></span>
 
                 
                 
@@ -1265,7 +1389,7 @@ c/c++：“Hi，儿子们，我是你们的爸爸（我资历老）”jav
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2017/03/18/关于vue中数据流的思考和实践/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/03/18/关于vue中数据流的思考和实践/" itemprop="commentCount"></span>
+                  <span class="post-meta-item-text">Comments:</span> <span class="post-comments-count valine-comment-count" data-xid="/2017/03/18/关于vue中数据流的思考和实践/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1279,7 +1403,7 @@ c/c++：“Hi，儿子们，我是你们的爸爸（我资历老）”jav
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views:</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1331,13 +1455,16 @@ style样式
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/03/18/关于vue中数据流的思考和实践/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -1376,6 +1503,8 @@ style样式
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -1400,23 +1529,31 @@ style样式
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/03/06/chop-a-string-into-chunks-of-a-given-length-in-Ruby/" itemprop="url">chop a string into chunks of a given length in Ruby</a></h1>
+                <a class="post-title-link" href="/2017/03/06/chop-a-string-into-chunks-of-a-given-length-in-Ruby/" itemprop="url">
+                  chop a string into chunks of a given length in Ruby
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
             
+                
+            
+
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-06T09:36:33+08:00">
-                2017-03-06
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-06T09:36:33+08:00">2017-03-06</time>
             
 
+            
             
 
             
@@ -1431,14 +1568,10 @@ style样式
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ruby/" itemprop="url" rel="index">
-                    <span itemprop="name">ruby</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/ruby/" itemprop="url" rel="index"><span itemprop="name">ruby</span></a></span>
 
                 
                 
@@ -1454,7 +1587,7 @@ style样式
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2017/03/06/chop-a-string-into-chunks-of-a-given-length-in-Ruby/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/03/06/chop-a-string-into-chunks-of-a-given-length-in-Ruby/" itemprop="commentCount"></span>
+                  <span class="post-meta-item-text">Comments:</span> <span class="post-comments-count valine-comment-count" data-xid="/2017/03/06/chop-a-string-into-chunks-of-a-given-length-in-Ruby/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1468,7 +1601,7 @@ style样式
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views:</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1500,13 +1633,16 @@ style样式
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/03/06/chop-a-string-into-chunks-of-a-given-length-in-Ruby/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -1545,6 +1681,8 @@ style样式
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -1569,23 +1707,31 @@ style样式
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/02/17/Palindrome-Number-LeetCode/" itemprop="url">Palindrome Number@LeetCode</a></h1>
+                <a class="post-title-link" href="/2017/02/17/Palindrome-Number-LeetCode/" itemprop="url">
+                  Palindrome Number@LeetCode
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
             
+                
+            
+
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-17T08:52:18+08:00">
-                2017-02-17
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-17T08:52:18+08:00">2017-02-17</time>
             
 
+            
             
 
             
@@ -1600,14 +1746,10 @@ style样式
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">algorithm</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">algorithm</span></a></span>
 
                 
                 
@@ -1623,7 +1765,7 @@ style样式
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2017/02/17/Palindrome-Number-LeetCode/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/02/17/Palindrome-Number-LeetCode/" itemprop="commentCount"></span>
+                  <span class="post-meta-item-text">Comments:</span> <span class="post-comments-count valine-comment-count" data-xid="/2017/02/17/Palindrome-Number-LeetCode/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1637,7 +1779,7 @@ style样式
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views:</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1668,13 +1810,16 @@ style样式
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/02/17/Palindrome-Number-LeetCode/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -1713,6 +1858,8 @@ style样式
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -1737,23 +1884,31 @@ style样式
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/01/24/关于事件依赖的思考和实践/" itemprop="url">关于事件依赖的思考和实践</a></h1>
+                <a class="post-title-link" href="/2017/01/24/关于事件依赖的思考和实践/" itemprop="url">
+                  关于事件依赖的思考和实践
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
             
+                
+            
+
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-24T16:16:37+08:00">
-                2017-01-24
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-24T16:16:37+08:00">2017-01-24</time>
             
 
+            
             
 
             
@@ -1769,7 +1924,7 @@ style样式
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2017/01/24/关于事件依赖的思考和实践/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/01/24/关于事件依赖的思考和实践/" itemprop="commentCount"></span>
+                  <span class="post-meta-item-text">Comments:</span> <span class="post-comments-count valine-comment-count" data-xid="/2017/01/24/关于事件依赖的思考和实践/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1783,7 +1938,7 @@ style样式
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views:</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1828,13 +1983,16 @@ style样式
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/01/24/关于事件依赖的思考和实践/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -1869,15 +2027,12 @@ style样式
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
 
           </div>
-          
-
-
           
 
         </div>
@@ -1912,60 +2067,23 @@ style样式
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">54</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">36</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
+          
 
           
 
           
             <div class="links-of-author motion-element">
-                
-                  <span class="links-of-author-item">
-                    <a href="https://github.com/lisiur" target="_blank" title="GitHub">
-                      
-                        <i class="fa fa-fw fa-github"></i>GitHub</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="https://twitter.com/lisiurday" target="_blank" title="Twitter">
-                      
-                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
-                  </span>
-                
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/lisiur" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/lisiurday" target="_blank" title="Twitter"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  
+                </span>
+              
             </div>
           
 
@@ -1975,6 +2093,9 @@ style样式
           
           
 
+          
+            
+          
           
 
         </div>
@@ -1995,13 +2116,17 @@ style样式
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
+  <span class="with-love" id="animate">
+    <i class="fa fa-"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Lisiur Day</span>
 
   
+
+  
 </div>
+
+
 
 
 
@@ -2014,6 +2139,7 @@ style样式
 
 
         
+
 
 
 
@@ -2052,7 +2178,13 @@ style样式
 
 
 
+
+
+
   
+
+
+
 
 
 
@@ -2068,16 +2200,6 @@ style样式
   
   
     <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
   
 
   
@@ -2120,10 +2242,6 @@ style样式
   
 
 
-  
-
-
-
 
 	
 
@@ -2146,15 +2264,15 @@ style样式
 
 
 
-
-
   <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
   <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
   
   <script type="text/javascript">
     var GUEST = ['nick','mail','link'];
     var guest = 'nick,mail';
-    guest = guest.split(',').filter(item=>{
+    guest = guest.split(',').filter(function (item) {
       return GUEST.indexOf(item)>-1;
     });
     new Valine({
@@ -2238,35 +2356,40 @@ style样式
             var counter = results[0];
             counter.fetchWhenSave(true);
             counter.increment("time");
+            
             counter.save(null, {
               success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                
               },
               error: function(counter, error) {
                 console.log('Failed to save Visitor num, with error message: ' + error.message);
               }
             });
           } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
+            
+              var newcounter = new Counter();
+              /* Set ACL */
+              var acl = new AV.ACL();
+              acl.setPublicReadAccess(true);
+              acl.setPublicWriteAccess(true);
+              newcounter.setACL(acl);
+              /* End Set ACL */
+              newcounter.set("title", title);
+              newcounter.set("url", url);
+              newcounter.set("time", 1);
+              newcounter.save(null, {
+                success: function(newcounter) {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                },
+                error: function(newcounter, error) {
+                  console.log('Failed to create');
+                }
+              });
+            
           }
         },
         error: function(error) {
@@ -2292,6 +2415,10 @@ style样式
   
 
   
+
+  
+  
+
   
 
   

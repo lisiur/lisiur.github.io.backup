@@ -9,8 +9,11 @@
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
 <meta name="theme-color" content="#222">
+
+
+
 
 
 
@@ -68,18 +71,39 @@
 
 
 
-  <meta name="keywords" content="algorithm,leetcode,array," />
 
 
 
 
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    fastclick: ,
+    lazyload: ,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
 
 
 
 
-
-
-<meta name="description" content="QUESTION: Given a non-empty array of integers, return the third maximum number in this array. If it does not exist, return the maximum number. The time complexity must be in O(n). Example 1:Input: [3,">
+  <meta name="description" content="QUESTION: Given a non-empty array of integers, return the third maximum number in this array. If it does not exist, return the maximum number. The time complexity must be in O(n). Example 1:Input: [3,">
 <meta name="keywords" content="algorithm,leetcode,array">
 <meta property="og:type" content="article">
 <meta property="og:title" content="414. Third Maximum Number">
@@ -94,29 +118,6 @@
 
 
 
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Mist',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
 
 
 
@@ -124,7 +125,11 @@
 
 
 
-
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
 
   <title>414. Third Maximum Number | Lisiur</title>
   
@@ -135,6 +140,34 @@
 
 
 
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
 
 </head>
 
@@ -154,7 +187,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Lisiur</span>
         <span class="logo-line-after"><i></i></span>
@@ -166,7 +199,7 @@
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="Toggle navigation bar">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -174,65 +207,72 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
+        
+          
+  
+  <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      Home</a>
+</li>
+
       
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
+        
+          
+  
+  <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      About</a>
+</li>
+
       
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
+        
+          
+  
+  <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      Tags</a>
+</li>
+
       
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
+        
+          
+  
+  <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      Categories</a>
+</li>
+
       
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
+        
+          
+  
+  <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      Archives</a>
+</li>
+
       
 
       
+      
     </ul>
+  
+
+  
+    
+
   
 
   
@@ -240,12 +280,20 @@
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
           <div id="content" class="content">
             
 
@@ -256,6 +304,8 @@
 
   
   
+  
+
   
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -280,23 +330,29 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">414. Third Maximum Number</h1>
+          <h1 class="post-title" itemprop="name headline">414. Third Maximum Number
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
             
+                
+            
+
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-19T12:28:55+08:00">
-                2016-10-19
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-10-19T12:28:55+08:00">2016-10-19</time>
             
 
+            
             
 
             
@@ -311,14 +367,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">algorithm</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">algorithm</span></a></span>
 
                 
                 
@@ -334,7 +386,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2016/10/19/414. Third Maximum Number/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2016/10/19/414. Third Maximum Number/" itemprop="commentCount"></span>
+                  <span class="post-meta-item-text">Comments:</span> <span class="post-comments-count valine-comment-count" data-xid="/2016/10/19/414. Third Maximum Number/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -348,7 +400,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views:</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -386,6 +438,9 @@
 <h2 id="SOLUTION"><a href="#SOLUTION" class="headerlink" title="SOLUTION"></a>SOLUTION</h2><h2 id="CODE"><a href="#CODE" class="headerlink" title="CODE"></a>CODE</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;number[]&#125; nums</span></span><br><span class="line"><span class="comment"> * @return &#123;number&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> thirdMax = <span class="function"><span class="keyword">function</span>(<span class="params">nums</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> thirdMaxNums = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">3</span>);</span><br><span class="line">    <span class="keyword">var</span> i, j;</span><br><span class="line">    <span class="keyword">for</span>(i <span class="keyword">in</span> nums) &#123;</span><br><span class="line">        <span class="keyword">if</span>(isLargeThan(nums[i], thirdMaxNums[<span class="number">0</span>])) &#123;</span><br><span class="line">            thirdMaxNums = thirdMaxNums.unshift(nums[i]) &amp;&amp; thirdMaxNums.slice(<span class="number">0</span>,<span class="number">3</span>);</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">for</span>(j = <span class="number">0</span>; j &lt; <span class="number">2</span>; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span>(isLargeThan(thirdMaxNums[j], nums[i]) &amp;&amp; isLargeThan(nums[i], thirdMaxNums[j+<span class="number">1</span>])) &#123;</span><br><span class="line">                    thirdMaxNums = thirdMaxNums.splice(j+<span class="number">1</span>, <span class="number">0</span>, nums[i]) &amp;&amp; thirdMaxNums.slice(<span class="number">0</span>,<span class="number">3</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(thirdMaxNums[<span class="number">2</span>] !== <span class="literal">undefined</span>) <span class="keyword">return</span> thirdMaxNums[<span class="number">2</span>];</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> thirdMaxNums[<span class="number">0</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">isLargeThan</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(b === <span class="literal">undefined</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> a &gt; b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
       
     </div>
+
+    
+
     
     
     
@@ -455,9 +510,6 @@
           </div>
           
 
-
-          
-
   
     <div class="comments" id="comments">
     </div>
@@ -486,10 +538,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
+            Overview
           </li>
         </ul>
       
@@ -506,60 +558,23 @@
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">54</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">36</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
+          
 
           
 
           
             <div class="links-of-author motion-element">
-                
-                  <span class="links-of-author-item">
-                    <a href="https://github.com/lisiur" target="_blank" title="GitHub">
-                      
-                        <i class="fa fa-fw fa-github"></i>GitHub</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="https://twitter.com/lisiurday" target="_blank" title="Twitter">
-                      
-                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
-                  </span>
-                
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/lisiur" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/lisiurday" target="_blank" title="Twitter"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  
+                </span>
+              
             </div>
           
 
@@ -569,6 +584,9 @@
           
           
 
+          
+            
+          
           
 
         </div>
@@ -605,13 +623,17 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
+  <span class="with-love" id="animate">
+    <i class="fa fa-"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Lisiur Day</span>
 
   
+
+  
 </div>
+
+
 
 
 
@@ -624,6 +646,7 @@
 
 
         
+
 
 
 
@@ -662,7 +685,13 @@
 
 
 
+
+
+
   
+
+
+
 
 
 
@@ -678,16 +707,6 @@
   
   
     <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
   
 
   
@@ -734,10 +753,6 @@
   
 
 
-  
-
-
-
 
 	
 
@@ -760,15 +775,15 @@
 
 
 
-
-
   <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
   <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
   
   <script type="text/javascript">
     var GUEST = ['nick','mail','link'];
     var guest = 'nick,mail';
-    guest = guest.split(',').filter(item=>{
+    guest = guest.split(',').filter(function (item) {
       return GUEST.indexOf(item)>-1;
     });
     new Valine({
@@ -852,35 +867,40 @@
             var counter = results[0];
             counter.fetchWhenSave(true);
             counter.increment("time");
+            
             counter.save(null, {
               success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                
               },
               error: function(counter, error) {
                 console.log('Failed to save Visitor num, with error message: ' + error.message);
               }
             });
           } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
+            
+              var newcounter = new Counter();
+              /* Set ACL */
+              var acl = new AV.ACL();
+              acl.setPublicReadAccess(true);
+              acl.setPublicWriteAccess(true);
+              newcounter.setACL(acl);
+              /* End Set ACL */
+              newcounter.set("title", title);
+              newcounter.set("url", url);
+              newcounter.set("time", 1);
+              newcounter.save(null, {
+                success: function(newcounter) {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                },
+                error: function(newcounter, error) {
+                  console.log('Failed to create');
+                }
+              });
+            
           }
         },
         error: function(error) {
@@ -906,6 +926,10 @@
   
 
   
+
+  
+  
+
   
 
   
