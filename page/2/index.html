@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion" lang="zh-Hans">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -41,10 +41,6 @@
 
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
 
 
 
@@ -53,19 +49,19 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=6.1.0" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.1.0">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.1.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.1.0">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/logo.svg?v=6.1.0" color="#222">
 
 
 
@@ -79,12 +75,12 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
-    version: '5.1.4',
+    scheme: 'Muse',
+    version: '6.1.0',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    fastclick: ,
-    lazyload: ,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -216,37 +212,7 @@
   
   <li class="menu-item menu-item-home">
     <a href="/" rel="section">
-      Home</a>
-</li>
-
-      
-        
-        
-          
-  
-  <li class="menu-item menu-item-about">
-    <a href="/about/" rel="section">
-      About</a>
-</li>
-
-      
-        
-        
-          
-  
-  <li class="menu-item menu-item-tags">
-    <a href="/tags/" rel="section">
-      Tags</a>
-</li>
-
-      
-        
-        
-          
-  
-  <li class="menu-item menu-item-categories">
-    <a href="/categories/" rel="section">
-      Categories</a>
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
 </li>
 
       
@@ -256,7 +222,7 @@
   
   <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      Archives</a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
 </li>
 
       
@@ -314,7 +280,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lisiur Day">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -362,30 +328,9 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/08/31/图片上传预览/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">Comments:</span> <span class="post-comments-count valine-comment-count" data-xid="/2017/08/31/图片上传预览/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
-          
-             <span id="/2017/08/31/图片上传预览/" class="leancloud_visitors" data-flag-title="图片上传预览">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views:</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
           
 
           
@@ -409,24 +354,29 @@
       
         
           
-          要想实现图片上传前预览，只需两步：
-
-第一步： 获取上传图片的地址。
-第二步： 让 img 标签显示该图片
-
-获取上传图片地址通过 FileReader API
-兼容 IE10+ 及其他主流浏览器
-
-1&lt;input type='file' id='file'&gt;
-123456var fil
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/08/31/图片上传预览/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p>要想实现图片上传前预览，只需两步：</p>
+<ul>
+<li>第一步： 获取上传图片的地址。</li>
+<li>第二步： 让 img 标签显示该图片</li>
+</ul>
+<h1 id="获取上传图片地址"><a href="#获取上传图片地址" class="headerlink" title="获取上传图片地址"></a>获取上传图片地址</h1><h2 id="通过-FileReader-API"><a href="#通过-FileReader-API" class="headerlink" title="通过 FileReader API"></a>通过 FileReader API</h2><blockquote>
+<p>兼容 IE10+ 及其他主流浏览器</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'file'</span> <span class="attr">id</span>=<span class="string">'file'</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> file = <span class="built_in">document</span>.getElementById(<span class="string">'file'</span>).files[<span class="number">0</span>]</span><br><span class="line"><span class="keyword">var</span> reader = <span class="keyword">new</span> FileReader()</span><br><span class="line">reader.readAsDataURL(file)</span><br><span class="line">reader.onload = <span class="function"><span class="keyword">function</span>(<span class="params">evt</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> url = evt.target.result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="通过-URL-API-createObjectUrl"><a href="#通过-URL-API-createObjectUrl" class="headerlink" title="通过 URL API: createObjectUrl"></a>通过 URL API: createObjectUrl</h2><blockquote>
+<p>兼容 IE10+ 及其他主流浏览器(该方法处于实验阶段)</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'file'</span> <span class="attr">id</span>=<span class="string">'file'</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> file = <span class="built_in">document</span>.getElementById(<span class="string">'file'</span>).files[<span class="number">0</span>]</span><br><span class="line"><span class="keyword">var</span> URL = <span class="built_in">window</span>.URL || <span class="built_in">window</span>.webkitURL</span><br><span class="line"><span class="keyword">var</span> url = URL.createObjectURL(file)</span><br><span class="line"></span><br><span class="line">url.revokeObjectURL(url) <span class="comment">// 使用完 url 后要手动释放内存</span></span><br></pre></td></tr></table></figure>
+<h2 id="通过-document-selection"><a href="#通过-document-selection" class="headerlink" title="通过 document.selection"></a>通过 document.selection</h2><blockquote>
+<p>兼容 IE9 及以下，取到的是绝对路径</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'file'</span> <span class="attr">id</span>=<span class="string">'file'</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> file = <span class="built_in">document</span>.getElementById(<span class="string">'file'</span>)</span><br><span class="line">file.select();</span><br><span class="line"><span class="keyword">var</span> url = <span class="built_in">document</span>.selection.createRange().text</span><br></pre></td></tr></table></figure>
+<h1 id="使-img-显示图片"><a href="#使-img-显示图片" class="headerlink" title="使 img 显示图片"></a>使 img 显示图片</h1><h2 id="IE6、IE10-和-其他主流浏览器直接赋值"><a href="#IE6、IE10-和-其他主流浏览器直接赋值" class="headerlink" title="IE6、IE10+ 和 其他主流浏览器直接赋值"></a>IE6、IE10+ 和 其他主流浏览器直接赋值</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">img.src = url</span><br></pre></td></tr></table></figure>
+<h2 id="IE7-8-9-需要使用-filter"><a href="#IE7-8-9-需要使用-filter" class="headerlink" title="IE7,8,9 需要使用 filter"></a>IE7,8,9 需要使用 filter</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">img.style.filter = <span class="string">"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src=\""</span> + url + <span class="string">"\")"</span></span><br></pre></td></tr></table></figure>
+          
         
       
     </div>
@@ -483,7 +433,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lisiur Day">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -531,30 +481,9 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/08/26/koa-学习笔记-二-：路由/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">Comments:</span> <span class="post-comments-count valine-comment-count" data-xid="/2017/08/26/koa-学习笔记-二-：路由/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
-          
-             <span id="/2017/08/26/koa-学习笔记-二-：路由/" class="leancloud_visitors" data-flag-title="koa 学习笔记(二)：路由">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views:</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
           
 
           
@@ -578,16 +507,16 @@
       
         
           
-          koa 是如此的轻量，以至于路由模块都没有配备。因此，我们需要手动控制路由，就像下面这样：
-1234567app.use(async (ctx, next) =&gt; &#123;  if (ctx.request.method === 'GET') &#123;    if (ctx.reque
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/08/26/koa-学习笔记-二-：路由/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p>koa 是如此的轻量，以至于路由模块都没有配备。因此，我们需要手动控制路由，就像下面这样：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">app.use(<span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (ctx.request.method === <span class="string">'GET'</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (ctx.request.url === <span class="string">'/'</span>) &#123;</span><br><span class="line">      ctx.body = <span class="string">'GET index'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>那么稍微复杂点的路由呢，比如匹配<code>/user/:username</code>这样的路由，我们可以自己做下正则匹配,就像这样：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">app.use(<span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (ctx.request.method === <span class="string">'GET'</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> username = ctx.request.url.match(<span class="regexp">/^\/user\/([^/]+)$/</span>)</span><br><span class="line">    username = username &amp;&amp; username[<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">if</span> (username) &#123;</span><br><span class="line">      ctx.body = <span class="string">`GET user:<span class="subst">$&#123;username&#125;</span>`</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>那么更复杂的路由呢，比如匹配<code>/user/:username/post/:postname/comments/:commentername</code>这样的路由，(⊙v⊙)嗯，少年请留步，或许我们可以不用自己来做这么无聊而又易出错的处理，因为<code>koa-router</code>已经帮我们做好了 :)</p>
+<p>好，下面我们使用<code>koa-router</code>改写以上代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">'koa'</span>)</span><br><span class="line"><span class="keyword">const</span> Router = <span class="built_in">require</span>(<span class="string">'koa-router'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa()</span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> Router()</span><br><span class="line"></span><br><span class="line">router.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">ctx, next</span>) </span>&#123;</span><br><span class="line">  ctx.body = <span class="string">'GET index'</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">router.get(<span class="string">'/user:username'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">ctx, next</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> username = ctx.params.username</span><br><span class="line">  ctx.body = <span class="string">`GET user:<span class="subst">$&#123;username&#125;</span>`</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.use(router.routes())</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3001</span>)</span><br></pre></td></tr></table></figure>
+<p>当然 <code>koa-router</code> 提供的功能远不止这些，等待大家自己去挖掘了~</p>
+
+          
         
       
     </div>
@@ -644,7 +573,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lisiur Day">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -692,30 +621,9 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/08/20/koa-next-generation-web-framework-for-node-js/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">Comments:</span> <span class="post-comments-count valine-comment-count" data-xid="/2017/08/20/koa-next-generation-web-framework-for-node-js/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
-          
-             <span id="/2017/08/20/koa-next-generation-web-framework-for-node-js/" class="leancloud_visitors" data-flag-title="koa 学习笔记(一)：初识 koa">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views:</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
           
 
           
@@ -739,17 +647,20 @@
       
         
           
-          koa 是 Express 原班人马为了致力于创建一个更小，更富表现力，更健壮的 node web 框架而打造。它与 Express 最显而易见的不同是，koa 积极拥抱 ES6 语法，(koa@3)使用 async 和 await 来避免回调地狱。
+            <p>koa 是 Express 原班人马为了致力于创建一个更小，更富表现力，更健壮的 node web 框架而打造。<br>它与 Express 最显而易见的不同是，koa 积极拥抱 ES6 语法，(koa@3)使用 async 和 await 来避免回调地狱。</p>
+<blockquote>
+<p>因为 koa 使用了 ES6 的 async 和 await 语法，所以要使用 node v7.6.0 及以上的版本才能运行 koa 应用。</p>
+</blockquote>
+<p>使用 koa 创建一个 Hello World 是很简单的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">'koa'</span>)</span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa()</span><br><span class="line"></span><br><span class="line">app.use(<span class="keyword">async</span> ctx =&gt; &#123;</span><br><span class="line">  ctx.body = <span class="string">'Hello World'</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>)</span><br></pre></td></tr></table></figure>
+<p>koa 和 Express一样拥有中间件的概念。在 koa 里，中间件就是一个 async 函数，他提供两个变量，第一个 ctx 代表上下文环境，其中封装了包括 request 和 response 在内的等诸多有用的 API，第二个是一个 next 回调函数，用来交接执行权。这也是 koa 最有意思的一点，koa 的应用是一系列中间件构成的，整个 koa 应用就如同一个洋葱一样，最先 use 的中间件就是第一层，最后一个 use（或最后执行到的）中间件是洋葱心，对一个请求的处理过程就如同拿着一根针穿过这个洋葱一样。举个栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">'koa'</span>)</span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa()</span><br><span class="line"></span><br><span class="line">app.use(<span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line">  <span class="keyword">await</span> next()</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.use(<span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">3</span>)</span><br><span class="line">  <span class="keyword">await</span> next()</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">4</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.use(<span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">5</span>)</span><br><span class="line">  ctx.body = <span class="string">'Hello World'</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>)</span><br></pre></td></tr></table></figure>
+<p>运行这段代码，在接收到一个请求后，将会看到控制台输出的顺序是 1,3,5,4,2</p>
+<p>这样的话，编写一个中间件是十分简单和有趣的。<br>比如我要统计处理一个请求从开始到结束的时间，如果使用普通的方式，我们可以在开始处理请求时设置一个开始时间，但因为不知道什么时候会处理完这个请求，所以我们需要在回调函数里来设置结束时间。如果我们有多个类似的需求，可想而知那将是一个令人闻风丧胆的回调地狱（callback hell)，但如果使用 koa 则将变成一件简单而又令人愉快的事情。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">'koa'</span>)</span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa()</span><br><span class="line"></span><br><span class="line">app.use(<span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> startTime = <span class="keyword">new</span> <span class="built_in">Date</span>()  <span class="comment">// 设置开始时间</span></span><br><span class="line">  <span class="keyword">await</span> next() <span class="comment">// 移交执行权</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>() - startTime) <span class="comment">// 统计花费时间</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.use(<span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">await</span> next()</span><br><span class="line">  ...</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.use(<span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">  ctx.body = <span class="string">'Hello World'</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>)</span><br></pre></td></tr></table></figure>
+<p>这样无论有多少个类似的需求，我们都可以通过中间件以一种扁平化的流程来处理了。</p>
 
-因为 koa 使用了 ES6 的 async 
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/08/20/koa-next-generation-web-framework-for-node-js/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
         
       
     </div>
@@ -806,7 +717,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lisiur Day">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -854,30 +765,9 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/08/13/论一个前端程序员的定位/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">Comments:</span> <span class="post-comments-count valine-comment-count" data-xid="/2017/08/13/论一个前端程序员的定位/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
-          
-             <span id="/2017/08/13/论一个前端程序员的定位/" class="leancloud_visitors" data-flag-title="论一个前端程序员的定位">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views:</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
           
 
           
@@ -901,15 +791,13 @@
       
         
           
-          正式工作已经一个多月了，当然是作为一个前端程序员。简单的概述下我的这一个多月的工作就是，生产，发现，并解决自己的或是他人的前端相关的问题。而在这个过程中我也确确实实对前端的技术有了更进一步的认识和长进，自以为挺好的。问题出现在这周六，周五测试提了一个前端 bug，但我当时已经回去了， 而这个项目又挺
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/08/13/论一个前端程序员的定位/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p>正式工作已经一个多月了，当然是作为一个前端程序员。简单的概述下我的这一个多月的工作就是，生产，发现，并解决自己的或是他人的前端相关的问题。而在这个过程中我也确确实实对前端的技术有了更进一步的认识和长进，自以为挺好的。问题出现在这周六，周五测试提了一个前端 bug，但我当时已经回去了， 而这个项目又挺着急发版的，所以我就只好在周六回公司加班来解决这个 bug了。如何解决这个 bug 暂且不表，问题是周六后端和测试都不在，而我只能在本地环境验证却不能在测试环境验证，要知道很多时候本地正常却并不代表测试环境一定正常。但平时都是后端在部署代码，发布到测试环境，这本就是后端的工作。但现在题不是这个工作是否该后端来做，而是，今天我无法在测试环境验证这个 bug 是否修复了。</p>
+<p>以前我一直把自己当做前端工程师来看，我的工作就是解决前端问题，而我只要时刻更新前端知识，及时提高自己前端技能就能解决前端问题了。可是，我才发现，并不是这样。就拿这周六的事来说，我只有在测试环境验证这个 bug 无法被重现，才算做是解决了这个前端问题。所以在没有后端的帮助下，我并不能算作解决了这个前端问题。</p>
+<p>由此引申出来的问题是: 作为一个前端工程师，需要学习后端的那些知识吗？这句话或许没有说到痛点，说的更现实点是，在我前端的技术都还没有学的自认为透彻的情况下，还需要花时间来学习后端的知识吗？</p>
+<p>如果仅仅把自己当做是一个“前端”工程师的话，我想你完全有理由说不需要，而你也完全可以把无法验证测试环境的这件事推脱为不是自己负责的。但作为一个项目团队的一名开发人员来说，你就不能简简单单的算作一个解决前端问题的前端工程师，而是一个解决问题的前端工程师。两者的区别就是前者只会解决前端问题，而后者除了在前端领域提供更专业的解决方案外，也会解决一些其他和前端弱相关或非相关的问题。在后者看来，自己更像一个解决问题工程师，同时恰巧在前端领域比较专业一些而已。</p>
+<p>这里也不是要求大家都去做全栈工程师，非要把前后端的知识都学个遍，而是不建议把自己定位仅仅局限在前端。与此同时也不要纠结于哪些该学，哪些不该学，我相信当对自己的定位有了不同的看法后，实践中自会指导你该做些什么。比如,我该学学怎么部署代码到测试环境了~</p>
+
+          
         
       
     </div>
@@ -966,7 +854,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lisiur Day">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1014,30 +902,9 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/08/03/vue-hack-之强制刷新组件/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">Comments:</span> <span class="post-comments-count valine-comment-count" data-xid="/2017/08/03/vue-hack-之强制刷新组件/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
-          
-             <span id="/2017/08/03/vue-hack-之强制刷新组件/" class="leancloud_visitors" data-flag-title="vue hack 之强制刷新组件">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views:</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
           
 
           
@@ -1061,15 +928,14 @@
       
         
           
-          把一个组件重置到初始状态是一个常见的需求，推荐的做法有两种，一种是父组件重置子组件的 prop，另一种是子组件暴露一个重置的方法供父组件调用。但有些时候，子组件既没有提供重置的方法，也没提供 prop 来重置自己的状态。更重要的是，这个子组件我们还动不了。于是我们就需要一种 hack 的方式来强制子
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/08/03/vue-hack-之强制刷新组件/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p>把一个组件重置到初始状态是一个常见的需求，推荐的做法有两种，一种是父组件重置子组件的 prop，另一种是子组件暴露一个重置的方法供父组件调用。但有些时候，子组件既没有提供重置的方法，也没提供 prop 来重置自己的状态。更重要的是，这个子组件我们还动不了。于是我们就需要一种 hack 的方式来强制子组件重置到初始状态。方法如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">component</span> <span class="attr">v-if</span>=<span class="string">"hackReset"</span>&gt;</span><span class="tag">&lt;/<span class="name">component</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.hackReset = <span class="literal">false</span></span><br><span class="line"><span class="keyword">this</span>.$nextTick(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">this</span>.hackReset = <span class="literal">true</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>v-if 在切换时，元素及它的绑定数据和组件都会被销毁并重建</p>
+</blockquote>
+
+          
         
       
     </div>
@@ -1126,7 +992,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lisiur Day">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1192,30 +1058,9 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/07/30/关于CSS预处理器nesting的实践与思考/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">Comments:</span> <span class="post-comments-count valine-comment-count" data-xid="/2017/07/30/关于CSS预处理器nesting的实践与思考/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
-          
-             <span id="/2017/07/30/关于CSS预处理器nesting的实践与思考/" class="leancloud_visitors" data-flag-title="关于CSS预处理器nesting的实践与思考">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views:</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
           
 
           
@@ -1239,17 +1084,28 @@
       
         
           
-          nesting 算是预处理器最最普通不过的一个功能了，无论是 sass(scss) 还是 less 亦或是 stylus 就连 postCss 都会提供这么一种功能。
-nesting 可以让我们使用结构化的选择器来描述结构化的 html 文档。举个例子：
-1234567891011121314&lt
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/07/30/关于CSS预处理器nesting的实践与思考/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p>nesting 算是预处理器最最普通不过的一个功能了，无论是 sass(scss) 还是 less 亦或是 stylus 就连 postCss 都会提供这么一种功能。</p>
+<p>nesting 可以让我们使用结构化的选择器来描述结构化的 html 文档。举个例子：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"wrapper"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"outer"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"inner"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"btn btn-success"</span>&gt;</span></span><br><span class="line">          I'm a BUTTON</span><br><span class="line">        <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"btn btn-danger"</span>&gt;</span></span><br><span class="line">          I'm a BUTTON</span><br><span class="line">        <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>对于这么一个 html 结构，如果我们要给 <code>.btn-success</code> 设置绿色背景色， <code>.btn-danger</code> 设置红色背景色，在考虑到作用域的情况下，我们使用原生 css 处理的话是下面这种写法： </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.wrapper</span>, <span class="selector-class">.container</span>, <span class="selector-class">.outer</span>, <span class="selector-class">.inner</span>, <span class="selector-class">.btn</span><span class="selector-class">.btn-success</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: green;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.wrapper</span>, <span class="selector-class">.container</span>, <span class="selector-class">.outer</span>, <span class="selector-class">.inner</span>, <span class="selector-class">.btn</span><span class="selector-class">.btn-danger</span>&#123;</span><br><span class="line">  <span class="attribute">background</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然而，如果我们使用 css 预处理的 nesting 规则的话，将是下面这样(以 scss 为例)：</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.wrapper</span> &#123;</span><br><span class="line">  <span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="selector-class">.outer</span> &#123;</span><br><span class="line">      <span class="selector-class">.inner</span> &#123;</span><br><span class="line">        <span class="selector-class">.btn</span> &#123;</span><br><span class="line">          &amp;<span class="selector-class">.btn-success</span> &#123;</span><br><span class="line">            <span class="attribute">background</span>: green;</span><br><span class="line">          &#125;</span><br><span class="line">          &amp;<span class="selector-class">.btn-success</span> &#123;</span><br><span class="line">            <span class="attribute">background</span>: red;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到，使用 nesting 除了可以减少代码量，更重要的是选择器结构与 html dom 结构是一致的，更容易复用和书写。<br>既然 nesting 这么好，那我们就用呗，于是就有了这么一个片段：</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.calendar</span> &#123;</span><br><span class="line">  <span class="attribute">background-image</span>: url(<span class="string">'../../../statics/images/bg-lighter@1x.jpg'</span>);</span><br><span class="line">  &amp;<span class="selector-class">.month-mode</span> &#123;</span><br><span class="line">    <span class="attribute">background-size</span>: <span class="number">100%</span> <span class="number">100%</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  &amp;<span class="selector-class">.week-mode</span> &#123;</span><br><span class="line">    <span class="attribute">background-size</span>: cover;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-class">.header</span> &#123;</span><br><span class="line">    @<span class="keyword">include</span> flex-center-between;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">15px</span>;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">18px</span>;</span><br><span class="line">    <span class="comment">// 后退图标</span></span><br><span class="line">    <span class="selector-class">.iconfont</span>:before &#123;</span><br><span class="line">      <span class="attribute">position</span>: relative;</span><br><span class="line">      <span class="attribute">font-size</span>: <span class="number">28px</span>;</span><br><span class="line">      <span class="attribute">width</span>: <span class="number">11px</span>;</span><br><span class="line">      <span class="attribute">height</span>: <span class="number">9px</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 今天 链接</span></span><br><span class="line">    <span class="selector-class">.today</span> &#123;</span><br><span class="line">      <span class="selector-tag">a</span> &#123;</span><br><span class="line">        <span class="attribute">color</span>: <span class="variable">$color-primary</span>;</span><br><span class="line">        <span class="attribute">font-size</span>: <span class="number">15px</span>;</span><br><span class="line">        <span class="attribute">text-decoration</span>: none;</span><br><span class="line">      &#125;</span><br><span class="line">      &amp;<span class="selector-class">.disabled</span> <span class="selector-tag">a</span> &#123;</span><br><span class="line">        <span class="attribute">color</span>: gray;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-class">.content</span> &#123;</span><br><span class="line">    <span class="selector-class">.indicator</span> &#123;</span><br><span class="line">      @<span class="keyword">include</span> flex-center-between;</span><br><span class="line">      <span class="attribute">font-size</span>: <span class="number">12px</span>;</span><br><span class="line">      <span class="attribute">color</span>: <span class="number">#76A9B3</span>;</span><br><span class="line">      <span class="selector-class">.item</span> &#123;</span><br><span class="line">        @<span class="keyword">include</span> flex-center-center;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">14.28%</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-class">.container</span> &#123;</span><br><span class="line">      <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">      <span class="attribute">overflow</span>: hidden;</span><br><span class="line">      <span class="attribute">color</span>: white;</span><br><span class="line">      <span class="attribute">padding-top</span>: <span class="number">10px</span>;</span><br><span class="line">      <span class="selector-class">.days</span> &#123;</span><br><span class="line">        <span class="attribute">display</span>: flex;</span><br><span class="line">        <span class="attribute">flex-wrap</span>: nowrap;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">500%</span>;</span><br><span class="line">        <span class="selector-class">.cover</span> &#123;</span><br><span class="line">          <span class="attribute">width</span>: <span class="number">20%</span>;</span><br><span class="line">          @<span class="keyword">include</span> flex-center-between;</span><br><span class="line">          <span class="attribute">flex-wrap</span>: wrap;</span><br><span class="line"></span><br><span class="line">          <span class="comment">// 每一小格</span></span><br><span class="line">          <span class="selector-class">.item</span> &#123;</span><br><span class="line">            @<span class="keyword">include</span> flex-center-center;</span><br><span class="line">            <span class="attribute">position</span>: relative;</span><br><span class="line">            <span class="attribute">flex-direction</span>: column;</span><br><span class="line">            <span class="attribute">width</span>: <span class="number">14.28%</span>;</span><br><span class="line">            <span class="attribute">height</span>: <span class="variable">$item-height</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 右上角的图标</span></span><br><span class="line">            <span class="selector-class">.top-right-hint</span> &#123;</span><br><span class="line">              @<span class="keyword">include</span> flex-center-center;</span><br><span class="line">              <span class="attribute">z-index</span>: <span class="number">1</span>;</span><br><span class="line">              <span class="attribute">position</span>: absolute;</span><br><span class="line">              <span class="attribute">top</span>: -<span class="number">2px</span>;</span><br><span class="line">              <span class="attribute">left</span>: <span class="number">32px</span>;</span><br><span class="line">              <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">              <span class="attribute">margin-left</span>: auto;</span><br><span class="line">              <span class="attribute">margin-right</span>: auto;</span><br><span class="line">              <span class="attribute">font-size</span>: <span class="number">9px</span>;</span><br><span class="line">              <span class="attribute">color</span>: <span class="number">#009384</span>;</span><br><span class="line">              <span class="attribute">width</span>: <span class="number">16px</span>;</span><br><span class="line">              <span class="attribute">height</span>: <span class="number">16px</span>;</span><br><span class="line">              <span class="attribute">border-top-left-radius</span>: <span class="number">50%</span>;</span><br><span class="line">              <span class="attribute">border-top-right-radius</span>: <span class="number">50%</span>;</span><br><span class="line">              <span class="attribute">border-bottom-right-radius</span>: <span class="number">50%</span>;</span><br><span class="line"></span><br><span class="line">              <span class="comment">// 显示 休</span></span><br><span class="line">              &amp;<span class="selector-class">.rest</span> &#123;</span><br><span class="line">                <span class="attribute">background</span>: <span class="variable">$color-bg-rest</span>;</span><br><span class="line">              &#125;</span><br><span class="line">              <span class="comment">// 显示 班</span></span><br><span class="line">              &amp;<span class="selector-class">.work</span> &#123;</span><br><span class="line">                <span class="attribute">background</span>: <span class="variable">$color-bg-work</span>;</span><br><span class="line">              &#125;</span><br><span class="line">              <span class="comment">// 显示 暑</span></span><br><span class="line">              &amp;<span class="selector-class">.summer</span> &#123;</span><br><span class="line">                <span class="attribute">background</span>: <span class="variable">$color-bg-summer</span>;</span><br><span class="line">              &#125;</span><br><span class="line">              <span class="comment">// 显示 寒</span></span><br><span class="line">              &amp;<span class="selector-class">.winter</span> &#123;</span><br><span class="line">                <span class="attribute">background</span>: <span class="variable">$color-bg-winter</span>;</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 数字区域</span></span><br><span class="line">            <span class="selector-class">.number</span> &#123;</span><br><span class="line">              @<span class="keyword">include</span> flex-center-center;</span><br><span class="line">              <span class="attribute">flex-direction</span>: column;</span><br><span class="line">              <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">              <span class="attribute">position</span>: relative;</span><br><span class="line">              <span class="attribute">height</span>: <span class="number">35px</span>;</span><br><span class="line">              <span class="attribute">width</span>: <span class="number">35px</span>;</span><br><span class="line">              <span class="attribute">font-size</span>: <span class="number">18px</span>;</span><br><span class="line">              &amp;:after &#123;</span><br><span class="line">                <span class="attribute">content</span>: <span class="string">''</span>;</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 控制小点位置</span></span><br><span class="line">                <span class="attribute">position</span>: absolute;</span><br><span class="line">                <span class="attribute">bottom</span>: <span class="number">3px</span>;</span><br><span class="line">                <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">                <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">                <span class="attribute">margin</span>: auto;</span><br><span class="line"></span><br><span class="line">                <span class="attribute">display</span>: block;</span><br><span class="line">                <span class="attribute">width</span>: <span class="number">6px</span>;</span><br><span class="line">                <span class="attribute">height</span>: <span class="number">6px</span>;</span><br><span class="line">                <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">                <span class="attribute">background</span>: <span class="number">#fff</span>;</span><br><span class="line">                <span class="attribute">opacity</span>: .<span class="number">6</span>;</span><br><span class="line">                <span class="attribute">visibility</span>: hidden;</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            &amp;<span class="selector-class">.today</span> &#123;</span><br><span class="line">              <span class="selector-class">.number</span> &#123;</span><br><span class="line">                <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="variable">$color-primary</span>;</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            &amp;<span class="selector-class">.selected</span> &#123;</span><br><span class="line">              <span class="selector-class">.number</span> &#123;</span><br><span class="line">                <span class="attribute">background</span>: <span class="number">#fff</span>;</span><br><span class="line">                <span class="attribute">color</span>: <span class="variable">$color-primary</span>;</span><br><span class="line">                <span class="attribute">border</span>: none;</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            &amp;<span class="selector-class">.has-event</span> &#123;</span><br><span class="line">              <span class="comment">// 下方的 白点</span></span><br><span class="line">              <span class="selector-class">.number</span>:after &#123;</span><br><span class="line">                <span class="attribute">visibility</span>: visible;</span><br><span class="line">              &#125;</span><br><span class="line">              <span class="comment">// 选中状态为 黄点</span></span><br><span class="line">              &amp;<span class="selector-class">.selected</span> &#123;</span><br><span class="line">                <span class="selector-class">.number</span>:after &#123;</span><br><span class="line">                  <span class="attribute">background</span>: <span class="number">#FDAF2F</span>;</span><br><span class="line">                &#125;</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 显示节日区域</span></span><br><span class="line">            <span class="selector-class">.festival</span> &#123;</span><br><span class="line">              <span class="attribute">font-size</span>: <span class="number">9px</span>;</span><br><span class="line">              <span class="attribute">visibility</span>: hidden;</span><br><span class="line">            &#125;</span><br><span class="line">            &amp;<span class="selector-class">.has-festival</span> &#123;</span><br><span class="line">              <span class="selector-class">.festival</span> &#123;</span><br><span class="line">                <span class="attribute">visibility</span>: visible;</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>惊喜不惊喜？刺激不刺激？<br>如果不受控制的使用 nesting 的话，造成的后果就是写起来我艹翻天，维护起来天艹翻我…</p>
+<p>nesting 思想很好，但当嵌套的层数很深的时候，再加上父选择器本身拥有很多属性，我们很难立刻判断出某个子选择器属于谁，或是某个<code>&amp;</code>代表什么选择器。</p>
+<p>在我看来，写出来不好维护的代码不如不写。<br>那难道就对 nesting 弃之不用了吗？非也，我们只需要一些额外的规则约束下即可。下面就是我总结出来的一些规则：</p>
+<ol>
+<li>嵌套规则不要太深，一般不超过三层。</li>
+<li>按照功能模块进行聚类。</li>
+</ol>
+<p>对于第一点，只是一个建议性的层数，一般是自我约束的一个阈值。<br>而对于第二点，则是对实现第一点的支撑,简单地说，就是把一个相关的重功能模块单独拎出来写，一方面可以减少嵌套的深度和高度，另一方面可以更方便的维护该功能模块。</p>
+<p>talk is cheap, show you the code:</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// background image</span></span><br><span class="line"><span class="selector-class">.calendar</span> &#123;</span><br><span class="line">  <span class="attribute">background-image</span>: url(<span class="string">'../../../statics/images/bg-lighter@1x.jpg'</span>);</span><br><span class="line">  &amp;<span class="selector-class">.month-mode</span> &#123;</span><br><span class="line">    <span class="attribute">background-size</span>: <span class="number">100%</span> <span class="number">100%</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  &amp;<span class="selector-class">.week-mode</span> &#123;</span><br><span class="line">    <span class="attribute">background-size</span>: cover;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// header</span></span><br><span class="line"><span class="selector-class">.calendar</span> <span class="selector-class">.header</span> &#123;</span><br><span class="line">  @<span class="keyword">include</span> flex-center-between;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">15px</span>;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">18px</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 后退图标</span></span><br><span class="line">  <span class="selector-class">.iconfont</span>:before &#123;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">28px</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">11px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">9px</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 今天 链接</span></span><br><span class="line">  <span class="selector-class">.today</span> <span class="selector-tag">a</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="variable">$color-primary</span>;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">15px</span>;</span><br><span class="line">    <span class="attribute">text-decoration</span>: none;</span><br><span class="line">    <span class="selector-class">.today</span><span class="selector-class">.disabled</span> &amp; &#123;</span><br><span class="line">      <span class="attribute">color</span>: gray;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// indicator</span></span><br><span class="line"><span class="selector-class">.calendar</span> <span class="selector-class">.content</span> <span class="selector-class">.indicator</span> &#123;</span><br><span class="line">  @<span class="keyword">include</span> flex-center-between;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">12px</span>;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#76A9B3</span>;</span><br><span class="line">  <span class="selector-class">.item</span> &#123;</span><br><span class="line">    @<span class="keyword">include</span> flex-center-center;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">14.28%</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// container</span></span><br><span class="line"><span class="selector-class">.calendar</span> <span class="selector-class">.content</span> <span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">overflow</span>: hidden;</span><br><span class="line">  <span class="attribute">color</span>: white;</span><br><span class="line">  <span class="attribute">padding-top</span>: <span class="number">10px</span>;</span><br><span class="line">  <span class="selector-class">.days</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">flex-wrap</span>: nowrap;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">500%</span>;</span><br><span class="line">    <span class="selector-class">.cover</span> &#123;</span><br><span class="line">      <span class="attribute">width</span>: <span class="number">20%</span>;</span><br><span class="line">      @<span class="keyword">include</span> flex-center-between;</span><br><span class="line">      <span class="attribute">flex-wrap</span>: wrap;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$item-selector</span>: <span class="string">".calendar .content .container .days .cover .item"</span></span><br><span class="line">// 每一小格</span><br><span class="line">#&#123;<span class="variable">$item-selector</span>&#125; &#123;</span><br><span class="line">  @include flex-center-center;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  <span class="attribute">flex-direction</span>: column;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">14.28%</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="variable">$item-height</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 右上角的图标</span></span><br><span class="line">  <span class="selector-class">.top-right-hint</span> &#123;</span><br><span class="line">    @<span class="keyword">include</span> flex-center-center;</span><br><span class="line">    <span class="attribute">z-index</span>: <span class="number">1</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: -<span class="number">2px</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">32px</span>;</span><br><span class="line">    <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">margin-left</span>: auto;</span><br><span class="line">    <span class="attribute">margin-right</span>: auto;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">9px</span>;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#009384</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">16px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">16px</span>;</span><br><span class="line">    <span class="attribute">border-top-left-radius</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">border-top-right-radius</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">border-bottom-right-radius</span>: <span class="number">50%</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 显示 休</span></span><br><span class="line">    &amp;<span class="selector-class">.rest</span> &#123;</span><br><span class="line">      <span class="attribute">background</span>: <span class="variable">$color-bg-rest</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 显示 班</span></span><br><span class="line">    &amp;<span class="selector-class">.work</span> &#123;</span><br><span class="line">      <span class="attribute">background</span>: <span class="variable">$color-bg-work</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 显示 暑</span></span><br><span class="line">    &amp;<span class="selector-class">.summer</span> &#123;</span><br><span class="line">      <span class="attribute">background</span>: <span class="variable">$color-bg-summer</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 显示 寒</span></span><br><span class="line">    &amp;<span class="selector-class">.winter</span> &#123;</span><br><span class="line">      <span class="attribute">background</span>: <span class="variable">$color-bg-winter</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 数字区域</span></span><br><span class="line">  <span class="selector-class">.number</span> &#123;</span><br><span class="line">    @<span class="keyword">include</span> flex-center-center;</span><br><span class="line">    <span class="attribute">flex-direction</span>: column;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">35px</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">35px</span>;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">18px</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 事件小点</span></span><br><span class="line">    &amp;:after &#123;</span><br><span class="line">      <span class="attribute">content</span>: <span class="string">''</span>;</span><br><span class="line">      <span class="comment">// 控制小点位置</span></span><br><span class="line">      <span class="attribute">position</span>: absolute;</span><br><span class="line">      <span class="attribute">bottom</span>: <span class="number">3px</span>;</span><br><span class="line">      <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">      <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">      <span class="attribute">margin</span>: auto;</span><br><span class="line"></span><br><span class="line">      <span class="attribute">display</span>: block;</span><br><span class="line">      <span class="attribute">width</span>: <span class="number">6px</span>;</span><br><span class="line">      <span class="attribute">height</span>: <span class="number">6px</span>;</span><br><span class="line">      <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">      <span class="attribute">background</span>: <span class="number">#fff</span>;</span><br><span class="line">      <span class="attribute">opacity</span>: .<span class="number">6</span>;</span><br><span class="line">      <span class="attribute">visibility</span>: hidden;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不同状态下 number 区域下方小点的表现</span></span><br><span class="line">#&#123;<span class="variable">$item-selector</span>&#125; &#123;</span><br><span class="line">  &amp;<span class="selector-class">.today</span> &#123;</span><br><span class="line">    <span class="selector-class">.number</span> &#123;</span><br><span class="line">      <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="variable">$color-primary</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  &amp;<span class="selector-class">.selected</span> &#123;</span><br><span class="line">    <span class="selector-class">.number</span> &#123;</span><br><span class="line">      <span class="attribute">background</span>: <span class="number">#fff</span>;</span><br><span class="line">      <span class="attribute">color</span>: <span class="variable">$color-primary</span>;</span><br><span class="line">      <span class="attribute">border</span>: none;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  &amp;<span class="selector-class">.has-event</span> &#123;</span><br><span class="line">    <span class="comment">// 下方的 白点</span></span><br><span class="line">    <span class="selector-class">.number</span>:after &#123;</span><br><span class="line">      <span class="attribute">visibility</span>: visible;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 选中状态为 黄点</span></span><br><span class="line">    &amp;<span class="selector-class">.selected</span> &#123;</span><br><span class="line">      <span class="selector-class">.number</span>:after &#123;</span><br><span class="line">        <span class="attribute">background</span>: <span class="number">#FDAF2F</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 节日区域</span></span><br><span class="line">#&#123;<span class="variable">$item-selector</span>&#125; &#123;</span><br><span class="line">  <span class="selector-class">.festival</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">9px</span>;</span><br><span class="line">    <span class="attribute">visibility</span>: hidden;</span><br><span class="line">  &#125;</span><br><span class="line">  &amp;<span class="selector-class">.has-festival</span>  &#123;</span><br><span class="line">    <span class="selector-class">.festival</span> &#123;</span><br><span class="line">      <span class="attribute">visibility</span>: visible;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当然，注释永远是最佳实践，无论嵌套多深，一个有意义的注释，总是可以在一定程度弱化该缺陷。</p>
+
+          
         
       
     </div>
@@ -1306,7 +1162,7 @@ nesting 可以让我们使用结构化的选择器来描述结构化的 html 文
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lisiur Day">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1372,30 +1228,9 @@ nesting 可以让我们使用结构化的选择器来描述结构化的 html 文
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/07/22/javascript中的Date/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">Comments:</span> <span class="post-comments-count valine-comment-count" data-xid="/2017/07/22/javascript中的Date/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
-          
-             <span id="/2017/07/22/javascript中的Date/" class="leancloud_visitors" data-flag-title="javascript中的Date">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views:</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
           
 
           
@@ -1419,17 +1254,67 @@ nesting 可以让我们使用结构化的选择器来描述结构化的 html 文
       
         
           
-          在介绍 javascript 中的 Date 前，我们需要了解下以下几个概念~~
-GMT
-GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区的皇家格林尼治天文台当地的标准时间，因为本初子午线被定义为通过那里的经线。自1924年2月5日开始，格林尼治天文台负责每隔一
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/07/22/javascript中的Date/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p>在介绍 javascript 中的 Date 前，我们需要了解下以下几个概念~~</p>
+<h2 id="GMT"><a href="#GMT" class="headerlink" title="GMT"></a>GMT</h2><blockquote>
+<p>GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区的皇家格林尼治天文台当地的标准时间，因为本初子午线被定义为通过那里的经线。<br>自1924年2月5日开始，格林尼治天文台负责每隔一小时向全世界发放调时信息。<br>理论上来说，格林尼治标准时间的正午是指当太阳横穿格林尼治子午线时（也就是在格林尼治上空最高点时）的时间。但由于地球在它的椭圆轨道里的运动速度不均匀，这个时刻可能与实际的太阳时有误差，最大误差达16分钟。原因在于地球每天的自转是有些不规则的，而且正在缓慢减速，因此格林尼治时间基于天文观测本身的缺陷，已经不再被作为标准时间使用。现在的标准时间，是由原子钟报时的协调世界时（UTC）来决定。</p>
+</blockquote>
+<h2 id="UTC"><a href="#UTC" class="headerlink" title="UTC"></a>UTC</h2><blockquote>
+<p>UTC(Coordinated Universal Time)协调世界时,是最主要的世界时间标准，其以原子时秒长为基础，在时刻上尽量接近于格林尼治标准时间。<br>协调世界时是世界上调节时钟和时间的主要时间标准，它与0度经线的平太阳时相差不超过1秒[1]，并不遵守夏令时。</p>
+</blockquote>
+<h2 id="ISO"><a href="#ISO" class="headerlink" title="ISO"></a>ISO</h2><blockquote>
+<p>是国际标准化组织的日期和时间的表示方法，全称为《数据存储和交换形式·信息交换·日期和时间的表示方法》。</p>
+</blockquote>
+<h3 id="日期表示法"><a href="#日期表示法" class="headerlink" title="日期表示法"></a>日期表示法</h3><blockquote>
+<p>YYYY 代表年份<br>MM 代表月份<br>DD 代表该月的第几天<br>DDD 代表一年的第几天<br>HH 代表小时<br>mm 代表分钟<br>ss 代表分钟<br>sss 代表毫秒数</p>
+<p>以北京时间 2017年7月23日0点0分0时 为例。</p>
+</blockquote>
+<h4 id="日期日历表示法"><a href="#日期日历表示法" class="headerlink" title="日期日历表示法"></a>日期日历表示法</h4><p>YYYY-MM-DD / YYYYMMDD =&gt; 2017-07-23 / 20170703</p>
+<h4 id="日期时间表示法"><a href="#日期时间表示法" class="headerlink" title="日期时间表示法"></a>日期时间表示法</h4><p>HH:mm:ss[Z] / HHmmss[Z] =&gt; 00:00:00 / 16:00:00Z / 000000 / 160000Z</p>
+<blockquote>
+<p>这里Z表示是协调世界时,<br>因为北京时间按东八区算，比协调时早八个小时，所以协调世界时是16点，而北京时间最正式的表示方式应该是： 00:00:00+08:00 / 000000+0800 简写为 000000+08</p>
+</blockquote>
+<h4 id="日期时间组合表示"><a href="#日期时间组合表示" class="headerlink" title="日期时间组合表示"></a>日期时间组合表示</h4><p>YYYY-MM-DDTHH:mm:ss / YYYYMMDDTHHmmss =&gt; 2017-07-23T00:00:00+08:00 /<br>20170723T000000+08 / 2017-07-22T16:00:00Z / 20170722T160000Z</p>
+<h2 id="Date"><a href="#Date" class="headerlink" title="Date"></a>Date</h2><p>好了，有了上面的基础我们就可以来聊聊 javascript 中的 Date 类型了。</p>
+<h3 id="new-Date"><a href="#new-Date" class="headerlink" title="new Date()"></a>new Date()</h3><p>在 javascript 中创建一个日期对象，只需要 <code>new Date()</code><br>即可，默认返回的是当前时间的日期对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line"><span class="comment">// Sun Jul 23 2017 01:02:24 GMT+0800 (CST)</span></span><br></pre></td></tr></table></figure>
+<p>在 Chrome<br>的控制台中，我们看到他返回的是基于本地时间表示的格林尼治时间。其实这是调用<br> <code>Date.prototype.toString</code> 所表示的结果，而一个 Date<br>对象所表示的时间的真实面目是自1970年1月1日(UTC)起的毫秒数。<br>因此我们可以在创建 Date 对象时给他传一个 Number 类型的毫秒数来生成指定日期。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">0</span>)</span><br><span class="line"><span class="comment">// Thu Jan 01 1970 08:00:00 GMT+0800 (CST)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">1500743506413</span>)</span><br><span class="line"><span class="comment">// Sun Jul 23 2017 01:11:46 GMT+0800 (CST)</span></span><br></pre></td></tr></table></figure>
+<p>显然，如果我们要表示一个时间时，不可能先计算下其毫秒数，因此， javascript<br>还提供了以下两种创建指定时间的方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(year, month[, day, hour, minutes, seconds, milliseconds]]]]])</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(dateString)</span><br></pre></td></tr></table></figure>
+<p>第一种方式如同其参数所示，至少传 year 和 month<br>两个参数，其他可以选择性的传递或不传递，如果不传递的话默认算作0(除day之外)或1(day), 值得一提的是这里传的任意参数可以大于或小于合理时间，相邻的数值会自动得到调整，比如 <code>new Date(2017, 5, 31)</code>等于<code>new Date(2017, 6, 1)</code>。这里面有个隐藏的技巧，可以快速计算出某年某月的天数，下面会介绍~</p>
+<blockquote>
+<p>注意：代表月份的整数值从0(1月)到11(12月)</p>
+</blockquote>
+<p>第二种方式需要传递一个表示日期的字符串值。该字符串应该能被 Date.parse() 方法识别（符合 IETF-compliant RFC 2822 timestamps 或 version of ISO8601）。这里 RFC 的方式我们就不介绍了，国人应该用的不多吧？还有一种 ISO8601 的格式字符串。这个大家应该很熟悉，刚刚介绍过，不过 Date 并不识别所有的 ISO8601 格式的字符串。能够识别的是以下几种：</p>
+<ol>
+<li>YYYY-MM-DD</li>
+<li>YYYY-MM-DDTHH:mm:ss.sss</li>
+<li>YYYY-MM-DDTHH:mm:ss.sssZ</li>
+</ol>
+<p>正如之前介绍的那样，最后加个 Z 代表是协调世界时。而不加 Z<br>的话则是系统所在时区的时间，因此在使用北京时间的系统下，new<br>Date(‘2017-07-23T08:00:00’) 等于 new Date(‘2017-07-23T00:00:00Z’)</p>
+<blockquote>
+<p>这里的 T 可以使用空格代替</p>
+</blockquote>
+<h3 id="prop"><a href="#prop" class="headerlink" title="prop"></a>prop</h3><ol>
+<li><p>Date.now()<br>返回自 1970-1-1 00:00:00  UTC (世界标准时间)至今所经过的毫秒数。</p>
+</li>
+<li><p>Date.parse()<br>解析一个表示日期的字符串，并返回从 1970-1-1 00:00:00 所经过的毫秒数。</p>
+</li>
+<li><p>Date.UTC()<br>接受和构造函数最长形式的参数相同的参数（从2到7），并返回从 1970-01-01 00:00:00 UTC 开始所经过的毫秒数。</p>
+</li>
+</ol>
+<blockquote>
+<p>这三个静态方法返回的都是毫秒数，但值得注意的是，在给 Date.parse() 传递 iSO<br>格式的字符串时，如果只传日期的话，是当做 UTC<br>时间处理，但如果传了日期和时间则当做本地时间处理。即 <code>Date.parse(&#39;2017-07-23&#39;)</code> 等于 <code>Date.parse(&#39;2017-07-23T00:00:00Z&#39;)</code> 等于 <code>Date.parse(&#39;2017-07-23T08:00:00&#39;)</code></p>
+</blockquote>
+<h3 id="Getter"><a href="#Getter" class="headerlink" title="Getter"></a>Getter</h3><p>Date.prototype.getDate()<br>Date.prototype.getDay()<br>Date.prototype.getFullYear()<br>Date.prototype.getHours()<br>Date.prototype.getMilliseconds()<br>Date.prototype.getMinutes()<br>Date.prototype.getMonth()<br>Date.prototype.getSeconds()<br>Date.prototype.getTime()<br>Date.prototype.getTimezoneOffset()<br>Date.prototype.getUTCDate()<br>Date.prototype.getUTCDay()<br>Date.prototype.getUTCFullYear()<br>Date.prototype.getUTCHours()<br>Date.prototype.getUTCMilliseconds()<br>Date.prototype.getUTCMinutes()<br>Date.prototype.getUTCMonth()<br>Date.prototype.getUTCSeconds()</p>
+<h3 id="Setter"><a href="#Setter" class="headerlink" title="Setter"></a>Setter</h3><p>Date.prototype.setDate()<br>Date.prototype.setFullYear()<br>Date.prototype.setHours()<br>Date.prototype.setMilliseconds()<br>Date.prototype.setMinutes()<br>Date.prototype.setMonth()<br>Date.prototype.setSeconds()<br>Date.prototype.setTime()<br>Date.prototype.setUTCDate()<br>Date.prototype.setUTCFullYear()<br>Date.prototype.setUTCHours()<br>Date.prototype.setUTCMilliseconds()<br>Date.prototype.setUTCMinutes()<br>Date.prototype.setUTCMonth()<br>Date.prototype.setUTCSeconds()<br>Date.prototype.setYear() </p>
+<h3 id="Conversion-getter"><a href="#Conversion-getter" class="headerlink" title="Conversion getter"></a>Conversion getter</h3><p>Date.prototype.toDateString()<br>Date.prototype.toISOString()<br>Date.prototype.toJSON()<br>Date.prototype.toGMTString()<br>Date.prototype.toLocaleDateString()<br>Date.prototype.toLocaleFormat()<br>Date.prototype.toLocaleString()<br>Date.prototype.toLocaleTimeString()<br>Date.prototype.toSource()<br>Date.prototype.toString()<br>Date.prototype.toTimeString()<br>Date.prototype.toUTCString()<br>Date.prototype.valueOf()</p>
+<h2 id="Trick"><a href="#Trick" class="headerlink" title="Trick"></a>Trick</h2><h3 id="获取某月天数"><a href="#获取某月天数" class="headerlink" title="获取某月天数"></a>获取某月天数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(year, month, <span class="number">0</span>).getDate()</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>无需判断二月是否为闰月，也不用判断是大小月。<br>思路是这样的，既然我要获取某月的天数，那么如果我能表示该月最后一天，然后调用 getDate() 拿到的天数就是该月的天数了。问题是，如何表示该月最后一天呢，这就要借助于 Date 构造函数的这个特性：当Date作为构造函数调用并传入多个参数时，如果数值不在合理范围时（如月份为13或者分钟数为70），相邻的数值会被调整。因此我可以通过给 day 传0来得到上一个月最后一天。</p>
+</blockquote>
+
+          
         
       
     </div>
@@ -1486,7 +1371,7 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lisiur Day">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1534,30 +1419,9 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/07/13/git情景小结/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">Comments:</span> <span class="post-comments-count valine-comment-count" data-xid="/2017/07/13/git情景小结/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
-          
-             <span id="/2017/07/13/git情景小结/" class="leancloud_visitors" data-flag-title="git情景小结">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views:</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
           
 
           
@@ -1581,16 +1445,69 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
       
         
           
+            <blockquote>
+<p>结识 git 大概是在大二， 至今已近三年。虽说这三年一直在使用 git，却只会三板斧——add，commit，push。 一旦出现复杂的情景时，就只能求助于网络，最终虽都能解决问题，却对解决方案一知半解，导致同样的情景每次都要gooooooogle一番，实在惭愧。这一周 每天抽出 1-2 个小时的时间对 git 进行了深入的了解。现将成果以情景的方式记录下来。</p>
+</blockquote>
+<h2 id="情景1：初始化-git-仓库"><a href="#情景1：初始化-git-仓库" class="headerlink" title="情景1：初始化 git 仓库"></a>情景1：初始化 git 仓库</h2><h3 id="初始化本地文件"><a href="#初始化本地文件" class="headerlink" title="初始化本地文件"></a>初始化本地文件</h3><p><code>git init</code></p>
+<h3 id="克隆远程仓库"><a href="#克隆远程仓库" class="headerlink" title="克隆远程仓库"></a>克隆远程仓库</h3><p><code>git clone [remote_url]</code></p>
+<blockquote>
+<p><code>git clone https://github.com/lisiur/vvue</code> <br><br><code>git clone git@github.com:lisiur/vvue.git</code></p>
+</blockquote>
+<h3 id="克隆本地仓库"><a href="#克隆本地仓库" class="headerlink" title="克隆本地仓库"></a>克隆本地仓库</h3><p><code>git clone [local_url]</code></p>
+<blockquote>
+<p><code>git clone ./vvue euvv</code></p>
+</blockquote>
+<h2 id="情景2：操作远程仓库源"><a href="#情景2：操作远程仓库源" class="headerlink" title="情景2：操作远程仓库源"></a>情景2：操作远程仓库源</h2><h3 id="显示当前远程仓库源"><a href="#显示当前远程仓库源" class="headerlink" title="显示当前远程仓库源"></a>显示当前远程仓库源</h3><p><code>git remote -v</code></p>
+<h3 id="添加远程仓库源"><a href="#添加远程仓库源" class="headerlink" title="添加远程仓库源"></a>添加远程仓库源</h3><p><code>git remote add [remote_name] [remote_url]</code></p>
+<blockquote>
+<p><code>git remote add coding git@git.coding.net:lisiur/lisiur.coding.me.git</code></p>
+</blockquote>
+<h3 id="删除远程仓库源"><a href="#删除远程仓库源" class="headerlink" title="删除远程仓库源"></a>删除远程仓库源</h3><p><code>git remote remove [remote_name]</code></p>
+<blockquote>
+<p><code>git remote remove coding</code></p>
+</blockquote>
+<h2 id="情景3：stage-所有已被追踪的文件"><a href="#情景3：stage-所有已被追踪的文件" class="headerlink" title="情景3：stage 所有已被追踪的文件"></a>情景3：stage 所有已被追踪的文件</h2><p><code>git add -u</code></p>
+<h2 id="情景4：撤销某个被-stage-的文件"><a href="#情景4：撤销某个被-stage-的文件" class="headerlink" title="情景4：撤销某个被 stage 的文件"></a>情景4：撤销某个被 stage 的文件</h2><p><code>git reset HEAD [file_name]</code></p>
+<h2 id="情景5：撤销对某个文件的所有修改"><a href="#情景5：撤销对某个文件的所有修改" class="headerlink" title="情景5：撤销对某个文件的所有修改"></a>情景5：撤销对某个文件的所有修改</h2><p><code>git checkout [file_name](不可逆的操作！)</code></p>
+<h2 id="情景6：重写某次-commit"><a href="#情景6：重写某次-commit" class="headerlink" title="情景6：重写某次 commit"></a>情景6：重写某次 commit</h2><p><code>git commit --amend -m [message]</code></p>
+<h2 id="情景7：撤销最新的-commit-恢复到-staged-状态"><a href="#情景7：撤销最新的-commit-恢复到-staged-状态" class="headerlink" title="情景7：撤销最新的 commit 恢复到 staged 状态"></a>情景7：撤销最新的 commit 恢复到 staged 状态</h2><p><code>git reset --soft HEAD^</code></p>
+<h2 id="情景8：撤销最新的-commit-恢复到-unstaged-状态"><a href="#情景8：撤销最新的-commit-恢复到-unstaged-状态" class="headerlink" title="情景8：撤销最新的 commit 恢复到 unstaged 状态"></a>情景8：撤销最新的 commit 恢复到 unstaged 状态</h2><p><code>git reset HEAD^</code></p>
+<h2 id="情景9：撤销最新的-commit-完全恢复到最近的-commit-状态"><a href="#情景9：撤销最新的-commit-完全恢复到最近的-commit-状态" class="headerlink" title="情景9：撤销最新的 commit 完全恢复到最近的 commit 状态"></a>情景9：撤销最新的 commit 完全恢复到最近的 commit 状态</h2><p><code>git reset --hard HEAD^</code></p>
+<h2 id="情景10：stage-所有已被追踪文件，除了某个文件"><a href="#情景10：stage-所有已被追踪文件，除了某个文件" class="headerlink" title="情景10：stage 所有已被追踪文件，除了某个文件"></a>情景10：stage 所有已被追踪文件，除了某个文件</h2><p><code>git add -u; git reset -- [file_name]</code></p>
+<h2 id="情景11：直接将-working-space-的所有已追踪的修改提交到-history"><a href="#情景11：直接将-working-space-的所有已追踪的修改提交到-history" class="headerlink" title="情景11：直接将 working space 的所有已追踪的修改提交到 history"></a>情景11：直接将 working space 的所有已追踪的修改提交到 history</h2><p><code>git commit -am [message]</code></p>
+<h2 id="情景12：撤销某次-commit-的修改"><a href="#情景12：撤销某次-commit-的修改" class="headerlink" title="情景12：撤销某次 commit 的修改"></a>情景12：撤销某次 commit 的修改</h2><p><code>git revert [commit_hash]</code></p>
+<h2 id="情景13：stage-所有已被追踪文件和新添加的文件"><a href="#情景13：stage-所有已被追踪文件和新添加的文件" class="headerlink" title="情景13：stage 所有已被追踪文件和新添加的文件"></a>情景13：stage 所有已被追踪文件和新添加的文件</h2><p><code>git add -A</code></p>
+<h2 id="情景13-：on-the-way"><a href="#情景13-：on-the-way" class="headerlink" title="情景13+：on the way"></a>情景13+：on the way</h2><h2 id="backup"><a href="#backup" class="headerlink" title="backup"></a>backup</h2><h3 id="关于-working-space-amp-stage-amp-history"><a href="#关于-working-space-amp-stage-amp-history" class="headerlink" title="关于 working space &amp; stage &amp; history"></a>关于 working space &amp; stage &amp; history</h3><p>git 有三个关键的概念分别为工作区，暂存区和历史区。工作区就是你所能看见的文件，你对文件的修改都是在工作区进行的。暂存区是暂时存储相关联的一组修改的区域，一般使用 git add 操作就是把相关的一组修改存储到暂存区，之所以叫暂存区是因为这些修改一般在这个区域存在不长时间，因为紧接着你就会使用 git commit 操作将这些修改统一提交到历史区。你可能会奇怪暂存区的意义是什么，前文已经提过暂存区一般存储的是相关联的一组修改。比如你一次性修改了两个 bug，那么这两个 bug 需要做两次提交。暂存区就提供了将两个 bug 区分提交的功能。你也可能说我先修改一个 bug 改完就直接提交，那么此时是不需要暂存区（先添加到暂存区反而多此一举），情景11就展示如何直接将工作区的修改直接提交到历史区的技巧。那么历史区是什么呢？历史区保存的是每次有意义的改动，可以将它看成一次次历史事件，比如修改一个 bug，比如添加一个 feature， 比如打上一个 tag 等，都是一个历史节点。历史区保存着每个历史节点，而历史节点由每次 commit 生成。 历史是能回顾的，同样 git 也提供让我们在历史区穿梭旅行的能力即 git reset。</p>
+<h3 id="关于-git-reset"><a href="#关于-git-reset" class="headerlink" title="关于 git reset"></a>关于 git reset</h3><p>顾名思义，git reset 就是重置的意思。那问题来了，重置什么呢？大家想想，我们的修改一共有几种状态？没错，根据之前介绍的 git 三剑客我们不难知道，修改无非就三种状态，要么在工作区，要么在暂存区，要么在历史区，而修改正常情况下的走向也就三种：</p>
+<ol>
+<li>git add       =&gt; 工作区 -&gt; 暂存区</li>
+<li>git commit    =&gt; 暂存区 -&gt; 历史区</li>
+<li>git commit -a =&gt; 工作区 -&gt; 历史区</li>
+</ol>
+<p>那么反过来，reset 一定可以重置这三种情况：</p>
+<ol>
+<li>git reset HEAD         =&gt; 暂存区 -&gt; 工作区 </li>
+<li>git reset –soft HEAD^ =&gt; 历史区 -&gt; 暂存区</li>
+<li>git reset HEAD^        =&gt; 历史区 -&gt; 工作区 </li>
+<li>git reset –hard       =&gt; 历史区 -&gt; 历史区 </li>
+</ol>
+<p>前三个命令分别对应着前面三个操作的逆操作。<br>这里需要着重讲下第一个和第三个的区别。这两个都是无附加选项的 reset 操作，虽然一个重置到 HEAD，一个重置到 HEAD^，其实他们的工作是相同的，之所以这么讲是因为，对于第一种情况，我们当前只是将工作区的修改添加到暂存区，此时我们还没有提交到历史区，所以当前  HEAD 指向的是最新的历史节点。此时 reset HEAD 会把最新历史节点的修改回退到暂存区，暂存区再把这些修改回退到工作区，因为工作区已有的修改不受影响，所以我们最直观的感受就是，刚刚 git add 的操作相当于没做，即暂存区的修改被撤销了。再来看看第三个操作，此时我们已经 commit 过了，commit 之前 HEAD 所指向的历史节点，此时已经变成了 HEAD^ 。所以此时使用 git reset HEAD^ 会将 HEAD^ 的修改回退到暂存区，然后暂存区将这些修改回退到工作区，工作区已有的修改不受影响，此时给我们最直观的感受就是，刚刚 commit 的内容直接回滚到工作区了。<br>至于第四个命令，则可以让我们在历史区之间不断地穿梭，他和 git reset 的命令工作原理相同，不同的是工作区已有的修改会被覆盖。</p>
+<blockquote>
+<p>tl;dr</p>
+<ol>
+<li>git reset –soft 修改 from 历史区 to 暂存区</li>
+<li>git reset        修改 from 历史区 to 暂存区 to 工作区(已有修改不受影响)</li>
+<li>git reset –hard 修改 from 历史区 to 暂存区 to 工作区(已有修改会被覆盖)</li>
+</ol>
+</blockquote>
+<h3 id="关于-merge-amp-rebase"><a href="#关于-merge-amp-rebase" class="headerlink" title="关于 merge &amp; rebase"></a>关于 merge &amp; rebase</h3><p>merge 和 rebase 的作用相同，都是将一个分支合并到另一个分支，不同的是，rebase 会变基。相信很多人都听过类似的说法，唯一的想法就是这和没说有什么区别？确实，我第一次听说这句话时亦有同感，不过当你理解他们时，相信你也会这么说。因为……确实如此。<br>举个例子吧，A和B都同时从 orgin 的最新节点 O 各自复制一个分支分别为 brA 和 brB。A 在合并分支前做了两次 commit 分别为 A1 和 A2，B 在合并分支前也做了两次 commit 分别为 B1 和 B2。假设 A 先合并分支，由于 A1 的父节点就是 O 所以可以直接合并为 O &lt;- A1 &lt;- A2。之后 B 也想合并分支了，但此时最新分支的当前节点是 A2，而 B 要合并的分支的父节点是 O,所以不能直接合并。<br>此时如果 B 选择使用 merge 则需要做一次三国首脑会晤即 O，A2和B2。大家求同不存异之后商量一个最佳解决方案 S 来作为这个会晤的成果。那么此时 commit 历史就变成了从 O 开始一分两路，然后在 S 汇合的结果。<br>但如果 B 选择使用 rebase 就和 O 没啥关系了，此时会将 A commit 的所有节点按照先后顺序在 B2 后面依次重新 commit 过去。此时 commit 历史就是 O &lt;- A1 &lt;- A2 &lt;- B1 &lt;- B2 这样一个线性结果。没有分支，没有额外的 S 节点。</p>
+<p>rebase 看似可以使历史节点更加清晰，但却隐含着一个弊端，那就是会影响到他人的历史节点。如果不遵守 rebase 的黄金法则会造成不可避免的损失，具体就不在这详细展开了。</p>
+<h2 id="related"><a href="#related" class="headerlink" title="related"></a>related</h2><h3 id="recommended-alias"><a href="#recommended-alias" class="headerlink" title="recommended alias"></a>recommended alias</h3><p>~/.gitconfig<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">alias.co=checkout</span><br><span class="line">alias.br=branch</span><br><span class="line">alias.ci=commit</span><br><span class="line">alias.st=status</span><br><span class="line">alias.dt=difftool</span><br><span class="line">alias.l=log</span><br><span class="line">alias.last=log -1 HEAD</span><br><span class="line">alias.stats=shortlog -sn --all --no-merges</span><br><span class="line">alias.praise=blame</span><br><span class="line">alias.recap=log --all --oneline --no-merges --author=lisiurday@gmail.com</span><br><span class="line">alias.graph=log --graph --all --decorate --stat --date=iso</span><br><span class="line">alias.lg=log --color --graph --pretty=format:&apos;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&apos; --abbrev-commit</span><br><span class="line">alias.unstage=reset HEAD</span><br><span class="line">alias.unci=reset HEAD^</span><br></pre></td></tr></table></figure></p>
+<h3 id="working-with-vim"><a href="#working-with-vim" class="headerlink" title="working with vim"></a>working with vim</h3><p>~/.gitconfig<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alias.editor=vim</span><br><span class="line">commit.template=~/.git-commit-template</span><br></pre></td></tr></table></figure></p>
+<p>~/.git-commit-template<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[refs #00000] Subject</span><br><span class="line"></span><br><span class="line">detail</span><br></pre></td></tr></table></figure></p>
+<p>~/.vimrc<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&quot; Force the cursor onto a new line after 80 characters</span><br><span class="line">set textwidth=80</span><br><span class="line">&quot; In Git commit messages, make it 72 characters</span><br><span class="line">autocmd FileType gitcommit set textwidth=72</span><br><span class="line">&quot; Colour the 81st (or 73rd) column so that we don’t type over our limit</span><br><span class="line">set colorcolumn=+1</span><br><span class="line">&quot; In Git commit messages, also colour the 51st column (for titles)</span><br><span class="line">autocmd FileType gitcommit set colorcolumn+=51</span><br></pre></td></tr></table></figure></p>
+
           
-结识 git 大概是在大二， 至今已近三年。虽说这三年一直在使用 git，却只会三板斧——add，commit，push。 一旦出现复杂的情景时，就只能求助于网络，最终虽都能解决问题，却对解决方案一知半解，导致同样的情景每次都要gooooooogle一番，实在惭愧。这一周 每天抽出 1-2 个小时
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/07/13/git情景小结/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
@@ -1647,7 +1564,7 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lisiur Day">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1713,30 +1630,9 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/07/09/gulp-webpack/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">Comments:</span> <span class="post-comments-count valine-comment-count" data-xid="/2017/07/09/gulp-webpack/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
-          
-             <span id="/2017/07/09/gulp-webpack/" class="leancloud_visitors" data-flag-title="gulp & webpack">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views:</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
           
 
           
@@ -1760,15 +1656,17 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
       
         
           
-          虽然在工作中已经大量使用了 gulp 和 webpack ，但基本上都是在前人的搭建好配置的基础上直接使用，最多只是添加或是修改几个 proxy 的配置。一开始，在我看来 gulp 和 webpack 似乎是差不多的东西，都属于前端构建工具。趁着周末休息，查阅大量博客和官方文档，并自己搭建实现一个 
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/07/09/gulp-webpack/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p>虽然在工作中已经大量使用了 gulp 和 webpack ，但基本上都是在前人的搭建好配置的基础上直接使用，最多只是添加或是修改几个 proxy 的配置。一开始，在我看来 gulp 和 webpack 似乎是差不多的东西，都属于前端构建工具。趁着周末休息，查阅大量博客和官方文档，并自己搭建实现一个 toy 项目才稍微对他们有了更进一步的认识。</p>
+<p>gulp 和 webpack 虽然同属于前端构建工具，但却有本质的区别。我们先来看看官方都是怎么说的。</p>
+<blockquote>
+<p>gulp is a toolkit for automating painful or time-consuming tasks in your development workflow, so you can stop messing around and build something.</p>
+<p>webpack, the ( production | unbiased flexible | extensible | open source ) module bundler.</p>
+</blockquote>
+<p>从官方的说明上，我们不难看出 gulp 是一个自动化工作流程管理工具，而 webpack 是一个模块构建工具。 gulp 解决的是工作流程，如检测到某个 js 文件有变动后，要先使用 babel 将其转换成 ES5， 再将其压缩并修改文件名写入指定的某个目录下， 最后通知浏览器自动刷新页面重新加载最新的 js 资源。而 webpack 的本质是解决 js 的依赖关系，统一 commonJS， AMD， nodejs 和 ES6 的 module。此外 webpack 的 loader 使其具有将任意资源（css， images等）都当成是 module 进行处理的能力。</p>
+<p>由此不难看出，webpack 与 gulp 并不是竞争关系。如果把 gulp 比作操作系统的话， webpack 就好比是可以运行在该操作系统上的一个应用软件。 之所以会把 webpack 和 gulp 拿在一起作比较，大概是因为觉得 webpack 可以做很多 gulp 可以做的事。 比如压缩文件，比如热加载等， 其实这些功能都不是 webpack 的本质， 他们都是由各种 plugin 实现的附加功能。</p>
+<p>那么关键问题来了，在项目中该如何使用他们呢？在我看来， 虽然 webpack 和 gulp 不能算是同一类工具， 但 webpack 通过 loader 和 plugin 可以基本上满足很多流程管理常用的需求。单从流程管理角度来说， webpack 偏放养式（因为 webpack 本质就不是做流程管理的）， gulp 相比较来说就更精细一点。因此，我的建议是对于一般的小型项目来说， 使用 webpack 足以， 如果更熟悉 gulp 的话，当然也可以使用 gulp。 但对于较大型且比较复杂的项目来说，webpack 来做流程管理就会显得捉襟见肘了， 较好的方法是使用 gulp 做流程管理， 将 webpack 作为 gulp 的某个 task 集成进去， 大家返璞归真各司其职。</p>
+
+          
         
       
     </div>
@@ -1825,7 +1723,7 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lisiur Day">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1873,30 +1771,9 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/07/02/《魔印人》/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">Comments:</span> <span class="post-comments-count valine-comment-count" data-xid="/2017/07/02/《魔印人》/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
-          
-             <span id="/2017/07/02/《魔印人》/" class="leancloud_visitors" data-flag-title="《魔印人》">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views:</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
           
 
           
@@ -1920,15 +1797,10 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
       
         
           
-          《魔印人》，英国奇幻小说，讲述每当夜幕降临，沙恶魔、木恶魔、风恶魔、火恶魔，以及体型巨大的石恶魔爬回人间，大肆屠杀龟缩于魔印后的人类。从前，人类在解放者的领导下，借助于古代魔印武器，将恶魔赶回了地心魔域。当英雄成为传说，古代攻击魔印失传十数个世纪之后，恶魔开始反扑，人类面临着灭绝的危险……三名身负恶
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/07/02/《魔印人》/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p>《魔印人》，英国奇幻小说，讲述每当夜幕降临，沙恶魔、木恶魔、风恶魔、火恶魔，以及体型巨大的石恶魔爬回人间，大肆屠杀龟缩于魔印后的人类。从前，人类在解放者的领导下，借助于古代魔印武器，将恶魔赶回了地心魔域。当英雄成为传说，古代攻击魔印失传十数个世纪之后，恶魔开始反扑，人类面临着灭绝的危险……三名身负恶魔伤痕的少年决定挑战命运，踏上寻找失传魔印的道路——亚伦为了自由愿意付出任何代价，拥抱任何苦难。罗杰带着恶魔攻击留下的伤痛不断在音乐中攫取力量——音乐中深藏着对抗恶魔的神力。黎莎是著名草药师、古代科学技术的守卫人布鲁娜的关门弟子，不断开发出新的魔印武器。他们将齐心合力，上演一曲 “解放者”拯救人类与重塑信仰的史诗传奇。</p>
+<p>书中人物个性鲜明，战斗场面极其火爆。可算上是一幅关于解放者与信仰战争的史诗画卷！</p>
+
+          
         
       
     </div>
@@ -2001,32 +1873,143 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/images/avatar.png"
-                alt="Lisiur Day" />
-            
               <p class="site-author-name" itemprop="name">Lisiur Day</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">54</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
 
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">36</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
           
 
           
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  <a href="https://github.com/lisiur" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
-                  
-                </span>
-              
-                <span class="links-of-author-item">
-                  <a href="https://twitter.com/lisiurday" target="_blank" title="Twitter"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
-                  
-                </span>
-              
-            </div>
+
           
 
           
@@ -2059,7 +2042,7 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love" id="animate">
-    <i class="fa fa-"></i>
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Lisiur Day</span>
 
@@ -2071,13 +2054,17 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
 
 
 
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.4.4</div>
 
 
 
+  <span class="post-meta-divider">|</span>
 
 
 
-  <div class="footer-custom">Hosted by <a href="https://pages.coding.me" style="font-weight: bold;">Coding Pages</a></div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.1.0</div>
+
+
 
 
         
@@ -2123,8 +2110,6 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
 
 
 
-  
-
 
 
 
@@ -2154,18 +2139,13 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
     <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
   
 
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
 
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=6.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=6.1.0"></script>
 
 
 
@@ -2177,7 +2157,7 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.1.0"></script>
 
 
 
@@ -2206,30 +2186,6 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
 
 
 
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  
-  
-  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-  
-  <script type="text/javascript">
-    var GUEST = ['nick','mail','link'];
-    var guest = 'nick,mail';
-    guest = guest.split(',').filter(function (item) {
-      return GUEST.indexOf(item)>-1;
-    });
-    new Valine({
-        el: '#comments' ,
-        verify: false,
-        notify: false,
-        appId: 'A8J7SQmT6WO0cOukuJo3u8It-gzGzoHsz',
-        appKey: 'SIfdDHFNtLNtHFiRBRDaE8TQ',
-        placeholder: '已阅留爪(ฅ´ω`ฅ)',
-        avatar:'mm',
-        guest_info:guest,
-        pageSize:'10' || 10,
-    });
-  </script>
-
 
 
   
@@ -2239,118 +2195,6 @@ GMT(Greenwich Mean Time)格林尼治标准时间,是指位于英国伦敦郊区�
 
 
   
-
-  
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
-  <script>AV.initialize("A8J7SQmT6WO0cOukuJo3u8It-gzGzoHsz", "SIfdDHFNtLNtHFiRBRDaE8TQ");</script>
-  <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
-    function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
-
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
-          if (results.length > 0) {
-            var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
-            
-            counter.save(null, {
-              success: function(counter) {
-                
-                  var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
-                
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
-          } else {
-            
-              var newcounter = new Counter();
-              /* Set ACL */
-              var acl = new AV.ACL();
-              acl.setPublicReadAccess(true);
-              acl.setPublicWriteAccess(true);
-              newcounter.setACL(acl);
-              /* End Set ACL */
-              newcounter.set("title", title);
-              newcounter.set("url", url);
-              newcounter.set("time", 1);
-              newcounter.save(null, {
-                success: function(newcounter) {
-                  var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-                },
-                error: function(newcounter, error) {
-                  console.log('Failed to create');
-                }
-              });
-            
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
-
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
-    });
-  </script>
-
-
 
   
 
