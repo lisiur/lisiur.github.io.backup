@@ -427,7 +427,7 @@
 <li>第一种是使用new操作符后跟Object构造函数。</li>
 </ol>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">person.name = <span class="string">"Nicholas"</span>;</span><br><span class="line">person.age = <span class="number">20</span>;</span><br></pre></td></tr></table></figure>
-<ol>
+<ol start="2">
 <li>另一种方式是使用对象字面量表示法。</li>
 </ol>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">	name : <span class="string">"Nicholas"</span>,</span><br><span class="line">	age : <span class="number">29</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -436,7 +436,7 @@
 <li>第一种是使用Array构造函数。</li>
 </ol>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> colors = <span class="keyword">new</span> <span class="built_in">Array</span>()；</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果预先知道数组要保存的项目数量，也可以给构造函数传递该数量，而该数量会自动变成length属性的值。例如，下面的代码将创建length值为20的数组。</span></span><br><span class="line"><span class="keyword">var</span> colors = <span class="keyword">new</span> <span class="built_in">Array</span>（<span class="number">20</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 也可以向Array构造函数传递数组中应该包含的项。以下代码创建了一个包含3个字符串值的数组：</span></span><br><span class="line"><span class="keyword">var</span> colors = <span class="keyword">new</span> <span class="built_in">Array</span>（<span class="string">"red"</span>, <span class="string">"blue"</span>, <span class="string">"green"</span>）；</span><br><span class="line"></span><br><span class="line"><span class="comment">//当然，给构造函数传递一个值也可以创建数组。但这时候问题就复杂一点了，因为如果传递的是数值，则会按照该数值创建包含给定项数的数组；而如果传递的是其他类型的参数，则会创建包含那个值的只有一项的数组。</span></span><br><span class="line"><span class="keyword">var</span> colors = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">3</span>); <span class="comment">// 创建一个包含三项的数组</span></span><br><span class="line"><span class="keyword">var</span> names = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="string">"Greg"</span>); <span class="comment">// 创建一个包含1项， 即字符串“Greg”的数组</span></span><br></pre></td></tr></table></figure>
-<ol>
+<ol start="2">
 <li>创建数组的第二种基本方式是使用数组字面量表示法。数组字面量由一对包含数组项的方括号表示，多个数组项之间以逗号隔开。</li>
 </ol>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> colors = [<span class="string">"red"</span>, <span class="string">"blue"</span>, <span class="string">"green"</span>]; <span class="comment">// 创建一个包含三个字符串的数组</span></span><br><span class="line"><span class="keyword">var</span> names = []; <span class="comment">// 创建一个空数组</span></span><br><span class="line"><span class="keyword">var</span> values = [<span class="number">1</span>,<span class="number">2</span>,]; <span class="comment">// 不要这样！IE中为[1,2,undefined],其他为[1,2]</span></span><br><span class="line"><span class="keyword">var</span> options = [,,,,,]; <span class="comment">// 不要这样！</span></span><br></pre></td></tr></table></figure>
@@ -1217,7 +1217,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">57</span>
+                    <span class="site-state-item-count">58</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

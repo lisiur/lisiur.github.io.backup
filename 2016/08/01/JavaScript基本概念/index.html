@@ -997,6 +997,8 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> qs = location.search.substring(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">var</span> hostName = location.hostname;</span><br><span class="line"><span class="keyword">var</span> url = location.href;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等价于</span></span><br><span class="line"><span class="keyword">with</span>(location) &#123;</span><br><span class="line">    <span class="keyword">var</span> qs = search.substring(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">var</span> hostName = hostname;</span><br><span class="line">    <span class="keyword">var</span> url = href;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>严格模式下不允许使用with语句，否则将视为语法错误。</p>
+</blockquote>
+<blockquote>
 <p>由于大量使用with语句会导致性能下降，同时也会给调试代码造成困难，因此在开发大型应用程序时，不建议使用with语句。</p>
 </blockquote>
 <h3 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h3><p>作用同C语言，不同的是case语句可以是任意类型的常量，变量，表达式。</p>
@@ -1134,7 +1136,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">57</span>
+                    <span class="site-state-item-count">58</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
