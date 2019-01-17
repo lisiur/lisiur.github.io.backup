@@ -106,7 +106,7 @@
 <meta property="og:site_name" content="Lisiur">
 <meta property="og:description" content="假设有如下两个问题：问题一：先根据 ID 获取用户年龄，再根据用户年龄获取推荐商品。问题二：获取年龄分别是20和30的推荐商品。 两个问题的共同点是：  需要发送异步请求 需要发送多个异步请求  而他们的不同点也很明显：  问题一的第二个异步请求需要等第一个异步请求成功返回后方能执行 问题二的两个异步请求没有先后顺序的问题  首先我们看看怎么使用 async 解决第一个问题： 12345678fu">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-17T12:54:35.109Z">
+<meta property="og:updated_time" content="2019-01-17T12:55:48.488Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="善用 async">
 <meta name="twitter:description" content="假设有如下两个问题：问题一：先根据 ID 获取用户年龄，再根据用户年龄获取推荐商品。问题二：获取年龄分别是20和30的推荐商品。 两个问题的共同点是：  需要发送异步请求 需要发送多个异步请求  而他们的不同点也很明显：  问题一的第二个异步请求需要等第一个异步请求成功返回后方能执行 问题二的两个异步请求没有先后顺序的问题  首先我们看看怎么使用 async 解决第一个问题： 12345678fu">
@@ -436,7 +436,12 @@
 <p><strong>forEach</strong><br>下面我们来看看 forEach 的表现如何：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">wait</span>(<span class="params">t</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">res</span> =&gt;</span> setTimeout(res, t))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">multiFetch</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].forEach(<span class="keyword">async</span> _ =&gt; &#123;</span><br><span class="line">    <span class="keyword">await</span> wait(<span class="number">1000</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>())</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 运行结果</span></span><br><span class="line"><span class="comment">// Thu Jan 17 2019 20:41:02 GMT+0800 (China Standard Time)</span></span><br><span class="line"><span class="comment">// Thu Jan 17 2019 20:41:02 GMT+0800 (China Standard Time)</span></span><br><span class="line"><span class="comment">// Thu Jan 17 2019 20:41:02 GMT+0800 (China Standard Time)</span></span><br></pre></td></tr></table></figure>
 <p>看，几乎是同时执行的 await。</p>
-<p>由此总结：<br>map 适用于所有请求全部返回后再处理的需求<br>forEach 适合不 care 所有请求是否全部返回，而是谁先返回先处理谁的需求。<br>for 适合讲解 map 和 forEach 为什么比它更合适大多数需求的需求。</p>
+<p>由此总结：</p>
+<ul>
+<li>map 适用于所有请求全部返回后再处理的需求。</li>
+<li>forEach 适合不 care 所有请求是否全部返回，而是谁先返回先处理谁的需求。</li>
+<li>for 适合讲解 map 和 forEach 为什么比它更合适大多数需求的需求。</li>
+</ul>
 <p>最后再提一句，所有使用 async 函数的地方都应该做错误处理，推荐使用 try-catch 包裹，如果不喜欢 try-catch 可以看看我之前写的一篇文章： <a href="https://lisiur.com/2018/06/13/async-await%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B/">async 函数的错误处理</a></p>
 
       
@@ -584,8 +589,6 @@
                 <div class="site-state-item site-state-tags">
                   <a href="/tags/index.html">
                     
-                    
-                      
                     
                       
                     
