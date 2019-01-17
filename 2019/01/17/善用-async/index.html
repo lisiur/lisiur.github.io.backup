@@ -99,25 +99,24 @@
 
 
 
-  <meta name="description" content="我在小的时候确实曾希望自己能不幸一点。 原因无它，因为我总结出所有伟人之所以能成为伟人，是因为他们都曾拥有过各自的不幸，而一旦克服了这些不幸，似乎就能达成大多数人无法达到的成就。 我把自己在8岁时不能拥有一项发明专利，在12岁时不能解决某某数学猜想，在16岁时不能出版自己的书都归咎于自己过得太幸福了。 和同龄人比，我的父母琴瑟和谐，他们对我疼爱有加。我有赏识我的老师，有交心的朋友，生活过的异常平淡">
-<meta name="keywords" content="杂记">
+  <meta name="description" content="假设有如下两个问题：问题一：先根据 ID 获取用户年龄，再根据用户年龄获取推荐商品。问题二：获取年龄分别是20和30的推荐商品。 两个问题的共同点是：  需要发送异步请求 需要发送多个异步请求  而他们的不同点也很明显：  问题一的第二个异步请求需要等第一个异步请求成功返回后方能执行 问题二的两个异步请求没有先后顺序的问题  首先我们看看怎么使用 async 解决第一个问题： 12345678fu">
 <meta property="og:type" content="article">
-<meta property="og:title" content="不幸">
-<meta property="og:url" content="http://Lisiur.com/2018/04/22/不幸/index.html">
+<meta property="og:title" content="善用 async">
+<meta property="og:url" content="http://Lisiur.com/2019/01/17/善用-async/index.html">
 <meta property="og:site_name" content="Lisiur">
-<meta property="og:description" content="我在小的时候确实曾希望自己能不幸一点。 原因无它，因为我总结出所有伟人之所以能成为伟人，是因为他们都曾拥有过各自的不幸，而一旦克服了这些不幸，似乎就能达成大多数人无法达到的成就。 我把自己在8岁时不能拥有一项发明专利，在12岁时不能解决某某数学猜想，在16岁时不能出版自己的书都归咎于自己过得太幸福了。 和同龄人比，我的父母琴瑟和谐，他们对我疼爱有加。我有赏识我的老师，有交心的朋友，生活过的异常平淡">
+<meta property="og:description" content="假设有如下两个问题：问题一：先根据 ID 获取用户年龄，再根据用户年龄获取推荐商品。问题二：获取年龄分别是20和30的推荐商品。 两个问题的共同点是：  需要发送异步请求 需要发送多个异步请求  而他们的不同点也很明显：  问题一的第二个异步请求需要等第一个异步请求成功返回后方能执行 问题二的两个异步请求没有先后顺序的问题  首先我们看看怎么使用 async 解决第一个问题： 12345678fu">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-22T14:46:57.533Z">
+<meta property="og:updated_time" content="2019-01-17T12:54:35.109Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="不幸">
-<meta name="twitter:description" content="我在小的时候确实曾希望自己能不幸一点。 原因无它，因为我总结出所有伟人之所以能成为伟人，是因为他们都曾拥有过各自的不幸，而一旦克服了这些不幸，似乎就能达成大多数人无法达到的成就。 我把自己在8岁时不能拥有一项发明专利，在12岁时不能解决某某数学猜想，在16岁时不能出版自己的书都归咎于自己过得太幸福了。 和同龄人比，我的父母琴瑟和谐，他们对我疼爱有加。我有赏识我的老师，有交心的朋友，生活过的异常平淡">
+<meta name="twitter:title" content="善用 async">
+<meta name="twitter:description" content="假设有如下两个问题：问题一：先根据 ID 获取用户年龄，再根据用户年龄获取推荐商品。问题二：获取年龄分别是20和30的推荐商品。 两个问题的共同点是：  需要发送异步请求 需要发送多个异步请求  而他们的不同点也很明显：  问题一的第二个异步请求需要等第一个异步请求成功返回后方能执行 问题二的两个异步请求没有先后顺序的问题  首先我们看看怎么使用 async 解决第一个问题： 12345678fu">
 
 
 
 
 
 
-  <link rel="canonical" href="http://Lisiur.com/2018/04/22/不幸/"/>
+  <link rel="canonical" href="http://Lisiur.com/2019/01/17/善用-async/"/>
 
 
 
@@ -127,7 +126,7 @@
   };
 </script>
 
-  <title>不幸 | Lisiur</title>
+  <title>善用 async | Lisiur</title>
   
 
 
@@ -309,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://Lisiur.com/2018/04/22/不幸/">
+    <link itemprop="mainEntityOfPage" href="http://Lisiur.com/2019/01/17/善用-async/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lisiur Day">
@@ -326,7 +325,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">不幸
+          <h1 class="post-title" itemprop="name headline">善用 async
               
             
           </h1>
@@ -345,7 +344,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-22T21:07:24+08:00">2018-04-22</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-17T19:50:00+08:00">2019-01-17</time>
             
 
             
@@ -363,8 +362,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/04/22/不幸/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/04/22/不幸/" itemprop="commentCount"></span>
+                <a href="/2019/01/17/善用-async/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/01/17/善用-async/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -372,7 +371,7 @@
 
           
           
-             <span id="/2018/04/22/不幸/" class="leancloud_visitors" data-flag-title="不幸">
+             <span id="/2019/01/17/善用-async/" class="leancloud_visitors" data-flag-title="善用 async">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -403,22 +402,42 @@
       
 
       
-        <p>我在小的时候确实曾希望自己能不幸一点。</p>
-<p>原因无它，因为我总结出所有伟人之所以能成为伟人，是因为他们都曾拥有过各自的不幸，而一旦克服了这些不幸，似乎就能达成大多数人无法达到的成就。</p>
-<p>我把自己在8岁时不能拥有一项发明专利，在12岁时不能解决某某数学猜想，在16岁时不能出版自己的书都归咎于自己过得太幸福了。</p>
-<p>和同龄人比，我的父母琴瑟和谐，他们对我疼爱有加。我有赏识我的老师，有交心的朋友，生活过的异常平淡无奇。而我和那些伟人相比也是平凡的很。</p>
-<p>我渴望不幸的降临。我自认为只有不幸才能让我有质的转变。</p>
-<p>2008年，发生了汶川地震。当时我刚升初中。一夜之间，报道灾情，救援情况，寻人启事的新闻铺天盖地的涌来。</p>
-<p>全国都都被一股压抑，悲伤的情绪所笼罩。通过新闻和报纸看到的灾情让当时的我感到十分惊恐。惊的是第一次看到人的生命是那么的脆弱，恐的是我是不是也会遇到这种不幸。</p>
-<p>发生这么大的灾难，全班都沉浸在悲伤的气氛中，班主任为了调节一下气氛，就问到：“大家害怕吗？” “不怕！”这个时候的男生是肯定不能说怕的。我也是那个坚定的回答者之一，然而当时我的内心是有一万句 mmp 要说的，卧槽，你们真不怕？</p>
-<p>第一次我开始考虑死亡是什么。我一想到自己终有一天也会突然就这么离开这个世界，再也看不了电视，再也玩不了游戏机，再也不能和这些熟悉的面孔交流，没有了视觉，没有了听觉，没有了思想，我在这个世界留下的所有痕迹终将被尘埃所抹去。一股更大的悲伤，恐惧和难过笼罩着我。</p>
-<p>我不敢把自己的想法和别人分享，我怕别人嘲笑我软弱。</p>
-<p>这个时间段我读了大量关于生死的书籍和文章。讨论死亡的很少，但谈及生的意义的却非常之多。后来一想也对，没经历过死亡的人又怎能真正理解的了死亡呢，而如果能够透析了生的含义，虽不能理解死亡，却也能正视它了不是？</p>
-<p>我开始认真地考虑活着的意义。</p>
-<p>有人说活着就是经历不同的悲欢喜乐，尝尽人间百态。<br>有人说活着就是实现自己的理想，不断达成人生不同阶段的目标。<br>有人说或者就是要克服各种不幸，完成各种挑战。</p>
-<p>每个人都有自己活着的意义，不同的是，小人物会想着怎样改善生活，大人物会想着怎样改变世界，相同的是，他们都会遇到各种不幸，他们终将有一日归于尘土。不幸和死亡是生命必不可少的一部分，谁也躲不过。</p>
-<p>想着独自待在租的房间里，打开温暖的灯光，舒服的躺在沙发上，听着喜爱的音乐，感激生活的舒适和惬意。但又想到买不起房车，没有富裕时间出去游玩，才感叹生活的艰辛和不易。<br>幸运和不幸似乎总是能在不同的角度上进行转换。</p>
-<p>生活中难免会遇到不幸，身体的疾病，感情的破裂，亲人的离世等等，希望每次的不幸都能坚定我对死亡的敬畏和坦荡，完成一次又一次的生命意义的升华。</p>
+        <p>假设有如下两个问题：<br>问题一：先根据 ID 获取用户年龄，再根据用户年龄获取推荐商品。<br>问题二：获取年龄分别是20和30的推荐商品。</p>
+<p>两个问题的共同点是：</p>
+<ul>
+<li>需要发送异步请求</li>
+<li>需要发送多个异步请求</li>
+</ul>
+<p>而他们的不同点也很明显：</p>
+<ul>
+<li>问题一的第二个异步请求需要等第一个异步请求成功返回后方能执行</li>
+<li>问题二的两个异步请求没有先后顺序的问题</li>
+</ul>
+<p>首先我们看看怎么使用 async 解决第一个问题：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getUserAgeByID</span>(<span class="params">id</span>) </span>&#123;<span class="comment">/* ... */</span>&#125; <span class="comment">// 根据 ID 获取用户年龄，返回 promise</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getRecommendedGoodsByAge</span>(<span class="params">age</span>) </span>&#123;<span class="comment">/* ... */</span>&#125; <span class="comment">// 根据年龄获取推荐商品列表，返回 promise</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">getRecommendedGoodsByUserID</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> age = <span class="keyword">await</span> getUserAgeByID(id)</span><br><span class="line">  <span class="keyword">const</span> goods = <span class="keyword">await</span> getRecommendedGoodsByAge(age)</span><br><span class="line">  <span class="keyword">return</span> goods</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如代码所示我们使用 async 可以按照我们预想的顺序依次执行两个异步请求。</p>
+<p>那如何解决第二个问题呢？<br>有些人会想，那还不简单：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getUserAgeByID</span>(<span class="params">id</span>) </span>&#123;<span class="comment">/* ... */</span>&#125; <span class="comment">// 根据 ID 获取用户年龄，返回 promise</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getRecommendedGoodsByAge</span>(<span class="params">age</span>) </span>&#123;<span class="comment">/* ... */</span>&#125; <span class="comment">// 根据年龄获取推荐商品列表，返回 promise</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">getRecommendedGoods</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> goodsFor20 = <span class="keyword">await</span> getRecommendedGoodsByAge(<span class="number">20</span>)</span><br><span class="line">  <span class="keyword">const</span> goodsFor30 = <span class="keyword">await</span> getRecommendedGoodsByAge(<span class="number">30</span>)</span><br><span class="line">  <span class="keyword">return</span> [goodsFor20, goodsFor30]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面代码虽然能够正确的获取我们想要的结果，但却不是最佳的方式。<br>正如我们上面分析过的，获取年龄30推荐商品的请求不需要等获取年龄20推荐商品请求结束才能发送，两者是可以同时发送的。<br>这个时候就需要使用 Promise.all 来将两个请求的 promise 合并为一个：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getUserAgeByID</span>(<span class="params">id</span>) </span>&#123;<span class="comment">/* ... */</span>&#125; <span class="comment">// 根据 ID 获取用户年龄，返回 promise</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getRecommendedGoodsByAge</span>(<span class="params">age</span>) </span>&#123;<span class="comment">/* ... */</span>&#125; <span class="comment">// 根据年龄获取推荐商品列表，返回 promise</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">getRecommendedGoods</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [goodsFor20, goodsFor30] = <span class="keyword">await</span> <span class="built_in">Promise</span>.all([<span class="number">20</span>, <span class="number">30</span>].map(getRecommendedGoodsByAge))</span><br><span class="line">  <span class="keyword">return</span> [goodsFor20, goodsFor30]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此时，该方法会同时请求年龄为20和30的推荐商品，并在两个请求都成功返回后才返回最终结果。</p>
+<p>既然谈到了 Promise.all 我们就趁热打铁来谈谈如何请求多个异步求情：<br>请求多个异步请求即如何在循环中使用异步请求：</p>
+<p>常用的循环有这么几种：</p>
+<ul>
+<li>map</li>
+<li>for</li>
+<li>forEach</li>
+</ul>
+<p><strong>map</strong><br>map 请求我们已经讨论过了，即把一个普通 list 映射成一个包含 promise 的 list，然后再使用 Promise.all 来同时获取，并在所有请求都成功后返回结果。</p>
+<p><strong>for</strong><br>for 循环是最基础的循环方式，也是很多新手最喜欢使用的循环方式。我们来看看使用 for 循环做 async 是什么效果：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">wait</span>(<span class="params">t</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">res</span> =&gt;</span> setTimeout(res, t))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">multiFetch</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">await</span> wait(<span class="number">1000</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>())</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 运行结果</span></span><br><span class="line"><span class="comment">// Thu Jan 17 2019 20:36:41 GMT+0800 (China Standard Time)</span></span><br><span class="line"><span class="comment">// Thu Jan 17 2019 20:36:42 GMT+0800 (China Standard Time)</span></span><br><span class="line"><span class="comment">// Thu Jan 17 2019 20:36:43 GMT+0800 (China Standard Time)</span></span><br></pre></td></tr></table></figure>
+<p>很明显，在 for 循环中 await 是相互影响的，其实不难理解，上述 for 循环翻译出来就是：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">multiFetch</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">await</span> wait(<span class="number">1000</span>)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>())</span><br><span class="line">  <span class="keyword">await</span> wait(<span class="number">1000</span>)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>())</span><br><span class="line">  <span class="keyword">await</span> wait(<span class="number">1000</span>)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>forEach</strong><br>下面我们来看看 forEach 的表现如何：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">wait</span>(<span class="params">t</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">res</span> =&gt;</span> setTimeout(res, t))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">multiFetch</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].forEach(<span class="keyword">async</span> _ =&gt; &#123;</span><br><span class="line">    <span class="keyword">await</span> wait(<span class="number">1000</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>())</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 运行结果</span></span><br><span class="line"><span class="comment">// Thu Jan 17 2019 20:41:02 GMT+0800 (China Standard Time)</span></span><br><span class="line"><span class="comment">// Thu Jan 17 2019 20:41:02 GMT+0800 (China Standard Time)</span></span><br><span class="line"><span class="comment">// Thu Jan 17 2019 20:41:02 GMT+0800 (China Standard Time)</span></span><br></pre></td></tr></table></figure>
+<p>看，几乎是同时执行的 await。</p>
+<p>由此总结：<br>map 适用于所有请求全部返回后再处理的需求<br>forEach 适合不 care 所有请求是否全部返回，而是谁先返回先处理谁的需求。<br>for 适合讲解 map 和 forEach 为什么比它更合适大多数需求的需求。</p>
+<p>最后再提一句，所有使用 async 函数的地方都应该做错误处理，推荐使用 try-catch 包裹，如果不喜欢 try-catch 可以看看我之前写的一篇文章： <a href="https://lisiur.com/2018/06/13/async-await%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B/">async 函数的错误处理</a></p>
 
       
     </div>
@@ -437,12 +456,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/杂记/" rel="tag"># 杂记</a>
-          
-        </div>
-      
 
       
       
@@ -452,8 +465,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/10/从一个实例看闭包和对象/" rel="next" title="从一个实例看闭包和对象">
-                <i class="fa fa-chevron-left"></i> 从一个实例看闭包和对象
+              <a href="/2018/06/26/GraphQL-了解一下/" rel="next" title="GraphQL 了解一下?">
+                <i class="fa fa-chevron-left"></i> GraphQL 了解一下?
               </a>
             
           </div>
@@ -461,10 +474,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/27/go-开箱体验/" rel="prev" title="go 开箱体验">
-                go 开箱体验 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -650,7 +659,7 @@
                     
                       
                     
-                    <span class="site-state-item-count">37</span>
+                    <span class="site-state-item-count">36</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -704,7 +713,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
