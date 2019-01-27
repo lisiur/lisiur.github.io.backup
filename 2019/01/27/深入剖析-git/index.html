@@ -99,24 +99,24 @@
 
 
 
-  <meta name="description" content="用了一周的业余时间初步了解了 go 语言的基础语法，并在学习过程中开发了一款适用于公司自动化部署的 cli 小工具。autodeploy 为什么学习 go？ 首先 go 是一个静态强类型的语言，和我常用的 javascript 正好完全相反，尝试完全不同的编程体验未尝不是一件趣事。然后 go 语言有个好爸爸 —— google，让人很难压制一窥芳颜的冲动。最后 go 语言据说可以取代 Java，虽">
+  <meta name="description" content="为什么在一个文件夹下运行 git init 之后就可以使用 git 的其他命令对该文件夹进行版本控制了呢？ 为什么使用 git clone 可以把一个 Git 项目的所有历史记录和分支等全部保存下来呢？ 这些记录 git 历史和分支的信息保存在哪儿的呢？  这一切都要从 .git 说起了。当我们初始化或者克隆一个 git 项目时，都会在项目的根目录下生成一个 .git 目录，接下来让我们一步步揭">
 <meta property="og:type" content="article">
-<meta property="og:title" content="go 开箱体验">
-<meta property="og:url" content="http://Lisiur.com/2018/04/27/go-开箱体验/index.html">
+<meta property="og:title" content="深入剖析 git 之 git object">
+<meta property="og:url" content="http://Lisiur.com/2019/01/27/深入剖析-git/index.html">
 <meta property="og:site_name" content="Lisiur">
-<meta property="og:description" content="用了一周的业余时间初步了解了 go 语言的基础语法，并在学习过程中开发了一款适用于公司自动化部署的 cli 小工具。autodeploy 为什么学习 go？ 首先 go 是一个静态强类型的语言，和我常用的 javascript 正好完全相反，尝试完全不同的编程体验未尝不是一件趣事。然后 go 语言有个好爸爸 —— google，让人很难压制一窥芳颜的冲动。最后 go 语言据说可以取代 Java，虽">
+<meta property="og:description" content="为什么在一个文件夹下运行 git init 之后就可以使用 git 的其他命令对该文件夹进行版本控制了呢？ 为什么使用 git clone 可以把一个 Git 项目的所有历史记录和分支等全部保存下来呢？ 这些记录 git 历史和分支的信息保存在哪儿的呢？  这一切都要从 .git 说起了。当我们初始化或者克隆一个 git 项目时，都会在项目的根目录下生成一个 .git 目录，接下来让我们一步步揭">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-27T12:31:25.545Z">
+<meta property="og:updated_time" content="2019-01-27T06:04:08.739Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="go 开箱体验">
-<meta name="twitter:description" content="用了一周的业余时间初步了解了 go 语言的基础语法，并在学习过程中开发了一款适用于公司自动化部署的 cli 小工具。autodeploy 为什么学习 go？ 首先 go 是一个静态强类型的语言，和我常用的 javascript 正好完全相反，尝试完全不同的编程体验未尝不是一件趣事。然后 go 语言有个好爸爸 —— google，让人很难压制一窥芳颜的冲动。最后 go 语言据说可以取代 Java，虽">
+<meta name="twitter:title" content="深入剖析 git 之 git object">
+<meta name="twitter:description" content="为什么在一个文件夹下运行 git init 之后就可以使用 git 的其他命令对该文件夹进行版本控制了呢？ 为什么使用 git clone 可以把一个 Git 项目的所有历史记录和分支等全部保存下来呢？ 这些记录 git 历史和分支的信息保存在哪儿的呢？  这一切都要从 .git 说起了。当我们初始化或者克隆一个 git 项目时，都会在项目的根目录下生成一个 .git 目录，接下来让我们一步步揭">
 
 
 
 
 
 
-  <link rel="canonical" href="http://Lisiur.com/2018/04/27/go-开箱体验/"/>
+  <link rel="canonical" href="http://Lisiur.com/2019/01/27/深入剖析-git/"/>
 
 
 
@@ -126,7 +126,7 @@
   };
 </script>
 
-  <title>go 开箱体验 | Lisiur</title>
+  <title>深入剖析 git 之 git object | Lisiur</title>
   
 
 
@@ -308,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://Lisiur.com/2018/04/27/go-开箱体验/">
+    <link itemprop="mainEntityOfPage" href="http://Lisiur.com/2019/01/27/深入剖析-git/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lisiur Day">
@@ -325,7 +325,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">go 开箱体验
+          <h1 class="post-title" itemprop="name headline">深入剖析 git 之 git object
               
             
           </h1>
@@ -344,7 +344,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-27T19:43:46+08:00">2018-04-27</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-27T12:36:45+08:00">2019-01-27</time>
             
 
             
@@ -362,8 +362,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/04/27/go-开箱体验/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/04/27/go-开箱体验/" itemprop="commentCount"></span>
+                <a href="/2019/01/27/深入剖析-git/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/01/27/深入剖析-git/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -371,7 +371,7 @@
 
           
           
-             <span id="/2018/04/27/go-开箱体验/" class="leancloud_visitors" data-flag-title="go 开箱体验">
+             <span id="/2019/01/27/深入剖析-git/" class="leancloud_visitors" data-flag-title="深入剖析 git 之 git object">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -402,19 +402,50 @@
       
 
       
-        <p>用了一周的业余时间初步了解了 go 语言的基础语法，并在学习过程中开发了一款适用于公司自动化部署的 cli 小工具。<a href="https://github.com/lisiur/autodeploy" target="_blank" rel="noopener">autodeploy</a></p>
-<p>为什么学习 go？</p>
-<p>首先 go 是一个静态强类型的语言，和我常用的 javascript 正好完全相反，尝试完全不同的编程体验未尝不是一件趣事。<br>然后 go 语言有个好爸爸 —— google，让人很难压制一窥芳颜的冲动。<br>最后 go 语言据说可以取代 Java，虽然对于这个噱头我是嗤之以鼻的，但是了解下 go 未尝不为平时吹逼增添了资本。</p>
-<p>go 语言有什么缺点？</p>
-<p>为什么要先说缺点呢？任性<br>因为是初学者，所以我所提及的缺点完全是对于初学者而言的，可能只是皮毛，并不能覆盖其真正的不足。</p>
-<p>首先要提及的是包的版本控制，在这方面 go 还处于懵懂阶段并没有非常成熟的方案。</p>
-<p>然后是安装包时所遇到的坑，首次使用 <code>go get ...</code> 时，不出意外会报一个 timeout 的错，这个对于我们应该是老生常谈的问题了，没错，肯定被墙了，可是我有梯子啊，所以淡然的架起了梯子，发现错误换了个地方又报了个 timeout… 是的，一脸懵逼的我用了大概一下午的时间各种 google stackoverflow，最后得出的结论是，需要单独给 bash 和 git 配置 proxy = =||</p>
-<p>最后需要提及的是其对 json 的处理，其实这个也不仅仅是 go 的问题，基本所有的强类型语言都有，要想解析后端返回的 json 需要事先定义好其对应的 struct，好吧，可能是 javascript 把我惯坏了，目前确实还不是很适应。</p>
-<p>go 语言的优点？</p>
-<p>首先，go语言是约定优先于配置的，这点我在使用 ruby 的使用就已经体会到好处了，就不多说了。</p>
-<p>然后，最让我惊艳的是 go 语言对于错误处理的认识，go语言认为业务异常不应该像其他语言那样进入 try-catch 逻辑，而应该当做正常的流程来处理。确实，在使用其他语言进行错误处理时，每次需要在外面套一层 try-catch 确实让人感觉不爽，多么简洁而又优美的代码为了避免某些可能出现的异常套上一层又一层丑陋的外套。go 语言认为错误也是正常流程的一部分，不应该被特殊对待，应该一视同仁。他给出的方案就是函数能够返回多个值，而约定错误总是作为最后一个值返回。这样在处理了错误的同时，又保证了流程的流畅性。</p>
-<p>最后再说一下 go 语言的智能提示，同样，这个应该是所有强语言的优点，之所以提到这点，是因为我有好几次改 js 的诡异 bug 时，最后发现是单词拼错了,被被坑的太惨了…<br>go语言，或者说强类型的智能提示让人在编码时大大增加了自信心。</p>
-<p>接下来我会逐渐深入了解 go 语言，并不断分享使用感受。</p>
+        <ul>
+<li>为什么在一个文件夹下运行 <code>git init</code> 之后就可以使用 git 的其他命令对该文件夹进行版本控制了呢？</li>
+<li>为什么使用 <code>git clone</code> 可以把一个 Git 项目的所有历史记录和分支等全部保存下来呢？</li>
+<li>这些记录 git 历史和分支的信息保存在哪儿的呢？</li>
+</ul>
+<p>这一切都要从 <code>.git</code> 说起了。<br>当我们初始化或者克隆一个 git 项目时，都会在项目的根目录下生成一个 <code>.git</code> 目录，接下来让我们一步步揭开 git 的什么面纱。</p>
+<p>首先我们拿一个空目录来运行 <code>git init</code>，看看 <code>.git</code> 在初始化时包含了哪些东西。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir git-demo</span><br><span class="line"><span class="built_in">cd</span> git-demo</span><br><span class="line">git init</span><br><span class="line">tree .git</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">.git</span><br><span class="line">├── HEAD</span><br><span class="line">├── config</span><br><span class="line">├── description</span><br><span class="line">├── hooks</span><br><span class="line">│   ├── applypatch-msg.sample</span><br><span class="line">│   ├── ...</span><br><span class="line">│   └── update.sample</span><br><span class="line">├── info</span><br><span class="line">│   └── exclude</span><br><span class="line">├── objects</span><br><span class="line">│   ├── info</span><br><span class="line">│   └── pack</span><br><span class="line">└── refs</span><br><span class="line">    ├── heads</span><br><span class="line">    └── tags</span><br></pre></td></tr></table></figure>
+<p>我们看到 <code>.git</code> 目录默认包含了上面所示的目录和文件。<br>这里我们比较关心的是 objects 文件夹。<br>我们不妨创建一个文件并将其 commit 到 git history 后再看看 objects 会有什么变化。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">'version 1'</span> &gt; version.text</span><br><span class="line">git add version.text</span><br><span class="line">git commit -m <span class="string">'version 1'</span></span><br><span class="line">tree .git/objects</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.git/objects</span><br><span class="line">├── 10</span><br><span class="line">│   └── c05a0aad88bb127d73dc79c2b6a4c207df1a91</span><br><span class="line">├── 83</span><br><span class="line">│   └── baae61804e65cc73a7201a7252750c76066a30</span><br><span class="line">├── c5</span><br><span class="line">│   └── e3eac77b5a770a3400e6b7700ad36ade98e4b8</span><br><span class="line">├── info</span><br><span class="line">└── pack</span><br></pre></td></tr></table></figure>
+<p>我们看到 <code>.git/objects</code> 下多了三个文件夹，且每个文件夹下各保存了一个文件。这其实是三个 hash 表示的对象：</p>
+<ul>
+<li>10c05a0aad88bb127d73dc79c2b6a4c207df1a91</li>
+<li>83baae61804e65cc73a7201a7252750c76066a30</li>
+<li>c5e3eac77b5a770a3400e6b7700ad36ade98e4b8</li>
+</ul>
+<blockquote>
+<p>git 会把生成的 hash 将前两个字符作为父文件夹名，剩下的字符作为子文件名保存。</p>
+</blockquote>
+<p>那这三个 hash（对象） 分别代表什么意思呢？我们可以通过 <code>git cat-file</code> 命令来一探究竟。</p>
+<blockquote>
+<p>git cat-file -t <hash> 查看对象类型<br>git cat-file -p <hash> 查看对象内容</hash></hash></p>
+</blockquote>
+<p>我们先来看看这三个 hash（对象） 的类型是什么：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git cat-file -t 10c05a0aad88bb127d73dc79c2b6a4c207df1a91</span><br><span class="line">git cat-file -t 83baae61804e65cc73a7201a7252750c76066a30</span><br><span class="line">git cat-file -t c5e3eac77b5a770a3400e6b7700ad36ade98e4b8</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tree</span><br><span class="line">blob</span><br><span class="line">commit</span><br></pre></td></tr></table></figure>
+<p>可以看到，这三个 hash 分别表示了三种不同的 object 类型即：</p>
+<ul>
+<li>blob</li>
+<li>tree</li>
+<li>commit</li>
+</ul>
+<p>下面我们再来具体看看这三个类型的对象真正保存了哪些东西，先从 blob 开始吧(因为从字面上理解，blob 应该是最基础的对象类型，毕竟柿子要捡软的捏嘛)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git cat-file -p 83baae61804e65cc73a7201a7252750c76066a30</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">version 1</span><br></pre></td></tr></table></figure>
+<p>诶？这个 blob 对象所保存的不正是 <code>version.text</code> 的内容吗？<br>由此可见，我们在 git 项目里记录的每个文件最后都会生成一个 blob 对象与其对应。<br>但似乎好像少了点什么，blob 对象难道只保存文件的内容吗？文件的名称保存在哪呢？是在 tree 里吗？<br>带着这个疑问，我们可以看看 tree 对象里又有何玄机。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git cat-file -p 10c05a0aad88bb127d73dc79c2b6a4c207df1a91</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">100644 blob 83baae61804e65cc73a7201a7252750c76066a30	version.text</span><br></pre></td></tr></table></figure>
+<p>哈！果不其然，这个 tree 对象目前只有一条记录，我们不难看出 <figure class="highlight plain"><figcaption><span>表示对象保存的文件大小，``blob`` 表示对象类型，``83baae61804e65cc73a7201a7252750c76066a30`` 表示对象的 hash 值，``version.text`` 表示对象保存的文件名称。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">其实不难猜出，tree 对象里既然能保存 blob 对象，那应该也能保存 tree 对象，这样我们就不难想象出多层文件夹 git 是如何保存的了。</span><br><span class="line"></span><br><span class="line">&gt; 值得一提的是，必须先有 blob 对象才会生成保存 blob 的 tree 对象。这一点可从 git 无法保存空文件夹的特性猜到。</span><br><span class="line"></span><br><span class="line">最后还剩下一个 commit 对象了，从字面我们不难猜到 commit 对象记录的应该就是我们 commit 时保存的信息了，让我们来验证一下：</span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line">git cat-file -p c5e3eac77b5a770a3400e6b7700ad36ade98e4b8</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tree 10c05a0aad88bb127d73dc79c2b6a4c207df1a91</span><br><span class="line">author lisiurday &lt;lisiurday@gmail.com&gt; 1548566197 +0800</span><br><span class="line">committer lisiurday &lt;lisiurday@gmail.com&gt; 1548566197 +0800</span><br><span class="line"></span><br><span class="line">version 1</span><br></pre></td></tr></table></figure>
+<p>哦吼，看来 commit 对象保存的内容还不少，首先保存的是当前 commit 时快照所对应的 tree 对象，接下来就是作者和提交者的信息，最后空一行保存着该 commit 的说明信息。</p>
+<p>至此我们应该对 git 如何保存我们的文件信息有了大致的认知。那 git 如何根据这些对象来构建整个庞大的版本控制系统呢？我们对同一份文件做修改后，对应的 blob，tree，commit 又会有怎样的变化呢？git 是如何做到秒切分支的呢？欲知详情，且听下回分解。</p>
 
       
     </div>
@@ -442,8 +473,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/10/从一个实例看闭包和对象/" rel="next" title="从一个实例看闭包和对象">
-                <i class="fa fa-chevron-left"></i> 从一个实例看闭包和对象
+              <a href="/2019/01/17/善用-async/" rel="next" title="善用 async">
+                <i class="fa fa-chevron-left"></i> 善用 async
               </a>
             
           </div>
@@ -451,10 +482,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/06/13/async-await的那些事/" rel="prev" title="async 函数的错误处理">
-                async 函数的错误处理 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
